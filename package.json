@@ -43,6 +43,6 @@
   "devDependencies": {
     "nth-check": "^2.1.1",
     "prettier": "2.7.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "5.0.1"
   }
 }
