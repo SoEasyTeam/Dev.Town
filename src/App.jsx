@@ -1,19 +1,12 @@
-import React from "react";
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset"
-
-const GlobalStyle = createGlobalStyle`
-    ${reset}
-`
+import React from 'react';
 
 function App() {
     return (
-        <React.Fragment>
-            <GlobalStyle/>
+        <>
             <div className="App">
-                <h1>App</h1>
+                <h1>test2</h1>
             </div>
-        </React.Fragment>
+        </>
     );
 }
 
