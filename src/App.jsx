@@ -1,10 +1,10 @@
 import React from 'react';
-import Splash from './components/splash/Splash';
+import HomePost from './components/common/HomePost';
 
 function App() {
     return (
         <>
-            <Splash></Splash>
+            <HomePost />
         </>
     );
 }
