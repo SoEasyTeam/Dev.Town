@@ -3,19 +3,19 @@ import defaultProfile from '../../assets/basic-profile-img-2x.png'
 import uploadImage from '../../assets/upload-file-2x.png'
 import uploadImageGray from '../../assets/img-button.png'
 
-const BasicProfileImg = styled.img`
+const BasicProfileImg = styled.img.attrs({
+    src: `${defaultProfile}`
+    })`
     width: 100%;
     height: 100%;
-`
+`;
 
 const ImgUpload = styled.img`
     width: 100%;
-    height: 100%;
 `
 
 const ImgGray = styled.img`
     width: 100%;
-    height: 100%;
 `
 
 function DefaultProfileImg() {
