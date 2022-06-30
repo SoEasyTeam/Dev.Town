@@ -36,23 +36,21 @@ const HomePostParagraph = styled.p`
     text-align: left;
 `;
 
-const LikeBtn = styled.button`
-    display: inline-block;
-    position: relative;
-    img {
-        width: 20px;
-        height: 20px;
-    }
+const DateParagraph = styled.p`
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
 `;
-
-const LikeCountSpan = styled.span``;
 
 const HomePost = () => {
     return (
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <ProfileLogoImg src={EllipseImg} alt='프로필로고' />
+                    <ProfileLogoImg src={EllipseImg} alt="프로필로고" />
                     <NameIdBox>
                         <NickNameP>애월읍 위니브 감귤농장</NickNameP>
                         <IdP>@ weniv_Mandarin</IdP>
@@ -65,9 +63,7 @@ const HomePost = () => {
                         위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와
                         약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.
                     </HomePostParagraph>
-                    <LikeBtn>
-                        <LikeCountSpan>0</LikeCountSpan>
-                    </LikeBtn>
+                    <DateParagraph>2020년 10월 21일</DateParagraph>
                 </HomePostSmallBox>
             </HomePostBox>
         </>

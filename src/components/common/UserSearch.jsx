@@ -39,7 +39,7 @@ const UserSearch = () => {
     return (
         <>
             <UserSearchBox>
-                <ProfileLogoImg src={EllipseImg} alt='프로필로고' />
+                <ProfileLogoImg src={EllipseImg} alt="프로필로고" />
                 <NameIdBox>
                     <NickNameP>애월읍 위니브 감귤농장</NickNameP>
                     <IdP>@ weniv_Mandarin</IdP>

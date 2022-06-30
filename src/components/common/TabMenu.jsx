@@ -8,6 +8,8 @@ import LinkIconEditImg from '../../assets/icon/icon-edit.svg';
 
 const TabMenuRowBox = styled.div`
     width: 100vw;
+    position: fixed;
+    bottom: 0;
     background-color: var(--bg-color);
     padding: 0 6px;
     display: flex;
@@ -36,19 +38,19 @@ const TabMenu = () => {
     return (
         <>
             <TabMenuRowBox>
-                <TabMenuLink to='#'>
-                    <img src={LinkHomeImg} alt='홈링크' />홈
+                <TabMenuLink to="#">
+                    <img src={LinkHomeImg} alt="홈링크" />홈
                 </TabMenuLink>
-                <TabMenuLink to='#'>
-                    <img src={LinkChatImg} alt='채팅링크' />
+                <TabMenuLink to="#">
+                    <img src={LinkChatImg} alt="채팅링크" />
                     채팅
                 </TabMenuLink>
-                <TabMenuLink to='#'>
-                    <img src={LinkIconEditImg} alt='게시물작성링크' />
+                <TabMenuLink to="#">
+                    <img src={LinkIconEditImg} alt="게시물작성링크" />
                     게시물 작성
                 </TabMenuLink>
-                <TabMenuLink to='#'>
-                    <img src={LinkIconProfileImg} alt='프로필링크' />
+                <TabMenuLink to="#">
+                    <img src={LinkIconProfileImg} alt="프로필링크" />
                     프로필
                 </TabMenuLink>
             </TabMenuRowBox>

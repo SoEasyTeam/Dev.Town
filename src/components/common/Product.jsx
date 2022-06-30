@@ -34,12 +34,12 @@ const Product = () => {
         <>
             <ProductItemBox>
                 <img
-                    className='img-product'
+                    className="img-product"
                     src={ProductImgExample}
-                    alt='상품이미지'
+                    alt="상품이미지"
                 />
-                <p className='txt-productName'>애월읍 노지 감귤</p>
-                <span className='txt-productPrice'>35,000</span>
+                <p className="txt-productName">애월읍 노지 감귤</p>
+                <span className="txt-productPrice">35,000</span>
             </ProductItemBox>
         </>
     );
