@@ -34,8 +34,8 @@ function TextAcivInput() {
     return (
         <>
             <TextInputBox>
-                <TextLabel for="product-name">이메일</TextLabel>
-                <TextInput type="email" id="product-name" />
+                <TextLabel for='product-name'>이메일</TextLabel>
+                <TextInput type='email' id='product-name' />
             </TextInputBox>
         </>
     );
