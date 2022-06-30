@@ -44,13 +44,13 @@ const SBtns = styled.button`
 
 function LBtn({isActive}) {
     return (
-        <LBtns type="button" isActive={isActive}>다음</LBtns>
+        <LBtns type='button' isActive={isActive}>다음</LBtns>
     )
 }
 
 function MBtn({isFollowed}) {
     return (
-        <MBtns type="button" isFollowed={isFollowed}>
+        <MBtns type='button' isFollowed={isFollowed}>
             {isFollowed === true? '언팔로우' : '팔로우'}
         </MBtns>
     )
@@ -58,13 +58,13 @@ function MBtn({isFollowed}) {
 
 function MsBtn({isActive}) {
     return (
-        <MsBtns type="button" isActive={isActive}>저장</MsBtns>
+        <MsBtns type='button' isActive={isActive}>저장</MsBtns>
     )
 }
 
 function SBtn({isFollowed}) {
     return (
-        <SBtns type="button" isFollowed={isFollowed}>
+        <SBtns type='button' isFollowed={isFollowed}>
             {isFollowed === true? '언팔로우' : '팔로우'}
         </SBtns>
     )
