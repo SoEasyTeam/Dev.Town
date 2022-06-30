@@ -29,7 +29,7 @@ export default function Comment() {
             <ProfileImgBox>
                 <DefaultProfileImg />
             </ProfileImgBox>
-            <CommentInput placeholder="댓글 입력하기..." required />
+            <CommentInput placeholder='댓글 입력하기...' required />
             <CommentSubmitBtn>게시</CommentSubmitBtn>
         </CommentBox>
     );
