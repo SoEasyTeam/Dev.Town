@@ -4,7 +4,6 @@ import EllipseImg from '../../assets/Ellipse-1.png';
 import styled from 'styled-components';
 import { UserFollowBox } from './UserFollow';
 import SettingImg from '../../assets/icon/s-icon-more-vertical.png';
-import HeartImg from '../../assets/icon/icon-heart.png';
 
 const SettingBtn = styled.button`
     background-image: url(${SettingImg});
