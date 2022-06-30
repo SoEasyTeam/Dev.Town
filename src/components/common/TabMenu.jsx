@@ -8,7 +8,7 @@ import LinkIconEditImg from '../../assets/icon/icon-edit.svg';
 
 const TabMenuRowBox = styled.div`
     width: 100vw;
-    background-color: #fff;
+    background-color: var(--bg-color);
     padding: 0 6px;
     display: flex;
     justify-content: space-between;
@@ -21,7 +21,7 @@ const TabMenuLink = styled(Link)`
     line-height: 14px;
     text-align: center;
     padding: 12px 30px 6px 30px;
-    color: #767676;
+    color: var(--subtitle-text);
 
     img {
         width: 24px;

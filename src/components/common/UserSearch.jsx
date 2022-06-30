@@ -32,7 +32,7 @@ export const IdP = styled.p`
     font-weight: 400;
     line-height: 15px;
     text-align: left;
-    color: #767676;
+    color: var(--subtitle-text);
 `;
 
 const UserSearch = () => {

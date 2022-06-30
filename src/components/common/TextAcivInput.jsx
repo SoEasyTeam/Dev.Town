@@ -18,7 +18,7 @@ const TextLabel = styled.label`
 `;
 const TextInput = styled.input`
     border: none;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid var(--border-gray);
     font-family: 'Spoqa Han Sans Neo';
     font-size: 14px;
     font-weight: 400;
@@ -26,7 +26,7 @@ const TextInput = styled.input`
     text-align: left;
     padding-bottom: 8px;
     &:focus {
-        border-bottom: 1px solid #b6e546;
+        border-bottom: 1px solid var(--main-color);
     }
 `;
 

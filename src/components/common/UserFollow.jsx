@@ -21,9 +21,9 @@ const FollowBtn = styled.button`
     font-weight: 400;
     line-height: 15px;
     text-align: center;
-    background: #f26e22;
+    background: var(--main-color);
     border-radius: 26px;
-    color: #fff;
+    color: var(--bg-color);
     position: absolute;
     right: 0px;
     top: 11px;

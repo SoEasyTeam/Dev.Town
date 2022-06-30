@@ -25,7 +25,7 @@ const ProductItemBox = styled.div`
         font-weight: 700;
         line-height: 15px;
         text-align: left;
-        color: #f26e22;
+        color: var(--main-color);
     }
 `;
 
