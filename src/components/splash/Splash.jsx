@@ -21,7 +21,6 @@ const SplashRowBox = styled.div`
         font-size: 2.7rem;
         font-weight: 800;
     }
-
 `;
 
 export default function Splash() {
@@ -30,6 +29,5 @@ export default function Splash() {
             <img className='img-logo' src={logoImg} alt="" />
             <h1 className='tit-app'>데브타운</h1>
         </SplashRowBox>
-        
     );
 }

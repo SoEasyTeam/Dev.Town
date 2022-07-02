@@ -44,7 +44,6 @@ const LogInColBox = styled.div`
         height: 45%;
         bottom: 0;
         padding: 35px;
-
         background-color: var(--bg-color);
         border-radius: 20px 20px 0 0;
 
@@ -114,7 +113,6 @@ const LogInColBox = styled.div`
             gap: 2rem;
 
             .email-link {
-
                 &::after {
                     content: '';
                     display: inline-block;
@@ -123,11 +121,11 @@ const LogInColBox = styled.div`
                     background-color: #000;
                     vertical-align: bottom;
                     line-height: 1rem;
-                    margin-left: 2rem;
+                    transform: translatex(1rem);
+                    cursor: none;
                 }
             }
         }
-
     }
 `
 
