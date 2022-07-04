@@ -52,7 +52,7 @@ const SBtns = styled.button`
 
 function LBtn({ isActive }) {
     return (
-        <LBtns type='button' isActive={isActive}>
+        <LBtns type="button" isActive={isActive}>
             다음
         </LBtns>
     );
@@ -60,7 +60,7 @@ function LBtn({ isActive }) {
 
 function MBtn({ isFollowed }) {
     return (
-        <MBtns type='button' isFollowed={isFollowed}>
+        <MBtns type="button" isFollowed={isFollowed}>
             {isFollowed === true ? '언팔로우' : '팔로우'}
         </MBtns>
     );
