@@ -7,7 +7,7 @@ const TextInputBox = styled.div`
     flex-direction: column;
 `;
 
-const TextLabel = styled.label`
+export const TextLabel = styled.label`
     font-family: 'Spoqa Han Sans Neo';
     font-size: 12px;
     font-weight: 500;
@@ -15,12 +15,15 @@ const TextLabel = styled.label`
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 10px;
+    color: #767676;
+    display: block;
 `;
 
 const TextInput = styled.input.attrs({
     type: 'text',
     id: 'productName',
 })`
+    width: 322px;
     border: none;
     border-bottom: 1px solid var(--border-gray);
     font-family: 'Spoqa Han Sans Neo';
@@ -29,6 +32,9 @@ const TextInput = styled.input.attrs({
     line-height: 14px;
     text-align: left;
     padding-bottom: 8px;
+    ::placeholder {
+        color: #dbdbdb;
+    }
     &:focus {
         border-bottom: 1px solid var(--main-color);
     }
