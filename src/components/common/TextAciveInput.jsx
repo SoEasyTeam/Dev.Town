@@ -32,6 +32,7 @@ const TextInput = styled.input.attrs({
     text-align: left;
     padding-bottom: 8px;
     width: 390px;
+    margin-bottom: 16px;
     ::placeholder {
         color: var(--border-gray);
     }
