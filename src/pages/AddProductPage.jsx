@@ -2,7 +2,7 @@ import React from 'react'
 import { TopUploadNav } from '../components/common/TopNav'
 import styled from 'styled-components'
 import ImgBtn from '../assets/img-button.png'
-import { ProductName, TextLabel } from '../components/common/TextAciveInput'
+import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components/common/TextAciveInput'
 
 const ProductBox = styled.div`
     width: 390px;
@@ -48,6 +48,10 @@ function AddProductPage() {
                 </div>
                 <TextLabel>상품명</TextLabel>
                 <ProductName />
+                <TextLabel>가격</TextLabel>
+                <ProductPrice />
+                <TextLabel>판매링크</TextLabel>
+                <ProductLink />
             </ProductBox>
         </>
     )
