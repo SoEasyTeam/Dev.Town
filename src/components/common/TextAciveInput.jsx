@@ -32,7 +32,7 @@ const TextInput = styled.input.attrs({
     line-height: 14px;
     text-align: left;
     padding-bottom: 8px;
-    width: 390px;
+    width: 322px;
     margin-bottom: 16px;
     ::placeholder {
         color: var(--border-gray);
