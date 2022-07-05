@@ -25,6 +25,7 @@ export const HomePostBox = styled.div`
 
 export const HomePostProfileBox = styled(UserFollowBox)`
     margin-bottom: 12px;
+    width: 100%;
 `;
 
 export const HomePostSmallBox = styled.div`
