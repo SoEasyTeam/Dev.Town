@@ -49,6 +49,12 @@ const LogInColBox = styled.div`
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        width: 100%;
+        height: 45%;
+        bottom: 0;
+        padding: 35px;
+        background-color: var(--bg-color);
+        border-radius: 20px 20px 0 0;
 
         .options-login-row {
             position: absolute;
