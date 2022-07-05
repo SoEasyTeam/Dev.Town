@@ -144,4 +144,4 @@ function TopChatNav() {
     )
 }
 
-export default { TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav };
+export { TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav };
