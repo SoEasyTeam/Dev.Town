@@ -19,11 +19,12 @@ export const SettingBtn = styled.button`
 
 export const HomePostBox = styled.div`
     width: 358px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 `;
 
 export const HomePostProfileBox = styled(UserFollowBox)`
     margin-bottom: 12px;
+    width: 358px;
 `;
 
 export const HomePostSmallBox = styled.div`
