@@ -7,7 +7,8 @@ const TextInputBox = styled.div`
     flex-direction: column;
 `;
 
-const TextLabel = styled.label`
+export const TextLabel = styled.label`
+    display: block;
     font-family: 'Spoqa Han Sans Neo';
     font-size: 12px;
     font-weight: 500;
@@ -15,6 +16,7 @@ const TextLabel = styled.label`
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 10px;
+    color: var(--subtitle-text);
 `;
 
 const TextInput = styled.input.attrs({
@@ -29,6 +31,10 @@ const TextInput = styled.input.attrs({
     line-height: 14px;
     text-align: left;
     padding-bottom: 8px;
+    width: 390px;
+    ::placeholder {
+        color: var(--border-gray);
+    }
     &:focus {
         border-bottom: 1px solid var(--main-color);
     }
