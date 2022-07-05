@@ -1,13 +1,11 @@
-import React from 'react';
+import SplashPage from './pages/SplashPage';
 
 function App() {
     return (
         <>
-            <div className="App">
-                <h1>test2</h1>
-            </div>
+            <SplashPage />
         </>
-    );
+    )
 }
 
 export default App;
