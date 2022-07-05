@@ -56,6 +56,7 @@ const ProfileSection = styled.section`
     align-items: center;
     margin: 0 auto;
     font-family: 'Spoqa Han Sans Neo';
+    padding: 48px 0 60px;
 `
 const ProfileAreaCol = styled.article`
     display: flex;
