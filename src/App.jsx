@@ -1,13 +1,11 @@
-import React from 'react';
-import LoginOptions from './components/loginOptions/LoginOptions';
-import Splash from './components/splash/Splash';
+import SplashPage from './pages/SplashPage';
 
 function App() {
     return (
         <>
-            <LoginOptions />
+            <SplashPage />
         </>
-    );
+    )
 }
 
 export default App;

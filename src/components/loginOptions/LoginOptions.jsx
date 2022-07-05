@@ -1,46 +1,9 @@
 import { Link } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import logoImgWhite from '../../assets/logo-white.png';
 import iconKakao from '../../assets/kakao.png'
 import iconGoogle from '../../assets/google.png'
 import iconFacebook from '../../assets/facebook.png'
-import logoImg from '../../assets/full-logo.png';
-import { useEffect, useState } from 'react';
-
-const SplashRowBox = styled.div`
-    position: absolute;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bg-color);
-    ${ isActive  => (isActive ? null : 'z-index: 5')};
-    ${ isActive  => (isActive ? 'opacity: 0' : 'opacity: 1')};
-
-    .img-logo {
-        width: 200px;
-    }
-
-    .tit-app {
-        margin-top: 0.5rem;
-        color: var(--main-color);
-        font-size: 2.7rem;
-        font-weight: 800;
-    }
-`;
-
-const LogInOptionsFadeIn = keyframes`
-    from {
-        opacity: 0;
-        display: none;
-    }
-    to {
-        opacity: 1;
-    }
-`;
 
 const LogInColBox = styled.div`
     position: relative;
@@ -53,10 +16,26 @@ const LogInColBox = styled.div`
     flex-direction: column;
     font-size: 1.01rem;
     background-color: var(--main-color);
-    ${ isActive  => (isActive ? null : 'visibility: hidden')};
-    ${ isActive  => (isActive ? 'z-index: 2' : null)};
-    ${ isActive  => (isActive ? 'opacity: 1': 'opacity: 0')};
-    ${ isActive  => (isActive ? 'animation: 1.5s ease-in forwards': null)};
+    ${({ isActive }) => {
+        return isActive === true
+        ? null
+        : `visibility: hidden`
+    }};
+    ${({ isActive }) => {
+        return isActive === true
+        ? `z-index: 1`
+        : null
+    }};
+    ${({ isActive }) => {
+        return isActive === true
+        ? `opacity: 1`
+        : `opacity: 0`
+    }};
+    ${({ isActive }) => {
+        return isActive === true
+        ? `animation: 1.5s ease-in forwards`
+        : null
+    }};
 
     .img-logo-white {
         width: 202px;
@@ -70,12 +49,6 @@ const LogInColBox = styled.div`
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        width: 100%;
-        height: 45%;
-        bottom: 0;
-        padding: 35px;
-        background-color: var(--bg-color);
-        border-radius: 20px 20px 0 0;
 
         .options-login-row {
             position: absolute;
@@ -84,7 +57,7 @@ const LogInColBox = styled.div`
             justify-content: center;
             top: 0;
             width: 90%;
-            height: 3.2rem;
+            height: 3.5rem;
             font-size: 1.01rem;
             border: 1px solid #F2C94C;
             border-radius: 44px;
@@ -92,7 +65,6 @@ const LogInColBox = styled.div`
             &:nth-child(1) {
                 transform: translatey(calc(100%));
                 &::before {
-                    position: absolute;
                     left: 1rem;
                     content: '';
                     width: 24px;
@@ -136,10 +108,10 @@ const LogInColBox = styled.div`
 
         .signup-box-row {
             position: absolute;
+            bottom: 15%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: translatey(calc(650%));
             gap: 2rem;
 
             .email-link {
@@ -159,36 +131,25 @@ const LogInColBox = styled.div`
     }
 `
 
-export default function LoginOptions() {
-    const [isActive, setIsActive] = useState(false);
-    useEffect(() => {
-        setTimeout(setIsActive(true), 2000)
-    }, []);
-
+export default function LoginOptions({isActive}) {
     return (
-        <>
-            <SplashRowBox isActive={isActive} >
-                <img className='img-logo' src={logoImg} alt="" />
-                <h1 className='tit-app'>데브타운</h1>
-            </SplashRowBox>
-            <LogInColBox isActive={isActive} >
-                <img className='img-logo-white' src={logoImgWhite} alt='데브타운 로그인' />
-                <div className='login-box-col'>
-                    <button className='options-login-row' type='button'>
-                        카카오톡 계정으로 로그인
-                    </button>
-                    <button className='options-login-row' type='button'>
-                        구글 계정으로 로그인
-                    </button>
-                    <button className='options-login-row' type='button'>
-                        페이스북 계정으로 로그인
-                    </button>  
-                    <div className='signup-box-row'>
-                        <Link to={''} className='email-link'>이메일로 로그인</Link>
-                        <Link to={''} >회원가입</Link>
-                    </div>
+        <LogInColBox isActive={isActive} >
+            <img className='img-logo-white' src={logoImgWhite} alt='데브타운 로그인' />
+            <div className='login-box-col'>
+                <button className='options-login-row' type='button'>
+                    카카오톡 계정으로 로그인
+                </button>
+                <button className='options-login-row' type='button'>
+                    구글 계정으로 로그인
+                </button>
+                <button className='options-login-row' type='button'>
+                    페이스북 계정으로 로그인
+                </button>  
+                <div className='signup-box-row'>
+                    <Link to={''} className='email-link'>이메일로 로그인</Link>
+                    <Link to={''} >회원가입</Link>
                 </div>
-            </LogInColBox>
-        </>
+            </div>
+        </LogInColBox> 
     )
 }
