@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-size: 12px;
+        background: #F2F2F2;
     }
 
     img {
