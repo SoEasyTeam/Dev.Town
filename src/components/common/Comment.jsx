@@ -18,9 +18,7 @@ const ProfileImgBox = styled.div`
 const CommentInput = styled.input`
     flex-grow: 1;
     border: none;
-    &::placeholder {
-        padding: 0 10px;
-    }
+    padding: 0 20px;
 `;
 
 const CommentSubmitBtn = styled.button`
