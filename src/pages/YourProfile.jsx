@@ -39,7 +39,7 @@ const FollowLink = styled(Link)`
 const ProfileSection = styled.section`
     display: flex;
     flex-direction: column;
-    padding-top: 47.5px;
+    /* padding-top: 47.5px; */
     justify-content: center;
     align-items: center;
     margin: 0 auto;
