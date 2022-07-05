@@ -71,6 +71,7 @@ const LogInColBox = styled.div`
             &:nth-child(1) {
                 transform: translatey(calc(100%));
                 &::before {
+                    position: absolute;
                     left: 1rem;
                     content: '';
                     width: 24px;
