@@ -8,6 +8,7 @@ const TextInputBox = styled.div`
 `;
 
 export const TextLabel = styled.label`
+    display: block;
     font-family: 'Spoqa Han Sans Neo';
     font-size: 12px;
     font-weight: 500;
@@ -15,8 +16,7 @@ export const TextLabel = styled.label`
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 10px;
-    color: #767676;
-    display: block;
+    color: var(--subtitle-text);
 `;
 
 const TextInput = styled.input.attrs({
@@ -32,8 +32,10 @@ const TextInput = styled.input.attrs({
     line-height: 14px;
     text-align: left;
     padding-bottom: 8px;
+    width: 390px;
+    margin-bottom: 16px;
     ::placeholder {
-        color: #dbdbdb;
+        color: var(--border-gray);
     }
     &:focus {
         border-bottom: 1px solid var(--main-color);
