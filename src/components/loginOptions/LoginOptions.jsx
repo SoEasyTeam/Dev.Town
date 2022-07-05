@@ -4,6 +4,33 @@ import logoImgWhite from '../../assets/logo-white.png';
 import iconKakao from '../../assets/kakao.png'
 import iconGoogle from '../../assets/google.png'
 import iconFacebook from '../../assets/facebook.png'
+import logoImg from '../../assets/full-logo.png';
+import { useEffect, useState } from 'react';
+
+const SplashRowBox = styled.div`
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    ${ isActive  => (isActive ? null : 'z-index: 5')};
+    ${ isActive  => (isActive ? 'opacity: 0' : 'opacity: 1')};
+
+    .img-logo {
+        width: 200px;
+    }
+
+    .tit-app {
+        margin-top: 0.5rem;
+        color: var(--main-color);
+        font-size: 2.7rem;
+        font-weight: 800;
+    }
+`;
 
 const LogInOptionsFadeIn = keyframes`
     from {
@@ -26,7 +53,10 @@ const LogInColBox = styled.div`
     flex-direction: column;
     font-size: 1.01rem;
     background-color: var(--main-color);
-    animation: ${LogInOptionsFadeIn} 2.5s ease-in forwards;
+    ${ isActive  => (isActive ? null : 'visibility: hidden')};
+    ${ isActive  => (isActive ? 'z-index: 2' : null)};
+    ${ isActive  => (isActive ? 'opacity: 1': 'opacity: 0')};
+    ${ isActive  => (isActive ? 'animation: 1.5s ease-in forwards': null)};
 
     .img-logo-white {
         width: 202px;
@@ -130,24 +160,35 @@ const LogInColBox = styled.div`
 `
 
 export default function LoginOptions() {
+    const [isActive, setIsActive] = useState(false);
+    useEffect(() => {
+        setTimeout(setIsActive(true), 2000)
+    }, []);
+
     return (
-        <LogInColBox>
-            <img className='img-logo-white' src={logoImgWhite} alt='데브타운 로그인' />
-            <div className='login-box-col'>
-                <button className='options-login-row' type='button'>
-                    카카오톡 계정으로 로그인
-                </button>
-                <button className='options-login-row' type='button'>
-                    구글 계정으로 로그인
-                </button>
-                <button className='options-login-row' type='button'>
-                    페이스북 계정으로 로그인
-                </button>  
-                <div className='signup-box-row'>
-                    <Link to className='email-link'>이메일로 로그인</Link>
-                    <Link to >회원가입</Link>
+        <>
+            <SplashRowBox isActive={isActive} >
+                <img className='img-logo' src={logoImg} alt="" />
+                <h1 className='tit-app'>데브타운</h1>
+            </SplashRowBox>
+            <LogInColBox isActive={isActive} >
+                <img className='img-logo-white' src={logoImgWhite} alt='데브타운 로그인' />
+                <div className='login-box-col'>
+                    <button className='options-login-row' type='button'>
+                        카카오톡 계정으로 로그인
+                    </button>
+                    <button className='options-login-row' type='button'>
+                        구글 계정으로 로그인
+                    </button>
+                    <button className='options-login-row' type='button'>
+                        페이스북 계정으로 로그인
+                    </button>  
+                    <div className='signup-box-row'>
+                        <Link to={''} className='email-link'>이메일로 로그인</Link>
+                        <Link to={''} >회원가입</Link>
+                    </div>
                 </div>
-            </div>
-        </LogInColBox>
+            </LogInColBox>
+        </>
     )
 }
