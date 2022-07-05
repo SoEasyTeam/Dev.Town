@@ -10,17 +10,53 @@ import IconShareImg from '../assets/icon/icon-share.png'
 import Product from '../components/common/Product';
 import IconPostListOn from '../assets/icon/icon-post-list-on.png'
 import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png'
-import YourProfile from './YourProfile';
 import HomeImgPost from '../components/common/HomeImgPost';
 
-const ProfileLink = styled(Link)`
-    img {
-        width: 20px;
-        height: 20px;
-        display: block;
-        margin: 0 auto;
-    }
-`;
+const ProfileSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-family: 'Spoqa Han Sans Neo';
+`
+
+const ProfileName = styled.h3`
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+`
+
+const ProfileAccount = styled.span`
+    display: inline-block;
+    margin-top: 6px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #767676;
+`
+
+const ProfileIntro = styled.p`
+    margin-top: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #767676;
+`
+
+const FollowLink = styled(Link)`
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+`
+
+const ProductLink = styled(Link)`
+
+`
+
+const PostLink = styled(Link)`
+
+`
 
 const CircleBtns = styled.button`
     width: 34px;
@@ -33,31 +69,36 @@ const CircleBtns = styled.button`
         margin: 0 auto;
     }
 `
+
 const PostShowBtns = styled.button`
     width: 26px;
     height: 26px;
     margin-right: 16px;
 `
-const FollowLink = styled(Link)`
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 23px;
-`
-const ProductLink = styled(Link)`
 
+const ProductAreaListUl = styled.ul`
+    list-style: none;
+    margin-left: 16px;
+    /* white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden; */
+    li {
+        float:left;
+        margin-right: 10px;
+        margin-bottom: 19.5px;
+    }
 `
-const PostLink = styled(Link)`
 
+const PostAreaListUl = styled.ul`
+    list-style: none;
+    /* white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden; */
+    li {
+        margin: 16px 0;
+    }
 `
-const ProfileSection = styled.section`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    font-family: 'Spoqa Han Sans Neo';
-    padding: 48px 0 60px;
-`
+
 const ProfileAreaCol = styled.article`
     display: flex;
     flex-direction: column;
@@ -99,6 +140,7 @@ const ProfileAreaCol = styled.article`
         margin: 24px auto 25.5px;
     }
 `
+
 const ProductArea = styled.article`
     width: 100vw;
     border-bottom: 0.5px solid #DBDBDB;
@@ -112,6 +154,7 @@ const ProductArea = styled.article`
         margin: 19.5px 0 16px 16px;
     }
 `
+
 const PostArea = styled.article`
     width: 100vw;
     border-top: 0.5px solid #DBDBDB;
@@ -129,47 +172,6 @@ const PostArea = styled.article`
 
 `
 
-const ProfileName = styled.h3`
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-`
-const ProfileAccount = styled.span`
-    display: inline-block;
-    margin-top: 6px;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    color: #767676;
-`
-const ProfileIntro = styled.p`
-    margin-top: 16px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    color: #767676;
-`
-const ProductAreaListUl = styled.ul`
-    list-style: none;
-    margin-left: 16px;
-    /* white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden; */
-    li {
-        float:left;
-        margin-right: 10px;
-        margin-bottom: 19.5px;
-    }
-`
-const PostAreaListUl = styled.ul`
-    list-style: none;
-    /* white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden; */
-    li {
-        margin: 16px 0;
-    }
-`
 function ProductAreaList() {
     return (
         <li>
@@ -179,6 +181,7 @@ function ProductAreaList() {
         </li>
     )
 }
+
 function PostAreaList() {
     return (
         <li>
@@ -188,11 +191,11 @@ function PostAreaList() {
         </li>
     )
 }
+
 function YourProfilePage() {
     return (
         <>
             <TopBasicNav />
-
             <ProfileSection>
                 <ProfileAreaCol>
                     <div className='profileTop'>
@@ -246,7 +249,6 @@ function YourProfilePage() {
                     </PostAreaListUl>
                 </PostArea>
             </ProfileSection>
-
             <TabMenu />
         </>
     )
