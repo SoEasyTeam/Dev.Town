@@ -15,10 +15,12 @@ import HomeImgPost from '../components/common/HomeImgPost';
 const ProfileSection = styled.section`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start
     align-items: center;
     margin: 0 auto;
     font-family: 'Spoqa Han Sans Neo';
+    background-color: #F2F2F2;
+    min-height: 892px;
 `
 
 const ProfileName = styled.h3`
