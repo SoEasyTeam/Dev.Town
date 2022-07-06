@@ -82,12 +82,13 @@ const ProductAreaListUl = styled.ul`
     list-style: none;
     margin-left: 16px;
     height: 152px;
-    /* white-space: nowrap;
+    display: flex;
+    white-space: nowrap;
     overflow-x: scroll;
-    overflow-y: hidden;  */
+    overflow-y: hidden; 
     li {
         float:left;
-        margin-right: 10px;
+        margin-right: 16px;
         margin-bottom: 19.5px;
     }
 `
@@ -148,7 +149,9 @@ const ProductArea = styled.article`
     background: #FFFFFF;
     margin-bottom: 6px;
     .productAreaDiv {
-        width: 390px;
+        max-width: 640px;
+        display: flex;
+        flex-direction: column;
         margin: 0 auto;
     }
     .productAreaTitle {
@@ -173,7 +176,6 @@ const PostArea = styled.article`
         border-bottom: 0.5px solid #DBDBDB;
         height: 43px
     }
-
 `
 
 function ProductAreaList() {
