@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import ProductImgExample from '../../assets/product-img-example.png';
 
 const ProductItemBox = styled.div`
+    width: 140px;
     .img-product {
-        width: 140px;
+        width: 100%;
         height: 90px;
         border-radius: 8px;
         margin-bottom: 6px;
@@ -16,6 +17,9 @@ const ProductItemBox = styled.div`
         font-weight: 400;
         line-height: 18px;
         text-align: left;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
     .txt-productPrice {
         margin: 0px 2px;
