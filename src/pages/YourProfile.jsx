@@ -163,7 +163,7 @@ const PostArea = styled.article`
     width: 100vw;
     border-top: 0.5px solid #DBDBDB;
     background: #FFFFFF;
-    img {
+    .postBtnImg {
         width: 26px;
     }
     .postAreaTop {
@@ -244,10 +244,10 @@ function YourProfilePage() {
                 <PostArea>
                     <div className='postAreaTop'>
                         <PostShowBtns>
-                            <img src={IconPostListOn} alt='포스트리스트형식' />
+                            <img className='postBtnImg' src={IconPostListOn} alt='포스트리스트형식' />
                         </PostShowBtns>
                         <PostShowBtns>
-                            <img src={IconPostAlbumOff} alt='포스트앨범형식' />
+                            <img className='postBtnImg' src={IconPostAlbumOff} alt='포스트앨범형식' />
                         </PostShowBtns>
                     </div>
                     <PostAreaListUl>
