@@ -1,9 +1,10 @@
 import SplashPage from './pages/SplashPage';
+import Error404Page from './pages/Error404Page';
 
 function App() {
     return (
         <>
-            <SplashPage />
+            <Error404Page />
         </>
     )
 }
