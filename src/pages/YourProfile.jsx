@@ -15,7 +15,7 @@ import HomeImgPost from '../components/common/HomeImgPost';
 const ProfileSection = styled.section`
     display: flex;
     flex-direction: column;
-    justify-content: flex-start
+    justify-content: flex-start;
     align-items: center;
     margin: 0 auto;
     font-family: 'Spoqa Han Sans Neo';
