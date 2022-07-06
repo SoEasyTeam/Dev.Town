@@ -11,6 +11,7 @@ import {
     LikePostRowBox,
     SettingBtn,
     HomePostProfileLogoImg,
+    HomePostProfileNickName,
 } from './HomePost';
 import IconCommentImg from '../../assets/post-img-example.png';
 
@@ -21,7 +22,7 @@ function HomeImgPost() {
                 <HomePostProfileBox>
                     <HomePostProfileLogoImg src={EllipseImg} alt='프로필로고' />
                     <NameIdBox>
-                        <NickNameP>애월읍 위니브 감귤농장</NickNameP>
+                        <HomePostProfileNickName>애월읍 위니브 감귤농장</HomePostProfileNickName>
                         <IdP>@ weniv_Mandarin</IdP>
                     </NameIdBox>
                     <SettingBtn />
