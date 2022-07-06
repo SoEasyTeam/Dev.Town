@@ -79,9 +79,10 @@ const PostShowBtns = styled.button`
 const ProductAreaListUl = styled.ul`
     list-style: none;
     margin-left: 16px;
+    height: 152px;
     /* white-space: nowrap;
     overflow-x: scroll;
-    overflow-y: hidden; */
+    overflow-y: hidden;  */
     li {
         float:left;
         margin-right: 10px;
@@ -147,6 +148,10 @@ const ProductArea = styled.article`
     border-top: 0.5px solid #DBDBDB;
     background: #FFFFFF;
     margin-bottom: 6px;
+    .productAreaDiv {
+        width: 390px;
+        margin: 0 auto;
+    }
     .productAreaTitle {
         font-weight: 700;
         font-size: 16px;
@@ -227,13 +232,15 @@ function YourProfilePage() {
                     </div>
                 </ProfileAreaCol>
                 <ProductArea>
-                    <h3 className='productAreaTitle'>판매 중인 상품</h3>
-                    <ProductAreaListUl>
-                        <ProductAreaList />
-                        <ProductAreaList />
-                        <ProductAreaList />
-                        <ProductAreaList />
-                    </ProductAreaListUl>
+                    <div className='productAreaDiv'>
+                        <h3 className='productAreaTitle'>판매 중인 상품</h3>
+                        <ProductAreaListUl>
+                            <ProductAreaList />
+                            <ProductAreaList />
+                            <ProductAreaList />
+                            <ProductAreaList />
+                        </ProductAreaListUl>
+                    </div>
                 </ProductArea>
                 <PostArea>
                     <div className='postAreaTop'>
