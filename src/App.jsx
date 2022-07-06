@@ -1,11 +1,12 @@
-import SplashPage from './pages/SplashPage';
+import React from 'react';
+import YourProfile from './pages/YourProfile';
 
 function App() {
     return (
         <>
-            <SplashPage />
+            <YourProfile />
         </>
-    )
+    );
 }
 
 export default App;
