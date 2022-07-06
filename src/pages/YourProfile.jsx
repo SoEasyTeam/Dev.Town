@@ -84,8 +84,7 @@ const ProductAreaListUl = styled.ul`
     height: 152px;
     display: flex;
     white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden; 
+    overflow-x: auto;
     li {
         float:left;
         margin-right: 16px;
