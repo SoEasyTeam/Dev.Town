@@ -17,10 +17,15 @@ export const SettingBtn = styled.button`
     top: 4px;
 `;
 
+export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
+    width: 42px;
+    height: 42px;
+`
+
 export const HomePostBox = styled.div`
     width: 358px;
     margin: 0 auto;
-    padding: 20px 0;
+    padding-bottom: 4px;
 `;
 
 export const HomePostProfileBox = styled(UserFollowBox)`
@@ -54,6 +59,8 @@ export const DateParagraph = styled.p`
     line-height: 12px;
     letter-spacing: 0em;
     text-align: left;
+    margin-top: 16px;
+    color: #767676;
 `;
 
 export const LikePostBox = styled.div`
@@ -127,7 +134,7 @@ const HomePost = () => {
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <ProfileLogoImg src={EllipseImg} alt="프로필로고" />
+                    <HomePostProfileLogoImg src={EllipseImg} alt="프로필로고" />
                     <NameIdBox>
                         <NickNameP>애월읍 위니브 감귤농장</NickNameP>
                         <IdP>@ weniv_Mandarin</IdP>
