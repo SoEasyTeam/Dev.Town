@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LBtns = styled.button`
+export const LBtns = styled.button`
     width: 322px;
     height: 44px;
     ${({ isActive }) => {

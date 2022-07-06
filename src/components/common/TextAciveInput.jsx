@@ -45,13 +45,17 @@ const TextInput = styled.input.attrs({
 export const PassWordInput = styled(TextInput).attrs({
     type: 'password',
     id: 'loginPassword',
-})``;
+})`
+    width: 100vw;
+`;
 
 // 이메일 Input
 export const EmailInput = styled(TextInput).attrs({
     type: 'email',
     id: 'loginEmail',
-})``;
+})`
+    width: 100vw;
+`;
 
 export const ProfileNameInput = styled(TextInput).attrs({
     id: 'profileName',
