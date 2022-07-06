@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // `
 function Error404Page(){
     <>
-    <img src={ErrorIcon} alt='404에러'/>
+    <img src={ErrorIcon} alt='404에러' style={{width:100, height:100}}/>
     </>
 }
 
