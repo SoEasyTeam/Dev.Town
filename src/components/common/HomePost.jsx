@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
-import EllipseImg from '../../assets/Ellipse-1.png';
+import EllipseImg from '../../assets/basic-profile-img.png';
 import styled from 'styled-components';
 import { UserFollowBox } from './UserFollow';
 import SettingImg from '../../assets/icon/s-icon-more-vertical.png';
@@ -19,18 +19,30 @@ export const SettingBtn = styled.button`
 
 export const HomePostBox = styled.div`
     width: 358px;
+<<<<<<< HEAD
     margin: 0 auto 20px;
+=======
+    margin: 0 auto;
+    padding: 20px 0;
+>>>>>>> 34b69d6851abf5a519c66aeb3bffd4be10d05e56
 `;
 
 export const HomePostProfileBox = styled(UserFollowBox)`
     margin-bottom: 12px;
+<<<<<<< HEAD
     width: 358px;
+=======
+    width: 100%;
+>>>>>>> 34b69d6851abf5a519c66aeb3bffd4be10d05e56
 `;
 
 export const HomePostSmallBox = styled.div`
     margin-left: 54px;
     .post-img {
         margin-bottom: 12px;
+        width: 304px;
+        border: 0.5px solid #DBDBDB;
+        border-radius: 10px;
     }
 `;
 
