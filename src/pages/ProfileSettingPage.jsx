@@ -17,7 +17,7 @@ const ProfileSettingBox = styled.form`
         font-size: 24px;
         line-height: 30px;
         text-align: center;
-        color: #000000;
+        color: var(--main-title-color);
         margin-bottom: 12px;
     }
     .subtitle-p {
@@ -27,7 +27,7 @@ const ProfileSettingBox = styled.form`
         font-size: 14px;
         line-height: 14px;
         text-align: center;
-        color: #767676;
+        color: var(--subtitle-text);
         margin-bottom: 30px;
     }
     .input-cont {
