@@ -5,6 +5,8 @@ const CommentBox = styled.div`
     width: 100%;
     height: 61px;
     display: flex;
+    position: absolute;
+    bottom: 0;
     border: 1px solid  --border-gray;
 `;
 
@@ -16,6 +18,7 @@ const ProfileImgBox = styled.div`
 const CommentInput = styled.input`
     flex-grow: 1;
     border: none;
+    padding: 0 20px;
 `;
 
 const CommentSubmitBtn = styled.button`
