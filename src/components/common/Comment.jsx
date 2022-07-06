@@ -7,7 +7,7 @@ const CommentBox = styled.div`
     display: flex;
     position: absolute;
     bottom: 0;
-    border: 1px solid  --border-gray;
+    border:  0.5px solid #DBDBDB;
 `;
 
 const ProfileImgBox = styled.div`
