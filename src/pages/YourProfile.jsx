@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { TopBasicNav } from '../components/common/TopNav';
-import { MBtn } from '../components/common/Buttons'
+import { MBtn } from '../components/common/Buttons';
 import { DefaultProfileImg } from '../components/common/ProfileButtons';
 import TabMenu from '../components/common/TabMenu';
 import Product from '../components/common/Product';
