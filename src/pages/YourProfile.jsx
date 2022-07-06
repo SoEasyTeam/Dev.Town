@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { TopBasicNav } from '../components/common/TopNav'
-import TabMenu from '../components/common/TabMenu';
+import { TopBasicNav } from '../components/common/TopNav';
 import { MBtn } from '../components/common/Buttons'
-import { DefaultProfileImg } from '../components/common/ProfileButtons'
-import IconMesssageImg from '../assets/icon/icon-message-circle.png'
-import IconShareImg from '../assets/icon/icon-share.png'
+import { DefaultProfileImg } from '../components/common/ProfileButtons';
+import TabMenu from '../components/common/TabMenu';
 import Product from '../components/common/Product';
-import IconPostListOn from '../assets/icon/icon-post-list-on.png'
-import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png'
 import HomeImgPost from '../components/common/HomeImgPost';
+import IconMesssageImg from '../assets/icon/icon-message-circle.png';
+import IconShareImg from '../assets/icon/icon-share.png';
+import IconPostListOn from '../assets/icon/icon-post-list-on.png';
+import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png';
 
 const ProfileSection = styled.section`
     display: flex;
