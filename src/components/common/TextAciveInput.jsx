@@ -46,7 +46,7 @@ export const PassWordInput = styled(TextInput).attrs({
     type: 'password',
     id: 'loginPassword',
 })`
-    width: 90%;
+    width: 100%;
 `;
 
 // 이메일 Input
@@ -54,7 +54,7 @@ export const EmailInput = styled(TextInput).attrs({
     type: 'email',
     id: 'loginEmail',
 })`
-    width: 90%;
+    width: 100%;
 `;
 
 export const ProfileNameInput = styled(TextInput).attrs({
