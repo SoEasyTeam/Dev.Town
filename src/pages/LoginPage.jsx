@@ -1,8 +1,12 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { LBtn } from '../components/common/Buttons';
 import { EmailInput, PassWordInput, TextLabel } from '../components/common/TextAciveInput'
+
 const LoginMain = styled.section`
     width: 100vw;
+    padding: 0 5%;
     .loginTitle {
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 500;
@@ -11,9 +15,22 @@ const LoginMain = styled.section`
         text-align: center;
         margin: 30px 0 40px;
     }
-    .loginForm {
-        padding-left: 5%;
+    .loginBtnWrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+`
+
+const LoginBtn = styled(LBtn)`
+    margin: 30px 0 20px;
+`
+
+const JoinEmailLink = styled(Link)`
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
 `
 
 function LoginPage() {
@@ -26,10 +43,10 @@ function LoginPage() {
                 <EmailInput />
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput />
-                <button type="button" className="loginBtn">로그인</button>
             </form>
-            <div>
-                <a href='#'>이메일로 회원가입</a>
+            <div className='loginBtnWrap'>
+                <LoginBtn>로그인</LoginBtn>
+                <JoinEmailLink to='#'>이메일로 회원가입</JoinEmailLink>
             </div>
         </LoginMain>
     )
