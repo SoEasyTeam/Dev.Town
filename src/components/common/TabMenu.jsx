@@ -9,7 +9,6 @@ import LinkIconEditImg from '../../assets/icon/icon-edit.svg';
 const TabMenuRowBox = styled.div`
     width: 100vw;
     position: sticky;
-    z-index: 10;
     bottom: 0;
     background-color: var(--bg-color);
     padding: 0 6px;
