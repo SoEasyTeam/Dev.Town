@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
-import EllipseImg from '../../assets/Ellipse-1.png';
+import EllipseImg from '../../assets/basic-profile-img.png';
 import styled from 'styled-components';
 import {
     DateParagraph,
@@ -10,6 +10,8 @@ import {
     HomePostSmallBox,
     LikePostRowBox,
     SettingBtn,
+    HomePostProfileLogoImg,
+    HomePostProfileNickName,
 } from './HomePost';
 import IconCommentImg from '../../assets/post-img-example.png';
 
@@ -18,9 +20,9 @@ function HomeImgPost() {
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <ProfileLogoImg src={EllipseImg} alt='프로필로고' />
+                    <HomePostProfileLogoImg src={EllipseImg} alt='프로필로고' />
                     <NameIdBox>
-                        <NickNameP>애월읍 위니브 감귤농장</NickNameP>
+                        <HomePostProfileNickName>애월읍 위니브 감귤농장</HomePostProfileNickName>
                         <IdP>@ weniv_Mandarin</IdP>
                     </NameIdBox>
                     <SettingBtn />

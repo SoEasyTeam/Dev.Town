@@ -7,7 +7,7 @@ function App() {
         <>
             <AddProductPage />
         </>
-    );
+    )
 }
 
 export default App;

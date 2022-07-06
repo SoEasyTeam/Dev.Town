@@ -8,12 +8,13 @@ import LinkIconEditImg from '../../assets/icon/icon-edit.svg';
 
 const TabMenuRowBox = styled.div`
     width: 100vw;
-    position: fixed;
+    position: sticky;
     bottom: 0;
     background-color: var(--bg-color);
     padding: 0 6px;
     display: flex;
     justify-content: space-between;
+    border-top: 0.5px solid #DBDBDB;
 `;
 
 const TabMenuLink = styled(Link)`
