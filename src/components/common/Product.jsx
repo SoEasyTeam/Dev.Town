@@ -30,6 +30,9 @@ const ProductItemBox = styled.div`
         line-height: 15px;
         text-align: left;
         color: var(--main-color);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 `;
 
