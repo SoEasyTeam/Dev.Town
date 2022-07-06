@@ -1,9 +1,9 @@
-import SplashPage from './pages/SplashPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
     return (
         <>
-            <SplashPage />
+            <LoginPage />
         </>
     )
 }
