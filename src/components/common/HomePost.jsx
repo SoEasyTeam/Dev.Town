@@ -17,6 +17,10 @@ export const SettingBtn = styled.button`
     top: 4px;
 `;
 
+export const HomePostProfileNickName = styled(NickNameP)`
+    margin-bottom: 2px;
+`
+
 export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
     width: 42px;
     height: 42px;
@@ -29,7 +33,7 @@ export const HomePostBox = styled.div`
 `;
 
 export const HomePostProfileBox = styled(UserFollowBox)`
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     width: 100%;
 `;
 
@@ -66,17 +70,14 @@ export const DateParagraph = styled.p`
 export const LikePostBox = styled.div`
     display: flex;
     gap: 22px;
-
     .like-btn {
         position: relative;
     }
-
     .heart-img {
         width: 20px;
         height: 20px;
         margin-right: 6px;
     }
-
     .likecount-span {
         position: absolute;
         font-family: 'Spoqa Han Sans Neo';
@@ -87,17 +88,14 @@ export const LikePostBox = styled.div`
         color: #767676;
         top: 3px;
     }
-
     .comment-link {
         position: relative;
     }
-
     .comment-img {
         width: 20px;
         height: 20px;
         margin-right: 6px;
     }
-
     .comment-span {
         position: absolute;
         font-family: 'Spoqa Han Sans Neo';
@@ -136,7 +134,7 @@ const HomePost = () => {
                 <HomePostProfileBox>
                     <HomePostProfileLogoImg src={EllipseImg} alt="프로필로고" />
                     <NameIdBox>
-                        <NickNameP>애월읍 위니브 감귤농장</NickNameP>
+                        <HomePostProfileNickName>애월읍 위니브 감귤농장</HomePostProfileNickName>
                         <IdP>@ weniv_Mandarin</IdP>
                     </NameIdBox>
                     <SettingBtn />
