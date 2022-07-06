@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import JoinProfileImg from '../assets/basic-profile-img.png'
 import UploadfileImg from '../assets/upload-file.png'
-import { LBtns } from '../components/common/Buttons'
+import { LBtn } from '../components/common/Buttons'
 import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../components/common/TextAciveInput'
 
 const ProfileSettingBox = styled.form`
@@ -54,7 +54,7 @@ export const ProfileBtn = styled.button`
         }
 `
 
-const SignUpBtn = styled(LBtns)`
+const SignUpBtn = styled(LBtn)`
     margin: 14px auto 0;
 `
 

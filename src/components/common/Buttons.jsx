@@ -1,18 +1,26 @@
 import styled from 'styled-components';
 
-export const LBtns = styled.button`
+const LBtn = styled.button`
     width: 322px;
     height: 44px;
-    ${({ isActive }) => {
-        return isActive === true
+    ${({ FormReady }) => {
+        return FormReady === true
             ? `background-color: var(--main-color)`
             : `background-color: var(--main-disabled-color)`;
-    }};
+    }}; //Form 입력 완료 시 버튼 색깔 진하게 변화
     border-radius: 44px;
     color: var(--subtitle-text);
 `;
 
-const MBtns = styled.button`
+const MlBtn = styled.button`
+    width: 120px;
+    height: 44px;
+    border-radius: 44px;
+    background-color: var(--main-color);
+    color: var(--subtitle-text);
+`//검색하기, 이전페이지(404)
+
+const MBtn = styled.button`
     width: 120px;
     height: 34px;
     ${({ isFollowed }) => {
@@ -20,66 +28,35 @@ const MBtns = styled.button`
             ? `background-color: var(--bg-color)`
             : `background-color: var(--main-color)`;
     }};
-    border: 1px solid #dbdbdb;
+    border: 1px solid var(--border-gray);
     border-radius: 30px;
     color: var(--subtitle-text);
 `;
 
-const MsBtns = styled.button`
+const MsBtn = styled.button`
     width: 90px;
     height: 32px;
-    ${({ isActive }) => {
-        return isActive === true
-            ? `background-color: var(--main-color)`
-            : `background-color: var(--main-disabled-color)`;
-    }};
+    background-color: var(--main-color);
     border-radius: 32px;
     color: var(--subtitle-text);
-`;
+`; //저장, 업로드 버튼
 
-const SBtns = styled.button`
-    width: 65px;
+const SBtn = styled.button`
+    width: 56px;
     height: 28px;
     ${({ isFollowed }) => {
         return isFollowed === true
             ? `background-color: var(--bg-color)`
             : `background-color: var(--main-color)`;
     }};
-    border: 1px solid #dbdbdb;
-    border-radius: 30px;
+    ${({ isFollowed }) => {
+        return isFollowed === true
+            ? `border: 1px solid var(--border-gray)`
+            : `border: none`;
+    }};
+    ;
+    border-radius: 28px;
     color: var(--subtitle-text);
 `;
 
-function LBtn({ isActive }) {
-    return (
-        <LBtns type="button" isActive={isActive}>
-            다음
-        </LBtns>
-    );
-}
-
-function MBtn({ isFollowed }) {
-    return (
-        <MBtns type="button" isFollowed={isFollowed}>
-            {isFollowed === true ? '언팔로우' : '팔로우'}
-        </MBtns>
-    );
-}
-
-function MsBtn({ isActive }) {
-    return (
-        <MsBtns type="button" isActive={isActive}>
-            저장
-        </MsBtns>
-    );
-}
-
-function SBtn({ isFollowed }) {
-    return (
-        <SBtns type="button" isFollowed={isFollowed}>
-            {isFollowed === true ? '언팔로우' : '팔로우'}
-        </SBtns>
-    );
-}
-
-export { LBtn, MBtn, MsBtn, SBtn };
+export { LBtn, MlBtn, MBtn, MsBtn, SBtn };
