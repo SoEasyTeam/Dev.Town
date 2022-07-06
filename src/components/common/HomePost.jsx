@@ -17,23 +17,24 @@ export const SettingBtn = styled.button`
     top: 4px;
 `;
 
+export const HomePostProfileNickName = styled(NickNameP)`
+    margin-bottom: 2px;
+`
+
+export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
+    width: 42px;
+    height: 42px;
+`
+
 export const HomePostBox = styled.div`
     width: 358px;
-<<<<<<< HEAD
-    margin: 0 auto 20px;
-=======
     margin: 0 auto;
-    padding: 20px 0;
->>>>>>> 34b69d6851abf5a519c66aeb3bffd4be10d05e56
+    padding-bottom: 4px;
 `;
 
 export const HomePostProfileBox = styled(UserFollowBox)`
-    margin-bottom: 12px;
-<<<<<<< HEAD
-    width: 358px;
-=======
+    margin-bottom: 16px;
     width: 100%;
->>>>>>> 34b69d6851abf5a519c66aeb3bffd4be10d05e56
 `;
 
 export const HomePostSmallBox = styled.div`
@@ -62,6 +63,8 @@ export const DateParagraph = styled.p`
     line-height: 12px;
     letter-spacing: 0em;
     text-align: left;
+    margin-top: 16px;
+    color: #767676;
 `;
 
 export const LikePostBox = styled.div`
@@ -135,9 +138,9 @@ const HomePost = () => {
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <ProfileLogoImg src={EllipseImg} alt="프로필로고" />
+                    <HomePostProfileLogoImg src={EllipseImg} alt="프로필로고" />
                     <NameIdBox>
-                        <NickNameP>애월읍 위니브 감귤농장</NickNameP>
+                        <HomePostProfileNickName>애월읍 위니브 감귤농장</HomePostProfileNickName>
                         <IdP>@ weniv_Mandarin</IdP>
                     </NameIdBox>
                     <SettingBtn />
