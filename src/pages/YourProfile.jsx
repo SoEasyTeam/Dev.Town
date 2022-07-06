@@ -94,9 +94,6 @@ const ProductAreaListUl = styled.ul`
 
 const PostAreaListUl = styled.ul`
     list-style: none;
-    /* white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden; */
     li {
         margin: 16px 0;
     }
