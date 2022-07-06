@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
-import EllipseImg from '../../assets/Ellipse-1.png';
+import EllipseImg from '../../assets/basic-profile-img.png';
 import styled from 'styled-components';
 import {
     DateParagraph,
