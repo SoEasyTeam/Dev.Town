@@ -6,7 +6,7 @@ function App() {
         <>
             <ProfileSettingPage />
         </>
-    )
+    );
 }
 
 export default App;

@@ -14,7 +14,7 @@ const TabMenuRowBox = styled.div`
     padding: 0 6px;
     display: flex;
     justify-content: space-between;
-    border-top: 0.5px solid #DBDBDB;
+    border-top: 0.5px solid #dbdbdb;
 `;
 
 const TabMenuLink = styled(Link)`

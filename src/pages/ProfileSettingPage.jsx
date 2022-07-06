@@ -1,9 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import JoinProfileImg from '../assets/basic-profile-img.png'
-import UploadfileImg from '../assets/upload-file.png'
-import { LBtn } from '../components/common/Buttons'
-import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../components/common/TextAciveInput'
+import React from 'react';
+import styled from 'styled-components';
+import JoinProfileImg from '../assets/basic-profile-img.png';
+import UploadfileImg from '../assets/upload-file.png';
+import { LBtn } from '../components/common/Buttons';
+import {
+    ProfileId,
+    ProfileIntroduce,
+    ProfileNameInput,
+    TextLabel,
+} from '../components/common/TextAciveInput';
 
 const ProfileSettingBox = styled.form`
     width: 100vw;
@@ -33,30 +38,30 @@ const ProfileSettingBox = styled.form`
     .input-cont {
         margin: 0 auto;
     }
-`
+`;
 
 export const ProfileBtn = styled.button`
     margin: 0 auto 30px;
     position: relative;
-        .joinprofile-img{
-            width: 110px;
-            height: 110px;
-        }
-        &::after {
-            position: absolute;
-            content: '';
-            right: 0px;
-            bottom: 0px;
-            width: 36px;
-            height: 36px;
-            background: url(${UploadfileImg}) no-repeat center / 36px 36px;
-            border-radius: 50%;
-        }
-`
+    .joinprofile-img {
+        width: 110px;
+        height: 110px;
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        right: 0px;
+        bottom: 0px;
+        width: 36px;
+        height: 36px;
+        background: url(${UploadfileImg}) no-repeat center / 36px 36px;
+        border-radius: 50%;
+    }
+`;
 
 const SignUpBtn = styled(LBtn)`
     margin: 14px auto 0;
-`
+`;
 
 function ProfileSettingPage() {
     return (
@@ -64,7 +69,11 @@ function ProfileSettingPage() {
             <h2 className='profile-title'>프로필 설정</h2>
             <p className='subtitle-p'>나중에 언제든지 변경할 수 있습니다.</p>
             <ProfileBtn>
-                <img className='joinprofile-img' src={JoinProfileImg} alt="프로필이미지" />
+                <img
+                    className='joinprofile-img'
+                    src={JoinProfileImg}
+                    alt='프로필이미지'
+                />
             </ProfileBtn>
             <div className='input-cont'>
                 <TextLabel>사용자 이름</TextLabel>
@@ -80,7 +89,7 @@ function ProfileSettingPage() {
             </div>
             <SignUpBtn>감귤마켓 시작하기</SignUpBtn>
         </ProfileSettingBox>
-    )
+    );
 }
 
-export default ProfileSettingPage
+export default ProfileSettingPage;
