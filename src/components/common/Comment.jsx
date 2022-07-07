@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { DefaultProfileImg } from './ProfileButtons';
+import IconFillImg from '../../assets/upload-file.png'
 
 const CommentBox = styled.div`
     width: 100%;
