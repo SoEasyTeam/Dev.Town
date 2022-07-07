@@ -9,6 +9,7 @@ import { MsBtn } from './Buttons';
 const TopNavRowBox = styled.div`
     width: 100vw;
     position: sticky;
+    z-index: 10;
     top: 0;
     background-color: var(--bg-color);
     border-bottom: 0.5px solid #DBDBDB;
