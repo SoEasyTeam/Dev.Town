@@ -225,7 +225,7 @@ function YourProfilePage() {
                         <CircleBtns>
                             <img src={IconMesssageImg} alt='채팅링크' />
                         </CircleBtns>
-                        <MBtn />
+                        <MBtn>팔로우</MBtn>
                         <CircleBtns>
                             <img src={IconShareImg} alt='공유링크' />
                         </CircleBtns>
