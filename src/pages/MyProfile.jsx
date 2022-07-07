@@ -7,8 +7,6 @@ import { DefaultProfileImg } from '../components/common/ProfileButtons';
 import TabMenu from '../components/common/TabMenu';
 import Product from '../components/common/Product';
 import HomeImgPost from '../components/common/HomeImgPost';
-import IconMesssageImg from '../assets/icon/icon-message-circle.png';
-import IconShareImg from '../assets/icon/icon-share.png';
 import IconPostListOn from '../assets/icon/icon-post-list-on.png';
 import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png';
 
@@ -60,16 +58,12 @@ const PostLink = styled(Link)`
 
 `
 
-const CircleBtns = styled.button`
-    width: 34px;
-    height: 34px;
-    border: 1px solid #dbdbdb;
-    border-radius: 30px;
-    img {
-        display: block;
-        width: 20px;
-        margin: 0 auto;
-    }
+const MyProfileEditBtn = styled(MBtn)`
+    background-color: var(--bg-color);
+`
+
+const MyProfileProductBtn = styled(MBtn)`
+    background-color: var(--bg-color);
 `
 
 const PostShowBtns = styled.button`
@@ -136,7 +130,7 @@ const ProfileAreaCol = styled.article`
     }
     .profileBottom {
         display: flex;
-        gap: 10px;
+        gap: 12px;
         margin: 24px auto 25.5px;
     }
 `
@@ -222,8 +216,8 @@ function YourProfilePage() {
                         <ProfileIntro>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</ProfileIntro>
                     </div>
                     <div className='profileBottom'>
-                        <MBtn />
-                        <MBtn />
+                        <MyProfileEditBtn>프로필 수정</MyProfileEditBtn>
+                        <MyProfileProductBtn>상품 등록</MyProfileProductBtn>
                     </div>
                 </ProfileAreaCol>
                 <ProductArea>
