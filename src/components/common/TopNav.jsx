@@ -159,7 +159,7 @@ function TopUploadNav() {
         <>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <MsBtn />
+                <MsBtn>저장</MsBtn>
             </TopNavRowBox>
         </>
     );
