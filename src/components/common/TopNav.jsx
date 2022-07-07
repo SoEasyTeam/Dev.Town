@@ -32,11 +32,30 @@ const TopNavRowBox = styled.div`
         line-height: 18px;
         margin: 7px;
     }
+`;
+
+const TopNavRowBoxLeft = styled.div`
+    width: 100vw;
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    background-color: var(--bg-color);
+    border-bottom: 0.5px solid #DBDBDB;
+    display: flex;
+    justify-content: flex-start;
+    padding: 8px 16px;
+    .chatTitle {
+        font-family: 'Spoqa Han Sans Neo';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        margin: 7px;
+    }
     .followLeft {
         margin-left: 8px;
-        padding-right:100%;
     }
-`;
+`
 
 const TopNavLinkS = styled(Link)`
     padding: 5px 0;
@@ -90,10 +109,10 @@ function ArrowLeftLink() {
 function TopFollowNav() {
     return (
         <>
-            <TopNavRowBox>
+            <TopNavRowBoxLeft>
                 <ArrowLeftLink />
                 <p className='chatTitle followLeft'>Followers</p>
-            </TopNavRowBox>
+            </TopNavRowBoxLeft>
         </>
     )
 }
@@ -162,3 +181,4 @@ function TopChatNav() {
 }
 
 export { TopFollowNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav };
+
