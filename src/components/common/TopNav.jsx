@@ -24,11 +24,8 @@ const TopNavRowBox = styled.div`
         line-height: 22px;
         margin: 5px 0;
     }
-<<<<<<< HEAD
+
     .chatTitle {
-=======
-    .ChatTitle {
->>>>>>> 7ead6eb11599e80ef97075058851021d1c46ba17
         font-family: 'Spoqa Han Sans Neo';
         font-style: normal;
         font-weight: 500;
