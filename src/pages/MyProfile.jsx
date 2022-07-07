@@ -222,13 +222,8 @@ function YourProfilePage() {
                         <ProfileIntro>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</ProfileIntro>
                     </div>
                     <div className='profileBottom'>
-                        <CircleBtns>
-                            <img src={IconMesssageImg} alt='채팅링크' />
-                        </CircleBtns>
                         <MBtn />
-                        <CircleBtns>
-                            <img src={IconShareImg} alt='공유링크' />
-                        </CircleBtns>
+                        <MBtn />
                     </div>
                 </ProfileAreaCol>
                 <ProductArea>

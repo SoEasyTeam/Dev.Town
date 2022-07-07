@@ -1,10 +1,10 @@
 import React from 'react';
-import YourProfile from './pages/YourProfile';
+import MyProfile from './pages/MyProfile';
 
 function App() {
     return (
         <>
-            <YourProfile />
+            <MyProfile />
         </>
     );
 }
