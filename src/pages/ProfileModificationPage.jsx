@@ -39,7 +39,7 @@ export const ProfileBtn = styled.button`
     }
 `;
 
-function ProfileSettingPage() {
+function ProfileModificationPage() {
     return (
         <>
             <TopUploadNav />
@@ -69,4 +69,4 @@ function ProfileSettingPage() {
     );
 }
 
-export default ProfileSettingPage;
+export default ProfileModificationPage;
