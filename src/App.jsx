@@ -1,11 +1,12 @@
+import ChatPage from './pages/ChatPage';
 import SplashPage from './pages/SplashPage';
 
 function App() {
     return (
         <>
-            <SplashPage />
+            <ChatPage />
         </>
-    )
+    );
 }
 
 export default App;

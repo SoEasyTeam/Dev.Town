@@ -9,9 +9,10 @@ import { MsBtn } from './Buttons';
 const TopNavRowBox = styled.div`
     width: 100vw;
     position: sticky;
+    z-index: 10;
     top: 0;
     background-color: var(--bg-color);
-    border-bottom: 0.5px solid #DBDBDB;
+    border-bottom: 0.5px solid #dbdbdb;
     display: flex;
     justify-content: space-between;
     padding: 8px 16px;
@@ -23,7 +24,7 @@ const TopNavRowBox = styled.div`
         line-height: 22px;
         margin: 5px 0;
     }
-    .ChatTitle{
+    .ChatTitle {
         font-family: 'Spoqa Han Sans Neo';
         font-style: normal;
         font-weight: 500;
@@ -58,7 +59,7 @@ const SearchInput = styled.input.attrs({
     id: 'search',
     placeholder: '계정 검색',
 })`
-    background: #F2F2F2;
+    background: #f2f2f2;
     border-radius: 32px;
     border: none;
     box-sizing: content-box;
@@ -79,7 +80,7 @@ function ArrowLeftLink() {
                 <img src={ArrowImg} alt='뒤로가기링크' />
             </TopNavLinkS>
         </>
-    )
+    );
 }
 
 function TopBasicNav() {
@@ -92,7 +93,7 @@ function TopBasicNav() {
                 </TopNavLink>
             </TopNavRowBox>
         </>
-    )
+    );
 }
 
 function TopSearchNav() {
@@ -103,7 +104,7 @@ function TopSearchNav() {
                 <SearchInput />
             </TopNavRowBox>
         </>
-    )
+    );
 }
 
 function TopMainNav() {
@@ -116,8 +117,7 @@ function TopMainNav() {
                 </TopNavLink>
             </TopNavRowBox>
         </>
-
-    )
+    );
 }
 
 function TopUploadNav() {
@@ -128,7 +128,7 @@ function TopUploadNav() {
                 <MsBtn />
             </TopNavRowBox>
         </>
-    )
+    );
 }
 
 function TopChatNav() {
@@ -142,7 +142,7 @@ function TopChatNav() {
                 </TopNavLink>
             </TopNavRowBox>
         </>
-    )
+    );
 }
 
 export { TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav };
