@@ -9,13 +9,14 @@ import { MsBtn } from './Buttons';
 const TopNavRowBox = styled.div`
     width: 100vw;
     position: sticky;
+    z-index: 10;
     top: 0;
     background-color: var(--bg-color);
     border-bottom: 0.5px solid #DBDBDB;
     display: flex;
     justify-content: space-between;
     padding: 8px 16px;
-    .NavTitle {
+    .navTitle {
         font-family: 'Spoqa Han Sans Neo';
         font-style: normal;
         font-weight: 500;
@@ -23,13 +24,17 @@ const TopNavRowBox = styled.div`
         line-height: 22px;
         margin: 5px 0;
     }
-    .ChatTitle{
+    .chatTitle {
         font-family: 'Spoqa Han Sans Neo';
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
         line-height: 18px;
         margin: 7px;
+    }
+    .followLeft {
+        margin-left: 8px;
+        padding-right:100%;
     }
 `;
 
@@ -82,6 +87,17 @@ function ArrowLeftLink() {
     )
 }
 
+function TopFollowNav() {
+    return (
+        <>
+            <TopNavRowBox>
+                <ArrowLeftLink />
+                <p className='chatTitle followLeft'>Followers</p>
+            </TopNavRowBox>
+        </>
+    )
+}
+
 function TopBasicNav() {
     return (
         <>
@@ -110,7 +126,7 @@ function TopMainNav() {
     return (
         <>
             <TopNavRowBox>
-                <p className='NavTitle'>데브타운 피드</p>
+                <p className='navTitle'>데브타운 피드</p>
                 <TopNavLink to='#'>
                     <img src={SearchImg} alt='찾기링크' />
                 </TopNavLink>
@@ -136,7 +152,7 @@ function TopChatNav() {
         <>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <p className='ChatTitle'>애월읍 위니브 감귤농장</p>
+                <p className='chatTitle'>애월읍 위니브 감귤농장</p>
                 <TopNavLink to='#'>
                     <img src={MoreImg} alt='더보기링크' />
                 </TopNavLink>
@@ -145,4 +161,4 @@ function TopChatNav() {
     )
 }
 
-export { TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav };
+export { TopFollowNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav };
