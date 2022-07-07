@@ -1,10 +1,10 @@
 import React from 'react';
-import YourProfile from './pages/YourProfile';
+import FollowPage from './pages/FollowPage';
 
 function App() {
     return (
         <>
-            <YourProfile />
+            <FollowPage />
         </>
     );
 }
