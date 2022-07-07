@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import defaultProfile from '../../assets/basic-profile-img-2x.png';
-import uploadImage from '../../assets/upload-file-2x.png';
+import IconFillImg from '../../assets/upload-file.png';
 import uploadImageGray from '../../assets/img-button.png';
 
 const BasicProfileImg = styled.img.attrs({
@@ -23,7 +23,7 @@ function DefaultProfileImg() {
 }
 
 function ImgUploadBtn() {
-    return <ImgUpload src={uploadImage} />;
+    return <ImgUpload src={IconFillImg} />;
 }
 
 function ImgGrayBtn() {

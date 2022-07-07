@@ -12,14 +12,10 @@ const SplashRowBox = styled.div`
     align-items: center;
     background-color: var(--bg-color);
     ${({ isActive }) => {
-        return isActive === true
-            ? null
-            : `z-index: 2`;
+        return isActive === true ? null : `z-index: 2`;
     }};
     ${({ isActive }) => {
-    return isActive === true
-        ? `opacity: 0`
-        : `opacity: 1`
+        return isActive === true ? `opacity: 0` : `opacity: 1`;
     }};
 
     .img-logo {
@@ -34,10 +30,10 @@ const SplashRowBox = styled.div`
     }
 `;
 
-export default function Splash( {isActive} ) {
+export default function Splash({ isActive }) {
     return (
-        <SplashRowBox isActive={isActive} >
-            <img className='img-logo' src={logoImg} alt="" />
+        <SplashRowBox isActive={isActive}>
+            <img className='img-logo' src={logoImg} alt='' />
             <h1 className='tit-app'>데브타운</h1>
         </SplashRowBox>
     );

@@ -1,12 +1,11 @@
-import SplashPage from './pages/SplashPage';
-import Error404Page from './pages/Error404Page';
+import ProfileSettingPage from './pages/ProfileSettingPage';
 
 function App() {
     return (
         <>
-            <Error404Page />
+            <ProfileSettingPage />
         </>
-    )
+    );
 }
 
 export default App;
