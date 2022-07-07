@@ -22,7 +22,9 @@ function HomeImgPost() {
                 <HomePostProfileBox>
                     <HomePostProfileLogoImg src={EllipseImg} alt='프로필로고' />
                     <NameIdBox>
-                        <HomePostProfileNickName>애월읍 위니브 감귤농장</HomePostProfileNickName>
+                        <HomePostProfileNickName>
+                            애월읍 위니브 감귤농장
+                        </HomePostProfileNickName>
                         <IdP>@ weniv_Mandarin</IdP>
                     </NameIdBox>
                     <SettingBtn />
