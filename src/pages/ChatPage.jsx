@@ -2,11 +2,11 @@ import React from 'react';
 import TabMenu from '../components/common/TabMenu';
 import { TopBasicNav } from '../components/common/TopNav';
 import HomePost from '../components/common/HomePost';
-import HomeImgPost from '../components/common/HomeImgPost';
 import styled from 'styled-components';
 import ProfileImg from '../assets/basic-profile-img.png';
+import { Link } from 'react-router-dom';
 
-const ChatItemBox = styled.div`
+const ChatItemLink = styled(Link)`
     width: 100%;
     display: flex;
     position: relative;
@@ -26,6 +26,7 @@ const ChatItemBox = styled.div`
     }
     .ChatName-cont {
         margin-right: 13px;
+        position: relative;
         .ChatName-p {
             margin-bottom: 4px;
             font-family: 'Spoqa Han Sans Neo';
@@ -44,27 +45,30 @@ const ChatItemBox = styled.div`
         }
     }
     .chatDate-p {
-        position: absolute;
-        bottom: 0;
-        right: 0;
         font-family: 'Spoqa Han Sans Neo';
         font-style: normal;
         font-weight: 400;
         font-size: 10px;
         line-height: 13px;
         color: var(--border-gray);
+        position: absolute;
+        right: 0;
+        bottom: 6px;
     }
 `;
 
 const ChatListBox = styled.div`
     width: 100vw;
     padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 `;
 
 function ChatList() {
     return (
         <>
-            <ChatItemBox>
+            <ChatItemLink>
                 <label>
                     <div className='login-box'></div>
                     <img
@@ -80,7 +84,7 @@ function ChatList() {
                     </p>
                 </div>
                 <p className='chatDate-p'>2020.10.25</p>
-            </ChatItemBox>
+            </ChatItemLink>
         </>
     );
 }
@@ -91,7 +95,41 @@ function ChatPage() {
             <TopBasicNav />
             <ChatListBox>
                 <ChatList />
+                <ChatItemLink to = '#'>
+                    <label>
+                        <div className='login-box'></div>
+                        <img
+                            className='profile-img'
+                            src={ProfileImg}
+                            alt='프로필 이미지'
+                        />
+                    </label>
+                    <div className='ChatName-cont'>
+                        <p className='ChatName-p'>제주감귤마을</p>
+                        <p className='ChatRecentMessage-p'>
+                            깊은 어둠의 존재감, 롤스로이스 뉴 블랙 배지...
+                        </p>
+                    </div>
+                    <p className='chatDate-p'>2020.10.25</p>
+                </ChatItemLink>
+                <ChatItemLink>
+                    <label>
+                        <img
+                            className='profile-img'
+                            src={ProfileImg}
+                            alt='프로필 이미지'
+                        />
+                    </label>
+                    <div className='ChatName-cont'>
+                        <p className='ChatName-p'>누구네 농장 친환경 한라봉</p>
+                        <p className='ChatRecentMessage-p'>
+                            내 차는 내가 평가한다. 오픈 이벤트에 참여 하...
+                        </p>
+                    </div>
+                    <p className='chatDate-p'>2020.10.25</p>
+                </ChatItemLink>
             </ChatListBox>
+            <TabMenu/>
         </>
     );
 }

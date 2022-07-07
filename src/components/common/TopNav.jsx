@@ -145,4 +145,4 @@ function TopChatNav() {
     );
 }
 
-export { TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav };
+export { TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav, TopNavRowBox, TopNavLinkS, TopNavLink, SearchInput };
