@@ -1,10 +1,9 @@
-import React from 'react';
-import JoinMembershipPage from './pages/JoinMembershipPage';
+import ProfileSettingPage from './pages/ProfileSettingPage';
 
 function App() {
     return (
         <>
-            <JoinMembershipPage />
+            <ProfileSettingPage />
         </>
     );
 }
