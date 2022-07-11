@@ -18,7 +18,10 @@ const MlBtn = styled.button`
     border-radius: 44px;
     background-color: var(--main-color);
     color: var(--subtitle-text);
-`; //검색하기, 이전페이지(404)
+`//검색하기, 이전페이지(404)
+
+
+
 
 const MBtn = styled.button`
     width: 120px;
