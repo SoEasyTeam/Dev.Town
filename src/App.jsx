@@ -1,13 +1,9 @@
-import React from 'react';
-import AddProductPage from './pages/AddProductPage'
-import HomePage from './pages/HomePage'
+import SplashPage from './pages/SplashPage';
 
 function App() {
     return (
         <>
-            <AddProductPage />
+            <SplashPage />
         </>
     )
 }
-
-export default App;
