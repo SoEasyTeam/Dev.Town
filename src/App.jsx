@@ -1,11 +1,11 @@
-import LoginPage from './pages/LoginPage';
+import ProfileSettingPage from './pages/ProfileSettingPage';
 
 function App() {
     return (
         <>
-            <LoginPage />
+            <ProfileSettingPage />
         </>
-    )
+    );
 }
 
 export default App;
