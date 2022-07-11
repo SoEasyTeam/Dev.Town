@@ -1,9 +1,9 @@
-import ProfileModificationPage from './pages/ProfileModificationPage';
+import ProfileSettingPage from './pages/ProfileSettingPage';
 
 function App() {
     return (
         <>
-            <ProfileModificationPage />
+            <ProfileSettingPage />
         </>
     );
 }
