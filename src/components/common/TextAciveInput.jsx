@@ -23,6 +23,7 @@ const TextInput = styled.input.attrs({
     type: 'text',
     id: 'productName',
 })`
+    width: 322px;
     border: none;
     border-bottom: 1px solid var(--border-gray);
     font-family: 'Spoqa Han Sans Neo';
@@ -31,7 +32,6 @@ const TextInput = styled.input.attrs({
     line-height: 14px;
     text-align: left;
     padding-bottom: 8px;
-    width: 322px;
     margin-bottom: 16px;
     ::placeholder {
         color: var(--border-gray);
