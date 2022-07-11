@@ -7,6 +7,7 @@ import { EmailInput, PassWordInput, TextLabel } from '../components/common/TextA
 const LoginMain = styled.section`
     width: 100vw;
     padding: 0 5%;
+    
     .loginTitle {
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 500;
@@ -31,6 +32,9 @@ const JoinEmailLink = styled(Link)`
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 function LoginPage() {
@@ -43,11 +47,11 @@ function LoginPage() {
                 <EmailInput />
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput />
+                <div className='loginBtnWrap'>
+                    <LoginBtn>로그인</LoginBtn>
+                </div>
             </form>
-            <div className='loginBtnWrap'>
-                <LoginBtn>로그인</LoginBtn>
-                <JoinEmailLink to='#'>이메일로 회원가입</JoinEmailLink>
-            </div>
+            <JoinEmailLink to='#'>이메일로 회원가입</JoinEmailLink>
         </LoginMain>
     )
 }
