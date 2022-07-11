@@ -28,14 +28,6 @@ export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
 
 export const HomePostBox = styled.div`
     width: 358px;
-<<<<<<< HEAD
-    margin: 0 auto 20px;
-`;
-
-export const HomePostProfileBox = styled(UserFollowBox)`
-    margin-bottom: 12px;
-    width: 358px;
-=======
     margin: 0 auto;
     padding-bottom: 4px;
 `;
@@ -43,7 +35,6 @@ export const HomePostProfileBox = styled(UserFollowBox)`
 export const HomePostProfileBox = styled(UserFollowBox)`
     margin-bottom: 16px;
     width: 100%;
->>>>>>> 4556b3246bcbc03876af06a8c8e8fd7960074b4c
 `;
 
 export const HomePostSmallBox = styled.div`
