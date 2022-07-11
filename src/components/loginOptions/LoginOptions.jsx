@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logoImgWhite from '../../assets/logo-white.png';
-import iconKakao from '../../assets/kakao.png'
-import iconGoogle from '../../assets/google.png'
-import iconFacebook from '../../assets/facebook.png'
+import iconKakao from '../../assets/kakao.png';
+import iconGoogle from '../../assets/google.png';
+import iconFacebook from '../../assets/facebook.png';
 
 const LogInColBox = styled.div`
     position: relative;
@@ -17,24 +17,16 @@ const LogInColBox = styled.div`
     font-size: 1.01rem;
     background-color: var(--main-color);
     ${({ isActive }) => {
-        return isActive === true
-        ? null
-        : `visibility: hidden`
+        return isActive === true ? null : `visibility: hidden`;
     }};
     ${({ isActive }) => {
-        return isActive === true
-        ? `z-index: 1`
-        : null
+        return isActive === true ? `z-index: 1` : null;
     }};
     ${({ isActive }) => {
-        return isActive === true
-        ? `opacity: 1`
-        : `opacity: 0`
+        return isActive === true ? `opacity: 1` : `opacity: 0`;
     }};
     ${({ isActive }) => {
-        return isActive === true
-        ? `animation: 1.5s ease-in forwards`
-        : null
+        return isActive === true ? `animation: 1.5s ease-in forwards` : null;
     }};
 
     .img-logo-white {
@@ -65,7 +57,7 @@ const LogInColBox = styled.div`
             width: 90%;
             height: 3.5rem;
             font-size: 1.01rem;
-            border: 1px solid #F2C94C;
+            border: 1px solid #f2c94c;
             border-radius: 44px;
 
             &:nth-child(1) {
@@ -99,7 +91,7 @@ const LogInColBox = styled.div`
 
             &:nth-child(3) {
                 transform: translatey(calc(100% * 4));
-                border: 1px solid #2D9CDB;
+                border: 1px solid #2d9cdb;
                 &::before {
                     position: absolute;
                     left: 1rem;
@@ -136,12 +128,16 @@ const LogInColBox = styled.div`
             }
         }
     }
-`
+`;
 
-export default function LoginOptions({isActive}) {
+export default function LoginOptions({ isActive }) {
     return (
-        <LogInColBox isActive={isActive} >
-            <img className='img-logo-white' src={logoImgWhite} alt='데브타운 로그인' />
+        <LogInColBox isActive={isActive}>
+            <img
+                className='img-logo-white'
+                src={logoImgWhite}
+                alt='데브타운 로그인'
+            />
             <div className='login-box-col'>
                 <button className='options-login-row' type='button'>
                     카카오톡 계정으로 로그인
@@ -151,12 +147,14 @@ export default function LoginOptions({isActive}) {
                 </button>
                 <button className='options-login-row' type='button'>
                     페이스북 계정으로 로그인
-                </button>  
+                </button>
                 <div className='signup-box-row'>
-                    <Link to={''} className='email-link'>이메일로 로그인</Link>
-                    <Link to={''} >회원가입</Link>
+                    <Link to={''} className='email-link'>
+                        이메일로 로그인
+                    </Link>
+                    <Link to={''}>회원가입</Link>
                 </div>
             </div>
-        </LogInColBox> 
-    )
+        </LogInColBox>
+    );
 }

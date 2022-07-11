@@ -1,12 +1,11 @@
-import SplashPage from './pages/SplashPage';
-import PostPage from './pages/PostPage';
+import ProfileSettingPage from './pages/ProfileSettingPage';
+
 function App() {
     return (
         <>
-            {/* <SplashPage /> */}
-            <PostPage/>
+            <ProfileSettingPage />
         </>
-    )
+    );
 }
 
 export default App;

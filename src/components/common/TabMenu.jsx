@@ -6,15 +6,21 @@ import LinkChatImg from '../../assets/icon/icon-message-circle.svg';
 import LinkIconProfileImg from '../../assets/icon/icon-user.svg';
 import LinkIconEditImg from '../../assets/icon/icon-edit.svg';
 
+const BlankBox = styled.div`
+    width: 100vw;
+    height: 60px;
+`
+
 const TabMenuRowBox = styled.div`
     width: 100vw;
-    position: sticky;
+    position: fixed;
+    z-index: 10;
     bottom: 0;
     background-color: var(--bg-color);
     padding: 0 6px;
     display: flex;
     justify-content: space-between;
-    border-top: 0.5px solid #DBDBDB;
+    border-top: 0.5px solid #dbdbdb;
 `;
 
 const TabMenuLink = styled(Link)`
@@ -31,7 +37,7 @@ const TabMenuLink = styled(Link)`
         height: 24px;
         display: block;
         margin: 0 auto;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }
 `;
 
@@ -55,6 +61,7 @@ const TabMenu = () => {
                     프로필
                 </TabMenuLink>
             </TabMenuRowBox>
+            <BlankBox/>
         </>
     );
 };
