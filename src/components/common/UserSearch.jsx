@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import EllipseImg from '../../assets/Ellipse-1.png';
 
 export const UserSearchBox = styled.div`
-    width: 100vw;
+    width: 100%;
     display: flex;
 `;
 

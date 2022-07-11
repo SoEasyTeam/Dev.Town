@@ -23,6 +23,7 @@ const TextInput = styled.input.attrs({
     type: 'text',
     id: 'productName',
 })`
+    width: 322px;
     border: none;
     border-bottom: 1px solid var(--border-gray);
     font-family: 'Spoqa Han Sans Neo';
@@ -31,7 +32,6 @@ const TextInput = styled.input.attrs({
     line-height: 14px;
     text-align: left;
     padding-bottom: 8px;
-    width: 322px;
     margin-bottom: 16px;
     ::placeholder {
         color: var(--border-gray);
@@ -46,7 +46,7 @@ export const PassWordInput = styled(TextInput).attrs({
     type: 'password',
     id: 'loginPassword',
 })`
-    width: 90%;
+    width: 100%;
 `;
 
 // 이메일 Input
@@ -54,7 +54,7 @@ export const EmailInput = styled(TextInput).attrs({
     type: 'email',
     id: 'loginEmail',
 })`
-    width: 90%;
+    width: 100%;
 `;
 
 export const ProfileNameInput = styled(TextInput).attrs({
