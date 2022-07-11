@@ -19,12 +19,12 @@ export const SettingBtn = styled.button`
 
 export const HomePostProfileNickName = styled(NickNameP)`
     margin-bottom: 2px;
-`
+`;
 
 export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
     width: 42px;
     height: 42px;
-`
+`;
 
 export const HomePostBox = styled.div`
     width: 358px;
@@ -42,7 +42,7 @@ export const HomePostSmallBox = styled.div`
     .post-img {
         margin-bottom: 12px;
         width: 304px;
-        border: 0.5px solid #DBDBDB;
+        border: 0.5px solid #dbdbdb;
         border-radius: 10px;
     }
 `;
@@ -132,9 +132,11 @@ const HomePost = () => {
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <HomePostProfileLogoImg src={EllipseImg} alt="프로필로고" />
+                    <HomePostProfileLogoImg src={EllipseImg} alt='프로필로고' />
                     <NameIdBox>
-                        <HomePostProfileNickName>애월읍 위니브 감귤농장</HomePostProfileNickName>
+                        <HomePostProfileNickName>
+                            애월읍 위니브 감귤농장
+                        </HomePostProfileNickName>
                         <IdP>@ weniv_Mandarin</IdP>
                     </NameIdBox>
                     <SettingBtn />

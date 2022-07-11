@@ -20,6 +20,9 @@ const MlBtn = styled.button`
     color: var(--subtitle-text);
 `//검색하기, 이전페이지(404)
 
+
+
+
 const MBtn = styled.button`
     width: 120px;
     height: 34px;
@@ -54,7 +57,6 @@ const SBtn = styled.button`
             ? `border: 1px solid var(--border-gray)`
             : `border: none`;
     }};
-    ;
     border-radius: 28px;
     color: var(--subtitle-text);
 `;
