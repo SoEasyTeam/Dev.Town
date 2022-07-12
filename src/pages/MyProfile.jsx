@@ -9,6 +9,7 @@ import Product from '../components/common/Product';
 import HomeImgPost from '../components/common/HomeImgPost';
 import IconPostListOn from '../assets/icon/icon-post-list-on.png';
 import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png';
+import UserProfile from '../features/UserProfile';
 
 const ProfileSection = styled.section`
     display: flex;
@@ -191,12 +192,12 @@ function PostAreaList() {
     )
 }
 
-function YourProfilePage() {
+function MyProfilePage() {
     return (
         <>
             <TopBasicNav />
             <ProfileSection>
-                <ProfileAreaCol>
+                {/* <ProfileAreaCol>
                     <div className='profileTop'>
                         <div className='followers'>
                             <FollowLink to='#'>0</FollowLink>
@@ -219,7 +220,8 @@ function YourProfilePage() {
                         <MyProfileEditBtn>프로필 수정</MyProfileEditBtn>
                         <MyProfileProductBtn>상품 등록</MyProfileProductBtn>
                     </div>
-                </ProfileAreaCol>
+                </ProfileAreaCol> */}
+                <UserProfile />
                 <ProductArea>
                     <div className='productAreaDiv'>
                         <h3 className='productAreaTitle'>판매 중인 상품</h3>
@@ -250,4 +252,4 @@ function YourProfilePage() {
     )
 }
 
-export default YourProfilePage;
+export default MyProfilePage;
