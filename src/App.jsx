@@ -1,9 +1,10 @@
-import ProfileSettingPage from './pages/ProfileSettingPage';
+// import MyProfile from './pages/MyProfile';
+import UserProfile from './features/UserProfile'
 
 function App() {
     return (
         <>
-            <ProfileSettingPage />
+            <UserProfile />
         </>
     );
 }
