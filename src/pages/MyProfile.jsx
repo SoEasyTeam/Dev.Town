@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { TopBasicNav } from '../components/common/TopNav';
 import TabMenu from '../components/common/TabMenu';
-import Product from '../components/common/Product';
 import HomeImgPost from '../components/common/HomeImgPost';
 import IconPostListOn from '../assets/icon/icon-post-list-on.png';
 import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png';
 import UserProfile from '../features/UserProfile';
+import UserProduct from '../features/UserProduct';
 
 const ProfileSection = styled.section`
     display: flex;
@@ -20,10 +20,6 @@ const ProfileSection = styled.section`
     min-height: 892px;
 `
 
-const ProductLink = styled(Link)`
-
-`
-
 const PostLink = styled(Link)`
 
 `
@@ -32,47 +28,6 @@ const PostShowBtns = styled.button`
     width: 26px;
     height: 26px;
     margin-right: 16px;
-`
-
-const ProductAreaListUl = styled.ul`
-    list-style: none;
-    margin-left: 16px;
-    height: 152px;
-    display: flex;
-    white-space: nowrap;
-    overflow-x: auto;
-    li {
-        float:left;
-        margin-right: 16px;
-        margin-bottom: 19.5px;
-    }
-`
-
-const PostAreaListUl = styled.ul`
-    list-style: none;
-    li {
-        margin: 16px 0;
-    }
-`
-
-const ProductArea = styled.article`
-    width: 100vw;
-    border-bottom: 0.5px solid #DBDBDB;
-    border-top: 0.5px solid #DBDBDB;
-    background: #FFFFFF;
-    margin-bottom: 6px;
-    .productAreaDiv {
-        max-width: 640px;
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-    }
-    .productAreaTitle {
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 20px;
-        margin: 19.5px 0 16px 16px;
-    }
 `
 
 const PostArea = styled.article`
@@ -90,17 +45,12 @@ const PostArea = styled.article`
         height: 43px
     }
 `
-
-function ProductAreaList() {
-    return (
-        <li>
-            <ProductLink to="#">
-                <Product />
-            </ProductLink>
-        </li>
-    )
-}
-
+const PostAreaListUl = styled.ul`
+    list-style: none;
+    li {
+        margin: 16px 0;
+    }
+`
 function PostAreaList() {
     return (
         <li>
@@ -117,17 +67,7 @@ function MyProfilePage() {
             <TopBasicNav />
             <ProfileSection>
                 <UserProfile />
-                <ProductArea>
-                    <div className='productAreaDiv'>
-                        <h3 className='productAreaTitle'>판매 중인 상품</h3>
-                        <ProductAreaListUl>
-                            <ProductAreaList />
-                            <ProductAreaList />
-                            <ProductAreaList />
-                            <ProductAreaList />
-                        </ProductAreaListUl>
-                    </div>
-                </ProductArea>
+                <UserProduct />
                 <PostArea>
                     <div className='postAreaTop'>
                         <PostShowBtns>

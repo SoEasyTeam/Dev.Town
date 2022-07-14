@@ -84,27 +84,45 @@ const ProfileAreaCol = styled.article`
 `
 
 function UserProfile() {
+    // 사용자데이터 동적으로 받아오기
     const [userData, setUserData] = useState()
 
+    // Promise : 현재에는 당장 얻을 수는 없지만 가까운 미래에는 얻을 수 있는 어떤 데이터에 접근하기 위한 방법 제공
+    // 맨 처음 한번만 렌더링될때 useEffect 실행 []
     useEffect(() => {
+        // 비동기
+        // async : 프로미스 반환
         const getData = async () => {
+            // await : 프로미스가 처리될 때까지 기다림
+            // fetch(url, options) :  API의 URL을 인자로 받고, 미래 시점에 얻게될 API 호출 결과를 Promise 타입의 객체로 반환 
+            // > api호출 성공시 response객체 resolve, 실패시 error객체 reject
+            // "https://mandarin.api.weniv.co.kr/profile/${accountname}"
+            // "Bearer {token}"
             const res = await fetch("https://mandarin.api.weniv.co.kr/profile/dev_town", {
+                // HTTP 요청 헤더
                 method: "GET",
                 headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2MjcyNDIyOCwiaWF0IjoxNjU3NTQwMjI4fQ.Ohb9djNDM7WSYGCsZwJmOaUqQfS6KaCXTaxLy4VUQ-0"
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2Mjk0OTQxMCwiaWF0IjoxNjU3NzY1NDEwfQ.Z8_J_6Sol0yPyNgzbOrlJCiwuo4num9dqBY1PsgwtVk",
+                    "Content-type": "application/json"
                 }
             })
+            // response 객체로부터 JSON 포멧의 응답을 자바스크립트 객체로 변환하여 얻어오기
             const json = await res.json()
+            // 잘 받아왔는지 확인
             console.log(json)
+            // 받아온 데이터를 userData에 넣기
             setUserData(json)
         }
+        // 실행
         getData()
     }, [])
 
+    // 데이터가 없는 경우 나올 화면
     if (!userData) {
         return <div>데이터 없을 때 화면 띄우기</div>
     }
 
+    // 데이터가 있는 경우 나올 화면
     return (
         <>
             <ProfileAreaCol>
