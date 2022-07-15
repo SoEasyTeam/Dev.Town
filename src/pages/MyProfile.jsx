@@ -191,7 +191,7 @@ function PostAreaList() {
     )
 }
 
-function YourProfilePage() {
+function MyProfilePage() {
     return (
         <>
             <TopBasicNav />
@@ -250,4 +250,4 @@ function YourProfilePage() {
     )
 }
 
-export default YourProfilePage;
+export default MyProfilePage;
