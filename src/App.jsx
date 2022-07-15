@@ -1,9 +1,9 @@
-import ProfileSettingPage from './pages/ProfileSettingPage';
+import SearchPage from './pages/SearchPage'
 
 function App() {
     return (
         <>
-            <ProfileSettingPage />
+            <SearchPage/>
         </>
     );
 }
