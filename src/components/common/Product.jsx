@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProductImgExample from '../../assets/product-img-example.png';
 
 const ProductItemBox = styled.div`
     width: 140px;
@@ -23,7 +22,6 @@ const ProductItemBox = styled.div`
     }
     .txt-productPrice {
         margin: 0px 2px;
-        //styleName: 12p, 14h,pointcolor;
         font-family: 'Spoqa Han Sans Neo';
         font-size: 12px;
         font-weight: 700;
@@ -36,17 +34,17 @@ const ProductItemBox = styled.div`
     }
 `;
 
-const Product = () => {
+const Product = ({ name, price, src }) => {
     return (
         <>
             <ProductItemBox>
                 <img
                     className='img-product'
-                    src={ProductImgExample}
+                    src={src}
                     alt='상품이미지'
                 />
-                <p className='txt-productName'>애월읍 노지 감귤</p>
-                <span className='txt-productPrice'>35,000</span>
+                <p className='txt-productName'>{name}</p>
+                <span className='txt-productPrice'>{price}원</span>
             </ProductItemBox>
         </>
     );
