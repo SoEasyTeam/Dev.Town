@@ -65,19 +65,21 @@ const ProductAreaList = ({ userProductData }) => {
 function UserProduct() {
     const [userProductData, setUserProductData] = useState('')
     console.log(userProductData)
+    // const token = useSelector(state => state.auth.token);
+    // const accountname = useSelector(state => state.auth.accountname);
+    const getData = async () => {
+        const res = await fetch("https://mandarin.api.weniv.co.kr/product/dev_town", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2Mjk0OTQxMCwiaWF0IjoxNjU3NzY1NDEwfQ.Z8_J_6Sol0yPyNgzbOrlJCiwuo4num9dqBY1PsgwtVk",
+                "Content-type": "application/json"
+            }
+        })
+        const json = await res.json()
+        // console.log(json)
+        setUserProductData(json)
+    }
     useEffect(() => {
-        const getData = async () => {
-            const res = await fetch("https://mandarin.api.weniv.co.kr/product/dev_town", {
-                method: "GET",
-                headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2Mjk0OTQxMCwiaWF0IjoxNjU3NzY1NDEwfQ.Z8_J_6Sol0yPyNgzbOrlJCiwuo4num9dqBY1PsgwtVk",
-                    "Content-type": "application/json"
-                }
-            })
-            const json = await res.json()
-            // console.log(json)
-            setUserProductData(json)
-        }
         getData()
     }, [])
 
