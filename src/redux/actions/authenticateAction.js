@@ -27,7 +27,14 @@ function login(email, password) {
             } else {
                 dispatch({
                     type: 'LOGIN_SUCCESS',
-                    payload: { email, password },
+                    payload: {
+                        id: resJson.user._id,
+                        username: resJson.user.username,
+                        email: email,
+                        accountname: resJson.user.accountname,
+                        image: resJson.user.image,
+                        token: resJson.user.token,
+                    },
                 });
             }
         } catch (err) {
