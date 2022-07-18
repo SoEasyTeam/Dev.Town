@@ -88,22 +88,23 @@ const ProfileAreaCol = styled.article`
 
 function UserProfile() {
     const [userData, setUserData] = useState()
-
+    // const token = useSelector(state => state.auth.token);
+    // const accountname = useSelector(state => state.auth.accountname);
+    const getData = async () => {
+        // "https://mandarin.api.weniv.co.kr/profile/${accountname}"
+        // "Bearer ${token}"
+        const res = await fetch("https://mandarin.api.weniv.co.kr/profile/dev_town", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2Mjk0OTQxMCwiaWF0IjoxNjU3NzY1NDEwfQ.Z8_J_6Sol0yPyNgzbOrlJCiwuo4num9dqBY1PsgwtVk",
+                "Content-type": "application/json"
+            }
+        })
+        const json = await res.json()
+        console.log(json)
+        setUserData(json)
+    }
     useEffect(() => {
-        const getData = async () => {
-            // "https://mandarin.api.weniv.co.kr/profile/${accountname}"
-            // "Bearer ${token}"
-            const res = await fetch("https://mandarin.api.weniv.co.kr/profile/dev_town", {
-                method: "GET",
-                headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2Mjk0OTQxMCwiaWF0IjoxNjU3NzY1NDEwfQ.Z8_J_6Sol0yPyNgzbOrlJCiwuo4num9dqBY1PsgwtVk",
-                    "Content-type": "application/json"
-                }
-            })
-            const json = await res.json()
-            console.log(json)
-            setUserData(json)
-        }
         getData()
     }, [])
 

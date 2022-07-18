@@ -3,10 +3,12 @@ import styled from 'styled-components';
 
 const ProductItemBox = styled.div`
     width: 140px;
+    margin-right: 10px;
     .img-product {
         width: 100%;
         height: 90px;
         border-radius: 8px;
+        border: 0.5px solid #DBDBDB;
         margin-bottom: 6px;
     }
     .txt-productName {
