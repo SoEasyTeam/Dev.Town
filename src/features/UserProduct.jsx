@@ -52,7 +52,7 @@ const ProductAreaList = ({ userProductData }) => {
                                 key={item.id}
                                 name={item.itemName}
                                 price={item.price}
-                                src={item.itemImg}
+                                src={item.itemImage}
                             />
                         </ProductLink>
                     )
