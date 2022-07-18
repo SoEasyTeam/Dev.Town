@@ -97,7 +97,7 @@ function UserProfile() {
             // fetch(url, options) :  API의 URL을 인자로 받고, 미래 시점에 얻게될 API 호출 결과를 Promise 타입의 객체로 반환 
             // > api호출 성공시 response객체 resolve, 실패시 error객체 reject
             // "https://mandarin.api.weniv.co.kr/profile/${accountname}"
-            // "Bearer {token}"
+            // "Bearer ${token}"
             const res = await fetch("https://mandarin.api.weniv.co.kr/profile/dev_town", {
                 // HTTP 요청 헤더
                 method: "GET",
@@ -119,6 +119,7 @@ function UserProfile() {
 
     // 데이터가 없는 경우 나올 화면
     if (!userData) {
+        console.log('로그인 정보 없음');
         return <div>데이터 없을 때 화면 띄우기</div>
     }
 

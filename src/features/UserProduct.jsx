@@ -47,10 +47,14 @@ const ProductAreaList = ({ userProductData }) => {
             {userProductData &&
                 userProductData.product.map((item) => {
                     return (
-                        // <Product />
-                        <li key={item.id} >
-                            <p>{item.itemName}</p>
-                        </li >
+                        <ProductLink to={item.link}>
+                            <Product
+                                key={item.id}
+                                name={item.itemName}
+                                price={item.price}
+                                src={item.itemImg}
+                            />
+                        </ProductLink>
                     )
                 })
             }
@@ -75,9 +79,6 @@ function UserProduct() {
             setUserProductData(json)
         }
         getData()
-        // console.log(userProductData)
-        // console.log(Object.entries(userProductData)[1][1]);
-        // console.log(userProductData.product[1].id)
     }, [])
 
     if (!userProductData) {
