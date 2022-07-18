@@ -121,6 +121,7 @@ function UserProfile() {
     // }
 
     useEffect(() => {
+        // profileAction에 있는 profile 함수로 94번째 95번째 줄에서 가져온 token과 accountname의 값을 보내준다.
         dispatch(profileAction.profile(token,accountname));
         // getData()
     }, [])
