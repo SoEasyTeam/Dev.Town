@@ -130,12 +130,12 @@ function TopBasicNav() {
     );
 }
 
-function TopSearchNav() {
+function TopSearchNav({onChange}) {
     return (
         <>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <SearchInput />
+                <SearchInput onChange={onChange}/>
             </TopNavRowBox>
         </>
     );
