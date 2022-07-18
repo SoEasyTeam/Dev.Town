@@ -15,6 +15,7 @@ function App() {
     }, [authenticate]);
 
     return (
+
         <Switch>
             <Route exact path='/' component={() => <SplashPage />} />
             <Route path='/join' component={() => <JoinMembershipPage />} />
@@ -34,6 +35,7 @@ function App() {
             />
             <Route path='/search' component={()=><SearchPage/>}/>
         </Switch>
+
     );
 }
 
