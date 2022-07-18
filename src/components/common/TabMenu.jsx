@@ -45,7 +45,7 @@ const TabMenu = () => {
     return (
         <>
             <TabMenuRowBox>
-                <TabMenuLink to='#'>
+                <TabMenuLink to='/home'>
                     <img src={LinkHomeImg} alt='홈링크' />홈
                 </TabMenuLink>
                 <TabMenuLink to='#'>
@@ -56,7 +56,7 @@ const TabMenu = () => {
                     <img src={LinkIconEditImg} alt='게시물작성링크' />
                     게시물 작성
                 </TabMenuLink>
-                <TabMenuLink to='/profile'>
+                <TabMenuLink to='/myprofile'>
                     <img src={LinkIconProfileImg} alt='프로필링크' />
                     프로필
                 </TabMenuLink>
