@@ -5,8 +5,14 @@ import HomeImgPost from '../components/common/HomeImgPost'
 import HomePost from '../components/common/HomePost'
 import styled from 'styled-components'
 import { HomeNoFollower } from '../components/home/HomeNoFollower'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 function HomePage() {
+    const token = useSelector(state => state.auth.token);
+    const dispatch = useDispatch();
+    useEffect(() => {
+    },[])
     return (
         <>
             <TopMainNav />
