@@ -1,10 +1,8 @@
 import React from 'react';
-import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
-import EllipseImg from '../../assets/basic-profile-img.png';
-import styled from 'styled-components';
+import { NameIdBox, IdP } from './UserSearch';
 import {
     DateParagraph,
-    HomePostBox,
+    HomePostLink,
     HomePostParagraph,
     HomePostProfileBox,
     HomePostSmallBox,
@@ -13,37 +11,34 @@ import {
     HomePostProfileLogoImg,
     HomePostProfileNickName,
 } from './HomePost';
-import IconCommentImg from '../../assets/post-img-example.png';
 
-function HomeImgPost() {
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, year, month, day }) {
     return (
         <>
-            <HomePostBox>
+            <HomePostLink>
                 <HomePostProfileBox>
-                    <HomePostProfileLogoImg src={EllipseImg} alt='프로필로고' />
+                    <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
                     <NameIdBox>
                         <HomePostProfileNickName>
-                            애월읍 위니브 감귤농장
+                            {nickname}
                         </HomePostProfileNickName>
-                        <IdP>@ weniv_Mandarin</IdP>
+                        <IdP>@ {id}</IdP>
                     </NameIdBox>
                     <SettingBtn />
                 </HomePostProfileBox>
                 <HomePostSmallBox>
                     <HomePostParagraph>
-                        옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의
-                        위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와
-                        약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.
+                        {postparagraph}
                     </HomePostParagraph>
                     <img
                         className='post-img'
-                        src={IconCommentImg}
+                        src={postsrc}
                         alt='포스트이미지'
                     />
                     <LikePostRowBox />
-                    <DateParagraph>2020년 10월 21일</DateParagraph>
+                    <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
-            </HomePostBox>
+            </HomePostLink>
         </>
     );
 }
