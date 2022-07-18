@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MBtn } from '../components/common/Buttons';
 import { DefaultProfileImg } from '../components/common/ProfileButtons';
+import { useDispatch, useSelector } from 'react-redux';
+import { profileAction } from '../redux/actions/profileAction';
 
 const ProfileName = styled.h3`
     font-weight: 700;
@@ -87,50 +89,66 @@ const ProfileAreaCol = styled.article`
 `
 
 function UserProfile() {
-    const [userData, setUserData] = useState()
+    // const [userData, setUserData] = useState()
+    
+    // authenticateReducer에서 받아온 상태 값
+    const token = useSelector(state => state.auth.token);
+    const accountname = useSelector(state => state.auth.accountname);
+    const dispatch = useDispatch();
+    console.log(token)
+    console.log(accountname);
+
+    // profileReducer에서 받아온 상태 값
+    const followerCount = useSelector(state => state.profile.followerCount);
+    const followingCount = useSelector(state => state.profile.followingCount);
+    const username = useSelector(state => state.profile.username);
+    const intro = useSelector(state => state.profile.intro);
+    console.log(followerCount);
+    console.log(followingCount);
+
+
+    // const getData = async () => {
+    //     const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}`, {
+    //         method: "GET",
+    //         headers: {
+    //             "Authorization": `Bearer ${token}`,
+    //             "Content-type": "application/json"
+    //         }
+    //     })
+    //     const json = await res.json()
+    //     console.log(json)
+    //     setUserData(json)
+    // }
 
     useEffect(() => {
-        const getData = async () => {
-            // "https://mandarin.api.weniv.co.kr/profile/${accountname}"
-            // "Bearer ${token}"
-            const res = await fetch("https://mandarin.api.weniv.co.kr/profile/dev_town", {
-                method: "GET",
-                headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2Mjk0OTQxMCwiaWF0IjoxNjU3NzY1NDEwfQ.Z8_J_6Sol0yPyNgzbOrlJCiwuo4num9dqBY1PsgwtVk",
-                    "Content-type": "application/json"
-                }
-            })
-            const json = await res.json()
-            console.log(json)
-            setUserData(json)
-        }
-        getData()
+        dispatch(profileAction.profile(token,accountname));
+        // getData()
     }, [])
 
-    if (!userData) {
-        return <div>데이터 없을 때 화면 띄우기</div>
-    }
+    // if (!userData) {
+    //     return <div>데이터 없을 때 화면 띄우기</div>
+    // }
 
     return (
         <>
             <ProfileAreaCol>
                 <div className='profileTop'>
                     <div className='followers'>
-                        <FollowLink to='#'>{userData.profile.followerCount}</FollowLink>
+                        <FollowLink to='#'>{followerCount}</FollowLink>
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
                         <DefaultProfileImg />
                     </div>
                     <div className='followings'>
-                        <FollowLink to='#'>{userData.profile.followingCount}</FollowLink>
+                        <FollowLink to='#'>{followingCount}</FollowLink>
                         <p>followings</p>
                     </div>
                 </div>
                 <div className='profileMiddle'>
-                    <ProfileName>{userData.profile.username}</ProfileName>
-                    <ProfileAccount>@ {userData.profile.accountname}</ProfileAccount>
-                    <ProfileIntro>{userData.profile.intro}</ProfileIntro>
+                    <ProfileName>{username}</ProfileName>
+                    <ProfileAccount>@ {accountname}</ProfileAccount>
+                    <ProfileIntro>{intro}</ProfileIntro>
                 </div>
                 <div className='profileBottom'>
                     <MyProfileBtn as={Link} to='/프로필수정페이지'>프로필 수정</MyProfileBtn>
@@ -140,6 +158,7 @@ function UserProfile() {
         </>
     )
 }
+
 export default UserProfile;
 
 

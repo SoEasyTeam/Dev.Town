@@ -4,16 +4,13 @@ import { TopMainNav } from '../components/common/TopNav'
 import HomeImgPost from '../components/common/HomeImgPost'
 import HomePost from '../components/common/HomePost'
 import styled from 'styled-components'
+import { HomeNoFollower } from '../components/home/HomeNoFollower'
 
 function HomePage() {
     return (
         <>
             <TopMainNav />
-            <HomeImgPost />
-            <HomeImgPost />
-            <HomeImgPost />
-            <HomeImgPost />
-            <HomePost />
+            <HomeNoFollower/>
             <TabMenu />
         </>
     )

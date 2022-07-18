@@ -24,8 +24,8 @@ function MyProfilePage() {
             <TopBasicNav />
             <ProfileSection>
                 <UserProfile />
-                <UserProduct />
-                <UserPost />
+                {/* <UserProduct /> */}
+                {/* <UserPost /> */}
             </ProfileSection>
             <TabMenu />
         </>
