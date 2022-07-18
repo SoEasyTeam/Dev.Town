@@ -26,7 +26,8 @@ export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
     height: 42px;
 `;
 
-export const HomePostBox = styled.div`
+export const HomePostLink = styled(Link)`
+    display: block;
     width: 358px;
     margin: 0 auto;
     padding-bottom: 4px;
@@ -130,7 +131,7 @@ export const LikePostRowBox = () => {
 const HomePost = () => {
     return (
         <>
-            <HomePostBox>
+            <HomePostLink>
                 <HomePostProfileBox>
                     <HomePostProfileLogoImg src={EllipseImg} alt='프로필로고' />
                     <NameIdBox>
@@ -150,7 +151,7 @@ const HomePost = () => {
                     <LikePostRowBox />
                     <DateParagraph>2020년 10월 21일</DateParagraph>
                 </HomePostSmallBox>
-            </HomePostBox>
+            </HomePostLink>
         </>
     );
 };
