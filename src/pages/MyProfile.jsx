@@ -17,6 +17,7 @@ const ProfileSection = styled.section`
     min-height: 892px;
 `
 
+
 function MyProfilePage() {
     return (
         <>

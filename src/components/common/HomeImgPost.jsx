@@ -2,7 +2,7 @@ import React from 'react';
 import { NameIdBox, IdP } from './UserSearch';
 import {
     DateParagraph,
-    HomePostBox,
+    HomePostLink,
     HomePostParagraph,
     HomePostProfileBox,
     HomePostSmallBox,
@@ -15,7 +15,7 @@ import {
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, year, month, day }) {
     return (
         <>
-            <HomePostBox>
+            <HomePostLink>
                 <HomePostProfileBox>
                     <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
                     <NameIdBox>
@@ -38,7 +38,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, year, m
                     <LikePostRowBox />
                     <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
-            </HomePostBox>
+            </HomePostLink>
         </>
     );
 }

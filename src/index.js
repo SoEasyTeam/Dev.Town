@@ -4,6 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import App from './App';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -78,10 +81,10 @@ const GlobalStyle = createGlobalStyle`
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <>
+    <Provider store={store}>
         <GlobalStyle />
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </>
+    </Provider>
 );
