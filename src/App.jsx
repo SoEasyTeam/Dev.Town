@@ -5,6 +5,7 @@ import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
 import SplashPage from './pages/SplashPage';
 import ProfileSetting from './pages/ProfileSettingPage';
+import MyProfile from './pages/MyProfile'
 
 function App() {
     let [authenticate, setAuthenticate] = useState(false);
@@ -31,6 +32,7 @@ function App() {
                 path='/profilesetting'
                 component={() => <ProfileSetting />}
             />
+            <Route path='/profile' component={() => <MyProfile />}/>
         </Switch>
     );
 }

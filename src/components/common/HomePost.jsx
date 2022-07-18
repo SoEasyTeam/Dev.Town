@@ -26,7 +26,8 @@ export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
     height: 42px;
 `;
 
-export const HomePostBox = styled.div`
+export const HomePostBox = styled(Link)`
+    display: block;
     width: 358px;
     margin: 0 auto;
     padding-bottom: 4px;

@@ -56,7 +56,7 @@ const TabMenu = () => {
                     <img src={LinkIconEditImg} alt='게시물작성링크' />
                     게시물 작성
                 </TabMenuLink>
-                <TabMenuLink to='#'>
+                <TabMenuLink to='/profile'>
                     <img src={LinkIconProfileImg} alt='프로필링크' />
                     프로필
                 </TabMenuLink>
