@@ -4,7 +4,7 @@ import EllipseImg from '../../assets/basic-profile-img.png';
 import styled from 'styled-components';
 import {
     DateParagraph,
-    HomePostBox,
+    HomePostLink,
     HomePostParagraph,
     HomePostProfileBox,
     HomePostSmallBox,
@@ -18,7 +18,7 @@ import IconCommentImg from '../../assets/post-img-example.png';
 function HomeImgPost() {
     return (
         <>
-            <HomePostBox>
+            <HomePostLink>
                 <HomePostProfileBox>
                     <HomePostProfileLogoImg src={EllipseImg} alt='프로필로고' />
                     <NameIdBox>
@@ -41,7 +41,7 @@ function HomeImgPost() {
                     <LikePostRowBox />
                     <DateParagraph>2020년 10월 21일</DateParagraph>
                 </HomePostSmallBox>
-            </HomePostBox>
+            </HomePostLink>
         </>
     );
 }
