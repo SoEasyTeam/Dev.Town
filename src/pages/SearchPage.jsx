@@ -1,5 +1,5 @@
 import { useEffect,useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import TabMenu from '../components/common/TabMenu'
 import { TopSearchNav } from '../components/common/TopNav'
 
@@ -7,6 +7,7 @@ export default function SearchPage(){
     const [searchResult, setSearchResult]=useState([])
     const [keyword, setKeyword]=useState([])
     let dispatch = useDispatch()
+    let searchUserList  = useSelector(state=>state.search.userList)
 
     useEffect(
         ()=>{
@@ -24,14 +25,21 @@ export default function SearchPage(){
                     const json = await res.json()
                     setSearchResult(json)
                 }
+                searchData()
             }
-        }
+        },[keyword]
     )
 
     return (
         <>
-        <TopSearchNav/>
-        <TabMenu />
+            <TopSearchNav onChange={e=>setKeyword(e.target.value)}/>
+            {searchResult.map(user=>{
+                return <p key={user.id}>{user.username}</p>
+            })}
+            if(!searchResult){
+                <p>검색결과가 없습니다.</p>
+            }
+            <TabMenu />
         </>
     )
 }

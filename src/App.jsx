@@ -32,6 +32,7 @@ function App() {
                 path='/profilesetting'
                 component={() => <ProfileSetting />}
             />
+            <Route path='/search' component={()=><SearchPage/>}/>
         </Switch>
     );
 }
