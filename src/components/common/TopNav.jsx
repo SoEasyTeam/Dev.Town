@@ -146,8 +146,8 @@ function TopMainNav() {
         <>
             <TopNavRowBox>
                 <p className='navTitle'>데브타운 피드</p>
-                <TopNavLink to='#'>
-                    <img src={SearchImg} alt='찾기링크' />
+                <TopNavLink to='/search'>
+                    <img src={SearchImg} alt='찾기링크' style={{cursor:'pointer'}}/>
                 </TopNavLink>
             </TopNavRowBox>
         </>
