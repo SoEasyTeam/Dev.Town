@@ -1,7 +1,5 @@
 import React from 'react';
-import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
-import EllipseImg from '../../assets/basic-profile-img.png';
-import styled from 'styled-components';
+import { NameIdBox, IdP } from './UserSearch';
 import {
     DateParagraph,
     HomePostBox,
@@ -13,9 +11,8 @@ import {
     HomePostProfileLogoImg,
     HomePostProfileNickName,
 } from './HomePost';
-import IconCommentImg from '../../assets/post-img-example.png';
 
-function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc }) {
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, year, month, day }) {
     return (
         <>
             <HomePostBox>
@@ -39,7 +36,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc }) {
                         alt='포스트이미지'
                     />
                     <LikePostRowBox />
-                    <DateParagraph>2020년 10월 21일</DateParagraph>
+                    <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
             </HomePostBox>
         </>
