@@ -5,6 +5,7 @@ import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
 import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
+import { useSelector } from 'react-redux';
 
 function App() {
     let [authenticate, setAuthenticate] = useState(false);
@@ -12,7 +13,6 @@ function App() {
     useEffect(() => {
         console.log(authenticate);
     }, [authenticate]);
-
     return (
 
         <Switch>
@@ -29,7 +29,7 @@ function App() {
             />
             <Route path='/home' component={() => <HomePage />} />
             <Route
-                path='/myprofile'
+                path='/myprofile/'
                 component={() => <MyProfilePage />}
             />
         </Switch>

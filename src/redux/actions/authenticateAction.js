@@ -4,7 +4,6 @@ function login(email, password) {
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/user/login';
-        console.log(getState());
         try {
             let res = await fetch(url + reqPath, {
                 method: 'POST',
@@ -30,7 +29,7 @@ function login(email, password) {
                     payload: {
                         id: resJson.user._id,
                         username: resJson.user.username,
-                        email: email,
+                        email: resJson.user.email,
                         accountname: resJson.user.accountname,
                         image: resJson.user.image,
                         token: resJson.user.token,
