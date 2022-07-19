@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductAction } from '../redux/actions/addProductAction'
 import { MsBtn } from '../components/common/Buttons'
+import {WarningParagraph} from './LoginPage'
 
 const ProductForm = styled.form`
 `
@@ -69,6 +70,7 @@ function AddProductPage() {
     const [price, setPrice] = useState('');
     const [link, setLink] = useState('');
     const [itemImage, setItemImage] = useState('');
+    const [visible, setVisible] = useState(false);
 
     const onChangeProductImg = (event) => {
         setItemImage(URL.createObjectURL(event.target.files[0]));
@@ -81,12 +83,9 @@ function AddProductPage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
+        setVisible(false);
         history.push('/myprofile');
-
-        const formData = new FormData();
-        formData.append('file', )
-
-        dispatch(addProductAction.addProduct(itemName, price, link, token, itemImage))
+        dispatch(addProductAction.addProduct(itemName, price, link, token, itemImage));
     }
 
     return (
@@ -107,6 +106,7 @@ function AddProductPage() {
                 <ProductPrice value = {price} onChange={(event) => setPrice(event.target.value)}/>
                 <TextLabel>판매링크</TextLabel>
                 <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} />
+                <WarningParagraph visible={visible}>*필수 입력사항을 입력해주세요.</WarningParagraph>
             </ProductBox>
         </ProductForm>
     )
