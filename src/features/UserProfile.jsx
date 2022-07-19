@@ -153,7 +153,7 @@ function UserProfile() {
                 </div>
                 <div className='profileBottom'>
                     <MyProfileBtn as={Link} to='/프로필수정페이지'>프로필 수정</MyProfileBtn>
-                    <MyProfileBtn as={Link} to='/상품등록페이지'>상품 등록</MyProfileBtn>
+                    <MyProfileBtn as={Link} to='/product'>상품 등록</MyProfileBtn>
                 </div>
             </ProfileAreaCol>
         </>
