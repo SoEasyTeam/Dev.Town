@@ -31,8 +31,8 @@ function DefaultProfileImg() {
     return <BasicProfileImg src={defaultProfile} />;
 }
 
-function ImgUploadBtn() {
-    return <ImgUpload />;
+function ImgUploadBtn({onChange, htmlFor}) {
+    return <ImgUpload onChange={onChange} htmlFor={htmlFor}/>;
 }
 
 function ImgGrayBtn() {
