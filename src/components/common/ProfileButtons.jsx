@@ -10,10 +10,15 @@ const BasicProfileImg = styled.img.attrs({
     height:50px;
 `;
 
-const ImgUpload = styled.img`
+const ImgUpload = styled.label`
+    position: fixed;
     width: 50px;
-    height:50px;
-    position: absolute;
+    height: 50px;
+    background-image: url(${IconFillImg});
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    z-index: 100;
     bottom:50px;
     right:20%;
 `;
@@ -27,7 +32,7 @@ function DefaultProfileImg() {
 }
 
 function ImgUploadBtn() {
-    return <ImgUpload src={IconFillImg} />;
+    return <ImgUpload />;
 }
 
 function ImgGrayBtn() {
