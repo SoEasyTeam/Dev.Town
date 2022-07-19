@@ -6,12 +6,16 @@ import uploadImageGray from '../../assets/img-button.png';
 const BasicProfileImg = styled.img.attrs({
     src: `${defaultProfile}`,
 })`
-    width: 100%;
-    height: 100%;
+    width: 50px;
+    height:50px;
 `;
 
 const ImgUpload = styled.img`
-    width: 100%;
+    width: 50px;
+    height:50px;
+    position: absolute;
+    bottom:50px;
+    right:20%;
 `;
 
 const ImgGray = styled.img`

@@ -5,6 +5,9 @@ import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
 import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
+import PostPage from './pages/PostPage';
+import UploadPage from './pages/UploadPage';
+
 import { useSelector } from 'react-redux';
 
 function App() {
@@ -31,6 +34,7 @@ function App() {
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
+            <Route path='/upload' component={()=><UploadPage/>}/>
         </Switch>
     );
 }
