@@ -5,7 +5,7 @@ import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
 import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
-import { useSelector } from 'react-redux';
+import AddProductPage from './pages/AddProductPage';
 
 function App() {
     let [authenticate, setAuthenticate] = useState(false);
@@ -31,6 +31,7 @@ function App() {
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
+            <Route path='/product' component={() => <AddProductPage />} />
         </Switch>
     );
 }
