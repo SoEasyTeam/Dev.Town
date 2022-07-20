@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
-import Dimmer from './Dimmer';
 
 const ModalContainer = styled.section`
     display: flex;
@@ -31,10 +29,8 @@ const ModalContainer = styled.section`
 
 
 function MyProductModal({ onCloseModal }) {
-    // const history = useHistory();
     return (
         <>
-            {/* <Dimmer onClick={() => history.replace('/myprofile')} /> */}
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={onCloseModal}>✖</button>
                 <button>삭제</button>

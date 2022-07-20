@@ -5,10 +5,6 @@ import TabMenu from '../components/common/TabMenu';
 import UserProfile from '../features/UserProfile';
 import UserProduct from '../features/UserProduct';
 import UserPost from '../features/UserPost';
-import Modal from '../features/Modal';
-import { useHistory } from 'react-router-dom';
-import Dimmer from '../features/Dimmer';
-import { useRef } from 'react';
 
 const ProfileSection = styled.section`
     display: flex;

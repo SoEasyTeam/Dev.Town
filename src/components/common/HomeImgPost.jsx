@@ -33,7 +33,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                         {postparagraph}
                     </HomePostParagraph>
                     {
-                        (postsrc === '' || undefined) ? null :
+                        postsrc === '' || typeof (postsrc) === 'undefined' ? null :
                             <img
                                 className='post-img'
                                 src={postsrc}
