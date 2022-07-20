@@ -9,10 +9,8 @@ let initialState = {
 
 function addProductReducer(state = initialState, action) {
     let { type, payload } = action;
-    console.log(action);
     switch (type) {
         case 'ADDPRODUCT_SUCCESS':
-            console.log('addproduct success reducer');
             return {
                 ...state,
                 id: payload.id,
@@ -22,7 +20,6 @@ function addProductReducer(state = initialState, action) {
                 itemImage: payload.itemImage,
                 author: payload.author,
             };
-
         default:
             return {
                 ...state,
