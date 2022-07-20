@@ -43,7 +43,7 @@ const ProductArea = styled.article`
     }
 `
 
-const ProductAreaList = ({ userProductData, onOpenModal }) => {
+const ProductAreaList = ({ userProductData, openModal }) => {
     // const link = isMine ? <Modal/> : item.link;
 
     return (
@@ -51,7 +51,8 @@ const ProductAreaList = ({ userProductData, onOpenModal }) => {
             {userProductData &&
                 userProductData.product.map((item) => {
                     return (
-                        <div key={item.id} onClick={onOpenModal}>
+                        <div key={item.id} onClick={openModal}>
+                            {/* <div key={item.id} onClick={() => setModalOn(true)}> */}
                             <Product
                                 name={item.itemName}
                                 price={item.price}
@@ -69,10 +70,18 @@ function UserProduct() {
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
     const [userProductData, setUserProductData] = useState('')
+    // 모달창
     const [modalOn, setModalOn] = useState(false);
-    const onOpenModal = () => {
-        setModalOn(!modalOn);
+    function openModal() {
+        setModalOn(true);
     }
+    function closeModal() {
+        setModalOn(false);
+    }
+    // const onOpenModal = () => {
+    //     setModalOn(!modalOn);
+    // }
+
 
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/product/${accountname}`, {
@@ -100,11 +109,11 @@ function UserProduct() {
                 <div className='productAreaDiv'>
                     <h3 className='productAreaTitle'>판매 중인 상품</h3>
                     <ProductAreaListUl>
-                        <ProductAreaList onOpenModal={onOpenModal} userProductData={userProductData} />
+                        <ProductAreaList openModal={openModal} closeModal={closeModal} userProductData={userProductData} />
                     </ProductAreaListUl>
                 </div>
             </ProductArea>
-            {modalOn ? <MyProductModal /> : ''}
+            {modalOn === true ? <MyProductModal openModal={openModal} closeModal={closeModal} /> : ''}
         </>
     )
 

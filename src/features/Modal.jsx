@@ -1,6 +1,18 @@
 import React from 'react'
 import styled from 'styled-components';
 
+const ModalOutside = styled.div`
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 const ModalContainer = styled.section`
     display: flex;
     flex-direction: column;
@@ -13,6 +25,7 @@ const ModalContainer = styled.section`
     background: #FFF;
     border-radius: 10px 10px 0 0;
     padding: 16px;
+    animation: bottom-modal 0.3s;
 
     button {
         display: flex;
@@ -24,42 +37,54 @@ const ModalContainer = styled.section`
     }
     .deleteModalBtn {
         justify-content: center;
+        content: " ";
+        margin: 0 auto;
+        width: 50px;
+        height: 4px;
+        background: #dbdbdb;
+        border-radius: 5px;
     }
 `
 
 
-function MyProductModal({ onCloseModal }) {
+function MyProductModal({ closeModal }) {
     return (
         <>
-            <ModalContainer>
-                <button className='deleteModalBtn' onClick={onCloseModal}>✖</button>
-                <button>삭제</button>
-                <button>수정</button>
-                <button>웹사이트에서 상품보기</button>
-            </ModalContainer>
+            <ModalOutside onClick={closeModal}>
+                <ModalContainer>
+                    <button className='deleteModalBtn' onClick={closeModal}></button>
+                    <button>삭제</button>
+                    <button>수정</button>
+                    <button>웹사이트에서 상품보기</button>
+                </ModalContainer>
+            </ModalOutside>
         </>
     );
 }
 
-function MyPostModal({ onCloseModal }) {
+function MyPostModal({ closeModal }) {
     return (
         <>
-            <ModalContainer>
-                <button className='deleteModalBtn' onClick={onCloseModal}>✖</button>
-                <button>삭제</button>
-                <button>수정</button>
-            </ModalContainer>
+            <ModalOutside onClick={closeModal}>
+                <ModalContainer>
+                    <button className='deleteModalBtn' onClick={closeModal}></button>
+                    <button>삭제</button>
+                    <button>수정</button>
+                </ModalContainer>
+            </ModalOutside>
         </>
     );
 }
 
-function YourPostModal({ onCloseModal }) {
+function YourPostModal({ closeModal }) {
     return (
         <>
-            <ModalContainer>
-                <button onClick={onCloseModal}>✖</button>
-                <button>신고</button>
-            </ModalContainer>
+            <ModalOutside onClick={closeModal}>
+                <ModalContainer>
+                    <button className='deleteModalBtn' onClick={closeModal}></button>
+                    <button>신고</button>
+                </ModalContainer>
+            </ModalOutside>
         </>
     );
 }

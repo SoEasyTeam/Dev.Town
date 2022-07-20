@@ -18,16 +18,13 @@ const ProfileSection = styled.section`
 `
 
 
-function MyProfilePage({ onOpenModal }) {
-    // const history = useHistory();
-    // const outSection = useRef();
+function MyProfilePage({ setModalOn }) {
     return (
         <>
             <TopBasicNav />
-            {/* <Dimmer onClick={() => history.replace('/myprofile')} /> */}
             <ProfileSection>
                 <UserProfile />
-                <UserProduct onOpenModal={onOpenModal} />
+                <UserProduct setModalOn={setModalOn} />
                 <UserPost />
             </ProfileSection>
             <TabMenu />
