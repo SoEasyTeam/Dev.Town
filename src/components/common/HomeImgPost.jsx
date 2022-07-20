@@ -12,7 +12,8 @@ import {
     HomePostProfileNickName,
 } from './HomePost';
 
-function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, year, month, day }) {
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day }) {
+    console.log(heartCount, commentCount)
     return (
         <>
             <HomePostLink>
@@ -35,7 +36,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, year, m
                         src={postsrc}
                         alt='포스트이미지'
                     />
-                    <LikePostRowBox />
+                    <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
                     <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
             </HomePostLink>

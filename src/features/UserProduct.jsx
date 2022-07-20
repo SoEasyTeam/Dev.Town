@@ -47,9 +47,8 @@ const ProductAreaList = ({ userProductData }) => {
             {userProductData &&
                 userProductData.product.map((item) => {
                     return (
-                        <ProductLink to={item.link}>
+                        <ProductLink to={item.link} key={item.id}>
                             <Product
-                                key={item.id}
                                 name={item.itemName}
                                 price={item.price}
                                 src={item.itemImage}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import HomeImgPost from '../components/common/HomeImgPost';
 import IconPostListOn from '../assets/icon/icon-post-list-on.png';
 import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 
 const PostLink = styled(Link)`
@@ -54,22 +54,19 @@ function PostAreaList({ userPostData }) {
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
                     return (
-                        <li>
-                            <PostLink to="#">
-                                <HomeImgPost
-                                    key={item.id}
-                                    profileimg={item.author.image}
-                                    nickname={item.author.username}
-                                    id={item.author.accountname}
-                                    postparagraph={item.content}
-                                    postsrc={item.image}
-                                    heartCount={item.heartCount}
-                                    commentCount={item.commentCount}
-                                    year={year}
-                                    month={month}
-                                    day={day}
-                                />
-                            </PostLink>
+                        <li key={item.id}>
+                            <HomeImgPost
+                                profileimg={item.author.image}
+                                nickname={item.author.username}
+                                id={item.author.accountname}
+                                postparagraph={item.content}
+                                postsrc={item.image}
+                                heartCount={item.heartCount}
+                                commentCount={item.commentCount}
+                                year={year}
+                                month={month}
+                                day={day}
+                            />
                         </li>
                     )
                 })
