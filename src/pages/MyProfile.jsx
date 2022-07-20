@@ -5,6 +5,10 @@ import TabMenu from '../components/common/TabMenu';
 import UserProfile from '../features/UserProfile';
 import UserProduct from '../features/UserProduct';
 import UserPost from '../features/UserPost';
+import Modal from '../features/Modal';
+import { useHistory } from 'react-router-dom';
+import Dimmer from '../features/Dimmer';
+import { useRef } from 'react';
 
 const ProfileSection = styled.section`
     display: flex;
@@ -18,14 +22,17 @@ const ProfileSection = styled.section`
 `
 
 
-function MyProfilePage() {
+function MyProfilePage({ onOpenModal }) {
+    // const history = useHistory();
+    // const outSection = useRef();
     return (
         <>
             <TopBasicNav />
+            {/* <Dimmer onClick={() => history.replace('/myprofile')} /> */}
             <ProfileSection>
                 <UserProfile />
-                <UserProduct />
-                {/* <UserPost /> */}
+                <UserProduct onOpenModal={onOpenModal} />
+                <UserPost />
             </ProfileSection>
             <TabMenu />
         </>
