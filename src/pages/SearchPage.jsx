@@ -41,12 +41,12 @@ export default function SearchPage() {
 
     return (
         <>
-            <div>asdfsaf</div>
             <TopSearchNav onChange={(e) => setKeyword(e.target.value)} />
-            {searchResult.map((user) => {
+            {searchResult ? 
+            searchResult.map((user) => {
                 return <p key={user.id}>{user.username}</p>;
-            })}
-            if(!searchResult){<p>검색결과가 없습니다.</p>}
+            }) : 
+            <p>검색결과가 없습니다.</p>}
             <TabMenu />
         </>
     );
