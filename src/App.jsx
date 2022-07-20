@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
 import PostPage from './pages/PostPage';
-import UploadPage from './pages/UploadPage';
+import UploadPage from './pages/PostUploadPage';
 
 import { useSelector } from 'react-redux';
 
