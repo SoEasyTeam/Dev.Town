@@ -25,7 +25,7 @@ function MyProfilePage() {
             <ProfileSection>
                 <UserProfile />
                 <UserProduct />
-                <UserPost />
+                {/* <UserPost /> */}
             </ProfileSection>
             <TabMenu />
         </>

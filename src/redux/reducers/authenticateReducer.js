@@ -1,6 +1,10 @@
 let initialState = {
     email: '',
-    password: '',
+    id: '',
+    username: '',
+    accountname: '',
+    image: '',
+    token: '',
     authenticate: false,
 };
 
@@ -11,8 +15,12 @@ function authenticateReducer(state = initialState, action) {
             console.log('login success reducer');
             return {
                 ...state,
+                id: payload._id,
+                username: payload.username,
                 email: payload.email,
-                password: payload.password,
+                accountname: payload.accountname,
+                image: payload.image,
+                token: payload.token,
                 authenticate: true,
             };
         default:
