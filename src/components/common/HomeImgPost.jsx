@@ -2,7 +2,7 @@ import React from 'react';
 import { NameIdBox, IdP } from './UserSearch';
 import {
     DateParagraph,
-    HomePostLink,
+    HomePostBox,
     HomePostParagraph,
     HomePostProfileBox,
     HomePostSmallBox,
@@ -13,10 +13,10 @@ import {
 } from './HomePost';
 
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day }) {
-    console.log(heartCount, commentCount)
+    // console.log(heartCount, commentCount)
     return (
         <>
-            <HomePostLink>
+            <HomePostBox>
                 <HomePostProfileBox>
                     <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
                     <NameIdBox>
@@ -39,7 +39,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                     <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
                     <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
-            </HomePostLink>
+            </HomePostBox>
         </>
     );
 }
