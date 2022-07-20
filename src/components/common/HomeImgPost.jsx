@@ -31,11 +31,14 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                     <HomePostParagraph>
                         {postparagraph}
                     </HomePostParagraph>
-                    <img
-                        className='post-img'
-                        src={postsrc}
-                        alt='포스트이미지'
-                    />
+                    {
+                        postsrc === '' ? null :
+                        <img
+                            className='post-img'
+                            src={postsrc}
+                            alt='포스트이미지'
+                        />
+                    }
                     <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
                     <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
