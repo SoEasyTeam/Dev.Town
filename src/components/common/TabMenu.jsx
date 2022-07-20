@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import LinkHomeImg from '../../assets/icon/icon-home.svg';
 import LinkHomeClickImg from '../../assets/icon-home-fill.png'
+import LinkChatClickImg from '../../assets/icon-message-circle-fill.png'
+import LinkProfileClickImg from '../../assets/icon-user-fill.png'
 import LinkChatImg from '../../assets/icon/icon-message-circle.svg';
 import LinkIconProfileImg from '../../assets/icon/icon-user.svg';
 import LinkIconEditImg from '../../assets/icon/icon-edit.svg';
+import LinkIconEditClickImg from '../../assets/icon-fill-post.png';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const BlankBox = styled.div`
     width: 100vw;
@@ -28,8 +33,8 @@ const TabMenuItem = styled.li`
 `;
 
 const TabMenuLink = styled(Link)`
-    display: flex;
-    flex-direction: column;
+    display: block;
+    /* flex-direction: column; */
     padding: 12px 30px 6px 30px;
     font-family: 'Spoqa Han Sans Neo';
     font-size: 10px;
@@ -47,45 +52,66 @@ const TabMenuLink = styled(Link)`
         margin-bottom: 4px;
     }
     &.home-link::before{
-        background-image: url(${LinkHomeImg});
+        ${({isActive}) => {
+            return isActive === 1 ? `background-image: url(${LinkHomeClickImg});` : `background-image: url(${LinkHomeImg});`
+        }}
     }
     &.chat-link::before{
-        background-image: url(${LinkChatImg});
+        ${({isActive}) => {
+            return isActive === 2 ? `background-image: url(${LinkChatClickImg});` : `background-image: url(${LinkChatImg});`
+        }}
     }
     &.post-link::before{
-        background-image: url(${LinkIconEditImg});
+        ${({isActive}) => {
+            return isActive === 3 ? `background-image: url(${LinkIconEditClickImg});` : `background-image: url(${LinkIconEditImg});`
+        }}
     }
-    &.myprofile-link::before{
-        background-image: url(${LinkIconProfileImg});
+    &.myprofile-link::before {
+        ${({isActive}) => {
+            return isActive === 4 ? `background-image: url(${LinkProfileClickImg});` : `background-image: url(${LinkIconProfileImg});`
+        }}
     }
 
     span {
         text-align: center;
     }
-
 `
 
 const TabMenu = () => {
+    const [isActive, setIsActive] = useState(1);
+
+    useEffect(()=> {
+        console.log(isActive)
+    },[isActive])
+    
     return (
         <>
             <TabMenuRowList>
                 <TabMenuItem>
-                    <TabMenuLink className='home-link' to='/home'>
+                    <TabMenuLink className='home-link' to='/home' isActive={isActive} onClick={() => {
+                        setIsActive(1);
+                    }}>
                         <span>홈</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='chat-link' to='#'>
+                    <TabMenuLink className='chat-link' to='#' isActive={isActive} onClick={(e) => {
+                        setIsActive(2);
+                    }}>
                         <span>채팅</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='post-link' to='#'>
+                    <TabMenuLink className='post-link' to='#' isActive={isActive} onClick={(e) => {
+                        setIsActive(3);
+                    }}>
                         <span>게시물 작성</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='myprofile-link' to='/myprofile'>
+                    <TabMenuLink className='myprofile-link' to='/myprofile' isActive={isActive} onClick={(e) => {
+                        setIsActive(4);
+                    }}>
                         <span>프로필</span>
                     </TabMenuLink>
                 </TabMenuItem>
