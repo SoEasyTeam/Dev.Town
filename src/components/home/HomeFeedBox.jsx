@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import HomeImgPost from '../common/HomeImgPost';
 import HomePost from '../common/HomePost';
@@ -17,6 +18,9 @@ const parseDate = (dateString) => {
     return [year, month, day]
 }
 
+const HomePostItem = styled.li``
+const HomePostLink = styled(Link)``
+
 const HomeFeedBox = () => {
     const posts = useSelector(state=>state.homefeed.item);
     console.log(posts);
@@ -27,20 +31,22 @@ const HomeFeedBox = () => {
                     posts.map((item, index) => {
                         const [year, month, day] = parseDate(item.createdAt);
                         return (
-                            <li key = {index}>
-                                <HomeImgPost
-                                    profileimg={item.author.image}
-                                    nickname={item.author.username}
-                                    id={item.author.accountname}
-                                    postparagraph={item.content}
-                                    postsrc={item.image}
-                                    heartCount={item.heartCount}
-                                    commentCount={item.commentCount}
-                                    year={year}
-                                    month={month}
-                                    day={day}
-                                />
-                            </li>
+                            <HomePostItem key = {index}>
+                                <HomePostLink to='#'>
+                                    <HomeImgPost
+                                        profileimg={item.author.image}
+                                        nickname={item.author.username}
+                                        id={item.author.accountname}
+                                        postparagraph={item.content}
+                                        postsrc={item.image}
+                                        heartCount={item.heartCount}
+                                        commentCount={item.commentCount}
+                                        year={year}
+                                        month={month}
+                                        day={day}
+                                    />
+                                </HomePostLink>
+                            </HomePostItem>
                         )
                     })
                 }
