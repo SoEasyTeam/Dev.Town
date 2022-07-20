@@ -29,6 +29,7 @@ const HomeFeedBox = () => {
                 {
                     posts.map((item, index) => {
                         const [year, month, day] = parseDate(item.createdAt);
+                        console.log(item.image);
                         return (
                             <HomePostItem key = {index}>
                                 <HomeImgPost
