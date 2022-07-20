@@ -51,11 +51,6 @@ function UploadPage(){
     const [imgPreview, SetImgPreview] = useState('')
     const fileInputRef = useRef()
 
-    // const ShowImg = (e) =>{
-    //     setUploadedImg(URL.createObjectURL(e.target.files[0]))
-    //     console.log('showing img!!');
-    // }
-
     const onSubmitHandler = (e)=>{
         e.preventDefault()
         console.log('submit succeed')
@@ -72,6 +67,7 @@ function UploadPage(){
             SetImgPreview(null)
         }
     }, [uploadedImg])
+    
     return(
         <>
             <UploadForm onSubmit={onSubmitHandler}>
