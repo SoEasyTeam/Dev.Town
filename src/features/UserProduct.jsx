@@ -20,6 +20,7 @@ const ProductAreaListUl = styled.ul`
         float:left;
         margin-right: 16px;
         margin-bottom: 19.5px;
+        cursor: pointer;
     }
 `
 

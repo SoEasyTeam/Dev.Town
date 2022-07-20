@@ -24,7 +24,7 @@ const ModalContainer = styled.section`
     width: 100%;
     background: #FFF;
     border-radius: 10px 10px 0 0;
-    padding: 16px;
+    padding: 16px 16px 28px 16px;
     animation: bottom-modal 0.3s;
 
     button {
@@ -34,6 +34,9 @@ const ModalContainer = styled.section`
         font-weight: 400;
         font-size: 14px;
         line-height: 18px;
+        &:hover{
+            font-weight: bold;
+        }
     }
     .deleteModalBtn {
         justify-content: center;
