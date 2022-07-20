@@ -19,7 +19,6 @@ const parseDate = (dateString) => {
 }
 
 const HomePostItem = styled.li``
-const HomePostLink = styled(Link)``
 
 const HomeFeedBox = () => {
     const posts = useSelector(state=>state.homefeed.item);
@@ -32,20 +31,18 @@ const HomeFeedBox = () => {
                         const [year, month, day] = parseDate(item.createdAt);
                         return (
                             <HomePostItem key = {index}>
-                                <HomePostLink to='#'>
-                                    <HomeImgPost
-                                        profileimg={item.author.image}
-                                        nickname={item.author.username}
-                                        id={item.author.accountname}
-                                        postparagraph={item.content}
-                                        postsrc={item.image}
-                                        heartCount={item.heartCount}
-                                        commentCount={item.commentCount}
-                                        year={year}
-                                        month={month}
-                                        day={day}
-                                    />
-                                </HomePostLink>
+                                <HomeImgPost
+                                    profileimg={item.author.image}
+                                    nickname={item.author.username}
+                                    id={item.author.accountname}
+                                    postparagraph={item.content}
+                                    postsrc={item.image}
+                                    heartCount={item.heartCount}
+                                    commentCount={item.commentCount}
+                                    year={year}
+                                    month={month}
+                                    day={day}
+                                />
                             </HomePostItem>
                         )
                     })
