@@ -59,9 +59,14 @@ function UploadPage(){
 
     const onSubmitHandler = (e)=>{
         e.preventDefault()
-        console.log('submit succeed')
-        history.push('/myprofile')
-        dispatch(postAction.post(token, uploadedImg, postText))
+        if (uploadedImg == '' && postText == ''){
+            alert('게시물을 작성해주세요')
+        } else {
+            console.log('submit succeed')
+            history.push('/myprofile')
+            dispatch(postAction.post(token, uploadedImg, postText))
+
+        }
         
     }
 
