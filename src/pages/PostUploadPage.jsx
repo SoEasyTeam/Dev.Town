@@ -61,7 +61,7 @@ function UploadPage(){
         e.preventDefault()
         console.log('submit succeed')
         history.push('/myprofile')
-        dispatch(postAction.post(postText,uploadedImg, token))
+        dispatch(postAction.post(token, uploadedImg, postText))
         
     }
 

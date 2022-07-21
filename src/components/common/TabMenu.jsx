@@ -52,7 +52,7 @@ const TabMenu = () => {
                     <img src={LinkChatImg} alt='채팅링크' />
                     채팅
                 </TabMenuLink>
-                <TabMenuLink to='#'>
+                <TabMenuLink to='/upload'>
                     <img src={LinkIconEditImg} alt='게시물작성링크' />
                     게시물 작성
                 </TabMenuLink>
