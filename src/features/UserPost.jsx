@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import HomeImgPost from '../components/common/HomeImgPost';
 import IconPostListOn from '../assets/icon/icon-post-list-on.png';
 import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 const PostLink = styled(Link)`
@@ -77,27 +77,29 @@ function PostAreaList({ userPostData }) {
 }
 
 function UserPost() {
+    const token = useSelector(state => state.auth.token);
+    const accountname = useSelector(state => state.auth.accountname);
     const [userPostData, setUserPostData] = useState('')
     // console.log(userPostData)
     // const token = useSelector(state => state.auth.token);
     // const accountname = useSelector(state => state.auth.accountname);
     const getData = async () => {
-        const res = await fetch("https://mandarin.api.weniv.co.kr/post/dev_town/userpost", {
+        const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${accountname}/userpost`, {
             method: "GET",
             headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2Mjk0OTQxMCwiaWF0IjoxNjU3NzY1NDEwfQ.Z8_J_6Sol0yPyNgzbOrlJCiwuo4num9dqBY1PsgwtVk",
+                "Authorization": `Bearer ${token}`,
                 "Content-type": "application/json"
             }
         })
         const json = await res.json()
-        console.log(json)
+        console.log('게시물 : ', json)
         setUserPostData(json)
     }
     useEffect(() => {
         getData()
     }, [])
 
-    if (!userPostData) {
+    if (userPostData.post.length === 0) {
         return <></>
     }
 
