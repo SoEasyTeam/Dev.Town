@@ -90,22 +90,22 @@ const ProfileAreaCol = styled.article`
 
 function UserProfile() {
     // const [userData, setUserData] = useState()
-    const userId = useSelector(state => state.auth.id);
+    const userId = useSelector(state => state.auth);
     console.log('유저:', userId);
     // authenticateReducer에서 받아온 상태 값
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
     const dispatch = useDispatch();
-    console.log(token)
-    console.log(accountname);
+    // console.log(token)
+    // console.log(accountname);
 
     // profileReducer에서 받아온 상태 값
     const followerCount = useSelector(state => state.profile.followerCount);
     const followingCount = useSelector(state => state.profile.followingCount);
     const username = useSelector(state => state.profile.username);
     const intro = useSelector(state => state.profile.intro);
-    console.log(followerCount);
-    console.log(followingCount);
+    // console.log(followerCount);
+    // console.log(followingCount);
 
 
     // const getData = async () => {
@@ -154,7 +154,7 @@ function UserProfile() {
                     <ProfileIntro>{intro}</ProfileIntro>
                 </div>
                 <div className='profileBottom'>
-                    <MyProfileBtn as={Link} to='/프로필수정페이지'>프로필 수정</MyProfileBtn>
+                    <MyProfileBtn as={Link} to='/profilemodification'>프로필 수정</MyProfileBtn>
                     <MyProfileBtn as={Link} to='/product'>상품 등록</MyProfileBtn>
                 </div>
             </ProfileAreaCol>

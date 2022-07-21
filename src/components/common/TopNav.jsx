@@ -5,6 +5,7 @@ import ArrowImg from '../../assets/icon/icon-arrow-left.png';
 import MoreImg from '../../assets/icon/icon-more-vertical.png';
 import SearchImg from '../../assets/icon/icon-search.png';
 import { MsBtn } from './Buttons';
+import { useHistory } from 'react-router-dom';
 
 export const TopNavRowBox = styled.div`
     width: 100vw;
@@ -96,10 +97,12 @@ export const SearchInput = styled.input.attrs({
     margin-left: 4px;
 `;
 
+
 function ArrowLeftLink() {
+    let history = useHistory();
     return (
         <>
-            <TopNavLinkS to='#'>
+            <TopNavLinkS onClick={() => { history.goBack(); }}>
                 <img src={ArrowImg} alt='뒤로가기링크' />
             </TopNavLinkS>
         </>
@@ -158,7 +161,7 @@ function TopUploadNav() {
     return (
         <>
             <TopNavRowBox>
-                <ArrowLeftLink />
+                <ArrowLeftLink to='' />
                 <MsBtn type='submit'>저장</MsBtn>
             </TopNavRowBox>
         </>
