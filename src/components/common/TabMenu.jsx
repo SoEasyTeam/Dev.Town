@@ -78,38 +78,38 @@ const TabMenuLink = styled(Link)`
 `
 
 const TabMenu = () => {
-    const [isActive, setIsActive] = useState(1);
+    const [isactive, setIsActive] = useState(1);
 
     useEffect(()=> {
-        console.log(isActive)
-    },[isActive])
+        console.log(isactive)
+    },[isactive])
     
     return (
         <>
             <TabMenuRowList>
                 <TabMenuItem>
-                    <TabMenuLink className='home-link' to='/home' isActive={isActive} onClick={() => {
+                    <TabMenuLink className='home-link' to='/home' isactive={isactive} onClick={() => {
                         setIsActive(1);
                     }}>
                         <span>홈</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='chat-link' to='#' isActive={isActive} onClick={() => {
+                    <TabMenuLink className='chat-link' to='#' isactive={isactive} onClick={() => {
                         setIsActive(2);
                     }}>
                         <span>채팅</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='post-link' to='#' isActive={isActive} onClick={() => {
+                    <TabMenuLink className='post-link' to='#' isactive={isactive} onClick={() => {
                         setIsActive(3);
                     }}>
                         <span>게시물 작성</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='myprofile-link' to='/myprofile' isActive={isActive} onClick={() => {
+                    <TabMenuLink className='myprofile-link' to='/myprofile' isactive={isactive} onClick={() => {
                         setIsActive(4);
                     }}>
                         <span>프로필</span>

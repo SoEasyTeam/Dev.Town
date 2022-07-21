@@ -1,5 +1,5 @@
 function homeFeed(token) {
-    console.log('homefeed success action');
+    // console.log('homefeed success action');
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/post/feed';
