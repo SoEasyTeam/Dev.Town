@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { NameIdBox, IdP } from './UserSearch';
 import {
     DateParagraph,
@@ -11,9 +11,22 @@ import {
     HomePostProfileLogoImg,
     HomePostProfileNickName,
 } from './HomePost';
+import { MyPostModal } from '../../features/Modal';
 
-function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day }) {
+
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, openModal }) {
+    console.log(postsrc);
     // console.log(heartCount, commentCount)
+
+    // 모달창
+    const [modalOn, setModalOn] = useState(false);
+    function openModal() {
+        setModalOn(true);
+    }
+    function closeModal() {
+        setModalOn(false);
+    }
+
     return (
         <>
             <HomePostBox>
@@ -25,24 +38,25 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                         </HomePostProfileNickName>
                         <IdP>@ {id}</IdP>
                     </NameIdBox>
-                    <SettingBtn />
+                    <SettingBtn onClick={openModal} />
                 </HomePostProfileBox>
                 <HomePostSmallBox>
                     <HomePostParagraph>
                         {postparagraph}
                     </HomePostParagraph>
                     {
-                        postsrc === '' || typeof(postsrc) === 'undefined' ? null :
-                        <img
-                            className='post-img'
-                            src={postsrc}
-                            alt='포스트이미지'
-                        />
+                        postsrc === '' || typeof (postsrc) === 'undefined' ? null :
+                            <img
+                                className='post-img'
+                                src={postsrc}
+                                alt='포스트이미지'
+                            />
                     }
                     <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
                     <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
             </HomePostBox>
+            {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} /> : ''}
         </>
     );
 }
