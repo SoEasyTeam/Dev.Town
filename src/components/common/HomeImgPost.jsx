@@ -1,8 +1,8 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { NameIdBox, IdP } from './UserSearch';
 import {
     DateParagraph,
-    HomePostLink,
+    HomePostBox,
     HomePostParagraph,
     HomePostProfileBox,
     HomePostSmallBox,
@@ -11,11 +11,25 @@ import {
     HomePostProfileLogoImg,
     HomePostProfileNickName,
 } from './HomePost';
+import { MyPostModal } from '../../features/Modal';
 
-function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, year, month, day }) {
+
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, openModal }) {
+    console.log(postsrc);
+    // console.log(heartCount, commentCount)
+
+    // 모달창
+    const [modalOn, setModalOn] = useState(false);
+    function openModal() {
+        setModalOn(true);
+    }
+    function closeModal() {
+        setModalOn(false);
+    }
+
     return (
         <>
-            <HomePostLink>
+            <HomePostBox>
                 <HomePostProfileBox>
                     <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
                     <NameIdBox>
@@ -24,21 +38,25 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, year, m
                         </HomePostProfileNickName>
                         <IdP>@ {id}</IdP>
                     </NameIdBox>
-                    <SettingBtn />
+                    <SettingBtn onClick={openModal} />
                 </HomePostProfileBox>
                 <HomePostSmallBox>
                     <HomePostParagraph>
                         {postparagraph}
                     </HomePostParagraph>
-                    <img
-                        className='post-img'
-                        src={postsrc}
-                        alt='포스트이미지'
-                    />
-                    <LikePostRowBox />
+                    {
+                        postsrc === '' || typeof(postsrc) === 'undefined' ? null :
+                        <img
+                            className='post-img'
+                            src={postsrc}
+                            alt='포스트이미지'
+                        />
+                    }
+                    <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
                     <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
-            </HomePostLink>
+            </HomePostBox>
+            {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} /> : ''}
         </>
     );
 }

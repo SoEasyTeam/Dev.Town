@@ -7,16 +7,24 @@ import styled from 'styled-components'
 import { HomeNoFollower } from '../components/home/HomeNoFollower'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { homeFeedAction } from '../redux/actions/homeFeedAction'
+import HomeFeedBox from '../components/home/HomeFeedBox'
 
 function HomePage() {
     const token = useSelector(state => state.auth.token);
+    const accountname = useSelector(state => state.auth.accountname);
     const dispatch = useDispatch();
+    const posts = useSelector(state=>state.homefeed.item);
+    
     useEffect(() => {
+        dispatch(homeFeedAction.homeFeed(token, accountname));
     },[])
     return (
         <>
             <TopMainNav />
-            <HomeNoFollower/>
+            {
+                posts.length === 0 ? <HomeNoFollower/> : <HomeFeedBox />
+            } 
             <TabMenu />
         </>
     )
