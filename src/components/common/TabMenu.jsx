@@ -95,21 +95,21 @@ const TabMenu = () => {
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='chat-link' to='#' isActive={isActive} onClick={(e) => {
+                    <TabMenuLink className='chat-link' to='#' isActive={isActive} onClick={() => {
                         setIsActive(2);
                     }}>
                         <span>채팅</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='post-link' to='#' isActive={isActive} onClick={(e) => {
+                    <TabMenuLink className='post-link' to='#' isActive={isActive} onClick={() => {
                         setIsActive(3);
                     }}>
                         <span>게시물 작성</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='myprofile-link' to='/myprofile' isActive={isActive} onClick={(e) => {
+                    <TabMenuLink className='myprofile-link' to='/myprofile' isActive={isActive} onClick={() => {
                         setIsActive(4);
                     }}>
                         <span>프로필</span>
