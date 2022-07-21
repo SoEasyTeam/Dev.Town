@@ -51,6 +51,7 @@ const ProductAreaList = ({ userProductData, openModal }) => {
         <>
             {userProductData &&
                 userProductData.product.map((item) => {
+                    // console.log('아이템등록유저:', item.author);
                     return (
                         <div key={item.id} onClick={openModal}>
                             {/* <div key={item.id} onClick={() => setModalOn(true)}> */}
@@ -93,6 +94,7 @@ function UserProduct() {
             }
         })
         const json = await res.json()
+        console.log('상품 : ', json)
         setUserProductData(json)
     }
 
