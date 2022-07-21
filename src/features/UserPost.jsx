@@ -53,7 +53,7 @@ function PostAreaList({ userPostData }) {
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
-                    console.log(item.image)
+                    // console.log(item.image)
                     return (
                         <li key={item.id}>
                             <HomeImgPost
@@ -90,7 +90,7 @@ function UserPost() {
             }
         })
         const json = await res.json()
-        console.log(json)
+        // console.log(json)
         setUserPostData(json)
     }
     useEffect(() => {

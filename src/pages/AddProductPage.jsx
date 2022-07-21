@@ -71,6 +71,7 @@ function AddProductPage() {
     const [link, setLink] = useState('');
     const [itemImage, setItemImage] = useState('');
     const [visible, setVisible] = useState(false);
+    const [isActive, setisActive] = useState(true);
 
     const onChangeProductImg = (event) => {
         setItemImage(URL.createObjectURL(event.target.files[0]));
@@ -80,33 +81,43 @@ function AddProductPage() {
     const dispatch = useDispatch();
     const token = useSelector(state => state.auth.token);
 
+    const saveActive = () => {
+        return itemName.length>1&&itemName.length<16&&price.length>0&&link.length>0
+            ? setisActive(false)
+            : setisActive(true);
+    }
+
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
-        setVisible(false);
         history.push('/myprofile');
         dispatch(addProductAction.addProduct(itemName, price, link, token, itemImage));
+    }
+
+    const onChangePrice = (event) => {
+        const onlyNumber = event.target.value.replace(/[^0-9]/g, '');
+        setPrice(onlyNumber)
     }
 
     return (
         <ProductForm onSubmit={onSubmitHandler}>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <MsBtn>저장</MsBtn>
+                <MsBtn disabled={isActive}>저장</MsBtn>
             </TopNavRowBox>
             <ProductBox>
                 <AddProductSpan>이미지 등록</AddProductSpan>
                 <AddProductLabel htmlFor='addProductImg'>
                     <img className='addProduct-img' src={itemImage} alt="상품이미지" />
                 </AddProductLabel>
-                <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*' />
+                <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*'/>
                 <ProductNameLabel>상품명</ProductNameLabel>
-                <ProductName value = {itemName} onChange={(event) => setItemName(event.target.value)} />
+                <ProductName value = {itemName} onChange={(event) => setItemName(event.target.value)} onKeyUp={saveActive} />
                 <TextLabel>가격</TextLabel>
-                <ProductPrice value = {price} onChange={(event) => setPrice(event.target.value)}/>
+                <ProductPrice value = {price} onChange={onChangePrice} onKeyUp={saveActive} />
                 <TextLabel>판매링크</TextLabel>
-                <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} />
-                <WarningParagraph visible={visible}>*필수 입력사항을 입력해주세요.</WarningParagraph>
+                <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} onKeyUp={saveActive} />
+                <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
             </ProductBox>
         </ProductForm>
     )

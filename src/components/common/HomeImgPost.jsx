@@ -15,7 +15,7 @@ import { MyPostModal } from '../../features/Modal';
 
 
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, openModal }) {
-    console.log(postsrc);
+    // console.log(postsrc);
     // console.log(heartCount, commentCount)
 
     // 모달창

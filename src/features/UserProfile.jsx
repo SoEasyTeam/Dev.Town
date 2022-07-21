@@ -95,16 +95,16 @@ function UserProfile() {
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
     const dispatch = useDispatch();
-    console.log(token)
-    console.log(accountname);
+    // console.log(token)
+    // console.log(accountname);
 
     // profileReducer에서 받아온 상태 값
     const followerCount = useSelector(state => state.profile.followerCount);
     const followingCount = useSelector(state => state.profile.followingCount);
     const username = useSelector(state => state.profile.username);
     const intro = useSelector(state => state.profile.intro);
-    console.log(followerCount);
-    console.log(followingCount);
+    // console.log(followerCount);
+    // console.log(followingCount);
 
 
     // const getData = async () => {
