@@ -1,8 +1,8 @@
 // dispatch로 보내준 token과 accountname을 파라미터로 불러온다. profile 함수 안에서 사용할 수 있게!!
 function profile(token, accountname) {
-    console.log('profile success action');
+    // console.log('profile success action');
     // 잘불러져왔는지 콘솔로 찍어봄
-    console.log(accountname);
+    // console.log(accountname);
     return async (dispatch, getState) => {
         // 명세서 확인!
         let url = 'https://mandarin.api.weniv.co.kr';
