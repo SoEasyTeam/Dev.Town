@@ -54,8 +54,8 @@ const ModalContainer = styled.section`
 function MyProductModal({ closeModal }) {
     // console.log('상품', )
     // // console.log('상품받아오기:', author._id)
-    const userId = useSelector(state => state.auth.id);
-    console.log('유저:', userId);
+    // const userId = useSelector(state => state.auth);
+    // console.log('유저:', userId);
     // if (userId !== author._id) {
     //     return (
     //         <Link to=''
