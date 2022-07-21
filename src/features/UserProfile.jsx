@@ -90,7 +90,8 @@ const ProfileAreaCol = styled.article`
 
 function UserProfile() {
     // const [userData, setUserData] = useState()
-    
+    const userId = useSelector(state => state.auth.id);
+    console.log('유저:', userId);
     // authenticateReducer에서 받아온 상태 값
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
@@ -123,7 +124,7 @@ function UserProfile() {
     useEffect(() => {
 
         // profileAction에 있는 profile 함수로 94번째 95번째 줄에서 가져온 token과 accountname의 값을 보내준다.
-        dispatch(profileAction.profile(token,accountname));
+        dispatch(profileAction.profile(token, accountname));
         // getData()
     }, [])
 
