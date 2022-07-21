@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { MyProductModal } from '../../features/Modal';
 
 const ProductItemBox = styled.div`
     width: 140px;
@@ -37,10 +40,38 @@ const ProductItemBox = styled.div`
     }
 `;
 
-const Product = ({ name, price, src }) => {
+const Product = ({ name, price, src, id }) => {
+    const userId = useSelector(state => state.auth.id);
+    // // 모달
+    // const [modalOn, setModalOn] = useState(false);
+    // function openModal() {
+    //     setModalOn(true);
+    // }
+    // function closeModal() {
+    //     setModalOn(false);
+    // }
+
+    const handler = () => {
+        console.log('상품등록유저', id);
+        console.log('유저:', userId);
+
+        // if (userId === id) {
+        //     console.log('같다')
+        //     return (
+        //         <>
+        //             {modalOn === true ? <MyProductModal openModal={openModal} closeModal={closeModal} /> : ''}
+        //         </>
+        //     )
+        // } else {
+        //     return (
+        //         console.log('링크로 이동하기')
+        //     )
+        // }
+    }
+
     return (
         <>
-            <ProductItemBox>
+            <ProductItemBox onClick={handler}>
                 <img
                     className='img-product'
                     src={src}
