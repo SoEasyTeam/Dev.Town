@@ -102,7 +102,7 @@ function UserProduct() {
         getData()
     }, [])
 
-    if (userProductData.product.length === 0) {
+    if (userProductData.data === 0) {
         return <></>
     }
 

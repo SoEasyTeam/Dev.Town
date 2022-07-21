@@ -80,9 +80,6 @@ function UserPost() {
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
     const [userPostData, setUserPostData] = useState('')
-    // console.log(userPostData)
-    // const token = useSelector(state => state.auth.token);
-    // const accountname = useSelector(state => state.auth.accountname);
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${accountname}/userpost`, {
             method: "GET",
@@ -99,7 +96,7 @@ function UserPost() {
         getData()
     }, [])
 
-    if (userPostData.post.length === 0) {
+    if (Array.isArray(userPostData.post) && userPostData.post.length === 0) {
         return <></>
     }
 
