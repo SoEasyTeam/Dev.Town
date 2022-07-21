@@ -53,6 +53,7 @@ function PostAreaList({ userPostData }) {
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
+                    console.log(item.image)
                     return (
                         <li key={item.id}>
                             <HomeImgPost

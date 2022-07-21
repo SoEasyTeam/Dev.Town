@@ -1,10 +1,10 @@
 function addProduct(itemName, price, link, token, itemImage) {
-    console.log('addProduct success action');
-    console.log(itemName);
+    // console.log('addProduct success action');
+    // console.log(itemName);
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/product';
-        console.log(itemImage);
+        // console.log(itemImage);
         try {
             let res = await fetch(url + reqPath, {
                 method: 'POST',
