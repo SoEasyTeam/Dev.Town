@@ -8,7 +8,9 @@ import {
     DefaultProfileImg,
     ImgUploadBtn,
 } from '../components/common/ProfileButtons';
+
 import { postAction } from '../redux/actions/postAction';
+import { uploadFilesAction } from '../redux/actions/uploadFilesAction';
 
 const UploadForm = styled.form`
     height: 100vh;
@@ -58,6 +60,7 @@ function UploadPage() {
     const dispatch = useDispatch();
 
     const token = useSelector((state) => state.auth.token);
+    const formData = useSelector((state)=>state.upload.formData)
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -67,6 +70,7 @@ function UploadPage() {
             console.log('submit succeed');
             history.push('/myprofile');
             dispatch(postAction.post(token, uploadedImg, postText));
+            dispatch(uploadFilesAction.files(token, formData));
         }
     };
 
@@ -74,7 +78,9 @@ function UploadPage() {
         setPostText(e.target.value);
     };
     useEffect(() => {
+        const formData = new FormData()
         for (let index = 0; index < uploadedImg.length; index++) {
+            formData.append('image',uploadedImg[index])
             const file = uploadedImg[index];
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -90,6 +96,7 @@ function UploadPage() {
             reader.readAsDataURL(file);
         }
     }, [uploadedImg]);
+
 
     return (
         <>

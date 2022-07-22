@@ -12,7 +12,7 @@ function post(token, uploadedImg, postText){
                 body:JSON.stringify({
                     "post": {
                         "content": postText,
-                        "image": uploadedImg //"imageurl1, imageurl2" 형식으로 
+                        "image": uploadedImg,
                     },
                 })
             })
