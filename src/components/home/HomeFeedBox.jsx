@@ -22,14 +22,14 @@ const HomePostItem = styled.li``
 
 const HomeFeedBox = () => {
     const posts = useSelector(state=>state.homefeed.item);
-    console.log(posts);
+    // console.log(posts);
     return (
         <>
             <HomeFollwerList>
                 {
                     posts.map((item, index) => {
                         const [year, month, day] = parseDate(item.createdAt);
-                        console.log(item.image);
+                        // console.log(item.image);
                         return (
                             <HomePostItem key = {index}>
                                 <HomeImgPost

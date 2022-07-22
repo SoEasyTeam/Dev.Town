@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ArrowLeftLink, TopNavRowBox } from '../components/common/TopNav'
 import styled from 'styled-components'
 import ImgBtn from '../assets/img-button.png'
@@ -7,7 +7,8 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductAction } from '../redux/actions/addProductAction'
-import { MsBtn } from '../components/common/Buttons'
+import { SaveBtn } from '../components/common/Buttons'
+import {WarningParagraph} from './LoginPage'
 
 const ProductForm = styled.form`
 `
@@ -67,33 +68,51 @@ const ProductNameLabel = styled(TextLabel)`
 function AddProductPage() {
     const [itemName, setItemName] = useState('');
     const [price, setPrice] = useState('');
+    const [isPrice, setIsPrice] = useState('');
     const [link, setLink] = useState('');
     const [itemImage, setItemImage] = useState('');
-
-    const onChangeProductImg = (event) => {
-        setItemImage(URL.createObjectURL(event.target.files[0]));
-    };
-
+    const [previewImage, setPreviewImage] = useState('');
+    const [isActive, setisActive] = useState(true);
     const history = useHistory();
     const dispatch = useDispatch();
     const token = useSelector(state => state.auth.token);
 
+    const saveActive = () => {
+        return itemName.length>1&&itemName.length<16&&isPrice.length>0&&link.length>0&&previewImage.length>0
+            ? setisActive(false)
+            : setisActive(true);
+    }
+
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
+        dispatch(addProductAction.addProduct(itemName, price, link, token, itemImage));
         history.push('/myprofile');
-
-        const formData = new FormData();
-        formData.append('file', )
-
-        dispatch(addProductAction.addProduct(itemName, price, link, token, itemImage))
     }
+
+    const onChangePrice = (event) => {
+        let onlyNumber = event.target.value.replace(/[^0-9]/g, '');
+        const commaNumber = onlyNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        setIsPrice(commaNumber);
+        setPrice(onlyNumber);
+    }
+
+    const onChangeProductImg = (event) => {
+        setPreviewImage(URL.createObjectURL(event.target.files[0]));
+        
+        let reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = (event) => {
+            let readerUrl = event.target.result;
+            setItemImage(readerUrl);
+        }
+    };
 
     return (
         <ProductForm onSubmit={onSubmitHandler}>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <MsBtn>저장</MsBtn>
+                <SaveBtn disabled={isActive}>저장</SaveBtn>
             </TopNavRowBox>
             <ProductBox>
                 <AddProductSpan>이미지 등록</AddProductSpan>
@@ -102,11 +121,12 @@ function AddProductPage() {
                 </AddProductLabel>
                 <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*' />
                 <ProductNameLabel>상품명</ProductNameLabel>
-                <ProductName value = {itemName} onChange={(event) => setItemName(event.target.value)} />
+                <ProductName value = {itemName} onChange={(event) => setItemName(event.target.value)} onKeyUp={saveActive} />
                 <TextLabel>가격</TextLabel>
-                <ProductPrice value = {price} onChange={(event) => setPrice(event.target.value)}/>
+                <ProductPrice value = {isPrice} onChange={onChangePrice} onKeyUp={saveActive} />
                 <TextLabel>판매링크</TextLabel>
-                <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} />
+                <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} onKeyUp={saveActive} />
+                <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
             </ProductBox>
         </ProductForm>
     )

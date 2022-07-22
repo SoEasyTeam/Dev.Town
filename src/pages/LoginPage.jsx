@@ -37,7 +37,7 @@ const JoinEmailLink = styled(Link)`
     line-height: 15px;
 `
 
-const WarningParagraph = styled.strong`
+export const WarningParagraph = styled.strong`
     display: none;
     font-family: 'Spoqa Han Sans Neo';
     font-size: 12px;

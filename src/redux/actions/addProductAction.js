@@ -1,6 +1,5 @@
 function addProduct(itemName, price, link, token, itemImage) {
-    // console.log('addProduct success action');
-    // console.log(itemName);
+    console.log('addProduct success action');
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/product';
@@ -21,19 +20,25 @@ function addProduct(itemName, price, link, token, itemImage) {
                     },
                 }),
             });
+
             const resJson = await res.json();
             console.log(resJson);
-            dispatch({
-                type: 'ADDPRODUCT_SUCCESS',
-                payload: {
-                    id: resJson.product.id,
-                    itemName: resJson.product.itemName,
-                    price: resJson.product.price,
-                    link: resJson.product.link,
-                    itemImage: resJson.product.itemImage,
-                    author: resJson.product.author,
-                },
-            });
+
+            if (resJson.message === 'request entity too large') {
+                alert('이미지 용량이 큽니다. 10MB 이하로 해주세요.');
+            } else {
+                dispatch({
+                    type: 'ADDPRODUCT_SUCCESS',
+                    payload: {
+                        id: resJson.product.id,
+                        itemName: resJson.product.itemName,
+                        price: resJson.product.price,
+                        link: resJson.product.link,
+                        itemImage: resJson.product.itemImage,
+                        author: resJson.product.author,
+                    },
+                });
+            }
         } catch (error) {}
     };
 }
