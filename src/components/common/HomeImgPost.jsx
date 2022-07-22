@@ -13,10 +13,7 @@ import {
 } from './HomePost';
 import { MyPostModal } from './Modal';
 
-
-function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day }) {
-    // console.log(heartCount, commentCount)
-
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, postId }) {
     // 모달창
     const [modalOn, setModalOn] = useState(false);
     function openModal() {
@@ -51,9 +48,9 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                                 alt='포스트이미지'
                             />
                     }
-                    <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
-                    <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
+                <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
+                <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
             </HomePostBox>
             {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} /> : ''}
         </>
