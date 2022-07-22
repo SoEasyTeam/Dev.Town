@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { MBtn } from '../components/common/Buttons';
-import { DefaultProfileImg } from '../components/common/ProfileButtons';
+import { MBtn } from '../../components/common/Buttons';
+import { DefaultProfileImg } from '../../components/common/ProfileButtons';
 import { useDispatch, useSelector } from 'react-redux';
-import { profileAction } from '../redux/actions/profileAction';
+import { profileAction } from '../../redux/actions/profileAction';
 
 const ProfileName = styled.h3`
     font-weight: 700;

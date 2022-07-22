@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Product from '../components/common/Product';
+import Product from '../common/Product';
 import { useSelector } from 'react-redux';
-import { MyProductModal } from './Modal';
+import { MyProductModal } from '../common/Modal';
 
 const ProductLink = styled(Link)`
 
@@ -46,19 +46,17 @@ const ProductArea = styled.article`
 
 const ProductAreaList = ({ userProductData, openModal }) => {
     // const link = isMine ? <Modal/> : item.link;
-
     return (
         <>
             {userProductData &&
                 userProductData.product.map((item) => {
-                    // console.log('아이템등록유저:', item.author);
                     return (
                         <div key={item.id} onClick={openModal}>
-                            {/* <div key={item.id} onClick={() => setModalOn(true)}> */}
                             <Product
                                 name={item.itemName}
                                 price={item.price}
                                 src={item.itemImage}
+                                id={item.author._id}
                             />
                         </div>
                     )
@@ -72,7 +70,8 @@ function UserProduct() {
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
     const [userProductData, setUserProductData] = useState('')
-    // 모달창
+
+    //모달창
     const [modalOn, setModalOn] = useState(false);
     function openModal() {
         setModalOn(true);
@@ -80,9 +79,6 @@ function UserProduct() {
     function closeModal() {
         setModalOn(false);
     }
-    // const onOpenModal = () => {
-    //     setModalOn(!modalOn);
-    // }
 
 
     const getData = async () => {
