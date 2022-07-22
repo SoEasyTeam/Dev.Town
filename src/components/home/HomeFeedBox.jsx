@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import HomeImgPost from '../common/HomeImgPost';
-import HomePost from '../common/HomePost';
 
 const HomeFollwerList  = styled.ul`
     margin: 20px auto;
