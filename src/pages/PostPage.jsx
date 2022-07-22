@@ -11,7 +11,6 @@ function PostPage(){
     console.log(id);
     const postId = postViewId.filter(i => i === id);
     console.log(postId);
-    // 전체 포스트에서 -> post와 같은 것을 뽑아내면 됩니다.
 
     return(
         <>
