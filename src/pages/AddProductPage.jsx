@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ArrowLeftLink, TopNavRowBox } from '../components/common/TopNav'
 import styled from 'styled-components'
 import ImgBtn from '../assets/img-button.png'
@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductAction } from '../redux/actions/addProductAction'
-import { MsBtn } from '../components/common/Buttons'
+import { SaveBtn } from '../components/common/Buttons'
 import {WarningParagraph} from './LoginPage'
 
 const ProductForm = styled.form`
@@ -68,6 +68,7 @@ const ProductNameLabel = styled(TextLabel)`
 function AddProductPage() {
     const [itemName, setItemName] = useState('');
     const [price, setPrice] = useState('');
+    const [isPrice, setIsPrice] = useState('');
     const [link, setLink] = useState('');
     const [itemImage, setItemImage] = useState('');
     const [previewImage, setPreviewImage] = useState('');
@@ -77,7 +78,7 @@ function AddProductPage() {
     const token = useSelector(state => state.auth.token);
 
     const saveActive = () => {
-        return itemName.length>1&&itemName.length<16&&price.length>0&&link.length>0
+        return itemName.length>1&&itemName.length<16&&isPrice.length>0&&link.length>0&&previewImage.length>0
             ? setisActive(false)
             : setisActive(true);
     }
@@ -92,12 +93,13 @@ function AddProductPage() {
     const onChangePrice = (event) => {
         let onlyNumber = event.target.value.replace(/[^0-9]/g, '');
         const commaNumber = onlyNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-        setPrice(commaNumber)
+        setIsPrice(commaNumber);
+        setPrice(onlyNumber);
     }
 
     const onChangeProductImg = (event) => {
         setPreviewImage(URL.createObjectURL(event.target.files[0]));
-
+        
         let reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
@@ -110,18 +112,18 @@ function AddProductPage() {
         <ProductForm onSubmit={onSubmitHandler}>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <MsBtn disabled={isActive}>저장</MsBtn>
+                <SaveBtn disabled={isActive}>저장</SaveBtn>
             </TopNavRowBox>
             <ProductBox>
                 <AddProductSpan>이미지 등록</AddProductSpan>
                 <AddProductLabel htmlFor='addProductImg'>
-                    <img className='addProduct-img' src={previewImage} alt="상품이미지" />
+                    <img className='addProduct-img' src={itemImage} alt="상품이미지" />
                 </AddProductLabel>
-                <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*'/>
+                <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*' />
                 <ProductNameLabel>상품명</ProductNameLabel>
                 <ProductName value = {itemName} onChange={(event) => setItemName(event.target.value)} onKeyUp={saveActive} />
                 <TextLabel>가격</TextLabel>
-                <ProductPrice value = {price} onChange={onChangePrice} onKeyUp={saveActive} />
+                <ProductPrice value = {isPrice} onChange={onChangePrice} onKeyUp={saveActive} />
                 <TextLabel>판매링크</TextLabel>
                 <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} onKeyUp={saveActive} />
                 <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>

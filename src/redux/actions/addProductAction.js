@@ -24,27 +24,21 @@ function addProduct(itemName, price, link, token, itemImage) {
             const resJson = await res.json();
             console.log(resJson);
 
-            // let resImage = await fetch('https://mandarin.api.weniv.co.kr/image/uploadfile', {
-            //     method: 'POST',
-            //     body : JSON.stringify({
-            //         key: previewImage,
-            //         value:
-            //     }),
-            // });
-
-            // const data = await response.json();
-
-            dispatch({
-                type: 'ADDPRODUCT_SUCCESS',
-                payload: {
-                    id: resJson.product.id,
-                    itemName: resJson.product.itemName,
-                    price: resJson.product.price,
-                    link: resJson.product.link,
-                    itemImage: resJson.product.itemImage,
-                    author: resJson.product.author,
-                },
-            });
+            if (resJson.message === 'request entity too large') {
+                alert('이미지 용량이 큽니다. 10MB 이하로 해주세요.');
+            } else {
+                dispatch({
+                    type: 'ADDPRODUCT_SUCCESS',
+                    payload: {
+                        id: resJson.product.id,
+                        itemName: resJson.product.itemName,
+                        price: resJson.product.price,
+                        link: resJson.product.link,
+                        itemImage: resJson.product.itemImage,
+                        author: resJson.product.author,
+                    },
+                });
+            }
         } catch (error) {}
     };
 }
