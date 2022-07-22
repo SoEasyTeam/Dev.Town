@@ -17,7 +17,7 @@ const parseDate = (dateString) => {
     return [year, month, day]
 }
 
-const HomePostItem = styled(Link)`
+const HomePostItem = styled.div`
     margin-bottom: 20px;
 `
 
