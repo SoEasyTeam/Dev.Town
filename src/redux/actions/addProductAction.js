@@ -1,6 +1,5 @@
 function addProduct(itemName, price, link, token, itemImage) {
-    // console.log('addProduct success action');
-    // console.log(itemName);
+    console.log('addProduct success action');
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/product';
@@ -21,8 +20,20 @@ function addProduct(itemName, price, link, token, itemImage) {
                     },
                 }),
             });
+
             const resJson = await res.json();
             console.log(resJson);
+
+            // let resImage = await fetch('https://mandarin.api.weniv.co.kr/image/uploadfile', {
+            //     method: 'POST',
+            //     body : JSON.stringify({
+            //         key: previewImage,
+            //         value:
+            //     }),
+            // });
+
+            // const data = await response.json();
+
             dispatch({
                 type: 'ADDPRODUCT_SUCCESS',
                 payload: {

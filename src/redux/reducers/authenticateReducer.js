@@ -15,7 +15,7 @@ function authenticateReducer(state = initialState, action) {
             console.log('login success reducer');
             return {
                 ...state,
-                id: payload._id,
+                id: payload.id,
                 username: payload.username,
                 email: payload.email,
                 accountname: payload.accountname,

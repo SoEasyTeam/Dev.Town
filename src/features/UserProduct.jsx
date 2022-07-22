@@ -46,7 +46,6 @@ const ProductArea = styled.article`
 
 const ProductAreaList = ({ userProductData, openModal }) => {
     // const link = isMine ? <Modal/> : item.link;
-
     return (
         <>
             {userProductData &&

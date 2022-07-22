@@ -70,13 +70,8 @@ function AddProductPage() {
     const [price, setPrice] = useState('');
     const [link, setLink] = useState('');
     const [itemImage, setItemImage] = useState('');
-    const [visible, setVisible] = useState(false);
+    const [previewImage, setPreviewImage] = useState('');
     const [isActive, setisActive] = useState(true);
-
-    const onChangeProductImg = (event) => {
-        setItemImage(URL.createObjectURL(event.target.files[0]));
-    };
-
     const history = useHistory();
     const dispatch = useDispatch();
     const token = useSelector(state => state.auth.token);
@@ -90,14 +85,26 @@ function AddProductPage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
-        history.push('/myprofile');
         dispatch(addProductAction.addProduct(itemName, price, link, token, itemImage));
+        history.push('/myprofile');
     }
 
     const onChangePrice = (event) => {
-        const onlyNumber = event.target.value.replace(/[^0-9]/g, '');
-        setPrice(onlyNumber)
+        let onlyNumber = event.target.value.replace(/[^0-9]/g, '');
+        const commaNumber = onlyNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        setPrice(commaNumber)
     }
+
+    const onChangeProductImg = (event) => {
+        setPreviewImage(URL.createObjectURL(event.target.files[0]));
+
+        let reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = (event) => {
+            let readerUrl = event.target.result;
+            setItemImage(readerUrl);
+        }
+    };
 
     return (
         <ProductForm onSubmit={onSubmitHandler}>
@@ -108,7 +115,7 @@ function AddProductPage() {
             <ProductBox>
                 <AddProductSpan>이미지 등록</AddProductSpan>
                 <AddProductLabel htmlFor='addProductImg'>
-                    <img className='addProduct-img' src={itemImage} alt="상품이미지" />
+                    <img className='addProduct-img' src={previewImage} alt="상품이미지" />
                 </AddProductLabel>
                 <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*'/>
                 <ProductNameLabel>상품명</ProductNameLabel>
