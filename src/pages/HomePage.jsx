@@ -16,7 +16,7 @@ function HomePage() {
     useEffect(() => {
         dispatch(homeFeedAction.homeFeed(token, accountname));
     },[])
-    
+
     return (
         <>
             <TopMainNav />
