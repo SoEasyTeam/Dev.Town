@@ -5,8 +5,9 @@ import ArrowImg from '../../assets/icon/icon-arrow-left.png';
 import MoreImg from '../../assets/icon/icon-more-vertical.png';
 import SearchImg from '../../assets/icon/icon-search.png';
 import { MsBtn } from './Buttons';
+import { useHistory } from 'react-router-dom';
 
-const TopNavRowBox = styled.div`
+export const TopNavRowBox = styled.div`
     width: 100vw;
     position: sticky;
     z-index: 10;
@@ -34,7 +35,7 @@ const TopNavRowBox = styled.div`
     }
 `;
 
-const TopNavRowBoxLeft = styled.div`
+export const TopNavRowBoxLeft = styled.div`
     width: 100vw;
     position: sticky;
     z-index: 10;
@@ -57,7 +58,7 @@ const TopNavRowBoxLeft = styled.div`
     }
 `
 
-const TopNavLinkS = styled(Link)`
+export const TopNavLinkS = styled(Link)`
     padding: 5px 0;
     img {
         width: 22px;
@@ -67,7 +68,7 @@ const TopNavLinkS = styled(Link)`
     }
 `;
 
-const TopNavLink = styled(Link)`
+export const TopNavLink = styled(Link)`
     padding: 4px 0;
     img {
         width: 24px;
@@ -77,7 +78,7 @@ const TopNavLink = styled(Link)`
     }
 `;
 
-const SearchInput = styled.input.attrs({
+export const SearchInput = styled.input.attrs({
     type: 'text',
     id: 'search',
     placeholder: '계정 검색',
@@ -96,10 +97,12 @@ const SearchInput = styled.input.attrs({
     margin-left: 4px;
 `;
 
+
 function ArrowLeftLink() {
+    let history = useHistory();
     return (
         <>
-            <TopNavLinkS to='#'>
+            <TopNavLinkS onClick={() => { history.goBack(); }}>
                 <img src={ArrowImg} alt='뒤로가기링크' />
             </TopNavLinkS>
         </>
@@ -158,8 +161,8 @@ function TopUploadNav() {
     return (
         <>
             <TopNavRowBox>
-                <ArrowLeftLink />
-                <MsBtn>저장</MsBtn>
+                <ArrowLeftLink to='' />
+                <MsBtn type='submit'>저장</MsBtn>
             </TopNavRowBox>
         </>
     );
@@ -179,5 +182,5 @@ function TopChatNav() {
     );
 }
 
-export { TopFollowNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav };
+export { TopFollowNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav, ArrowLeftLink };
 

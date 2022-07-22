@@ -27,6 +27,7 @@ export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
 `;
 
 export const HomePostBox = styled.div`
+    display: block;
     width: 358px;
     margin: 0 auto;
     padding-bottom: 4px;
@@ -108,12 +109,12 @@ export const LikePostBox = styled.div`
     }
 `;
 
-export const LikePostRowBox = () => {
+export const LikePostRowBox = ({ heartCount, commentCount }) => {
     return (
         <LikePostBox>
             <button className='like-btn'>
                 <img className='heart-img' src={IconHeartImg} alt='하트버튼' />
-                <span className='likecount-span'>58</span>
+                <span className='likecount-span'>{heartCount}</span>
             </button>
             <Link to='#' className='comment-link'>
                 <img
@@ -121,34 +122,32 @@ export const LikePostRowBox = () => {
                     src={IconCommentImg}
                     alt='댓글링크'
                 />
-                <span className='comment-span'>12</span>
+                <span className='comment-span'>{commentCount}</span>
             </Link>
         </LikePostBox>
     );
 };
 
-const HomePost = () => {
+const HomePost = ({ profileimg, nickname, id, postparagraph, year, month, day }) => {
     return (
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <HomePostProfileLogoImg src={EllipseImg} alt='프로필로고' />
+                    <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
                     <NameIdBox>
                         <HomePostProfileNickName>
-                            애월읍 위니브 감귤농장
+                            {nickname}
                         </HomePostProfileNickName>
-                        <IdP>@ weniv_Mandarin</IdP>
+                        <IdP>@ {id}</IdP>
                     </NameIdBox>
                     <SettingBtn />
                 </HomePostProfileBox>
                 <HomePostSmallBox>
                     <HomePostParagraph>
-                        옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의
-                        위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와
-                        약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.
+                        {postparagraph}
                     </HomePostParagraph>
                     <LikePostRowBox />
-                    <DateParagraph>2020년 10월 21일</DateParagraph>
+                    <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
             </HomePostBox>
         </>

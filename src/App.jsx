@@ -4,7 +4,10 @@ import HomePage from './pages/HomePage';
 import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
 import SplashPage from './pages/SplashPage';
-import ProfileSetting from './pages/ProfileSettingPage';
+import MyProfilePage from './pages/MyProfile';
+import AddProductPage from './pages/AddProductPage';
+import ProfileSettingPage from './pages/ProfileSettingPage';
+import ProfileModificationPage from './pages/ProfileModificationPage';
 
 function App() {
     let [authenticate, setAuthenticate] = useState(false);
@@ -12,7 +15,6 @@ function App() {
     useEffect(() => {
         console.log(authenticate);
     }, [authenticate]);
-
     return (
         <Switch>
             <Route exact path='/' component={() => <SplashPage />} />
@@ -26,11 +28,14 @@ function App() {
                     />
                 )}
             />
+            <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
             <Route path='/home' component={() => <HomePage />} />
             <Route
-                path='/profilesetting'
-                component={() => <ProfileSetting />}
+                path='/myprofile'
+                component={() => <MyProfilePage />}
             />
+            <Route path='/product' component={() => <AddProductPage />} />
+            <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
         </Switch>
     );
 }
