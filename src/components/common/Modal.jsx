@@ -54,7 +54,7 @@ const ModalContainer = styled.section`
 function MyProductModal({ closeModal }) {
     return (
         <>
-            <ModalOutside>
+            <ModalOutside onClick={closeModal}>
                 <ModalContainer>
                     <button className='deleteModalBtn' onClick={closeModal}></button>
                     <button as={Link} to='/'>삭제</button>

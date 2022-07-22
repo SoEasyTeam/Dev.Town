@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { TopBasicNav } from '../components/common/TopNav';
 import TabMenu from '../components/common/TabMenu';
-import UserProfile from '../features/UserProfile';
-import UserProduct from '../features/UserProduct';
-import UserPost from '../features/UserPost';
+import UserProfile from '../components/profile/UserProfile'
+import UserProduct from '../components/profile/UserProduct';
+import UserPost from '../components/profile/UserPost';
 
 const ProfileSection = styled.section`
     display: flex;

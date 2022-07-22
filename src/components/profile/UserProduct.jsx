@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Product from '../components/common/Product';
+import Product from '../common/Product';
 import { useSelector } from 'react-redux';
-import { MyProductModal } from './Modal';
+import { MyProductModal } from '../common/Modal';
 
 const ProductLink = styled(Link)`
 

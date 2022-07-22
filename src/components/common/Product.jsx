@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { MyProductModal } from '../../features/Modal';
+import { MyProductModal } from '../common/Modal';
 
 const ProductItemBox = styled.div`
     width: 140px;

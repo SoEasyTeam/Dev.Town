@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import HomeImgPost from '../components/common/HomeImgPost';
-import IconPostListOn from '../assets/icon/icon-post-list-on.png';
-import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png';
+import HomeImgPost from '../common/HomeImgPost';
+import IconPostListOn from '../../assets/icon/icon-post-list-on.png';
+import IconPostAlbumOff from '../../assets/icon/icon-post-album-off.png';
 import { useSelector } from 'react-redux';
 
 
