@@ -116,7 +116,7 @@ export const LikePostRowBox = ({ heartCount, commentCount }) => {
                 <img className='heart-img' src={IconHeartImg} alt='하트버튼' />
                 <span className='likecount-span'>{heartCount}</span>
             </button>
-            <Link to='#' className='comment-link'>
+            <Link to='/post' className='comment-link'>
                 <img
                     className='comment-img'
                     src={IconCommentImg}
