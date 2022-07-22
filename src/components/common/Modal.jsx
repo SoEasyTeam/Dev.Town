@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const ModalOutside = styled.div`
     position: fixed;
@@ -25,7 +27,6 @@ const ModalContainer = styled.section`
     background: #FFF;
     border-radius: 10px 10px 0 0;
     padding: 16px 16px 28px 16px;
-    animation: bottom-modal 0.3s;
 
     button {
         display: flex;
@@ -56,7 +57,7 @@ function MyProductModal({ closeModal }) {
             <ModalOutside onClick={closeModal}>
                 <ModalContainer>
                     <button className='deleteModalBtn' onClick={closeModal}></button>
-                    <button>삭제</button>
+                    <button as={Link} to='/'>삭제</button>
                     <button>수정</button>
                     <button>웹사이트에서 상품보기</button>
                 </ModalContainer>

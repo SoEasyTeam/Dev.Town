@@ -11,11 +11,11 @@ import {
     HomePostProfileLogoImg,
     HomePostProfileNickName,
 } from './HomePost';
-import { MyPostModal } from '../../features/Modal';
+import { MyPostModal } from './Modal';
 
 
-function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, openModal }) {
-    // console.log(postsrc);
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day }) {
+    console.log(postsrc);
     // console.log(heartCount, commentCount)
 
     // 모달창
@@ -45,12 +45,12 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                         {postparagraph}
                     </HomePostParagraph>
                     {
-                        postsrc === '' || typeof(postsrc) === 'undefined' ? null :
-                        <img
-                            className='post-img'
-                            src={postsrc}
-                            alt='포스트이미지'
-                        />
+                        postsrc === '' || typeof (postsrc) === 'undefined' ? null :
+                            <img
+                                className='post-img'
+                                src={postsrc}
+                                alt='포스트이미지'
+                            />
                     }
                     <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
                     <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>

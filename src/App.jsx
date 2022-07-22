@@ -7,6 +7,7 @@ import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
 import AddProductPage from './pages/AddProductPage';
 import ProfileSettingPage from './pages/ProfileSettingPage';
+import ProfileModificationPage from './pages/ProfileModificationPage';
 
 function App() {
     let [authenticate, setAuthenticate] = useState(false);
@@ -34,6 +35,7 @@ function App() {
                 component={() => <MyProfilePage />}
             />
             <Route path='/product' component={() => <AddProductPage />} />
+            <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
         </Switch>
     );
 }
