@@ -65,12 +65,14 @@ export const DateParagraph = styled.p`
     letter-spacing: 0em;
     text-align: left;
     margin-top: 16px;
+    margin-left: 54px;
     color: #767676;
 `;
 
 export const LikePostBox = styled.div`
     display: flex;
     gap: 22px;
+    margin-left: 54px;
     .like-btn {
         position: relative;
     }
