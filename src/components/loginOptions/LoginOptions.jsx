@@ -14,27 +14,26 @@ const LogInColBox = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-size: 1.01rem;
     background-color: var(--main-color);
     ${({ isActive }) => {
         return isActive === true
-        ? null
-        : `visibility: hidden`
+            ? null
+            : `visibility: hidden`
     }};
     ${({ isActive }) => {
         return isActive === true
-        ? `z-index: 1`
-        : null
+            ? `z-index: 1`
+            : null
     }};
     ${({ isActive }) => {
         return isActive === true
-        ? `opacity: 1`
-        : `opacity: 0`
+            ? `opacity: 1`
+            : `opacity: 0`
     }};
     ${({ isActive }) => {
         return isActive === true
-        ? `animation: 1.5s ease-in forwards`
-        : null
+            ? `animation: 1.5s ease-in forwards`
+            : null
     }};
     .img-logo-white {
         width: 202px;
@@ -47,14 +46,20 @@ const LogInColBox = styled.div`
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
         width: 100%;
         height: 45%;
         bottom: 0;
         padding: 35px;
         background-color: var(--bg-color);
         border-radius: 20px 20px 0 0;
+        gap: 20px;
+
         .options-login-row {
-            position: absolute;
+            /* position: absolute; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -64,55 +69,27 @@ const LogInColBox = styled.div`
             font-size: 1.01rem;
             border: 1px solid #F2C94C;
             border-radius: 44px;
-            &:nth-child(1) {
-                transform: translatey(calc(100%));
-                &::before {
-                    position: absolute;
-                    left: 1rem;
-                    content: '';
-                    width: 24px;
-                    height: 24px;
-                    background-image: url(${iconKakao});
-                    background-repeat: none;
-                    background-position: center;
-                }
+            &:hover{
+                font-weight: bold;
             }
+            &:nth-child(1) {
+                background: url(${iconKakao}) no-repeat left 16px center;
+            };
             &:nth-child(2) {
-                transform: translatey(calc(100% * 2.5));
                 border: 1px solid #767676;
-                &::before {
-                    position: absolute;
-                    left: 1rem;
-                    content: '';
-                    width: 24px;
-                    height: 24px;
-                    background-image: url(${iconGoogle});
-                    background-repeat: none;
-                    background-position: center;
-                }
+                background: url(${iconGoogle}) no-repeat left 16px center;
             }
             &:nth-child(3) {
-                transform: translatey(calc(100% * 4));
                 border: 1px solid #2D9CDB;
-                &::before {
-                    position: absolute;
-                    left: 1rem;
-                    content: '';
-                    width: 24px;
-                    height: 24px;
-                    background-image: url(${iconFacebook});
-                    background-repeat: none;
-                    background-position: center;
-                }
+                background: url(${iconFacebook}) no-repeat left 16px center;
             }
         }
         .signup-box-row {
-            position: absolute;
-            bottom: 15%;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 2rem;
+            margin-top: 10px;
             .email-link {
                 &::after {
                     content: '';
@@ -125,12 +102,20 @@ const LogInColBox = styled.div`
                     transform: translatex(1rem);
                     cursor: none;
                 }
+                &:hover{
+                    font-weight: bold;
+                }
+            }
+            .join-link{
+                &:hover{
+                    font-weight: bold;
+                }
             }
         }
     }
 `
 
-export default function LoginOptions({isActive}) {
+export default function LoginOptions({ isActive }) {
     return (
         <LogInColBox isActive={isActive} >
             <img className='img-logo-white' src={logoImgWhite} alt='데브타운 로그인' />
@@ -143,12 +128,12 @@ export default function LoginOptions({isActive}) {
                 </button>
                 <button className='options-login-row' type='button'>
                     페이스북 계정으로 로그인
-                </button>  
+                </button>
                 <div className='signup-box-row'>
                     <Link to={'/login'} className='email-link'>이메일로 로그인</Link>
-                    <Link to={'/join'} >회원가입</Link>
+                    <Link to={'/join'} className='join-link'>회원가입</Link>
                 </div>
             </div>
-        </LogInColBox> 
+        </LogInColBox>
     )
 }
