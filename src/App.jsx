@@ -8,6 +8,7 @@ import MyProfilePage from './pages/MyProfile';
 import AddProductPage from './pages/AddProductPage';
 import ProfileSettingPage from './pages/ProfileSettingPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
+import PostPage from './pages/PostPage';
 
 function App() {
     let [authenticate, setAuthenticate] = useState(false);
@@ -36,6 +37,7 @@ function App() {
             />
             <Route path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
+            <Route path='/post/:id' component={() => <PostPage/>} />
         </Switch>
     );
 }
