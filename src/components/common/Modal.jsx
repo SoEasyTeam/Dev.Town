@@ -89,4 +89,17 @@ function YourPostModal({ closeModal }) {
     );
 }
 
-export { MyProductModal, MyPostModal, YourPostModal };
+function ProfileModal({ closeModal }) {
+    return (
+        <>
+            <ModalOutside onClick={closeModal} />
+            <ModalContainer>
+                <button className='deleteModalBtn' onClick={closeModal}></button>
+                <ButtonLink>설정 및 개인정보</ButtonLink>
+                <ButtonLink>로그아웃</ButtonLink>
+            </ModalContainer>
+        </>
+    );
+}
+
+export { MyProductModal, MyPostModal, YourPostModal, ProfileModal };

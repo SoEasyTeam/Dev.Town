@@ -9,6 +9,7 @@ import AddProductPage from './pages/AddProductPage';
 import ProfileSettingPage from './pages/ProfileSettingPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
 import PostPage from './pages/PostPage';
+import SearchPage from './pages/SearchPage';
 
 function App() {
     let [authenticate, setAuthenticate] = useState(false);
@@ -31,13 +32,14 @@ function App() {
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
             <Route path='/home' component={() => <HomePage />} />
+            <Route path='/search' component={() => <SearchPage />} />
             <Route
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
             <Route path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
-            <Route path='/post/:id' component={() => <PostPage/>} />
+            <Route path='/post/:id' component={() => <PostPage />} />
         </Switch>
     );
 }
