@@ -50,15 +50,14 @@ export const WarningParagraph = styled.strong`
     }}
 `
 
-function LoginPage({ setAuthenticate, authenticate }) {
+function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
-    const [warning, setWarning] = useState(false);
     const dispatch = useDispatch();   
     const history = useHistory();
     let authLogin = useSelector(state => state.auth.authenticate);
-
+    const token = useSelector(state=>state.auth.token);
     //이메일 주소 유효성 검사
     const checkEmail =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -79,8 +78,9 @@ function LoginPage({ setAuthenticate, authenticate }) {
     useEffect(() => {
         if(authLogin === true) {
             history.push('/home');
+            localStorage.setItem('key', token);
         }
-    },[authLogin, history])
+    },[authLogin, history, token])
 
     return (
         <LoginMain>
