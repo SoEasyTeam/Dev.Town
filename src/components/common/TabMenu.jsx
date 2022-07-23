@@ -52,24 +52,24 @@ const TabMenuLink = styled(Link)`
         margin-bottom: 4px;
     }
     &.home-link::before{
-        ${({isActive}) => {
-            return isActive === 1 ? `background-image: url(${LinkHomeClickImg});` : `background-image: url(${LinkHomeImg});`
-        }}
+        ${({ isActive }) => {
+        return isActive === 1 ? `background-image: url(${LinkHomeClickImg});` : `background-image: url(${LinkHomeImg});`
+    }}
     }
     &.chat-link::before{
-        ${({isActive}) => {
-            return isActive === 2 ? `background-image: url(${LinkChatClickImg});` : `background-image: url(${LinkChatImg});`
-        }}
+        ${({ isActive }) => {
+        return isActive === 2 ? `background-image: url(${LinkChatClickImg});` : `background-image: url(${LinkChatImg});`
+    }}
     }
     &.post-link::before{
-        ${({isActive}) => {
-            return isActive === 3 ? `background-image: url(${LinkIconEditClickImg});` : `background-image: url(${LinkIconEditImg});`
-        }}
+        ${({ isActive }) => {
+        return isActive === 3 ? `background-image: url(${LinkIconEditClickImg});` : `background-image: url(${LinkIconEditImg});`
+    }}
     }
     &.myprofile-link::before {
-        ${({isActive}) => {
-            return isActive === 4 ? `background-image: url(${LinkProfileClickImg});` : `background-image: url(${LinkIconProfileImg});`
-        }}
+        ${({ isActive }) => {
+        return isActive === 4 ? `background-image: url(${LinkProfileClickImg});` : `background-image: url(${LinkIconProfileImg});`
+    }}
     }
 
     span {
@@ -80,10 +80,10 @@ const TabMenuLink = styled(Link)`
 const TabMenu = () => {
     const [isactive, setIsActive] = useState(1);
 
-    useEffect(()=> {
+    useEffect(() => {
         console.log(isactive)
-    },[isactive])
-    
+    }, [isactive])
+
     return (
         <>
             <TabMenuRowList>
@@ -102,7 +102,7 @@ const TabMenu = () => {
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='post-link' to='#' isactive={isactive} onClick={() => {
+                    <TabMenuLink className='post-link' to='/post/:id' isactive={isactive} onClick={() => {
                         setIsActive(3);
                     }}>
                         <span>게시물 작성</span>
@@ -116,7 +116,7 @@ const TabMenu = () => {
                     </TabMenuLink>
                 </TabMenuItem>
             </TabMenuRowList>
-            <BlankBox/>
+            <BlankBox />
         </>
     );
 };

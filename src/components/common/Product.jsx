@@ -49,6 +49,8 @@ const Product = ({ name, price, src, itemLink, writerId }) => {
     function openModal() {
         console.log('상품등록유저', writerId);
         console.log('유저:', userId);
+        console.log('링크', itemLink);
+
         if (userId !== writerId) {
             setModalOn(false);
             console.log('상품링크로 이동')
@@ -73,7 +75,7 @@ const Product = ({ name, price, src, itemLink, writerId }) => {
                 <p className='txt-productName'>{name}</p>
                 <span className='txt-productPrice'>{priceShow}원</span>
             </ProductItemBox>
-            {modalOn === true ? <MyProductModal openModal={openModal} closeModal={closeModal} /> : ''}
+            {modalOn === true ? <MyProductModal closeModal={closeModal} itemLink={itemLink} /> : ''}
         </>
     );
 };
