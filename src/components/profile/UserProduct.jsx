@@ -1,13 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import Product from '../common/Product';
 import { useSelector } from 'react-redux';
-import { MyProductModal } from '../common/Modal';
-
-const ProductLink = styled(Link)`
-
-`
 
 const ProductAreaListUl = styled.ul`
     list-style: none;
@@ -44,19 +38,19 @@ const ProductArea = styled.article`
     }
 `
 
-const ProductAreaList = ({ userProductData, openModal }) => {
-    // const link = isMine ? <Modal/> : item.link;
+const ProductAreaList = ({ userProductData }) => {
     return (
         <>
             {userProductData &&
                 userProductData.product.map((item) => {
                     return (
-                        <div key={item.id} onClick={openModal}>
+                        <div key={item.id} >
                             <Product
                                 name={item.itemName}
                                 price={item.price}
                                 src={item.itemImage}
-                                id={item.author._id}
+                                itemLink={item.link}
+                                writerId={item.author._id}
                             />
                         </div>
                     )
@@ -70,16 +64,6 @@ function UserProduct() {
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
     const [userProductData, setUserProductData] = useState('')
-
-    //모달창
-    const [modalOn, setModalOn] = useState(false);
-    function openModal() {
-        setModalOn(true);
-    }
-    function closeModal() {
-        setModalOn(false);
-    }
-
 
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/product/${accountname}`, {
@@ -108,11 +92,10 @@ function UserProduct() {
                 <div className='productAreaDiv'>
                     <h3 className='productAreaTitle'>판매 중인 상품</h3>
                     <ProductAreaListUl>
-                        <ProductAreaList openModal={openModal} closeModal={closeModal} userProductData={userProductData} />
+                        <ProductAreaList userProductData={userProductData} />
                     </ProductAreaListUl>
                 </div>
             </ProductArea>
-            {modalOn === true ? <MyProductModal openModal={openModal} closeModal={closeModal} /> : ''}
         </>
     )
 

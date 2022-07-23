@@ -39,7 +39,7 @@ function addProduct(itemName, price, link, token, itemImage) {
                     },
                 });
             }
-        } catch (error) {}
+        } catch (error) { }
     };
 }
 

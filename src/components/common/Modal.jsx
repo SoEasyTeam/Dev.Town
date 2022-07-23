@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const ModalOutside = styled.div`
     position: fixed;
@@ -51,17 +50,16 @@ const ModalContainer = styled.section`
 `
 
 
-function MyProductModal({ closeModal }) {
+function MyProductModal({ closeModal, itemLink }) {
     return (
         <>
-            <ModalOutside onClick={closeModal}>
-                <ModalContainer>
-                    <button className='deleteModalBtn' onClick={closeModal}></button>
-                    <button as={Link} to='/'>삭제</button>
-                    <button>수정</button>
-                    <button>웹사이트에서 상품보기</button>
-                </ModalContainer>
-            </ModalOutside>
+            <ModalOutside onClick={closeModal} />
+            <ModalContainer>
+                <button className='deleteModalBtn' onClick={closeModal}></button>
+                <button as={Link} to='/home'>삭제</button>
+                <button>수정</button>
+                <button><Link to={itemLink}>웹사이트에서 상품보기</Link></button>
+            </ModalContainer>
         </>
     );
 }
@@ -69,13 +67,12 @@ function MyProductModal({ closeModal }) {
 function MyPostModal({ closeModal }) {
     return (
         <>
-            <ModalOutside onClick={closeModal}>
-                <ModalContainer>
-                    <button className='deleteModalBtn' onClick={closeModal}></button>
-                    <button>삭제</button>
-                    <button>수정</button>
-                </ModalContainer>
-            </ModalOutside>
+            <ModalOutside onClick={closeModal} />
+            <ModalContainer>
+                <button className='deleteModalBtn' onClick={closeModal}></button>
+                <button>삭제</button>
+                <button>수정</button>
+            </ModalContainer>
         </>
     );
 }
@@ -83,12 +80,11 @@ function MyPostModal({ closeModal }) {
 function YourPostModal({ closeModal }) {
     return (
         <>
-            <ModalOutside onClick={closeModal}>
-                <ModalContainer>
-                    <button className='deleteModalBtn' onClick={closeModal}></button>
-                    <button>신고</button>
-                </ModalContainer>
-            </ModalOutside>
+            <ModalOutside onClick={closeModal} />
+            <ModalContainer>
+                <button className='deleteModalBtn' onClick={closeModal}></button>
+                <button>신고</button>
+            </ModalContainer>
         </>
     );
 }
