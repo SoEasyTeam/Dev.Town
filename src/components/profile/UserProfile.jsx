@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MBtn } from '../../components/common/Buttons';
-import { DefaultProfileImg } from '../../components/common/ProfileButtons';
 import { useDispatch, useSelector } from 'react-redux';
 import { profileAction } from '../../redux/actions/profileAction';
 import IconMesssageImg from '../../assets/icon/icon-message-circle.png';
@@ -119,6 +118,7 @@ function UserProfile() {
     const username = useSelector(state => state.profile.username);
     const intro = useSelector(state => state.profile.intro);
     const Youraccountname = useSelector(state => state.profile.accountname);
+    const profileImg = useSelector(state => state.profile.image);
     // console.log(followerCount);
     // console.log(followingCount);
 
@@ -156,7 +156,7 @@ function UserProfile() {
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
-                        <DefaultProfileImg />
+                        <img src={profileImg} alt='프로필이미지' />
                     </div>
                     <div className='followings'>
                         <FollowLink to='#'>{followingCount}</FollowLink>
