@@ -44,6 +44,7 @@ const ProductItemBox = styled.div`
 const Product = ({ name, price, src, itemLink, writerId }) => {
     const userId = useSelector(state => state.auth.id);
     const [modalOn, setModalOn] = useState(false);
+    const priceShow = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
     function openModal() {
         console.log('상품등록유저', writerId);
@@ -70,7 +71,7 @@ const Product = ({ name, price, src, itemLink, writerId }) => {
                     alt='상품이미지'
                 />
                 <p className='txt-productName'>{name}</p>
-                <span className='txt-productPrice'>{price}원</span>
+                <span className='txt-productPrice'>{priceShow}원</span>
             </ProductItemBox>
             {modalOn === true ? <MyProductModal openModal={openModal} closeModal={closeModal} /> : ''}
         </>
