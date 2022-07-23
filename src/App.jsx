@@ -12,11 +12,8 @@ import PostPage from './pages/PostPage';
 import SearchPage from './pages/SearchPage';
 
 function App() {
-    let [authenticate, setAuthenticate] = useState(false);
+    let localToken = localStorage.getItem('key');
 
-    useEffect(() => {
-        console.log(authenticate);
-    }, [authenticate]);
     return (
         <Switch>
             <Route exact path='/' component={() => <SplashPage />} />
@@ -25,14 +22,13 @@ function App() {
                 path='/login'
                 component={() => (
                     <LoginPage
-                        setAuthenticate={setAuthenticate}
-                        authenticate={authenticate}
                     />
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
             <Route path='/home' component={() => <HomePage />} />
             <Route path='/search' component={() => <SearchPage />} />
+
             <Route
                 path='/myprofile'
                 component={() => <MyProfilePage />}
