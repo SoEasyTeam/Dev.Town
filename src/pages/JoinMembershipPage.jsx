@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { LBtn } from '../components/common/Buttons';
 import { EmailInput, PassWordInput, TextLabel } from '../components/common/TextAciveInput'
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { joinAction } from '../redux/actions/joinAction';
+import { useEffect } from 'react';
 
 const LoginMain = styled.section`
     width: 100vw;
@@ -41,8 +42,9 @@ function JoinMembershipPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
-    const history = useHistory();
     const dispatch = useDispatch();
+    const history = useHistory();
+    const message = useSelector(state=> state.join.message);
 
     //이메일 주소 유효성 검사
     const checkEmail =
@@ -58,9 +60,14 @@ function JoinMembershipPage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('버튼 클릭')
-        history.push('/profilesetting');
         dispatch(joinAction.join(email,password));
     }
+
+    useEffect(() => {
+        if(message === '사용 가능한 이메일 입니다.'){
+            history.push('/profilesetting')
+        }
+    }, [history,message])
 
     return (
         <LoginMain>
