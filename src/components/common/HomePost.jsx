@@ -86,7 +86,6 @@ export const LikePostBox = styled.div`
         font-family: 'Spoqa Han Sans Neo';
         font-size: 12px;
         font-weight: 400;
-        line-height: 12px;
         text-align: left;
         color: #767676;
         top: 3px;
@@ -104,7 +103,6 @@ export const LikePostBox = styled.div`
         font-family: 'Spoqa Han Sans Neo';
         font-size: 12px;
         font-weight: 400;
-        line-height: 12px;
         text-align: left;
         color: #767676;
         top: 3px;
