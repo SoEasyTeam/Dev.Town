@@ -79,8 +79,6 @@ function LoginPage({ setAuthenticate, authenticate }) {
     useEffect(() => {
         if(authLogin === true) {
             history.push('/home');
-        }else{
-            
         }
     },[authLogin, history])
 
@@ -94,7 +92,6 @@ function LoginPage({ setAuthenticate, authenticate }) {
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput value={password} onChange = {(event) => setPassword(event.target.value)} onKeyUp={loginActive}/>
                 <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
-                <WarningParagraph visible={warning}>*이메일 또는 비밀번호가 일치하지 않습니다.</WarningParagraph>
                 <div className='loginBtnWrap'>
                     <LoginBtn disabled={isActive} >로그인</LoginBtn>
                     <JoinEmailLink to='/join'>이메일로 회원가입</JoinEmailLink>

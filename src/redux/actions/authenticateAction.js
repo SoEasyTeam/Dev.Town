@@ -22,7 +22,7 @@ function login(email, password) {
             if (
                 resJson.message === '이메일 또는 비밀번호가 일치하지 않습니다.'
             ) {
-                console.log('action dispatch 중지');
+                alert('*이메일 또는 비밀번호가 일치하지 않습니다.');
             } else {
                 dispatch({
                     type: 'LOGIN_SUCCESS',
