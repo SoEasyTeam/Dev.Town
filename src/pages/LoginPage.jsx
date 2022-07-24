@@ -50,15 +50,14 @@ export const WarningParagraph = styled.strong`
     }}
 `
 
-function LoginPage({ setAuthenticate, authenticate }) {
+function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
-    const [warning, setWarning] = useState(false);
     const dispatch = useDispatch();   
     const history = useHistory();
     let authLogin = useSelector(state => state.auth.authenticate);
-
+    const token = useSelector(state=>state.auth.token);
     //이메일 주소 유효성 검사
     const checkEmail =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -79,10 +78,9 @@ function LoginPage({ setAuthenticate, authenticate }) {
     useEffect(() => {
         if(authLogin === true) {
             history.push('/home');
-        }else{
-            
+            localStorage.setItem('key', token);
         }
-    },[authLogin, history])
+    },[authLogin, history, token])
 
     return (
         <LoginMain>
@@ -94,7 +92,6 @@ function LoginPage({ setAuthenticate, authenticate }) {
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput value={password} onChange = {(event) => setPassword(event.target.value)} onKeyUp={loginActive}/>
                 <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
-                <WarningParagraph visible={warning}>*이메일 또는 비밀번호가 일치하지 않습니다.</WarningParagraph>
                 <div className='loginBtnWrap'>
                     <LoginBtn disabled={isActive} >로그인</LoginBtn>
                     <JoinEmailLink to='/join'>이메일로 회원가입</JoinEmailLink>

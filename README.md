@@ -8,7 +8,7 @@
 | **조다희**                                                                                                                                                            | **임다현**                                                                                                                                                            | **추경훈**                                                                                                                                                          |                                                                                                                                                
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | 
 | <img src="https://user-images.githubusercontent.com/74031552/180374703-22c36d16-5a0f-4cb8-8f94-e35b9aee6167.png" alt="@daheejo" size="80" height="80" width="80" data-view-component="true" class="avatar circle"> | <img src="https://user-images.githubusercontent.com/74031552/180374979-0d57af54-87a4-4d0d-a318-f92aa5f831e9.png" alt="@eovhdnjawm1" size="80" height="80" width="80" data-view-component="true" class="avatar circle"> | <img src="https://user-images.githubusercontent.com/74031552/180374844-9ca5abad-6ad9-4ea0-9420-405519e9e14c.png" alt="@chuhoon" size="80" height="80" width="80" data-view-component="true" class="avatar circle"> |
-| [Github](https://github.com/daheejo)                                                                                                                              | [Github](https://github.com/eovhdnjawm1)                                                                                                                              | [Github](https://github.com/UNI-Meang)                                                                                                                              |                                                                                                                         
+| [Github](https://github.com/daheejo)                                                                                                                              | [Github](https://github.com/Dayhun)                                                                                                                              | [Github](https://github.com/chuhoon)                                                                                                                              |                                                                                                                         
 
 ## 1. 목표
 
@@ -47,7 +47,7 @@
 
 ### 추경훈
 
-- 로그인 / 회원가입 / 프로필 설정 / 피드리스트 / 판매상품 등록, 수정
+- 로그인 / 회원가입 / 프로필 설정 / 홈 피드리스트 / 판매상품 등록, 수정
 - 사용 API
   - 이미지 API (한 개의 이미지)
   - 유저 API (회원가입 / 로그인 / 이메일 검증 / 전체 유저 목록(개발용) / 계정검증)
