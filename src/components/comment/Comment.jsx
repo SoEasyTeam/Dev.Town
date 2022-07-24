@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { DefaultProfileImg } from './ProfileButtons';
+import { DefaultProfileImg } from '../common/ProfileButtons';
 import IconFillImg from '../../assets/upload-file.png'
+import { useDispatch, useSelector } from 'react-redux';
+import {commentAction} from '../../redux/actions/commentAction'
 
 const CommentBox = styled.form`
     width: 100%;
@@ -28,8 +30,16 @@ const CommentSubmitBtn = styled.button`
 `;
 
 export default function Comment() {
+    const dispatch = useDispatch()
+    const token = useSelector(state => state.auth.token);
+
+
+    const handleOnSubmit = (e) =>{
+        e.preventDefault()
+        // dispatch(commentAction.postComment(post_id, token, content))
+    }
     return (
-        <CommentBox>
+        <CommentBox onSubmit={handleOnSubmit}>
             <ProfileImgBox>
                 <DefaultProfileImg />
             </ProfileImgBox>
