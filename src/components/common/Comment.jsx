@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { DefaultProfileImg } from './ProfileButtons';
 import IconFillImg from '../../assets/upload-file.png'
 
-const CommentBox = styled.div`
+const CommentBox = styled.form`
     width: 100%;
     height: 61px;
     display: flex;
