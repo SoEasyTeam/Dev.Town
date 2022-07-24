@@ -110,12 +110,23 @@ function ArrowLeftLink() {
     );
 }
 
-function TopFollowNav() {
+function TopFollowerNav() {
     return (
         <>
             <TopNavRowBoxLeft>
                 <ArrowLeftLink />
                 <p className='chatTitle followLeft'>Followers</p>
+            </TopNavRowBoxLeft>
+        </>
+    )
+}
+
+function TopFollowingNav() {
+    return (
+        <>
+            <TopNavRowBoxLeft>
+                <ArrowLeftLink />
+                <p className='chatTitle followLeft'>Followings</p>
             </TopNavRowBoxLeft>
         </>
     )
@@ -192,5 +203,5 @@ function TopChatNav() {
     );
 }
 
-export { TopFollowNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav, ArrowLeftLink };
+export { TopFollowerNav, TopFollowingNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav, ArrowLeftLink };
 

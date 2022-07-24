@@ -152,14 +152,14 @@ function UserProfile() {
             <ProfileAreaCol>
                 <div className='profileTop'>
                     <div className='followers'>
-                        <FollowLink to='#'>{followerCount}</FollowLink>
+                        <FollowLink to='/follower'>{followerCount}</FollowLink>
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
                         <img src={profileImg} alt='프로필이미지' />
                     </div>
                     <div className='followings'>
-                        <FollowLink to='#'>{followingCount}</FollowLink>
+                        <FollowLink to='/following'>{followingCount}</FollowLink>
                         <p>followings</p>
                     </div>
                 </div>

@@ -10,6 +10,8 @@ import ProfileSettingPage from './pages/ProfileSettingPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
 import PostPage from './pages/PostPage';
 import SearchPage from './pages/SearchPage';
+import FollowerPage from './pages/FollowerPage';
+import FollowingPage from './pages/FollowingPage';
 
 function App() {
     let [authenticate, setAuthenticate] = useState(false);
@@ -37,6 +39,8 @@ function App() {
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
+            <Route path='/follower' component={() => <FollowerPage />} />
+            <Route path='/following' component={() => <FollowingPage />} />
             <Route path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
             <Route path='/post/:id' component={() => <PostPage />} />
