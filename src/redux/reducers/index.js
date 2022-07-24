@@ -4,6 +4,7 @@ import authenticateReducer from './authenticateReducer';
 import homeFeedReducer from './homeFeedReducer';
 import joinReducer from './joinReducer';
 import profileReducer from './profileReducer';
+import commentReducer from './commentReducer'
 
 export default combineReducers({
     auth: authenticateReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
     profile: profileReducer,
     addproduct: addProductReducer,
     homefeed: homeFeedReducer,
+    comment:commentReducer,
 });
