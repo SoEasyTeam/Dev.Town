@@ -18,7 +18,7 @@ const parseDate = (dateString) => {
     return [year, month, day]
 }
 
-const HomePostItem = styled.li``
+const HomePostItem = styled(Link)``
 
 const HomeFeedBox = () => {
     const posts = useSelector(state=>state.homefeed.item);
@@ -31,7 +31,7 @@ const HomeFeedBox = () => {
                         const [year, month, day] = parseDate(item.createdAt);
                         // console.log(item.image);
                         return (
-                            <HomePostItem key = {index}>
+                            <HomePostItem key = {index} to='/post'>
                                 <HomeImgPost
                                     profileimg={item.author.image}
                                     nickname={item.author.username}
