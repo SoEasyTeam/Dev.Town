@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { MyProductModal } from '../common/Modal';
 
+
 const ProductItemBox = styled.div`
     width: 140px;
     margin-right: 10px;
@@ -40,46 +41,41 @@ const ProductItemBox = styled.div`
     }
 `;
 
-const Product = ({ name, price, src, id }) => {
+const Product = ({ name, price, src, itemLink, writerId }) => {
     const userId = useSelector(state => state.auth.id);
-    // // 모달
-    // const [modalOn, setModalOn] = useState(false);
-    // function openModal() {
-    //     setModalOn(true);
-    // }
-    // function closeModal() {
-    //     setModalOn(false);
-    // }
+    const [modalOn, setModalOn] = useState(false);
+    const priceShow = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
-    const handler = () => {
-        console.log('상품등록유저', id);
+    function openModal() {
+        console.log('상품등록유저', writerId);
         console.log('유저:', userId);
+        console.log('링크', itemLink);
 
-        // if (userId === id) {
-        //     console.log('같다')
-        //     return (
-        //         <>
-        //             {modalOn === true ? <MyProductModal openModal={openModal} closeModal={closeModal} /> : ''}
-        //         </>
-        //     )
-        // } else {
-        //     return (
-        //         console.log('링크로 이동하기')
-        //     )
-        // }
+        if (userId !== writerId) {
+            setModalOn(false);
+            console.log('상품링크로 이동')
+            window.open({ itemLink }, '_blank')
+        } else {
+            setModalOn(true);
+        }
+    }
+
+    function closeModal() {
+        setModalOn(false);
     }
 
     return (
         <>
-            <ProductItemBox onClick={handler}>
+            <ProductItemBox onClick={openModal}>
                 <img
                     className='img-product'
                     src={src}
                     alt='상품이미지'
                 />
                 <p className='txt-productName'>{name}</p>
-                <span className='txt-productPrice'>{price}원</span>
+                <span className='txt-productPrice'>{priceShow}원</span>
             </ProductItemBox>
+            {modalOn === true ? <MyProductModal closeModal={closeModal} itemLink={itemLink} /> : ''}
         </>
     );
 };

@@ -8,14 +8,15 @@ import MyProfilePage from './pages/MyProfile';
 import AddProductPage from './pages/AddProductPage';
 import ProfileSettingPage from './pages/ProfileSettingPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
-import PostPage from './pages/PostPage'
+import PostPage from './pages/PostPage';
+import SearchPage from './pages/SearchPage';
+import FollowerPage from './pages/FollowerPage';
+import FollowingPage from './pages/FollowingPage';
+
 
 function App() {
-    let [authenticate, setAuthenticate] = useState(false);
+    let localToken = localStorage.getItem('key');
 
-    useEffect(() => {
-        console.log(authenticate);
-    }, [authenticate]);
     return (
         <Switch>
             <Route exact path='/' component={() => <SplashPage />} />
@@ -24,20 +25,22 @@ function App() {
                 path='/login'
                 component={() => (
                     <LoginPage
-                        setAuthenticate={setAuthenticate}
-                        authenticate={authenticate}
                     />
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
             <Route path='/home' component={() => <HomePage />} />
+            <Route path='/search' component={() => <SearchPage />} />
+
             <Route
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
+            <Route path='/follower' component={() => <FollowerPage />} />
+            <Route path='/following' component={() => <FollowingPage />} />
             <Route path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
-            <Route path='/post' component={() => <PostPage />} />
+            <Route path='/post/:id' component={() => <PostPage />} />
         </Switch>
     );
 }

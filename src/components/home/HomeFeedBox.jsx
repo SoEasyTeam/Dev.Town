@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import HomeImgPost from '../common/HomeImgPost';
-import HomePost from '../common/HomePost';
 
 const HomeFollwerList  = styled.ul`
     margin: 20px auto;
@@ -18,7 +17,10 @@ const parseDate = (dateString) => {
     return [year, month, day]
 }
 
-const HomePostItem = styled(Link)``
+
+const HomePostItem = styled(Link)`
+    margin-bottom: 20px;
+`
 
 const HomeFeedBox = () => {
     const posts = useSelector(state=>state.homefeed.item);
@@ -31,11 +33,13 @@ const HomeFeedBox = () => {
                         const [year, month, day] = parseDate(item.createdAt);
                         // console.log(item.image);
                         return (
-                            <HomePostItem key = {index} to='/post'>
+
+                            <HomePostItem key = {index} to={`./post/${item.id}`}>
                                 <HomeImgPost
                                     profileimg={item.author.image}
                                     nickname={item.author.username}
                                     id={item.author.accountname}
+                                    postId = {item.id}
                                     postparagraph={item.content}
                                     postsrc={item.image}
                                     heartCount={item.heartCount}

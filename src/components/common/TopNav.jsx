@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ArrowImg from '../../assets/icon/icon-arrow-left.png';
@@ -6,6 +6,7 @@ import MoreImg from '../../assets/icon/icon-more-vertical.png';
 import SearchImg from '../../assets/icon/icon-search.png';
 import { MsBtn } from './Buttons';
 import { useHistory } from 'react-router-dom';
+import { ProfileModal } from './Modal';
 
 export const TopNavRowBox = styled.div`
     width: 100vw;
@@ -109,7 +110,7 @@ function ArrowLeftLink() {
     );
 }
 
-function TopFollowNav() {
+function TopFollowerNav() {
     return (
         <>
             <TopNavRowBoxLeft>
@@ -120,15 +121,35 @@ function TopFollowNav() {
     )
 }
 
+function TopFollowingNav() {
+    return (
+        <>
+            <TopNavRowBoxLeft>
+                <ArrowLeftLink />
+                <p className='chatTitle followLeft'>Followings</p>
+            </TopNavRowBoxLeft>
+        </>
+    )
+}
+
 function TopBasicNav() {
+    // 모달창
+    const [modalOn, setModalOn] = useState(false);
+    function openModal() {
+        setModalOn(true);
+    }
+    function closeModal() {
+        setModalOn(false);
+    }
     return (
         <>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <TopNavLink to='#'>
+                <TopNavLink onClick={openModal}>
                     <img src={MoreImg} alt='더보기링크' />
                 </TopNavLink>
             </TopNavRowBox>
+            {modalOn === true ? <ProfileModal openModal={openModal} closeModal={closeModal} /> : ''}
         </>
     );
 }
@@ -149,7 +170,7 @@ function TopMainNav() {
         <>
             <TopNavRowBox>
                 <p className='navTitle'>데브타운 피드</p>
-                <TopNavLink to='#'>
+                <TopNavLink to='/search'>
                     <img src={SearchImg} alt='찾기링크' />
                 </TopNavLink>
             </TopNavRowBox>
@@ -182,5 +203,5 @@ function TopChatNav() {
     );
 }
 
-export { TopFollowNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav, ArrowLeftLink };
+export { TopFollowerNav, TopFollowingNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav, ArrowLeftLink };
 

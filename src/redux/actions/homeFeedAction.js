@@ -1,4 +1,4 @@
-function homeFeed(token) {
+function homeFeed(localToken) {
     // console.log('homefeed success action');
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
@@ -7,7 +7,7 @@ function homeFeed(token) {
             let res = await fetch(url + reqPath, {
                 method: 'GET',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${localToken}`,
                     'Content-type': 'application/json',
                 },
             });

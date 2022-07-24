@@ -65,12 +65,14 @@ export const DateParagraph = styled.p`
     letter-spacing: 0em;
     text-align: left;
     margin-top: 16px;
+    margin-left: 54px;
     color: #767676;
 `;
 
 export const LikePostBox = styled.div`
     display: flex;
     gap: 22px;
+    margin-left: 54px;
     .like-btn {
         position: relative;
     }
@@ -84,12 +86,11 @@ export const LikePostBox = styled.div`
         font-family: 'Spoqa Han Sans Neo';
         font-size: 12px;
         font-weight: 400;
-        line-height: 12px;
         text-align: left;
         color: #767676;
         top: 3px;
     }
-    .comment-link {
+    .comment-btn {
         position: relative;
     }
     .comment-img {
@@ -102,7 +103,6 @@ export const LikePostBox = styled.div`
         font-family: 'Spoqa Han Sans Neo';
         font-size: 12px;
         font-weight: 400;
-        line-height: 12px;
         text-align: left;
         color: #767676;
         top: 3px;
@@ -116,14 +116,15 @@ export const LikePostRowBox = ({ heartCount, commentCount }) => {
                 <img className='heart-img' src={IconHeartImg} alt='하트버튼' />
                 <span className='likecount-span'>{heartCount}</span>
             </button>
-            <Link to='/post' className='comment-link'>
+            <Link to='/post' className='comment-link'/>
+            <button className='comment-btn'>
                 <img
                     className='comment-img'
                     src={IconCommentImg}
                     alt='댓글링크'
                 />
                 <span className='comment-span'>{commentCount}</span>
-            </Link>
+            </button>
         </LikePostBox>
     );
 };
