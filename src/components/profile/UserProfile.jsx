@@ -119,8 +119,9 @@ function UserProfile() {
     const username = useSelector(state => state.profile.username);
     const intro = useSelector(state => state.profile.intro);
     const Youraccountname = useSelector(state => state.profile.accountname);
+    const isfollow = useSelector(state => state.profile.isfollow);
     const profileImg = useSelector(state => state.profile.image);
-    // console.log(followerCount);
+    console.log('isfollow?', isfollow);
     // console.log(followingCount);
 
     // const getData = async () => {
@@ -147,6 +148,19 @@ function UserProfile() {
     //     return <div>데이터 없을 때 화면 띄우기</div>
     // }
 
+    const [isFollow, setIsFollow] = useState(false);
+    const [isFollowWord, setIsFollowWord] = useState('팔로우');
+    function changeIsFollow() {
+        console.log('팔로우취소 가동!')
+        setIsFollow(!isFollow);
+        if (isFollowWord === '팔로우') {
+            setIsFollowWord('언팔로우')
+        } else {
+            setIsFollowWord('팔로우')
+        }
+
+    }
+
     return (
         <>
             <ProfileAreaCol>
@@ -169,12 +183,12 @@ function UserProfile() {
                     <ProfileIntro>{intro}</ProfileIntro>
                 </div>
                 <div className='profileBottom'>
-                    {Myaccountname !== Youraccountname ? (
+                    {Myaccountname === Youraccountname ? (
                         <>
                             <CircleBtns>
                                 <img src={IconMesssageImg} alt='채팅링크' />
                             </CircleBtns>
-                            <MBtn>팔로우</MBtn>
+                            <MBtn onClick={changeIsFollow} isFollowed={isFollow}>{isFollowWord}</MBtn>
                             <CircleBtns>
                                 <img src={IconShareImg} alt='공유링크' />
                             </CircleBtns>

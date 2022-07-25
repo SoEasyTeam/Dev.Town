@@ -27,9 +27,6 @@ const MlBtn = styled(Link)`
 
 `//검색하기, 이전페이지(404)
 
-
-
-
 const MBtn = styled.button`
     width: 120px;
     height: 34px;
@@ -52,7 +49,7 @@ const MsBtn = styled.button`
 `; //저장, 업로드 버튼
 
 const SaveBtn = styled(MsBtn)`
-    ${({disabled}) => {
+    ${({ disabled }) => {
         return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
     }}
 `
