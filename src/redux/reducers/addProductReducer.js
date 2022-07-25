@@ -13,7 +13,7 @@ function addProductReducer(state = initialState, action) {
         case 'ADDPRODUCT_SUCCESS':
             return {
                 ...state,
-                id: payload.id,
+                product_id: payload.id,
                 itemName: payload.itemName,
                 price: payload.price,
                 link: payload.link,

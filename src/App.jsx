@@ -11,6 +11,7 @@ import PostPage from './pages/PostPage';
 import SearchPage from './pages/SearchPage';
 import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
+import ProductModificationPage from './pages/ProductModificationPage';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
             <Route path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
             <Route path='/post/:id' component={() => <PostPage />} />
+            <Route path='product/:product_id' component={() => <ProductModificationPage />}/>
         </Switch>
     );
 }
