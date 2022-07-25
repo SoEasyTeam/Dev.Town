@@ -28,6 +28,9 @@ const LoginMain = styled.section`
 
 const LoginBtn = styled(LBtn)`
     margin: 30px 0 20px;
+    ${({disabled}) => {
+        return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
+    }}
 `
 
 const JoinEmailLink = styled(Link)`
@@ -58,6 +61,7 @@ function LoginPage() {
     const history = useHistory();
     let authLogin = useSelector(state => state.auth.authenticate);
     const token = useSelector(state=>state.auth.token);
+    const accountname = useSelector(state=>state.auth.accountname);
     //이메일 주소 유효성 검사
     const checkEmail =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -75,12 +79,24 @@ function LoginPage() {
         dispatch(authenticateAction.login(email, password));
     }
 
+    // const localEmail = useSelector(state => state.auth.email);
+    // const localId = useSelector(state => state.auth.email);
+    // const localImg = useSelector(state => state.auth.email);
+    // const localUsername = useSelector(state => state.auth.email);
+
+
     useEffect(() => {
         if(authLogin === true) {
             history.push('/home');
-            localStorage.setItem('key', token);
+            localStorage.setItem('token', token);
+            localStorage.setItem('accountname', accountname);
+            // localStorage.setItem('email', localEmail);
+            // localStorage.setItem('id', localId);
+            // localStorage.setItem('image', localImg);
+            // localStorage.setItem('username', localUsername);
+            // localStorage.setITem('authenticate', authLogin);
         }
-    },[authLogin, history, token])
+    },[authLogin, history, token, accountname]);
 
     return (
         <LoginMain>

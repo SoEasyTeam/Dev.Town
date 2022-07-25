@@ -4,10 +4,14 @@ let initialState = {
     username: '',
     accountname: '',
     intro: '',
+    message: '',
+    image: '',
 };
 
 let joinValid_initialState = {
     message: '',
+    email: '',
+    password: '',
 };
 
 function joinReducer(state = joinValid_initialState, action) {
@@ -17,6 +21,8 @@ function joinReducer(state = joinValid_initialState, action) {
             return {
                 ...state,
                 message: payload.message,
+                email: payload.email,
+                password: payload.password,
             };
         default:
             return { ...state };
@@ -34,7 +40,14 @@ function joinFinalReducer(state = initialState, action) {
                 username: payload.username,
                 accountname: payload.accountname,
                 intro: payload.intro,
+                message: payload.message,
+                image: payload.image,
             };
+        // case 'JOIN_FAIL':
+        //     return {
+        //         ...state,
+        //         message: payload.message,
+        //     };
         default:
             return { ...state };
     }

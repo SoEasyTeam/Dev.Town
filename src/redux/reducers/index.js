@@ -9,7 +9,7 @@ import profileReducer from './profileReducer';
 export default combineReducers({
     auth: authenticateReducer,
     join: joinReducer,
-    joinfianl: joinFinalReducer,
+    joinfinal: joinFinalReducer,
     profile: profileReducer,
     addproduct: addProductReducer,
     homefeed: homeFeedReducer,

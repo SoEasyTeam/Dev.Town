@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import JoinMembershipPage from './pages/JoinMembershipPage';
@@ -11,7 +10,6 @@ import ProfileModificationPage from './pages/ProfileModificationPage';
 import PostPage from './pages/PostPage';
 
 function App() {
-    let localToken = localStorage.getItem('key');
 
     return (
         <Switch>
@@ -25,10 +23,10 @@ function App() {
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
-            <Route path='/home' component={() => <HomePage localToken={localToken}/>} />
+            <Route path='/home' component={() => <HomePage />} />
             <Route
                 path='/myprofile'
-                component={() => <MyProfilePage />}
+                component={() => <MyProfilePage/>}
             />
             <Route path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
