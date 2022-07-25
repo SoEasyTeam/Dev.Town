@@ -26,7 +26,7 @@ function App() {
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
-            <Route path='/home' component={() => <HomePage localToken={localToken} />} />
+            <Route path='/home' component={() => <HomePage />} />
             <Route path='/search' component={() => <SearchPage />} />
             <Route
                 path='/myprofile'
