@@ -18,13 +18,13 @@ const ProfileSection = styled.section`
 `
 
 
-function MyProfilePage({ setModalOn }) {
+function MyProfilePage() {
     return (
         <>
             <TopBasicNav />
             <ProfileSection>
                 <UserProfile />
-                <UserProduct setModalOn={setModalOn} />
+                <UserProduct />
                 <UserPost />
             </ProfileSection>
             <TabMenu />

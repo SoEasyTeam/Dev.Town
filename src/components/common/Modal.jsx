@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { AlertProductModal } from './AlertModal';
 
 const ModalOutside = styled.div`
     position: fixed;
@@ -60,14 +62,14 @@ const ButtonLink = styled(Link)`
         }
 `
 
-
-function MyProductModal({ closeModal, itemLink }) {
+// 상품 클릭시 모달
+function MyProductModal({ closeModal, alertOnModal, itemLink }) {
     return (
         <>
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
-                <ButtonLink to={'/home'}>삭제</ButtonLink>
+                <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>삭제</ButtonLink>
                 <ButtonLink to={'/product'}>수정</ButtonLink>
                 <a href={itemLink} target='_blank' rel="noreferrer">웹사이트에서 상품보기</a>
             </ModalContainer>
@@ -75,42 +77,58 @@ function MyProductModal({ closeModal, itemLink }) {
     );
 }
 
-function MyPostModal({ closeModal }) {
+// 내 게시물 클릭시 모달
+function MyPostModal({ closeModal, alertOnModal }) {
     return (
         <>
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
-                <ButtonLink>삭제</ButtonLink>
-                <ButtonLink>수정</ButtonLink>
+                <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>삭제</ButtonLink>
+                <ButtonLink to={'/post'}>수정</ButtonLink>
             </ModalContainer>
         </>
     );
 }
 
+// 상대 게시글, 댓글 더보기 클릭시 모달
 function YourPostModal({ closeModal }) {
     return (
         <>
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
-                <ButtonLink>신고</ButtonLink>
+                <ButtonLink>신고하기</ButtonLink>
             </ModalContainer>
         </>
     );
 }
 
+// 내 댓글 더보기 클릭시 모달
+function MyCommentModal({ closeModal }) {
+    return (
+        <>
+            <ModalOutside onClick={closeModal} />
+            <ModalContainer>
+                <button className='deleteModalBtn' onClick={closeModal}></button>
+                <ButtonLink>삭제</ButtonLink>
+            </ModalContainer>
+        </>
+    );
+}
+
+// 프로필 더보기 클릭시 모달
 function ProfileModal({ closeModal }) {
     return (
         <>
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
-                <ButtonLink>설정 및 개인정보</ButtonLink>
+                <ButtonLink onClick={closeModal}>설정 및 개인정보</ButtonLink>
                 <ButtonLink>로그아웃</ButtonLink>
             </ModalContainer>
         </>
     );
 }
 
-export { MyProductModal, MyPostModal, YourPostModal, ProfileModal };
+export { MyProductModal, MyPostModal, YourPostModal, MyCommentModal, ProfileModal };

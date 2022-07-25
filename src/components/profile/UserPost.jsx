@@ -5,11 +5,7 @@ import HomeImgPost from '../common/HomeImgPost';
 import IconPostListOn from '../../assets/icon/icon-post-list-on.png';
 import IconPostAlbumOff from '../../assets/icon/icon-post-album-off.png';
 import { useSelector } from 'react-redux';
-
-
-const PostLink = styled(Link)`
-
-`
+import { AlertPostModal } from '../common/AlertModal';
 
 const PostShowBtns = styled.button`
     width: 26px;
@@ -47,7 +43,7 @@ function parseDate(dateString) {
     return [year, month, day]
 }
 
-function PostAreaList({ userPostData }) {
+function PostAreaList({ userPostData, alertOnModal }) {
     return (
         <>
             {userPostData &&
@@ -67,6 +63,7 @@ function PostAreaList({ userPostData }) {
                                 year={year}
                                 month={month}
                                 day={day}
+                                alertOnModal={alertOnModal}
                             />
                         </li>
                     )
@@ -80,6 +77,8 @@ function UserPost() {
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
     const [userPostData, setUserPostData] = useState('')
+    const [alertOn, setAlertOn] = useState(false);
+
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${accountname}/userpost`, {
             method: "GET",
@@ -99,7 +98,12 @@ function UserPost() {
     if (Array.isArray(userPostData.post) && userPostData.post.length === 0) {
         return <></>
     }
-
+    function alertOnModal() {
+        setAlertOn(true);
+    }
+    function alertOffModal() {
+        setAlertOn(false);
+    }
     return (
         <>
             <PostArea>
@@ -112,9 +116,10 @@ function UserPost() {
                     </PostShowBtns>
                 </div>
                 <PostAreaListUl>
-                    <PostAreaList userPostData={userPostData} />
+                    <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
                 </PostAreaListUl>
             </PostArea>
+            {alertOn === true ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
         </>
     )
 }
