@@ -16,7 +16,7 @@ import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
 
 function App() {
- let [authenticate, setAuthenticate] = useState(false);
+    let [authenticate, setAuthenticate] = useState(false);
     const state = useSelector((state) => state);
     console.log(state, 'app');
     useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
-            <Route path='/home' component={() => <HomePage localToken={localToken} />} />
+            <Route path='/home' component={() => <HomePage />} />
             <Route path='/search' component={() => <SearchPage />} />
 
             <Route
