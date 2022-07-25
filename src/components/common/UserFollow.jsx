@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { SBtn } from './Buttons';
 import {
     UserSearchBox,
     NameIdBox,
@@ -13,21 +14,15 @@ export const UserFollowBox = styled(UserSearchBox)`
     margin-bottom: 16px;
 `;
 
-const FollowBtn = styled.button`
-    width: 56px;
-    height: 28px;
+const FollowSBtn = styled(SBtn)`
     font-family: 'Spoqa Han Sans Neo';
     font-size: 12px;
     font-weight: 400;
     line-height: 15px;
-    text-align: center;
-    background: var(--main-color);
-    border-radius: 26px;
-    color: var(--bg-color);
     position: absolute;
     right: 0px;
     top: 11px;
-`;
+`
 
 function UserFollow({ src, name, accountname, isfollow }) {
     function moveProfilePage() {
@@ -43,7 +38,7 @@ function UserFollow({ src, name, accountname, isfollow }) {
                     <NickNameP>{name}</NickNameP>
                     <IdP>@ {accountname}</IdP>
                 </NameIdBox>
-                <FollowBtn>팔로우</FollowBtn>
+                <FollowSBtn>팔로우</FollowSBtn>
             </UserFollowBox>
         </>
     );

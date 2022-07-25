@@ -89,6 +89,13 @@ const ProfileAreaCol = styled.article`
     }
 `
 
+const ProfileImg = styled.img`
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 1px solid var(--border-gray);
+`;
+
 const CircleBtns = styled.button`
     width: 34px;
     height: 34px;
@@ -148,7 +155,7 @@ function UserProfile() {
     //     return <div>데이터 없을 때 화면 띄우기</div>
     // }
 
-    const [isFollow, setIsFollow] = useState(false);
+    const [isFollow, setIsFollow] = useState(isfollow);
     const [isFollowWord, setIsFollowWord] = useState('팔로우');
     function changeIsFollow() {
         console.log('팔로우취소 가동!')
@@ -158,7 +165,6 @@ function UserProfile() {
         } else {
             setIsFollowWord('팔로우')
         }
-
     }
 
     return (
@@ -170,7 +176,7 @@ function UserProfile() {
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
-                        <img src={image} alt='프로필이미지' />
+                        <ProfileImg src={image} alt='프로필이미지' />
                     </div>
                     <div className='followings'>
                         <FollowLink to='/following'>{followingCount}</FollowLink>

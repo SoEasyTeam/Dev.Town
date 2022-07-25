@@ -35,7 +35,11 @@ const MBtn = styled.button`
             ? `background-color: var(--bg-color)`
             : `background-color: var(--main-color)`;
     }};
-    border: 1px solid var(--border-gray);
+    ${({ isFollowed }) => {
+        return isFollowed === true
+            ? `border: 1px solid var(--border-gray)`
+            : `border: none`;
+    }};
     border-radius: 30px;
     color: var(--subtitle-text);
 `;
