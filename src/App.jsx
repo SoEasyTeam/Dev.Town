@@ -29,18 +29,18 @@ function App() {
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
-            <Route path='/home' component={() => <HomePage />} />
-            <Route path='/search' component={() => <SearchPage />} />
+            <Route path='/home' component={() => <HomePage localToken={localToken}/>} />
+            <Route path='/search' component={() => <SearchPage localToken={localToken}/>} />
 
             <Route
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
-            <Route path='/follower' component={() => <FollowerPage />} />
-            <Route path='/following' component={() => <FollowingPage />} />
-            <Route path='/product' component={() => <AddProductPage />} />
-            <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
-            <Route path='/post/:id' component={() => <PostPage />} />
+            <Route path='/follower' component={() => <FollowerPage localToken={localToken}/>} />
+            <Route path='/following' component={() => <FollowingPage localToken={localToken}/>} />
+            <Route path='/product' component={() => <AddProductPage localToken={localToken}/>} />
+            <Route path='/profilemodification' component={() => <ProfileModificationPage localToken={localToken}/>} />
+            <Route path='/post/:id' component={() => <PostPage localToken={localToken}/>} />
         </Switch>
     );
 }
