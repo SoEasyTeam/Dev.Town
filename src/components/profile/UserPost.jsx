@@ -35,7 +35,7 @@ const PostArea = styled.article`
 const PostAreaListUl = styled.ul`
     list-style: none;
     li {
-        margin: 16px 0;
+        margin: 20px 0;
     }
 `
 

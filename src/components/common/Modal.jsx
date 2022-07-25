@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const ModalOutside = styled.div`
     position: fixed;
@@ -27,18 +26,6 @@ const ModalContainer = styled.section`
     background: #FFF;
     border-radius: 10px 10px 0 0;
     padding: 16px 16px 28px 16px;
-
-    button {
-        display: flex;
-        padding-left: 26px;
-        font-family: 'Spoqa Han Sans Neo';
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 18px;
-        &:hover{
-            font-weight: bold;
-        }
-    }
     .deleteModalBtn {
         justify-content: center;
         content: " ";
@@ -50,18 +37,29 @@ const ModalContainer = styled.section`
     }
 `
 
+const ButtonLink = styled(Link)`
+        display: flex;
+        padding-left: 26px;
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        &:hover{
+            font-weight: bold;
+        }
+`
 
-function MyProductModal({ closeModal }) {
+
+function MyProductModal({ closeModal, itemLink }) {
     return (
         <>
-            <ModalOutside onClick={closeModal}>
-                <ModalContainer>
-                    <button className='deleteModalBtn' onClick={closeModal}></button>
-                    <button as={Link} to='/'>삭제</button>
-                    <button>수정</button>
-                    <button>웹사이트에서 상품보기</button>
-                </ModalContainer>
-            </ModalOutside>
+            <ModalOutside onClick={closeModal} />
+            <ModalContainer>
+                <button className='deleteModalBtn' onClick={closeModal}></button>
+                <ButtonLink to={'/home'}>삭제</ButtonLink>
+                <ButtonLink to={'/product'}>수정</ButtonLink>
+                <ButtonLink to={itemLink} target='_blank'>웹사이트에서 상품보기</ButtonLink>
+            </ModalContainer>
         </>
     );
 }
@@ -69,13 +67,12 @@ function MyProductModal({ closeModal }) {
 function MyPostModal({ closeModal }) {
     return (
         <>
-            <ModalOutside onClick={closeModal}>
-                <ModalContainer>
-                    <button className='deleteModalBtn' onClick={closeModal}></button>
-                    <button>삭제</button>
-                    <button>수정</button>
-                </ModalContainer>
-            </ModalOutside>
+            <ModalOutside onClick={closeModal} />
+            <ModalContainer>
+                <button className='deleteModalBtn' onClick={closeModal}></button>
+                <ButtonLink>삭제</ButtonLink>
+                <ButtonLink>수정</ButtonLink>
+            </ModalContainer>
         </>
     );
 }
@@ -83,14 +80,26 @@ function MyPostModal({ closeModal }) {
 function YourPostModal({ closeModal }) {
     return (
         <>
-            <ModalOutside onClick={closeModal}>
-                <ModalContainer>
-                    <button className='deleteModalBtn' onClick={closeModal}></button>
-                    <button>신고</button>
-                </ModalContainer>
-            </ModalOutside>
+            <ModalOutside onClick={closeModal} />
+            <ModalContainer>
+                <button className='deleteModalBtn' onClick={closeModal}></button>
+                <ButtonLink>신고</ButtonLink>
+            </ModalContainer>
         </>
     );
 }
 
-export { MyProductModal, MyPostModal, YourPostModal };
+function ProfileModal({ closeModal }) {
+    return (
+        <>
+            <ModalOutside onClick={closeModal} />
+            <ModalContainer>
+                <button className='deleteModalBtn' onClick={closeModal}></button>
+                <ButtonLink>설정 및 개인정보</ButtonLink>
+                <ButtonLink>로그아웃</ButtonLink>
+            </ModalContainer>
+        </>
+    );
+}
+
+export { MyProductModal, MyPostModal, YourPostModal, ProfileModal };

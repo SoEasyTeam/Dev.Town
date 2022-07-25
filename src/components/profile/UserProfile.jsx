@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MBtn } from '../../components/common/Buttons';
-import { DefaultProfileImg } from '../../components/common/ProfileButtons';
 import { useDispatch, useSelector } from 'react-redux';
 import { profileAction } from '../../redux/actions/profileAction';
+import IconMesssageImg from '../../assets/icon/icon-message-circle.png';
+import IconShareImg from '../../assets/icon/icon-share.png';
 
 const ProfileName = styled.h3`
     font-weight: 700;
@@ -88,14 +89,26 @@ const ProfileAreaCol = styled.article`
     }
 `
 
+const CircleBtns = styled.button`
+    width: 34px;
+    height: 34px;
+    border: 1px solid #dbdbdb;
+    border-radius: 30px;
+    img {
+        display: block;
+        width: 20px;
+        margin: 0 auto;
+    }
+`
+
 function UserProfile() {
     // const [userData, setUserData] = useState()
     const userId = useSelector(state => state.auth);
     console.log('유저:', userId);
     // authenticateReducer에서 받아온 상태 값
     const token = useSelector(state => state.auth.token);
-    const accountname = useSelector(state => state.auth.accountname);
     const image = useSelector(state => state.auth.image);
+    const Myaccountname = useSelector(state => state.auth.accountname);
     const dispatch = useDispatch();
     // console.log(token)
     // console.log(accountname);
@@ -105,6 +118,8 @@ function UserProfile() {
     const followingCount = useSelector(state => state.profile.followingCount);
     const username = useSelector(state => state.profile.username);
     const intro = useSelector(state => state.profile.intro);
+    const Youraccountname = useSelector(state => state.profile.accountname);
+    const profileImg = useSelector(state => state.profile.image);
     // console.log(followerCount);
     // console.log(followingCount);
 
@@ -125,7 +140,7 @@ function UserProfile() {
     useEffect(() => {
 
         // profileAction에 있는 profile 함수로 94번째 95번째 줄에서 가져온 token과 accountname의 값을 보내준다.
-        dispatch(profileAction.profile(token, accountname));
+        dispatch(profileAction.profile(token, Myaccountname));
         // getData()
     }, [])
 
@@ -138,25 +153,39 @@ function UserProfile() {
             <ProfileAreaCol>
                 <div className='profileTop'>
                     <div className='followers'>
-                        <FollowLink to='#'>{followerCount}</FollowLink>
+                        <FollowLink to='/follower'>{followerCount}</FollowLink>
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
-                        <DefaultProfileImg image={image}/>
+                        <img src={image} alt='프로필이미지' />
                     </div>
                     <div className='followings'>
-                        <FollowLink to='#'>{followingCount}</FollowLink>
+                        <FollowLink to='/following'>{followingCount}</FollowLink>
                         <p>followings</p>
                     </div>
                 </div>
                 <div className='profileMiddle'>
                     <ProfileName>{username}</ProfileName>
-                    <ProfileAccount>@ {accountname}</ProfileAccount>
+                    <ProfileAccount>@ {Myaccountname}</ProfileAccount>
                     <ProfileIntro>{intro}</ProfileIntro>
                 </div>
                 <div className='profileBottom'>
-                    <MyProfileBtn as={Link} to='/profilemodification'>프로필 수정</MyProfileBtn>
-                    <MyProfileBtn as={Link} to='/product'>상품 등록</MyProfileBtn>
+                    {Myaccountname !== Youraccountname ? (
+                        <>
+                            <CircleBtns>
+                                <img src={IconMesssageImg} alt='채팅링크' />
+                            </CircleBtns>
+                            <MBtn>팔로우</MBtn>
+                            <CircleBtns>
+                                <img src={IconShareImg} alt='공유링크' />
+                            </CircleBtns>
+                        </>
+                    ) : (
+                        <>
+                            <MyProfileBtn as={Link} to='/profilemodification'>프로필 수정</MyProfileBtn>
+                            <MyProfileBtn as={Link} to='/product'>상품 등록</MyProfileBtn>
+                        </>
+                    )}
                 </div>
             </ProfileAreaCol>
         </>
