@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import JoinProfileImg from '../assets/basic-profile-img.png';
@@ -12,7 +12,7 @@ import {
 } from '../components/common/TextAciveInput';
 import { useDispatch, useSelector } from 'react-redux'
 import { joinAction } from '../redux/actions/joinAction';
-
+import { WarningParagraph } from './LoginPage';
 
 const ProfileSettingForm = styled.form`
     width: 100vw;
@@ -75,10 +75,12 @@ const ProfileImgInput = styled.input`
 
 const SignUpBtn = styled(LBtn)`
     margin: 14px auto 0;
+    ${({disabled}) => {
+        return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
+    }}
 `;
 
 function ProfileSettingPage() {
-    const [profileImg, setProfileImg] = useState(JoinProfileImg);
     const [username, setUsername] = useState('');
     const [accountname, setAccountname] = useState('');
     const [intro, setIntro] = useState('');
@@ -86,14 +88,22 @@ function ProfileSettingPage() {
     const history = useHistory();
     const email = useSelector(state => state.join.email);
     const password = useSelector(state => state.join.password);
+    const message = useSelector(state => state.joinfinal.message);
     const dispatch = useDispatch();
+    const [itemImage, setItemImage] = useState(JoinProfileImg);
+
 
     const onChangeProfileImg = (event) => {
-        setProfileImg(URL.createObjectURL(event.target.files[0]));
+        let reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = (event) => {
+            let readerUrl = event.target.result;
+            setItemImage(readerUrl);
+        }
     };
 
     const signUpActive = () => {
-        return (username.length > 1 && username.length < 11)
+        return (username.length > 1 && username.length < 11 && accountname.length>0 && intro.length > 0)
         ? setIsActive(false)
         : setIsActive(true);
     };
@@ -101,11 +111,15 @@ function ProfileSettingPage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('login user function issue');
-        history.push('/login');
-        // console.log(email);
-        // console.log(password);
-        dispatch(joinAction.joinfinal(email, password, username, accountname, intro));
+        dispatch(joinAction.joinfinal(email, password, username, accountname, intro, itemImage));
     }
+
+    useEffect(() => {
+        console.log(message);
+        if(message === '회원가입 성공'){
+            history.push('/login');
+        }
+    },[message])
 
     return (
         <ProfileSettingForm onSubmit={onSubmitHandler}>
@@ -114,7 +128,7 @@ function ProfileSettingPage() {
             <Profilelabel htmlFor='profileImg'>
                 <img
                     className='joinprofile-img'
-                    src={profileImg}
+                    src={itemImage}
                     alt='프로필이미지'
                 />
             </Profilelabel>
@@ -125,11 +139,11 @@ function ProfileSettingPage() {
             </div>
             <div className='input-cont'>
                 <TextLabel>계정 ID</TextLabel>
-                <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} />
+                <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp = {signUpActive}/>
             </div>
             <div className='input-cont'>
                 <TextLabel>소개</TextLabel>
-                <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} />
+                <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp = {signUpActive} />
             </div>
             <SignUpBtn disabled={isActive}>감귤마켓 시작하기</SignUpBtn>
         </ProfileSettingForm>

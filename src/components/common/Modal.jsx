@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { AlertProductModal } from './AlertModal';
@@ -78,15 +79,29 @@ function MyProductModal({ closeModal, alertOnModal, itemLink }) {
 }
 
 // 내 게시물 클릭시 모달
-function MyPostModal({ closeModal, alertOnModal }) {
+function MyPostModal({ closeModal, alertOnModal, id }) {
+    const accountname = useSelector(state => state.auth.accountname);
+    console.log('게시물 계정이름', id);
+    console.log('로그인 유저 계정이름', accountname)
     return (
         <>
-            <ModalOutside onClick={closeModal} />
-            <ModalContainer>
-                <button className='deleteModalBtn' onClick={closeModal}></button>
-                <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>삭제</ButtonLink>
-                <ButtonLink to={'/post'}>수정</ButtonLink>
-            </ModalContainer>
+            {id === accountname ?
+                <>
+                    <ModalOutside onClick={closeModal} />
+                    <ModalContainer>
+                        <button className='deleteModalBtn' onClick={closeModal}></button>
+                        <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>삭제</ButtonLink>
+                        <ButtonLink to={'/post'}>수정</ButtonLink>
+                    </ModalContainer>
+                </> :
+                <>
+                    <ModalOutside onClick={closeModal} />
+                    <ModalContainer>
+                        <button className='deleteModalBtn' onClick={closeModal}></button>
+                        <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>신고하기</ButtonLink>
+                    </ModalContainer>
+                </>
+            }
         </>
     );
 }

@@ -6,17 +6,6 @@ import { UserFollowBox } from './UserFollow';
 import SettingImg from '../../assets/icon/s-icon-more-vertical.png';
 import IconHeartImg from '../../assets/icon/icon-heart.png';
 import IconCommentImg from '../../assets/icon/icon-message-circle.png';
-// import {
-//     DateParagraph,
-//     HomePostBox,
-//     HomePostParagraph,
-//     HomePostProfileBox,
-//     HomePostSmallBox,
-//     LikePostRowBox,
-//     SettingBtn,
-//     HomePostProfileLogoImg,
-//     HomePostProfileNickName,
-// } from './HomePost';
 import { MyPostModal } from './Modal';
 
 
@@ -141,13 +130,11 @@ export const LikePostRowBox = ({ heartCount, commentCount }) => {
 };
 
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal }) {
-    const userId = useSelector(state => state.auth.id);
     // 모달창
     const [modalOn, setModalOn] = useState(false);
     function openModal() {
         setModalOn(true);
-        console.log('게시물 아이디', id);
-        console.log('로그인 유저 아이디', userId)
+
     }
     function closeModal() {
         setModalOn(false);
@@ -182,7 +169,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                 <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
                 <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
             </HomePostBox>
-            {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} /> : ''}
+            {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} id={id} /> : ''}
         </>
     );
 }

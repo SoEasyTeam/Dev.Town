@@ -67,7 +67,6 @@ function AlertProductModal({ alertOffModal }) {
 
 // 게시글 삭제
 function AlertPostModal({ alertOffModal }) {
-    console.log('alertmodal 나옴')
     return (
         <>
             <AlertOutside />
@@ -84,7 +83,6 @@ function AlertPostModal({ alertOffModal }) {
 
 // 신고하기
 function AlertDeclareModal({ alertOffModal }) {
-    console.log('alertmodal 나옴')
     return (
         <>
             <AlertOutside />
@@ -101,7 +99,6 @@ function AlertDeclareModal({ alertOffModal }) {
 
 // 로그아웃
 function AlertLogoutModal({ alertOffModal }) {
-    console.log('alertmodal 나옴')
     return (
         <>
             <AlertOutside />
