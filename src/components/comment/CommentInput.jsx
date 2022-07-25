@@ -29,7 +29,7 @@ const CommentSubmitBtn = styled.button`
     padding: 5px;
 `;
 
-export default function Comment() {
+export default function CommentInputBox() {
     const dispatch = useDispatch()
     const token = useSelector(state => state.auth.token);
 
