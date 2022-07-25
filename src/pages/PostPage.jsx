@@ -2,8 +2,8 @@ import {TopBasicNav} from '../components/common/TopNav'
 import HomeImgPost from '../components/common/HomeImgPost'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import Comment from '../components/comment/Comment'
-import CommentList from '../components/comment/CommentList'
+import Comment from '../components/comment/CommentInput'
+import CommentList from '../components/comment/CommentItem'
 
 function PostPage(){
     const { id } = useParams();

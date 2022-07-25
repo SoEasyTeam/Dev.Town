@@ -3,16 +3,16 @@ import styled from "styled-components"
 import { DefaultProfileImg } from "../common/ProfileButtons"
 import moreBtn from '../../assets/icon/icon-more-vertical.png'
 
-const CommentListSection = styled.section`
+const CommentItemSection = styled.section`
 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    padding: 0 50px;
+    margin: 10px 0;
     gap: 20px;
     .profile-img {
         width: 36px;
-
     }
 `
 
@@ -31,7 +31,6 @@ const CommentDate = styled.span`
 `
 
 const DetailOptionsBtn = styled.img`
-    src: ${moreBtn};
     width: 20px;
     margin-left: 140px;
 `
@@ -39,11 +38,11 @@ const Comment = styled.p`
     font-size: 14px;
 `
 
-function CommentList(){
+function CommentItem(){
 
     useEffect(()=>{},)
     return (
-        <CommentListSection>
+        <CommentItemSection>
             <div className="profile-img">
             <DefaultProfileImg/>
             </div>
@@ -55,9 +54,8 @@ function CommentList(){
             </CommentInfo>
             <Comment>방가방가</Comment>
             </div>
-        </CommentListSection>
-
+        </CommentItemSection>
     )
 }
 
-export default CommentList
+export default CommentItem
