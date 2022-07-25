@@ -1,5 +1,4 @@
 import { React, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
 import styled from 'styled-components';
 import { UserFollowBox } from './UserFollow';
@@ -7,7 +6,8 @@ import SettingImg from '../../assets/icon/s-icon-more-vertical.png';
 import IconHeartImg from '../../assets/icon/icon-heart.png';
 import IconCommentImg from '../../assets/icon/icon-message-circle.png';
 import { MyPostModal } from './Modal';
-
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const SettingBtn = styled.button`
     background-image: url(${SettingImg});
@@ -39,8 +39,9 @@ export const HomePostProfileBox = styled(UserFollowBox)`
     width: 100%;
 `;
 
-export const HomePostSmallBox = styled.div`
+export const HomePostSmallLink = styled(Link)`
     margin-left: 54px;
+    display: block;
     .post-img {
         margin-bottom: 12px;
         width: 304px;
@@ -110,21 +111,21 @@ export const LikePostBox = styled.div`
     }
 `;
 
-export const LikePostRowBox = ({ heartCount, commentCount }) => {
+export const LikePostRowBox = ({ heartCount, commentCount, postId }) => {
     return (
         <LikePostBox>
             <button className='like-btn'>
                 <img className='heart-img' src={IconHeartImg} alt='하트버튼' />
                 <span className='likecount-span'>{heartCount}</span>
             </button>
-            <button className='comment-btn'>
+            <Link className='comment-btn' to={`./post/${postId}`}>
                 <img
                     className='comment-img'
                     src={IconCommentImg}
                     alt='댓글링크'
                 />
                 <span className='comment-span'>{commentCount}</span>
-            </button>
+            </Link>
         </LikePostBox>
     );
 };
@@ -132,9 +133,9 @@ export const LikePostRowBox = ({ heartCount, commentCount }) => {
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal }) {
     // 모달창
     const [modalOn, setModalOn] = useState(false);
+
     function openModal() {
         setModalOn(true);
-
     }
     function closeModal() {
         document.body.style.overflow = "unset";
@@ -154,7 +155,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                     </NameIdBox>
                     <SettingBtn onClick={openModal} />
                 </HomePostProfileBox>
-                <HomePostSmallBox>
+                <HomePostSmallLink to={`./post/${postId}`}>
                     <HomePostParagraph>
                         {postparagraph}
                     </HomePostParagraph>
@@ -166,11 +167,12 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                                 alt='포스트이미지'
                             />
                     }
-                </HomePostSmallBox>
-                <LikePostRowBox heartCount={heartCount} commentCount={commentCount} />
+                </HomePostSmallLink>
+                <LikePostRowBox heartCount={heartCount} commentCount={commentCount} postId={postId} />
                 <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
             </HomePostBox>
             {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} id={id} /> : ''}
+
         </>
     );
 }

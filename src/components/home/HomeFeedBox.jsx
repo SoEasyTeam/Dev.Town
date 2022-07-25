@@ -36,7 +36,7 @@ const HomeFeedBox = () => {
                         // console.log(item.image);
                         return (
                             <HomeFollowerList>
-                                <HomePostItem key={index} to={`./post/${item.id}`}>
+                                <HomePostItem key={index} to={`./ post / ${item.id} `}>
                                     <HomeImgPost
                                         profileimg={item.author.image}
                                         nickname={item.author.username}
