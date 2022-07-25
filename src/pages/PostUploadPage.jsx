@@ -60,7 +60,7 @@ function UploadPage() {
     const dispatch = useDispatch();
 
     const token = useSelector((state) => state.auth.token);
-    const formData = useSelector((state)=>state.upload.formData)
+    // const formData = useSelector((state)=>state.upload.formData)
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -69,8 +69,8 @@ function UploadPage() {
         } else {
             console.log('submit succeed');
             history.push('/myprofile');
-            dispatch(postAction.post(token, uploadedImg, postText));
-            dispatch(uploadFilesAction.files(token, formData));
+            dispatch(postAction.post(token, uploadedImg, formData));
+            // dispatch(uploadFilesAction.files(token, formData));
         }
     };
 
@@ -95,7 +95,7 @@ function UploadPage() {
             };
             reader.readAsDataURL(file);
         }
-    }, [uploadedImg]);
+    }, [uploadedImg, formData]);
 
 
     return (
@@ -135,15 +135,7 @@ function UploadPage() {
                             accept='image/*'
                             ref={fileInputRef}
                             onChange={(e) => {
-                                // 파일리스트를 받는다
-                                // 파일리스트들을 각각 url로 만들어준다
-                                // 이미지 url들을 가지고있는 배열이 생긴다
-                                // 이 배열을 api명세에 맞게 문자열로 만든다.
-                                // Post업로드 요청을한다.
-
                                 const fileList = e.target.files;
-
-                                // const file = e.target.files[0];
                                 if (fileList.length > 0) {
                                     setUploadedImg(fileList);
                                     console.log('image set!');

@@ -1,23 +1,22 @@
-function post(token, uploadedImg, postText){
+function post(token, uploadedImg, formData){
     return async (dispatch, getState) =>{
         let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/post`
+        const reqPath = "/image/uploadfiles"
         try{
-            let res = await fetch(url+reqPath,{
+            let fileRes = await fetch(url+reqPath,{
                 method: 'POST',
-                headers: {
-                    Authorization : `Bearer ${token}`,
-                    "Content-type" : "application/json",
-                },
-                body:JSON.stringify({
-                    "post": {
-                        "content": postText,
-                        "image": uploadedImg,
-                    },
-                })
+                body: formData
             })
-            const resJson = await res.json()
-            console.log(resJson);
+            const fileJson = await fileRes.json()
+            console.log(fileJson);
+            // for (let i of fileJson) {
+            //     name.push(i['filename'])
+            // }
+            // if (name.length>1){
+            //     return name.join(',')
+            // } else {
+            //     return name[0]
+            // }
             dispatch({
                 type: 'POST_SUCCESS',
                 payload:{
@@ -26,7 +25,7 @@ function post(token, uploadedImg, postText){
                     // accountname: resJson.post.accountname,
                     // image: resJson.post.image,
                     // content:resJson.post.content
-                    item: resJson.post
+                    // item: resJson.post
                 }
             })
     } catch (error) {
