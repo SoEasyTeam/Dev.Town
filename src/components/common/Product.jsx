@@ -62,6 +62,7 @@ const Product = ({ name, price, src, itemLink, writerId, alertOnModal }) => {
     }
 
     function closeModal() {
+        document.body.style.overflow = "unset";
         setModalOn(false);
     }
 

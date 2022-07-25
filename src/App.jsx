@@ -30,7 +30,7 @@ function App() {
             <Route path='/search' component={() => <SearchPage />} />
             <Route
                 path='/myprofile'
-                component={() => <MyProfilePage/>}
+                component={() => <MyProfilePage />}
             />
             <Route path='/follower' component={() => <FollowerPage />} />
             <Route path='/following' component={() => <FollowingPage />} />

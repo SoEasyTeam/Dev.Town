@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { AlertProductModal } from './AlertModal';
@@ -64,6 +65,7 @@ const ButtonLink = styled(Link)`
 
 // 상품 클릭시 모달
 function MyProductModal({ closeModal, alertOnModal, itemLink }) {
+    document.body.style.overflow = "hidden";
     return (
         <>
             <ModalOutside onClick={closeModal} />
@@ -78,21 +80,37 @@ function MyProductModal({ closeModal, alertOnModal, itemLink }) {
 }
 
 // 내 게시물 클릭시 모달
-function MyPostModal({ closeModal, alertOnModal }) {
+function MyPostModal({ closeModal, alertOnModal, id }) {
+    document.body.style.overflow = "hidden";
+    const accountname = useSelector(state => state.auth.accountname);
+    console.log('게시물 계정이름', id);
+    console.log('로그인 유저 계정이름', accountname)
     return (
         <>
-            <ModalOutside onClick={closeModal} />
-            <ModalContainer>
-                <button className='deleteModalBtn' onClick={closeModal}></button>
-                <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>삭제</ButtonLink>
-                <ButtonLink to={'/post'}>수정</ButtonLink>
-            </ModalContainer>
+            {id === accountname ?
+                <>
+                    <ModalOutside onClick={closeModal} />
+                    <ModalContainer>
+                        <button className='deleteModalBtn' onClick={closeModal}></button>
+                        <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>삭제</ButtonLink>
+                        <ButtonLink to={'/post'}>수정</ButtonLink>
+                    </ModalContainer>
+                </> :
+                <>
+                    <ModalOutside onClick={closeModal} />
+                    <ModalContainer>
+                        <button className='deleteModalBtn' onClick={closeModal}></button>
+                        <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>신고하기</ButtonLink>
+                    </ModalContainer>
+                </>
+            }
         </>
     );
 }
 
 // 상대 게시글, 댓글 더보기 클릭시 모달
 function YourPostModal({ closeModal, alertOnModal }) {
+    document.body.style.overflow = "hidden";
     return (
         <>
             <ModalOutside onClick={closeModal} />
@@ -106,6 +124,7 @@ function YourPostModal({ closeModal, alertOnModal }) {
 
 // 내 댓글 더보기 클릭시 모달
 function MyCommentModal({ closeModal }) {
+    document.body.style.overflow = "hidden";
     return (
         <>
             <ModalOutside onClick={closeModal} />
@@ -118,14 +137,15 @@ function MyCommentModal({ closeModal }) {
 }
 
 // 프로필 더보기 클릭시 모달
-function ProfileModal({ closeModal }) {
+function ProfileModal({ closeModal, alertOnModal }) {
+    document.body.style.overflow = "hidden";
     return (
         <>
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
                 <ButtonLink onClick={closeModal}>설정 및 개인정보</ButtonLink>
-                <ButtonLink>로그아웃</ButtonLink>
+                <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>로그아웃</ButtonLink>
             </ModalContainer>
         </>
     );

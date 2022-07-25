@@ -5,6 +5,8 @@ import uploadImageGray from '../../assets/img-button.png';
 const BasicProfileImg = styled.img`
     width: 100%;
     height: 100%;
+    border-radius: 50%;
+    border: 1px solid var(--border-gray);
 `;
 
 const ImgUpload = styled.img`
@@ -15,7 +17,7 @@ const ImgGray = styled.img`
     width: 100%;
 `;
 
-function DefaultProfileImg({image}) {
+function DefaultProfileImg({ image }) {
 
     return <BasicProfileImg src={image} />;
 }
