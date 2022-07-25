@@ -102,6 +102,7 @@ function UserPost(id) {
         setAlertOn(true);
     }
     function alertOffModal() {
+        document.body.style.overflow = "unset";
         setAlertOn(false);
     }
     return (

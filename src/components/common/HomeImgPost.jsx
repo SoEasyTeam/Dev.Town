@@ -137,6 +137,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
 
     }
     function closeModal() {
+        document.body.style.overflow = "unset";
         setModalOn(false);
     }
 

@@ -132,13 +132,14 @@ function TopFollowingNav() {
     )
 }
 
-function TopBasicNav() {
+function TopBasicNav({ alertOnModal }) {
     // 모달창
     const [modalOn, setModalOn] = useState(false);
     function openModal() {
         setModalOn(true);
     }
     function closeModal() {
+        document.body.style.overflow = "unset";
         setModalOn(false);
     }
     return (
@@ -149,17 +150,17 @@ function TopBasicNav() {
                     <img src={MoreImg} alt='더보기링크' />
                 </TopNavLink>
             </TopNavRowBox>
-            {modalOn === true ? <ProfileModal openModal={openModal} closeModal={closeModal} /> : ''}
+            {modalOn === true ? <ProfileModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} /> : ''}
         </>
     );
 }
 
-function TopSearchNav({onChange}) {
+function TopSearchNav({ onChange }) {
     return (
         <>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <SearchInput onChange={onChange}/>
+                <SearchInput onChange={onChange} />
             </TopNavRowBox>
         </>
     );
@@ -171,7 +172,7 @@ function TopMainNav() {
             <TopNavRowBox>
                 <p className='navTitle'>데브타운 피드</p>
                 <TopNavLink to='/search'>
-                    <img src={SearchImg} alt='찾기링크' style={{cursor:'pointer'}}/>
+                    <img src={SearchImg} alt='찾기링크' style={{ cursor: 'pointer' }} />
                 </TopNavLink>
             </TopNavRowBox>
         </>

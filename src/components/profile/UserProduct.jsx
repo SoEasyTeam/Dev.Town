@@ -94,6 +94,7 @@ function UserProduct() {
         setAlertOn(true);
     }
     function alertOffModal() {
+        document.body.style.overflow = "unset";
         setAlertOn(false);
     }
     return (

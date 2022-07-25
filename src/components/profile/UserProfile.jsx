@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MBtn } from '../../components/common/Buttons';
@@ -122,7 +122,6 @@ function UserProfile() {
     const profileImg = useSelector(state => state.profile.image);
     // console.log(followerCount);
     // console.log(followingCount);
-
 
     // const getData = async () => {
     //     const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}`, {
