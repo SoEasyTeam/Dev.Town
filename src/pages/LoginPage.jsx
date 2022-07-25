@@ -28,6 +28,9 @@ const LoginMain = styled.section`
 
 const LoginBtn = styled(LBtn)`
     margin: 30px 0 20px;
+    ${({disabled}) => {
+        return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
+    }}
 `
 
 const JoinEmailLink = styled(Link)`
@@ -37,7 +40,7 @@ const JoinEmailLink = styled(Link)`
     line-height: 15px;
 `
 
-const WarningParagraph = styled.strong`
+export const WarningParagraph = styled.strong`
     display: none;
     font-family: 'Spoqa Han Sans Neo';
     font-size: 12px;
@@ -46,44 +49,54 @@ const WarningParagraph = styled.strong`
     text-align: left;
     color: #EB5757;
     ${({ visible }) => {
-        return visible ? `display: block` : `display: none`;
+        return visible === true ? `display: block` : `display: none`;
     }}
 `
 
-function LoginPage({ setAuthenticate }) {
+function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
-    const [visible, setVisible] = useState(false);
     const dispatch = useDispatch();   
     const history = useHistory();
     let authLogin = useSelector(state => state.auth.authenticate);
-
-    useEffect(() => {
-        if(authLogin === true){
-            history.push('/home');
-        } else {
-            setVisible(true);
-            console.log('불일치');
-        }
-    },[authLogin])
-
+    const token = useSelector(state=>state.auth.token);
+    const accountname = useSelector(state=>state.auth.accountname);
     //이메일 주소 유효성 검사
     const checkEmail =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
     //로그인버튼 활성화 검사
     const loginActive = () => {
-        return checkEmail.test(email)&&password.length > 5
+        return checkEmail.test(email)&&password.length>5
         ? setIsActive(false)
         : setIsActive(true);
     };
     
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log('login user function issue');
+        // console.log('login user function issue');
         dispatch(authenticateAction.login(email, password));
     }
+
+    // const localEmail = useSelector(state => state.auth.email);
+    // const localId = useSelector(state => state.auth.email);
+    // const localImg = useSelector(state => state.auth.email);
+    // const localUsername = useSelector(state => state.auth.email);
+
+
+    useEffect(() => {
+        if(authLogin === true) {
+            history.push('/home');
+            localStorage.setItem('token', token);
+            localStorage.setItem('accountname', accountname);
+            // localStorage.setItem('email', localEmail);
+            // localStorage.setItem('id', localId);
+            // localStorage.setItem('image', localImg);
+            // localStorage.setItem('username', localUsername);
+            // localStorage.setITem('authenticate', authLogin);
+        }
+    },[authLogin, history, token, accountname]);
 
     return (
         <LoginMain>
@@ -94,7 +107,7 @@ function LoginPage({ setAuthenticate }) {
                 <EmailInput value={email} onChange = {(event) => setEmail(event.target.value)} onKeyUp={loginActive} />
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput value={password} onChange = {(event) => setPassword(event.target.value)} onKeyUp={loginActive}/>
-                <WarningParagraph visible={visible}>*이메일  또는 비밀번호가 일치하지 않습니다.</WarningParagraph>
+                <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
                 <div className='loginBtnWrap'>
                     <LoginBtn disabled={isActive} >로그인</LoginBtn>
                     <JoinEmailLink to='/join'>이메일로 회원가입</JoinEmailLink>

@@ -51,6 +51,12 @@ const MsBtn = styled.button`
     color: var(--subtitle-text);
 `; //저장, 업로드 버튼
 
+const SaveBtn = styled(MsBtn)`
+    ${({disabled}) => {
+        return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
+    }}
+`
+
 const SBtn = styled.button`
     width: 56px;
     height: 28px;
@@ -68,4 +74,4 @@ const SBtn = styled.button`
     color: var(--subtitle-text);
 `;
 
-export { LBtn, MlBtn, MBtn, MsBtn, SBtn };
+export { LBtn, MlBtn, MBtn, MsBtn, SBtn, SaveBtn };

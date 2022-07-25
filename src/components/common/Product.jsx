@@ -1,9 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { MyProductModal } from '../common/Modal';
+import { AlertProductModal } from './AlertModal';
+
 
 const ProductItemBox = styled.div`
     width: 140px;
     margin-right: 10px;
+    cursor: pointer;
     .img-product {
         width: 100%;
         height: 90px;
@@ -36,18 +42,41 @@ const ProductItemBox = styled.div`
     }
 `;
 
-const Product = ({ name, price, src }) => {
+const Product = ({ name, price, src, itemLink, writerId, alertOnModal }) => {
+    const userId = useSelector(state => state.auth.id);
+    const [modalOn, setModalOn] = useState(false);
+    const priceShow = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+    function openModal() {
+        console.log('상품등록유저', writerId);
+        console.log('유저:', userId);
+        console.log('링크', itemLink);
+
+        if (userId !== writerId) {
+            setModalOn(false);
+            console.log('상품링크로 이동')
+            window.open(`${itemLink}`, '_blank')
+        } else {
+            setModalOn(true);
+        }
+    }
+
+    function closeModal() {
+        setModalOn(false);
+    }
+
     return (
         <>
-            <ProductItemBox>
+            <ProductItemBox onClick={openModal}>
                 <img
                     className='img-product'
                     src={src}
                     alt='상품이미지'
                 />
                 <p className='txt-productName'>{name}</p>
-                <span className='txt-productPrice'>{price}원</span>
+                <span className='txt-productPrice'>{priceShow}원</span>
             </ProductItemBox>
+            {modalOn === true ? <MyProductModal closeModal={closeModal} itemLink={itemLink} alertOnModal={alertOnModal} /> : ''}
         </>
     );
 };

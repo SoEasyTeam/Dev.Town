@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import Product from '../components/common/Product';
+import Product from '../common/Product';
 import { useSelector } from 'react-redux';
+import { AlertProductModal } from '../common/AlertModal';
 
-const ProductLink = styled(Link)`
-
-`
 
 const ProductAreaListUl = styled.ul`
     list-style: none;
@@ -19,6 +16,7 @@ const ProductAreaListUl = styled.ul`
         float:left;
         margin-right: 16px;
         margin-bottom: 19.5px;
+        cursor: pointer;
     }
 `
 
@@ -42,20 +40,22 @@ const ProductArea = styled.article`
     }
 `
 
-const ProductAreaList = ({ userProductData }) => {
+const ProductAreaList = ({ userProductData, alertOnModal }) => {
     return (
         <>
             {userProductData &&
                 userProductData.product.map((item) => {
                     return (
-                        <ProductLink to={item.link}>
+                        <div key={item.id} >
                             <Product
-                                key={item.id}
                                 name={item.itemName}
                                 price={item.price}
                                 src={item.itemImage}
+                                itemLink={item.link}
+                                writerId={item.author._id}
+                                alertOnModal={alertOnModal}
                             />
-                        </ProductLink>
+                        </div>
                     )
                 })
             }
@@ -66,7 +66,8 @@ const ProductAreaList = ({ userProductData }) => {
 function UserProduct() {
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
-    const [userProductData, setUserProductData] = useState('')
+    const [userProductData, setUserProductData] = useState('');
+    const [alertOn, setAlertOn] = useState(false);
 
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/product/${accountname}`, {
@@ -77,6 +78,7 @@ function UserProduct() {
             }
         })
         const json = await res.json()
+        console.log('상품 : ', json)
         setUserProductData(json)
     }
 
@@ -84,20 +86,27 @@ function UserProduct() {
         getData()
     }, [])
 
-    if (!userProductData) {
+    if (userProductData.data === 0) {
         return <></>
     }
 
+    function alertOnModal() {
+        setAlertOn(true);
+    }
+    function alertOffModal() {
+        setAlertOn(false);
+    }
     return (
         <>
             <ProductArea>
                 <div className='productAreaDiv'>
                     <h3 className='productAreaTitle'>판매 중인 상품</h3>
                     <ProductAreaListUl>
-                        <ProductAreaList userProductData={userProductData} />
+                        <ProductAreaList userProductData={userProductData} alertOnModal={alertOnModal} />
                     </ProductAreaListUl>
                 </div>
             </ProductArea>
+            {alertOn === true ? <AlertProductModal alertOffModal={alertOffModal} /> : ''}
         </>
     )
 

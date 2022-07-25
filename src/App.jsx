@@ -1,21 +1,22 @@
-import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import HomePage from './pages/HomePage';
 import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
 import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
-import PostPage from './pages/PostPage';
 import UploadPage from './pages/PostUploadPage';
+import AddProductPage from './pages/AddProductPage';
+import ProfileSettingPage from './pages/ProfileSettingPage';
+import ProfileModificationPage from './pages/ProfileModificationPage';
+import PostPage from './pages/PostPage';
+import SearchPage from './pages/SearchPage';
+import FollowerPage from './pages/FollowerPage';
+import FollowingPage from './pages/FollowingPage';
 
-import { useSelector } from 'react-redux';
 
 function App() {
-    let [authenticate, setAuthenticate] = useState(false);
 
-    useEffect(() => {
-        console.log(authenticate);
-    }, [authenticate]);
     return (
         <Switch>
             <Route exact path='/' component={() => <SplashPage />} />
@@ -24,17 +25,22 @@ function App() {
                 path='/login'
                 component={() => (
                     <LoginPage
-                        setAuthenticate={setAuthenticate}
-                        authenticate={authenticate}
                     />
                 )}
             />
-            <Route path='/home' component={() => <HomePage />} />
+            <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
+            <Route path='/home' component={() => <HomePage localToken={localToken} />} />
+            <Route path='/search' component={() => <SearchPage />} />
             <Route
                 path='/myprofile'
-                component={() => <MyProfilePage />}
+                component={() => <MyProfilePage/>}
             />
             <Route path='/upload' component={()=><UploadPage/>}/>
+            <Route path='/follower' component={() => <FollowerPage />} />
+            <Route path='/following' component={() => <FollowingPage />} />
+            <Route path='/product' component={() => <AddProductPage />} />
+            <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
+            <Route path='/post/:id' component={() => <PostPage />} />
         </Switch>
     );
 }

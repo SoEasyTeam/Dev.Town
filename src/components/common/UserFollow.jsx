@@ -7,10 +7,10 @@ import {
     IdP,
     ProfileLogoImg,
 } from './UserSearch';
-import EllipseImg from '../../assets/Ellipse-1.png';
 
 export const UserFollowBox = styled(UserSearchBox)`
     position: relative;
+    margin-bottom: 16px;
 `;
 
 const FollowBtn = styled.button`
@@ -29,14 +29,19 @@ const FollowBtn = styled.button`
     top: 11px;
 `;
 
-function UserFollow() {
+function UserFollow({ src, name, accountname, isfollow }) {
+    function moveProfilePage() {
+        console.log('프로필로 이동')
+        // window.location.href = '/myprofile'
+    }
+
     return (
         <>
-            <UserFollowBox>
-                <ProfileLogoImg src={EllipseImg} alt='프로필로고' />
+            <UserFollowBox onClick={moveProfilePage}>
+                <ProfileLogoImg src={src} alt='프로필로고' />
                 <NameIdBox>
-                    <NickNameP>애월읍 위니브 감귤농장</NickNameP>
-                    <IdP>@ weniv_Mandarin</IdP>
+                    <NickNameP>{name}</NickNameP>
+                    <IdP>@ {accountname}</IdP>
                 </NameIdBox>
                 <FollowBtn>팔로우</FollowBtn>
             </UserFollowBox>

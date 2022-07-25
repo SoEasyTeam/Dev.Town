@@ -1,15 +1,11 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import HomeImgPost from '../components/common/HomeImgPost';
-import IconPostListOn from '../assets/icon/icon-post-list-on.png';
-import IconPostAlbumOff from '../assets/icon/icon-post-album-off.png';
+import HomeImgPost from '../common/HomeImgPost';
+import IconPostListOn from '../../assets/icon/icon-post-list-on.png';
+import IconPostAlbumOff from '../../assets/icon/icon-post-album-off.png';
 import { useSelector } from 'react-redux';
-
-
-const PostLink = styled(Link)`
-
-`
+import { AlertPostModal } from '../common/AlertModal';
 
 const PostShowBtns = styled.button`
     width: 26px;
@@ -35,7 +31,7 @@ const PostArea = styled.article`
 const PostAreaListUl = styled.ul`
     list-style: none;
     li {
-        margin: 16px 0;
+        margin: 20px 0;
     }
 `
 
@@ -47,29 +43,28 @@ function parseDate(dateString) {
     return [year, month, day]
 }
 
-function PostAreaList({ userPostData }) {
+function PostAreaList({ userPostData, alertOnModal }) {
     return (
         <>
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
+                    // console.log(item.image)
                     return (
-                        <li>
-                            <PostLink to="#">
-                                <HomeImgPost
-                                    key={item.id}
-                                    profileimg={item.author.image}
-                                    nickname={item.author.username}
-                                    id={item.author.accountname}
-                                    postparagraph={item.content}
-                                    postsrc={item.image}
-                                    heartCount={item.heartCount}
-                                    commentCount={item.commentCount}
-                                    year={year}
-                                    month={month}
-                                    day={day}
-                                />
-                            </PostLink>
+                        <li key={item.id}>
+                            <HomeImgPost
+                                profileimg={item.author.image}
+                                nickname={item.author.username}
+                                id={item.author.accountname}
+                                postparagraph={item.content}
+                                postsrc={item.image}
+                                heartCount={item.heartCount}
+                                commentCount={item.commentCount}
+                                year={year}
+                                month={month}
+                                day={day}
+                                alertOnModal={alertOnModal}
+                            />
                         </li>
                     )
                 })
@@ -79,30 +74,36 @@ function PostAreaList({ userPostData }) {
 }
 
 function UserPost() {
+    const token = useSelector(state => state.auth.token);
+    const accountname = useSelector(state => state.auth.accountname);
     const [userPostData, setUserPostData] = useState('')
-    // console.log(userPostData)
-    // const token = useSelector(state => state.auth.token);
-    // const accountname = useSelector(state => state.auth.accountname);
+    const [alertOn, setAlertOn] = useState(false);
+
     const getData = async () => {
-        const res = await fetch("https://mandarin.api.weniv.co.kr/post/dev_town/userpost", {
+        const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${accountname}/userpost`, {
             method: "GET",
             headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2Mjk0OTQxMCwiaWF0IjoxNjU3NzY1NDEwfQ.Z8_J_6Sol0yPyNgzbOrlJCiwuo4num9dqBY1PsgwtVk",
+                "Authorization": `Bearer ${token}`,
                 "Content-type": "application/json"
             }
         })
         const json = await res.json()
-        console.log(json)
+        console.log('게시물 : ', json)
         setUserPostData(json)
     }
     useEffect(() => {
         getData()
     }, [])
 
-    if (!userPostData) {
+    if (Array.isArray(userPostData.post) && userPostData.post.length === 0) {
         return <></>
     }
-
+    function alertOnModal() {
+        setAlertOn(true);
+    }
+    function alertOffModal() {
+        setAlertOn(false);
+    }
     return (
         <>
             <PostArea>
@@ -115,9 +116,10 @@ function UserPost() {
                     </PostShowBtns>
                 </div>
                 <PostAreaListUl>
-                    <PostAreaList userPostData={userPostData} />
+                    <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
                 </PostAreaListUl>
             </PostArea>
+            {alertOn === true ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
         </>
     )
 }
