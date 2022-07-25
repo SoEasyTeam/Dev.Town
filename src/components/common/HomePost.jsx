@@ -26,7 +26,7 @@ export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
     height: 42px;
 `;
 
-export const HomePostLink = styled(Link)`
+export const HomePostBox = styled.div`
     display: block;
     width: 358px;
     margin: 0 auto;
@@ -65,12 +65,14 @@ export const DateParagraph = styled.p`
     letter-spacing: 0em;
     text-align: left;
     margin-top: 16px;
+    margin-left: 54px;
     color: #767676;
 `;
 
 export const LikePostBox = styled.div`
     display: flex;
     gap: 22px;
+    margin-left: 54px;
     .like-btn {
         position: relative;
     }
@@ -84,12 +86,11 @@ export const LikePostBox = styled.div`
         font-family: 'Spoqa Han Sans Neo';
         font-size: 12px;
         font-weight: 400;
-        line-height: 12px;
         text-align: left;
         color: #767676;
         top: 3px;
     }
-    .comment-link {
+    .comment-btn {
         position: relative;
     }
     .comment-img {
@@ -102,56 +103,53 @@ export const LikePostBox = styled.div`
         font-family: 'Spoqa Han Sans Neo';
         font-size: 12px;
         font-weight: 400;
-        line-height: 12px;
         text-align: left;
         color: #767676;
         top: 3px;
     }
 `;
 
-export const LikePostRowBox = () => {
+export const LikePostRowBox = ({ heartCount, commentCount }) => {
     return (
         <LikePostBox>
             <button className='like-btn'>
                 <img className='heart-img' src={IconHeartImg} alt='하트버튼' />
-                <span className='likecount-span'>58</span>
+                <span className='likecount-span'>{heartCount}</span>
             </button>
-            <Link to='#' className='comment-link'>
+            <button className='comment-btn'>
                 <img
                     className='comment-img'
                     src={IconCommentImg}
                     alt='댓글링크'
                 />
-                <span className='comment-span'>12</span>
-            </Link>
+                <span className='comment-span'>{commentCount}</span>
+            </button>
         </LikePostBox>
     );
 };
 
-const HomePost = () => {
+const HomePost = ({ profileimg, nickname, id, postparagraph, year, month, day }) => {
     return (
         <>
-            <HomePostLink>
+            <HomePostBox>
                 <HomePostProfileBox>
-                    <HomePostProfileLogoImg src={EllipseImg} alt='프로필로고' />
+                    <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
                     <NameIdBox>
                         <HomePostProfileNickName>
-                            애월읍 위니브 감귤농장
+                            {nickname}
                         </HomePostProfileNickName>
-                        <IdP>@ weniv_Mandarin</IdP>
+                        <IdP>@ {id}</IdP>
                     </NameIdBox>
                     <SettingBtn />
                 </HomePostProfileBox>
                 <HomePostSmallBox>
                     <HomePostParagraph>
-                        옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의
-                        위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와
-                        약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.
+                        {postparagraph}
                     </HomePostParagraph>
                     <LikePostRowBox />
-                    <DateParagraph>2020년 10월 21일</DateParagraph>
+                    <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
                 </HomePostSmallBox>
-            </HomePostLink>
+            </HomePostBox>
         </>
     );
 };

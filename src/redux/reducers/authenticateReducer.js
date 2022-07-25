@@ -10,13 +10,12 @@ let initialState = {
 
 function authenticateReducer(state = initialState, action) {
     let { type, payload } = action;
-    console.log(action);
     switch (type) {
         case 'LOGIN_SUCCESS':
             console.log('login success reducer');
             return {
                 ...state,
-                id: payload._id,
+                id: payload.id,
                 username: payload.username,
                 email: payload.email,
                 accountname: payload.accountname,

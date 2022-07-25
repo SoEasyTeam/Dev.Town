@@ -10,7 +10,6 @@ function joinReducer(state = initialState, action) {
     let { type, payload } = action;
     switch (type) {
         case 'JOIN_EMAIL_PASSWORD_SUCCESS':
-            console.log('join email pw success reducer');
             return {
                 ...state,
                 email: payload.email,

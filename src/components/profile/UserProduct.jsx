@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import Product from '../components/common/Product';
-
-const ProductLink = styled(Link)`
-
-`
+import Product from '../common/Product';
+import { useSelector } from 'react-redux';
 
 const ProductAreaListUl = styled.ul`
     list-style: none;
@@ -18,6 +14,7 @@ const ProductAreaListUl = styled.ul`
         float:left;
         margin-right: 16px;
         margin-bottom: 19.5px;
+        cursor: pointer;
     }
 `
 
@@ -47,14 +44,15 @@ const ProductAreaList = ({ userProductData }) => {
             {userProductData &&
                 userProductData.product.map((item) => {
                     return (
-                        <ProductLink to={item.link}>
+                        <div key={item.id} >
                             <Product
-                                key={item.id}
                                 name={item.itemName}
                                 price={item.price}
-                                src={item.itemImg}
+                                src={item.itemImage}
+                                itemLink={item.link}
+                                writerId={item.author._id}
                             />
-                        </ProductLink>
+                        </div>
                     )
                 })
             }
@@ -63,25 +61,28 @@ const ProductAreaList = ({ userProductData }) => {
 }
 
 function UserProduct() {
+    const token = useSelector(state => state.auth.token);
+    const accountname = useSelector(state => state.auth.accountname);
     const [userProductData, setUserProductData] = useState('')
-    console.log(userProductData)
+
+    const getData = async () => {
+        const res = await fetch(`https://mandarin.api.weniv.co.kr/product/${accountname}`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-type": "application/json"
+            }
+        })
+        const json = await res.json()
+        console.log('상품 : ', json)
+        setUserProductData(json)
+    }
+
     useEffect(() => {
-        const getData = async () => {
-            const res = await fetch("https://mandarin.api.weniv.co.kr/product/dev_town", {
-                method: "GET",
-                headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2MwZTMzODJmZGNjNzEyZjQzYTQ3OCIsImV4cCI6MTY2Mjk0OTQxMCwiaWF0IjoxNjU3NzY1NDEwfQ.Z8_J_6Sol0yPyNgzbOrlJCiwuo4num9dqBY1PsgwtVk",
-                    "Content-type": "application/json"
-                }
-            })
-            const json = await res.json()
-            // console.log(json)
-            setUserProductData(json)
-        }
         getData()
     }, [])
 
-    if (!userProductData) {
+    if (userProductData.data === 0) {
         return <></>
     }
 

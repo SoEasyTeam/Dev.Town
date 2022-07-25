@@ -1,3 +1,4 @@
+// 초기값
 let initialState = {
     id: '',
     username: '',
@@ -11,12 +12,14 @@ let initialState = {
     followingCount: '',
 };
 
+// state는 초기값을 넣어줌
 function profileReducer(state = initialState, action) {
+    // return문 속에 payload 중첩을 줄이기 위해서 아래문장 안쓰면 action.payload.username 이런식으로 써야함
     let { type, payload } = action;
-    console.log(action);
+    // actiond에서 보내준 PROFILE_SUCCESS를 찾아 store에 값을 변경 시킴
+    // store에서 변경된 값이 useSelector로 UI로 나가는 것!
     switch (type) {
         case 'PROFILE_SUCCESS':
-            console.log('profile success reducer');
             return {
                 ...state,
                 id: payload._id,
