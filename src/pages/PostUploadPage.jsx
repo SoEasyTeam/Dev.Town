@@ -69,7 +69,7 @@ function UploadPage() {
         } else {
             console.log('submit succeed');
             history.push('/myprofile');
-            dispatch(postAction.post(token, uploadedImg, formData));
+            dispatch(postAction.post(token, uploadedImg));
             // dispatch(uploadFilesAction.files(token, formData));
         }
     };
@@ -78,24 +78,26 @@ function UploadPage() {
         setPostText(e.target.value);
     };
     useEffect(() => {
-        const formData = new FormData()
         for (let index = 0; index < uploadedImg.length; index++) {
-            formData.append('image',uploadedImg[index])
             const file = uploadedImg[index];
             const reader = new FileReader();
             reader.onloadend = () => {
                 SetImgPreview((prev) => {
-                    const newPreviews = [...prev, reader.result];
+                    let newPreviews = [...prev, reader.result];
                     if (newPreviews.length > 3){
-                        const newPreviewsSliced = newPreviews.slice(0,3)
-                        return newPreviewsSliced
+                        alert('이미지는 최대 3장까지 업로드가 가능합니다.')
+                        newPreviews = newPreviews.slice(0,3)
+                        return newPreviews
                     }
                     return newPreviews;
                 });
             };
             reader.readAsDataURL(file);
+            const formData = new FormData()
+            formData.append('image',file)
+            console.log(formData);
         }
-    }, [uploadedImg, formData]);
+    }, [uploadedImg]);
 
 
     return (
