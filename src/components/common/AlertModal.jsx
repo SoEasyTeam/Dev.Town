@@ -47,6 +47,8 @@ const AlertUl = styled.ul`
         border-left: 0.5px solid #DBDBDB;
     }
 `
+
+// 상품 삭제
 function AlertProductModal({ alertOffModal }) {
     console.log('alertmodal 나옴')
     return (
@@ -63,6 +65,7 @@ function AlertProductModal({ alertOffModal }) {
     );
 }
 
+// 게시글 삭제
 function AlertPostModal({ alertOffModal }) {
     console.log('alertmodal 나옴')
     return (
@@ -79,6 +82,24 @@ function AlertPostModal({ alertOffModal }) {
     );
 }
 
+// 신고하기
+function AlertDeclareModal({ alertOffModal }) {
+    console.log('alertmodal 나옴')
+    return (
+        <>
+            <AlertOutside />
+            <AlertContainer>
+                <strong className='alertMsg'>신고할까요?</strong>
+                <AlertUl>
+                    <li onClick={alertOffModal}>취소</li>
+                    <li className='selectColor'>신고</li>
+                </AlertUl>
+            </AlertContainer>
+        </>
+    );
+}
+
+// 로그아웃
 function AlertLogoutModal({ alertOffModal }) {
     console.log('alertmodal 나옴')
     return (
@@ -95,4 +116,4 @@ function AlertLogoutModal({ alertOffModal }) {
     );
 }
 
-export { AlertProductModal, AlertPostModal, AlertLogoutModal };
+export { AlertProductModal, AlertPostModal, AlertDeclareModal, AlertLogoutModal };

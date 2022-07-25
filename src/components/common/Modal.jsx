@@ -92,13 +92,13 @@ function MyPostModal({ closeModal, alertOnModal }) {
 }
 
 // 상대 게시글, 댓글 더보기 클릭시 모달
-function YourPostModal({ closeModal }) {
+function YourPostModal({ closeModal, alertOnModal }) {
     return (
         <>
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
-                <ButtonLink>신고하기</ButtonLink>
+                <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>신고하기</ButtonLink>
             </ModalContainer>
         </>
     );

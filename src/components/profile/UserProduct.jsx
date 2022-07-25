@@ -69,7 +69,6 @@ function UserProduct() {
     const [userProductData, setUserProductData] = useState('');
     const [alertOn, setAlertOn] = useState(false);
 
-
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/product/${accountname}`, {
             method: "GET",
@@ -92,7 +91,6 @@ function UserProduct() {
     }
 
     function alertOnModal() {
-        console.log('alerton')
         setAlertOn(true);
     }
     function alertOffModal() {
