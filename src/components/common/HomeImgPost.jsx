@@ -130,7 +130,7 @@ export const LikePostRowBox = ({ heartCount, commentCount, postId }) => {
     );
 };
 
-function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal }) {
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal, postId }) {
     // 모달창
     const [modalOn, setModalOn] = useState(false);
 
