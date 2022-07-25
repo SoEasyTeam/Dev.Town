@@ -39,7 +39,7 @@ function profile(token, accountname) {
                 },
             });
             // 에러가 나면 catch의 값을 불러온다.
-        } catch (error) {}
+        } catch (error) { }
     };
 }
 

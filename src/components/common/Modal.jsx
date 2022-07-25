@@ -35,6 +35,17 @@ const ModalContainer = styled.section`
         background: #dbdbdb;
         border-radius: 5px;
     }
+    a {
+        display: flex;
+        padding-left: 26px;
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        &:hover{
+            font-weight: bold;
+        }
+    }
 `
 
 const ButtonLink = styled(Link)`
@@ -58,7 +69,7 @@ function MyProductModal({ closeModal, itemLink }) {
                 <button className='deleteModalBtn' onClick={closeModal}></button>
                 <ButtonLink to={'/home'}>삭제</ButtonLink>
                 <ButtonLink to={'/product'}>수정</ButtonLink>
-                <ButtonLink to={itemLink} target='_blank'>웹사이트에서 상품보기</ButtonLink>
+                <a href={itemLink} target='_blank' rel="noreferrer">웹사이트에서 상품보기</a>
             </ModalContainer>
         </>
     );
