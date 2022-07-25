@@ -75,7 +75,6 @@ function AddProductPage() {
     const [isActive, setisActive] = useState(true);
     const history = useHistory();
     const dispatch = useDispatch();
-    const token = useSelector(state => state.auth.token);
 
     const saveActive = () => {
         return itemName.length>1&&itemName.length<16&&isPrice.length>0&&link.length>0&&previewImage.length>0
@@ -86,7 +85,7 @@ function AddProductPage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
-        dispatch(addProductAction.addProduct(itemName, price, link, token, itemImage));
+        dispatch(addProductAction.addProduct(itemName, price, link, itemImage));
         history.push('/myprofile');
     }
 
@@ -99,7 +98,7 @@ function AddProductPage() {
 
     const onChangeProductImg = (event) => {
         setPreviewImage(URL.createObjectURL(event.target.files[0]));
-        
+
         let reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {

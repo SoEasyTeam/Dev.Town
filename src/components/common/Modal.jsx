@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { AlertProductModal } from './AlertModal';
+import { useDispatch } from 'react-redux';
+import { addProductAction } from '../../redux/actions/addProductAction';
 
 const ModalOutside = styled.div`
     position: fixed;
@@ -63,15 +65,20 @@ const ButtonLink = styled(Link)`
 `
 
 // 상품 클릭시 모달
-function MyProductModal({ closeModal, alertOnModal, itemLink }) {
+function MyProductModal({ itemName, price, link, itemImage, product_id, closeModal, alertOnModal, author }) {
+    const dispatch = useDispatch();
+    const onClickModifictionBtn = () => {
+        dispatch(addProductAction.productModificationModal(itemName, price, link, itemImage, product_id, author));
+    }
+    
     return (
         <>
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
                 <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>삭제</ButtonLink>
-                <ButtonLink to={'/product'}>수정</ButtonLink>
-                <a href={itemLink} target='_blank' rel="noreferrer">웹사이트에서 상품보기</a>
+                <ButtonLink onClick={onClickModifictionBtn} to={`./product/${product_id}`}>수정</ButtonLink>
+                <a href={link} target='_blank' rel="noreferrer">웹사이트에서 상품보기</a>
             </ModalContainer>
         </>
     );

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import ImgBtn from '../assets/img-button.png'
 import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components/common/TextAciveInput'
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductAction } from '../redux/actions/addProductAction'
 import { SaveBtn } from '../components/common/Buttons'
@@ -75,7 +75,9 @@ function ProductModificationPage() {
     const [isActive, setisActive] = useState(true);
     const history = useHistory();
     const dispatch = useDispatch();
-    const token = useSelector(state => state.auth.token);
+    // const { product_id } = useParams();
+    const uname = useSelector(state=>state.addproduct.product_id);
+    console.log(uname,'이름');
 
     const saveActive = () => {
         return itemName.length>1&&itemName.length<16&&isPrice.length>0&&link.length>0&&previewImage.length>0
@@ -86,7 +88,7 @@ function ProductModificationPage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
-        dispatch(addProductAction.addProduct(itemName, price, link, token, itemImage));
+        dispatch(addProductAction.productModification(itemName, price, link, itemImage));
         history.push('/myprofile');
     }
 
@@ -112,7 +114,7 @@ function ProductModificationPage() {
         <ProductForm onSubmit={onSubmitHandler}>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <SaveBtn disabled={isActive}>저장</SaveBtn>
+                <SaveBtn disabled={isActive}>저장ㅇㄹㄴㄹㅇㄴㅇㄹㄴㅇ</SaveBtn>
             </TopNavRowBox>
             <ProductBox>
                 <AddProductSpan>이미지 등록</AddProductSpan>
@@ -120,7 +122,7 @@ function ProductModificationPage() {
                     <img className='addProduct-img' src={itemImage} alt="상품이미지" />
                 </AddProductLabel>
                 <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*' />
-                <ProductNameLabel>상품명</ProductNameLabel>
+                <ProductNameLabel>상품명 안녕하세요</ProductNameLabel>
                 <ProductName value = {itemName} onChange={(event) => setItemName(event.target.value)} onKeyUp={saveActive} />
                 <TextLabel>가격</TextLabel>
                 <ProductPrice value = {isPrice} onChange={onChangePrice} onKeyUp={saveActive} />
@@ -132,4 +134,4 @@ function ProductModificationPage() {
     )
 }
 
-export default ProductModificationPage
+export default ProductModificationPage;

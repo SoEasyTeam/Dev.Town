@@ -27,9 +27,6 @@ const MlBtn = styled(Link)`
 
 `//검색하기, 이전페이지(404)
 
-
-
-
 const MBtn = styled.button`
     width: 120px;
     height: 34px;
