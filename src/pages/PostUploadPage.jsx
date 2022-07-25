@@ -10,7 +10,6 @@ import {
 } from '../components/common/ProfileButtons';
 
 import { postAction } from '../redux/actions/postAction';
-import { uploadFilesAction } from '../redux/actions/uploadFilesAction';
 
 const UploadForm = styled.form`
     height: 100vh;
@@ -38,6 +37,20 @@ const UploadInputSection = styled.section`
     .uploadInput::placeholder {
         position: absolute;
         top: 0;
+    }
+
+    .preview-area {
+        display: flex;
+        gap: 5px;
+        overflow-x: auto;
+        height: 171px;
+    }
+    .preview-area .preview-item {
+        border-radius: 10px;
+        width: 168px;
+        height: 171px;
+        object-fit: cover;
+        max-height: 126px;
     }
 `;
 
@@ -69,13 +82,38 @@ function UploadPage() {
         } else {
             console.log('submit succeed');
             history.push('/myprofile');
-            dispatch(postAction.post(token, uploadedImg));
+            // dispatch(postAction(formData));
             // dispatch(uploadFilesAction.files(token, formData));
         }
     };
 
     const HandlePostText = (e) => {
         setPostText(e.target.value);
+    };
+
+    const HandleOnchange = (e) => {
+        const fileList = e.target.files;
+        console.log(fileList);
+        const formData = new FormData();
+        if (fileList.length > 0) {
+            for (let index = 0; index < fileList.length; index++) {
+                const file = fileList[index];
+                formData.append('image', file);
+            }
+
+            // setUploadedImg(fileList);
+            // console.log('image set!');
+            // let formData = Array.from(new FormData())
+            // for(let i of fileList){
+            //     formData.push(i.filename)
+            // }
+            // console.log('폼데이터',formData);
+
+            dispatch(postAction.post(formData),postText);
+            console.log(formData);
+        } else {
+            setUploadedImg(null);
+        }
     };
     useEffect(() => {
         for (let index = 0; index < uploadedImg.length; index++) {
@@ -84,21 +122,17 @@ function UploadPage() {
             reader.onloadend = () => {
                 SetImgPreview((prev) => {
                     let newPreviews = [...prev, reader.result];
-                    if (newPreviews.length > 3){
-                        alert('이미지는 최대 3장까지 업로드가 가능합니다.')
-                        newPreviews = newPreviews.slice(0,3)
-                        return newPreviews
+                    if (newPreviews.length > 3) {
+                        alert('이미지는 최대 3장까지 업로드가 가능합니다.');
+                        newPreviews = newPreviews.slice(0, 3);
+                        return newPreviews;
                     }
                     return newPreviews;
                 });
             };
             reader.readAsDataURL(file);
-            const formData = new FormData()
-            formData.append('image',file)
-            console.log(formData);
         }
     }, [uploadedImg]);
-
 
     return (
         <>
@@ -115,20 +149,22 @@ function UploadPage() {
                             rows={10}
                             onChange={HandlePostText}
                         />
-                        {imgPreview &&
-                            imgPreview.map((imgUrl) => (
-                                <article>
-                                    <img
-                                        className='uploaded-img'
-                                        src={imgUrl}
-                                        alt='게시물 이미지'
-                                        style={{
-                                            maxWidth: '500px',
-                                            maxHeight: '500px',
-                                        }}
-                                    />
-                                </article>
-                            ))}
+                        <article className='preview-area'>
+                            {imgPreview &&
+                                imgPreview.map((imgUrl) => (
+                                    <li className='preview-item'>
+                                        <img
+                                            className='uploaded-img'
+                                            src={imgUrl}
+                                            alt='게시물 이미지'
+                                            style={{
+                                                maxWidth: '500px',
+                                                maxHeight: '500px',
+                                            }}
+                                        />
+                                    </li>
+                                ))}
+                        </article>
                         <UploadImgInput
                             type='file'
                             multiple='multiple'
@@ -136,15 +172,7 @@ function UploadPage() {
                             id='uploadedImg'
                             accept='image/*'
                             ref={fileInputRef}
-                            onChange={(e) => {
-                                const fileList = e.target.files;
-                                if (fileList.length > 0) {
-                                    setUploadedImg(fileList);
-                                    console.log('image set!');
-                                } else {
-                                    setUploadedImg(null);
-                                }
-                            }}
+                            onChange={HandleOnchange}
                         />
                         <ImgUploadBtn
                             htmlFor='uploadedImg'
