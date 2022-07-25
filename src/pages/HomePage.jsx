@@ -7,14 +7,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { homeFeedAction } from '../redux/actions/homeFeedAction'
 import HomeFeedBox from '../components/home/HomeFeedBox'
 
-function HomePage({localToken}) {
+function HomePage() {
     const dispatch = useDispatch();
     const posts = useSelector(state=>state.homefeed.item);
-    console.log(localToken);
 
     useEffect(() => {
-        dispatch(homeFeedAction.homeFeed(localToken));
-    },[localToken,dispatch])
+        dispatch(homeFeedAction.homeFeed());
+    },[dispatch])
 
     return (
         <>

@@ -107,6 +107,7 @@ function UserProfile() {
     console.log('유저:', userId);
     // authenticateReducer에서 받아온 상태 값
     const token = useSelector(state => state.auth.token);
+    const image = useSelector(state => state.auth.image);
     const Myaccountname = useSelector(state => state.auth.accountname);
     const dispatch = useDispatch();
     // console.log(token)
@@ -156,7 +157,7 @@ function UserProfile() {
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
-                        <img src={profileImg} alt='프로필이미지' />
+                        <img src={image} alt='프로필이미지' />
                     </div>
                     <div className='followings'>
                         <FollowLink to='/following'>{followingCount}</FollowLink>
