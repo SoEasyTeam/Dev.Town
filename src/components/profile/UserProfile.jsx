@@ -38,6 +38,7 @@ const FollowLink = styled(Link)`
 
 const MyProfileBtn = styled(MBtn)`
     background-color: var(--bg-color);
+    border: 1px solid #DBDBDB;
     font-family: 'Spoqa Han Sans Neo';
     font-weight: 500;
     font-size: 14px;
@@ -189,7 +190,7 @@ function UserProfile() {
                     <ProfileIntro>{intro}</ProfileIntro>
                 </div>
                 <div className='profileBottom'>
-                    {Myaccountname === Youraccountname ? (
+                    {Myaccountname !== Youraccountname ? (
                         <>
                             <CircleBtns>
                                 <img src={IconMesssageImg} alt='채팅링크' />
