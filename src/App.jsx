@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import HomePage from './pages/HomePage';
 import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
@@ -14,6 +16,12 @@ import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
 
 function App() {
+ let [authenticate, setAuthenticate] = useState(false);
+    const state = useSelector((state) => state);
+    console.log(state, 'app');
+    useEffect(() => {
+        console.log(authenticate);
+    }, [authenticate]);
     let localToken = localStorage.getItem('key');
 
     return (
