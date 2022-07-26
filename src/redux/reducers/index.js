@@ -6,6 +6,8 @@ import { joinReducer } from './joinReducer';
 import { joinFinalReducer } from './joinReducer';
 import searchReducer from './searchReducer';
 import profileReducer from './profileReducer';
+import commentReducer from './commentReducer'
+import commentListReducer from './commentListReducer'
 import productReducer from './productReducer';
 
 export default combineReducers({
@@ -17,4 +19,6 @@ export default combineReducers({
     post: postReducer,
     product: productReducer,
     homefeed: homeFeedReducer,
+    comment:commentReducer,
+    commentList:commentListReducer,
 });
