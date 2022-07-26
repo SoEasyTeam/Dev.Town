@@ -6,9 +6,8 @@ import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components
 import { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProductAction } from '../redux/actions/addProductAction'
+import { addProductAction, productAction } from '../redux/actions/productAcition'
 import { SaveBtn } from '../components/common/Buttons'
-import {WarningParagraph} from './LoginPage'
 
 const ProductForm = styled.form`
 `
@@ -66,21 +65,24 @@ const ProductNameLabel = styled(TextLabel)`
 `
 
 function ProductModificationPage() {
-    const [itemName, setItemName] = useState('');
-    const [price, setPrice] = useState('');
-    const [isPrice, setIsPrice] = useState('');
-    const [link, setLink] = useState('');
-    const [itemImage, setItemImage] = useState('');
-    const [previewImage, setPreviewImage] = useState('');
-    const [isActive, setisActive] = useState(true);
+    const product_id = useSelector(state=>state.product.product_id);
+    const uitemName = useSelector(state=>state.product.itemName);
+    const uprice = useSelector(state=>state.product.price);
+    const ulink = useSelector(state=>state.product.link);
+    const uitemImage = useSelector(state=>state.product.itemImage);
+
+    const [itemName, setItemName] = useState(uitemName);
+    const [price, setPrice] = useState(uprice);
+    const [isPrice, setIsPrice] = useState(uprice);
+    const [link, setLink] = useState(ulink);
+    const [itemImage, setItemImage] = useState(uitemImage);
+    const [isActive, setisActive] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
-    // const { product_id } = useParams();
-    const uname = useSelector(state=>state.addproduct.product_id);
-    console.log(uname,'이름');
 
     const saveActive = () => {
-        return itemName.length>1&&itemName.length<16&&isPrice.length>0&&link.length>0&&previewImage.length>0
+        return itemName.length>1&&itemName.length<16&&link.length>0&&itemImage.length>0
+        // &&isPrice.length>0&&link.length>0&&itemImage.length>0
             ? setisActive(false)
             : setisActive(true);
     }
@@ -88,7 +90,7 @@ function ProductModificationPage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
-        dispatch(addProductAction.productModification(itemName, price, link, itemImage));
+        dispatch(productAction.productModification(itemName, price, link, itemImage, product_id));
         history.push('/myprofile');
     }
 
@@ -100,8 +102,6 @@ function ProductModificationPage() {
     }
 
     const onChangeProductImg = (event) => {
-        setPreviewImage(URL.createObjectURL(event.target.files[0]));
-        
         let reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
@@ -114,7 +114,7 @@ function ProductModificationPage() {
         <ProductForm onSubmit={onSubmitHandler}>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <SaveBtn disabled={isActive}>저장ㅇㄹㄴㄹㅇㄴㅇㄹㄴㅇ</SaveBtn>
+                <SaveBtn disabled={isActive}>저장</SaveBtn>
             </TopNavRowBox>
             <ProductBox>
                 <AddProductSpan>이미지 등록</AddProductSpan>
@@ -122,13 +122,12 @@ function ProductModificationPage() {
                     <img className='addProduct-img' src={itemImage} alt="상품이미지" />
                 </AddProductLabel>
                 <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*' />
-                <ProductNameLabel>상품명 안녕하세요</ProductNameLabel>
+                <ProductNameLabel>상품명</ProductNameLabel>
                 <ProductName value = {itemName} onChange={(event) => setItemName(event.target.value)} onKeyUp={saveActive} />
                 <TextLabel>가격</TextLabel>
                 <ProductPrice value = {isPrice} onChange={onChangePrice} onKeyUp={saveActive} />
                 <TextLabel>판매링크</TextLabel>
                 <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} onKeyUp={saveActive} />
-                <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
             </ProductBox>
         </ProductForm>
     )

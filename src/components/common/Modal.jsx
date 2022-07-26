@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { AlertProductModal } from './AlertModal';
 import { useDispatch } from 'react-redux';
-import { addProductAction } from '../../redux/actions/addProductAction';
+import { productAction } from '../../redux/actions/productAcition';
 
 const ModalOutside = styled.div`
     position: fixed;
@@ -67,8 +67,9 @@ const ButtonLink = styled(Link)`
 // 상품 클릭시 모달
 function MyProductModal({ itemName, price, link, itemImage, product_id, closeModal, alertOnModal, author }) {
     const dispatch = useDispatch();
+    console.log(product_id)
     const onClickModifictionBtn = () => {
-        dispatch(addProductAction.productModificationModal(itemName, price, link, itemImage, product_id, author));
+        dispatch(productAction.productModificationModal(itemName, price, link, itemImage, product_id, author));
     }
     
     return (

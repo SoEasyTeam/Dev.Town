@@ -6,9 +6,8 @@ import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProductAction } from '../redux/actions/addProductAction'
 import { SaveBtn } from '../components/common/Buttons'
-import {WarningParagraph} from './LoginPage'
+import { productAction } from '../redux/actions/productAcition'
 
 const ProductForm = styled.form`
 `
@@ -85,7 +84,7 @@ function AddProductPage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
-        dispatch(addProductAction.addProduct(itemName, price, link, itemImage));
+        dispatch(productAction.addProduct(itemName, price, link, itemImage));
         history.push('/myprofile');
     }
 
@@ -125,7 +124,6 @@ function AddProductPage() {
                 <ProductPrice value = {isPrice} onChange={onChangePrice} onKeyUp={saveActive} />
                 <TextLabel>판매링크</TextLabel>
                 <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} onKeyUp={saveActive} />
-                <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
             </ProductBox>
         </ProductForm>
     )

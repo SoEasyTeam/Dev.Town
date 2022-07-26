@@ -29,7 +29,7 @@ function addProduct(itemName, price, link, itemImage) {
                 alert('이미지 용량이 큽니다. 10MB 이하로 해주세요.');
             } else {
                 dispatch({
-                    type: 'ADDPRODUCT_SUCCESS',
+                    type: 'PRODUCT_SUCCESS',
                     payload: {
                         id: resJson.product.id,
                         itemName: resJson.product.itemName,
@@ -53,9 +53,10 @@ function productModificationModal(
     author
 ) {
     console.log('productModificationModal success action');
+    console.log(product_id);
     return async (dispatch, getState) => {
         dispatch({
-            type: 'PRODUCT_MODIFICATION_MODAL',
+            type: 'PRODUCT_SUCCESS',
             payload: {
                 id: product_id,
                 itemName: itemName,
@@ -70,6 +71,7 @@ function productModificationModal(
 
 function productModification(itemName, price, link, itemImage, product_id) {
     console.log('productModification success action');
+    console.log(product_id);
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/product/${product_id}`;
@@ -96,7 +98,7 @@ function productModification(itemName, price, link, itemImage, product_id) {
             console.log(resJson);
 
             dispatch({
-                type: 'PRODUCTMODIFICATION_SUCCESS',
+                type: 'PRODUCT_SUCCESS',
                 payload: {
                     id: resJson.product.id,
                     itemName: resJson.product.itemName,
@@ -110,7 +112,7 @@ function productModification(itemName, price, link, itemImage, product_id) {
     };
 }
 
-export const addProductAction = {
+export const productAction = {
     addProduct,
     productModification,
     productModificationModal,
