@@ -130,7 +130,7 @@ export const LikePostRowBox = ({ heartCount, commentCount, postId }) => {
     );
 };
 
-function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, postId }) {
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal, postId }) {
     // 모달창
     const [modalOn, setModalOn] = useState(false);
 
@@ -138,6 +138,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
         setModalOn(true);
     }
     function closeModal() {
+        document.body.style.overflow = "unset";
         setModalOn(false);
     }
 
@@ -170,7 +171,8 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                 <LikePostRowBox heartCount={heartCount} commentCount={commentCount} postId={postId} />
                 <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
             </HomePostBox>
-            {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} /> : ''}
+            {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} id={id} /> : ''}
+
         </>
     );
 }

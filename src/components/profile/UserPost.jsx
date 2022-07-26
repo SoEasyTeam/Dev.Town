@@ -5,7 +5,7 @@ import HomeImgPost from '../common/HomeImgPost';
 import IconPostListOn from '../../assets/icon/icon-post-list-on.png';
 import IconPostAlbumOff from '../../assets/icon/icon-post-album-off.png';
 import { useSelector } from 'react-redux';
-import { AlertPostModal } from '../common/AlertModal';
+import { AlertPostModal, AlertDeclareModal } from '../common/AlertModal';
 
 const PostShowBtns = styled.button`
     width: 26px;
@@ -73,7 +73,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
     )
 }
 
-function UserPost() {
+function UserPost(id) {
     const token = useSelector(state => state.auth.token);
     const accountname = useSelector(state => state.auth.accountname);
     const [userPostData, setUserPostData] = useState('')
@@ -102,6 +102,7 @@ function UserPost() {
         setAlertOn(true);
     }
     function alertOffModal() {
+        document.body.style.overflow = "unset";
         setAlertOn(false);
     }
     return (
@@ -119,7 +120,8 @@ function UserPost() {
                     <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
                 </PostAreaListUl>
             </PostArea>
-            {alertOn === true ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
+            {alertOn === true && id !== accountname ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
+            {alertOn === true && id === accountname ? <AlertDeclareModal alertOffModal={alertOffModal} /> : ''}
         </>
     )
 }
