@@ -1,20 +1,5 @@
 let initialState = {
-    "comment": {
-        "id": '',
-        "content": '',
-        "createdAt": '',
-        "author": {
-            "_id": '',
-            "username": '',
-            "accountname": '',
-            "intro": '',
-            "image": '',
-            "following": [],
-            "follower": [],
-            "followerCount": '',
-            "followingCount": ''
-        }
-    }
+    'comments':''
 }
 
 function commentListReducer(state=initialState, action){
@@ -23,24 +8,8 @@ function commentListReducer(state=initialState, action){
         case 'GET_COMMENTLIST':
         return {
             ...state,
-            "comment": {
-                "id": payload.id,
-                "content": payload.content,
-                "createdAt": payload.createdAt,
-                "author": {
-                    "_id": payload._id,
-                    "username": payload.username,
-                    "accountname": payload.accountname,
-                    "intro": payload.intro,
-                    "image": payload.image,
-                    "following": payload.following,
-                    "follower": payload.follower,
-                    "followerCount": payload.followerCount,
-                    "followingCount": payload.followingCount
-                }
+                comments:payload.comments
             }
-
-        }
         default:
             return{
                 ...state

@@ -16,20 +16,21 @@ function commentList(postId, token){
         dispatch({
             type: 'GET_COMMENTLIST',
             payload:{
-                    id: resJson.commentList.id,
-                    content: resJson.commentList.content,
-                    createdAt: resJson.commentList.createdAt,
-                    author: {
-                        _id: resJson.commentList._id,
-                        username: resJson.commnetList.username,
-                        accountname: resJson.commentList.accountname,
-                        intro: resJson.commentList.intro,
-                        image: resJson.commentList.image,
-                        following: resJson.commentList.following,
-                        follower: resJson.commentList.follower,
-                        followerCount: resJson.commentList.followerCount,
-                        followingCount: resJson.commentList.followingCount
-                    }
+                    comments: resJson.comments
+                    // id: resJson.comments.id,
+                    // content: resJson.comments.content,
+                    // createdAt: resJson.comments.createdAt,
+                    // author: {
+                    //     _id: resJson.comments._id,
+                    //     username: resJson.commnets.username,
+                    //     accountname: resJson.comments.accountname,
+                    //     intro: resJson.comments.intro,
+                    //     image: resJson.comments.image,
+                    //     following: resJson.comments.following,
+                    //     follower: resJson.comments.follower,
+                    //     followerCount: resJson.comments.followerCount,
+                    // //     followingCount: resJson.comments.followingCount
+                    // }
                 
             },
             
