@@ -10,7 +10,9 @@ import store from './redux/store';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
-
+    li {
+        list-style: none;
+    }
     a {
         text-decoration : none;
         color : inherit;

@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import HomePage from './pages/HomePage';
 import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
@@ -10,6 +11,7 @@ import PostPage from './pages/PostPage';
 import SearchPage from './pages/SearchPage';
 import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
+import PostUploadPage from './pages/PostUploadPage'
 import ProductModificationPage from './pages/ProductModificationPage';
 
 function App() {
@@ -32,11 +34,14 @@ function App() {
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
+            <Route path='/post' component={()=><PostUploadPage/>}/>
             <Route path='/follower' component={() => <FollowerPage />} />
             <Route path='/following' component={() => <FollowingPage />} />
+            <Route path='/product' component={() => <AddProductPage />} />
+            <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
+            <Route exact path='/post/:id' component={() => <PostPage />} />
             <Route exact path='/product' component={() => <AddProductPage />} />
-            <Route path='/post/:id' component={() => <PostPage />} />
-            <Route path='/product/:product_id' component={() => <ProductModificationPage />} />
+
         </Switch>
     );
 }
