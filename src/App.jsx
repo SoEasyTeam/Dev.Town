@@ -33,8 +33,7 @@ function App() {
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
-            <Route path='/post' component={() => <PostUploadPage />} />
-
+            <Route exact path='/post' component={() => <PostUploadPage />} />
             <Route path='/search' component={() => <SearchPage />} />
             <Route path='/follower' component={() => <FollowerPage />} />
             <Route path='/following' component={() => <FollowingPage />} />
