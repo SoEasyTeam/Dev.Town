@@ -43,4 +43,49 @@ function profile(token, accountname) {
     };
 }
 
-export const profileAction = { profile };
+function profileModification(id, image, accountname, intro) {
+    console.log('profileModification success action');
+    console.log(id);
+    return async (dispatch, getState) => {
+        let url = 'https://mandarin.api.weniv.co.kr';
+        const reqPath = `/user`;
+        const token = getState().auth.token;
+        console.log(token);
+        try {
+            let res = await fetch(url + reqPath, {
+                method: 'PUT',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user: {
+                        id: id,
+                        accountname: accountname,
+                        intro: intro,
+                        image: image,
+                    },
+                }),
+            });
+
+            const resJson = await res.json();
+            console.log(resJson);
+            if (resJson.message === '이미 사용중인 계정 ID입니다.') {
+                alert('이미 사용중인 계정 ID입니다.');
+            }
+            dispatch({
+                type: 'PROFILE_SUCCESS',
+                payload: {
+                    id,
+                    accountname,
+                    intro,
+                    newImage: resJson.image,
+                    message: resJson.message,
+                },
+            });
+
+        } catch (error) { }
+    };
+
+}
+export const profileAction = { profile, profileModification, };
