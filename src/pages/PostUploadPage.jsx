@@ -73,7 +73,7 @@ function UploadPage() {
     const dispatch = useDispatch();
 
     const token = useSelector((state) => state.auth.token);
-    // const formData = useSelector((state)=>state.upload.formData)
+    const imgUrl = useSelector((state)=>state.post.img)
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -82,13 +82,13 @@ function UploadPage() {
         } else {
             console.log('submit succeed');
             history.push('/myprofile');
-            // dispatch(postAction(formData));
-            // dispatch(uploadFilesAction.files(token, formData));
+            dispatch(postText)
         }
     };
 
     const HandlePostText = (e) => {
         setPostText(e.target.value);
+        // console.log(postText);
     };
 
     const HandleOnchange = (e) => {
@@ -101,7 +101,8 @@ function UploadPage() {
                 formData.append('image', file);
             }
 
-            // setUploadedImg(fileList);
+            
+            setUploadedImg(fileList);
             // console.log('image set!');
             // let formData = Array.from(new FormData())
             // for(let i of fileList){
@@ -109,8 +110,7 @@ function UploadPage() {
             // }
             // console.log('폼데이터',formData);
 
-            dispatch(postAction.post(formData),postText);
-            console.log(formData);
+            dispatch(postAction.post(formData));
         } else {
             setUploadedImg(null);
         }
