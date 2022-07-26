@@ -24,7 +24,6 @@ const MlBtn = styled(Link)`
     line-height: 18px;
     text-align: center;
     padding: 13px;
-
 `//검색하기, 이전페이지(404)
 
 const MBtn = styled.button`

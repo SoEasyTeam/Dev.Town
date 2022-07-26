@@ -12,7 +12,6 @@ const CommentBox = styled.form`
     bottom: 0;
     border: 0.5px solid #dbdbdb;
 `;
-
 const ProfileImgBox = styled.div`
     min-width: 36px;
     margin: 12px;
