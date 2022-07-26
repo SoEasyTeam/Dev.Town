@@ -9,10 +9,6 @@ const HomeFollowerUl = styled.ul`
     width: 390px;
 `
 
-const HomeFollowerList = styled.li`
-    margin-bottom: 20px;
-`
-
 const parseDate = (dateString) => {
     const postDate = new Date(dateString)
     const year = postDate.getFullYear();
@@ -21,7 +17,8 @@ const parseDate = (dateString) => {
     return [year, month, day]
 }
 
-const HomePostItem = styled(Link)`
+const HomePostItem = styled.li`
+    margin-bottom: 20px;
 `
 
 const HomeFeedBox = () => {
@@ -35,23 +32,21 @@ const HomeFeedBox = () => {
                         const [year, month, day] = parseDate(item.createdAt);
                         // console.log(item.image);
                         return (
-                            <HomeFollowerList>
-                                <HomePostItem key={index} to={`./ post / ${item.id} `}>
-                                    <HomeImgPost
-                                        profileimg={item.author.image}
-                                        nickname={item.author.username}
-                                        id={item.author.accountname}
-                                        postId={item.id}
-                                        postparagraph={item.content}
-                                        postsrc={item.image}
-                                        heartCount={item.heartCount}
-                                        commentCount={item.commentCount}
-                                        year={year}
-                                        month={month}
-                                        day={day}
-                                    />
-                                </HomePostItem>
-                            </HomeFollowerList>
+                            <HomePostItem key = {index}>
+                                <HomeImgPost
+                                    profileimg={item.author.image}
+                                    nickname={item.author.username}
+                                    id={item.author.accountname}
+                                    postId = {item.id}
+                                    postparagraph={item.content}
+                                    postsrc={item.image}
+                                    heartCount={item.heartCount}
+                                    commentCount={item.commentCount}
+                                    year={year}
+                                    month={month}
+                                    day={day}
+                                />
+                            </HomePostItem>
                         )
                     })
                 }
