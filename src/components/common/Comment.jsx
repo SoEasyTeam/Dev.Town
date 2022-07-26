@@ -10,7 +10,6 @@ const CommentBox = styled.div`
     bottom: 0;
     border: 0.5px solid #dbdbdb;
 `;
-
 const ProfileImgBox = styled.div`
     min-width: 36px;
     margin: 12px;
@@ -29,12 +28,14 @@ const CommentSubmitBtn = styled.button`
 
 export default function Comment() {
     return (
-        <CommentBox>
-            <ProfileImgBox>
-                <DefaultProfileImg />
-            </ProfileImgBox>
-            <CommentInput placeholder='댓글 입력하기...' required />
-            <CommentSubmitBtn>게시</CommentSubmitBtn>
-        </CommentBox>
+        <>
+            <CommentBox>
+                <ProfileImgBox>
+                    <DefaultProfileImg />
+                </ProfileImgBox>
+                <CommentInput placeholder='댓글 입력하기...' required />
+                <CommentSubmitBtn>게시</CommentSubmitBtn>
+            </CommentBox>
+        </>
     );
 }

@@ -40,11 +40,11 @@ const ProductArea = styled.article`
 `
 
 const ProductAreaList = ({ userProductData, alertOnModal }) => {
+
     return (
         <>
             {userProductData &&
                 userProductData.product.map((item) => {
-                    console.log(item);
                     return (
                         <div key={item.id} >
                             <Product
@@ -95,6 +95,7 @@ function UserProduct() {
     function alertOnModal() {
         setAlertOn(true);
     }
+    
     function alertOffModal() {
         document.body.style.overflow = "unset";
         setAlertOn(false);

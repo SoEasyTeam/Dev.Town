@@ -27,7 +27,6 @@ const TabMenuRowList = styled.ul`
     display: flex;
     justify-content: space-between;
     border-top: 0.5px solid #dbdbdb;
-`;
 
 const TabMenuItem = styled.li`
 `;
@@ -102,7 +101,7 @@ const TabMenu = () => {
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='post-link' to='/post/:id' isactive={isactive} onClick={() => {
+                    <TabMenuLink className='post-link' to='/post' isactive={isactive} onClick={() => {
                         setIsActive(3);
                     }}>
                         <span>게시물 작성</span>

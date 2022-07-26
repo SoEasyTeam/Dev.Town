@@ -17,6 +17,7 @@
 //     top: 4px;
 // `;
 
+
 // export const HomePostProfileNickName = styled(NickNameP)`
 //     margin-bottom: 2px;
 // `;
