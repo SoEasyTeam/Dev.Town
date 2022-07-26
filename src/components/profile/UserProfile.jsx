@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MBtn } from '../../components/common/Buttons';
@@ -38,6 +38,7 @@ const FollowLink = styled(Link)`
 
 const MyProfileBtn = styled(MBtn)`
     background-color: var(--bg-color);
+    border: 1px solid #DBDBDB;
     font-family: 'Spoqa Han Sans Neo';
     font-weight: 500;
     font-size: 14px;
@@ -89,6 +90,13 @@ const ProfileAreaCol = styled.article`
     }
 `
 
+const ProfileImg = styled.img`
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 1px solid var(--border-gray);
+`;
+
 const CircleBtns = styled.button`
     width: 34px;
     height: 34px;
@@ -119,10 +127,10 @@ function UserProfile() {
     const username = useSelector(state => state.profile.username);
     const intro = useSelector(state => state.profile.intro);
     const Youraccountname = useSelector(state => state.profile.accountname);
+    const isfollow = useSelector(state => state.profile.isfollow);
     const profileImg = useSelector(state => state.profile.image);
-    // console.log(followerCount);
+    console.log('isfollow?', isfollow);
     // console.log(followingCount);
-
 
     // const getData = async () => {
     //     const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}`, {
@@ -148,6 +156,18 @@ function UserProfile() {
     //     return <div>데이터 없을 때 화면 띄우기</div>
     // }
 
+    const [isFollow, setIsFollow] = useState(isfollow);
+    const [isFollowWord, setIsFollowWord] = useState('팔로우');
+    function changeIsFollow() {
+        console.log('팔로우취소 가동!')
+        setIsFollow(!isFollow);
+        if (isFollowWord === '팔로우') {
+            setIsFollowWord('언팔로우')
+        } else {
+            setIsFollowWord('팔로우')
+        }
+    }
+
     return (
         <>
             <ProfileAreaCol>
@@ -157,7 +177,7 @@ function UserProfile() {
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
-                        <img src={image} alt='프로필이미지' />
+                        <ProfileImg src={image} alt='프로필이미지' />
                     </div>
                     <div className='followings'>
                         <FollowLink to='/following'>{followingCount}</FollowLink>
@@ -175,7 +195,7 @@ function UserProfile() {
                             <CircleBtns>
                                 <img src={IconMesssageImg} alt='채팅링크' />
                             </CircleBtns>
-                            <MBtn>팔로우</MBtn>
+                            <MBtn onClick={changeIsFollow} isFollowed={isFollow}>{isFollowWord}</MBtn>
                             <CircleBtns>
                                 <img src={IconShareImg} alt='공유링크' />
                             </CircleBtns>

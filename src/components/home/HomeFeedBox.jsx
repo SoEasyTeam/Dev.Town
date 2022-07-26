@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import HomeImgPost from '../common/HomeImgPost';
 
-const HomeFollwerList  = styled.ul`
+const HomeFollowerUl = styled.ul`
     margin: 20px auto;
     width: 390px;
 `
@@ -22,11 +22,11 @@ const HomePostItem = styled.li`
 `
 
 const HomeFeedBox = () => {
-    const posts = useSelector(state=>state.homefeed.item);
+    const posts = useSelector(state => state.homefeed.item);
     // console.log(posts);
     return (
         <>
-            <HomeFollwerList>
+            <HomeFollowerUl>
                 {
                     posts.map((item, index) => {
                         const [year, month, day] = parseDate(item.createdAt);
@@ -50,7 +50,7 @@ const HomeFeedBox = () => {
                         )
                     })
                 }
-            </HomeFollwerList>
+            </HomeFollowerUl>
         </>
     )
 }

@@ -7,13 +7,12 @@ import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
 import AddProductPage from './pages/AddProductPage';
 import ProfileSettingPage from './pages/ProfileSettingPage';
-import ProfileModificationPage from './pages/ProfileModificationPage';
 import PostPage from './pages/PostPage';
 import SearchPage from './pages/SearchPage';
 import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
 import PostUploadPage from './pages/PostUploadPage'
-
+import ProductModificationPage from './pages/ProductModificationPage';
 
 function App() {
 
@@ -33,7 +32,7 @@ function App() {
             <Route path='/search' component={() => <SearchPage />} />
             <Route
                 path='/myprofile'
-                component={() => <MyProfilePage/>}
+                component={() => <MyProfilePage />}
             />
             <Route path='/post' component={()=><PostUploadPage/>}/>
             <Route path='/follower' component={() => <FollowerPage />} />
@@ -41,6 +40,8 @@ function App() {
             <Route path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
             <Route exact path='/post/:id' component={() => <PostPage />} />
+            <Route exact path='/product' component={() => <AddProductPage />} />
+
         </Switch>
     );
 }
