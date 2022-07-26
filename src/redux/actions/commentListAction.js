@@ -1,7 +1,8 @@
-function commentList(post_id, token){
+function commentList(postId, token){
+    console.log(postId);
     return async (dispatch, getState)=>{
         let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/post/${post_id}/comments`
+        const reqPath = `/post/${postId}/comments`
         try {
             let res = await fetch(url+reqPath,{
                 method:'GET',
@@ -11,32 +12,32 @@ function commentList(post_id, token){
                 },
         })
         const resJson=await res.json()
+        console.log(resJson,'oook?');
         dispatch({
             type: 'GET_COMMENTLIST',
             payload:{
-                "comment": {
-                    "id": resJson.comment.id,
-                    "content": resJson.comment.content,
-                    "createdAt": resJson.comment.createdAt,
-                    "author": {
-                        "_id": resJson.comment._id,
-                        "username": resJson.commnet.username,
-                        "accountname": resJson.comment.accountname,
-                        "intro": resJson.comment.intro,
-                        "image": resJson.comment.image,
-                        "following": [],
-                        "follower": [],
-                        "followerCount": resJson.comment.followerCount,
-                        "followingCount": resJson.comment.followingCount
+                    id: resJson.commentList.id,
+                    content: resJson.commentList.content,
+                    createdAt: resJson.commentList.createdAt,
+                    author: {
+                        _id: resJson.commentList._id,
+                        username: resJson.commnetList.username,
+                        accountname: resJson.commentList.accountname,
+                        intro: resJson.commentList.intro,
+                        image: resJson.commentList.image,
+                        following: resJson.commentList.following,
+                        follower: resJson.commentList.follower,
+                        followerCount: resJson.commentList.followerCount,
+                        followingCount: resJson.commentList.followingCount
                     }
-                }
+                
             },
             
         })
     } catch (error) {
-        console.log(error);
+        console.log('something wrong!!!');
     }
 }
 }
 
-export const CommentListAction = {commentList}
+export const commentListAction = {commentList}

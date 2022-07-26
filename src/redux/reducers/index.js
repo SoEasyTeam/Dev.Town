@@ -7,6 +7,7 @@ import { joinFinalReducer } from './joinReducer';
 import searchReducer from './searchReducer';
 import profileReducer from './profileReducer';
 import commentReducer from './commentReducer'
+import commentListReducer from './commentListReducer'
 
 export default combineReducers({
     auth: authenticateReducer,
@@ -17,4 +18,5 @@ export default combineReducers({
     product: productReducer,
     homefeed: homeFeedReducer,
     comment:commentReducer,
+    commentList:commentListReducer,
 });
