@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import addProductReducer from './addProductReducer';
+import productReducer from './productReducer';
 import authenticateReducer from './authenticateReducer';
 import homeFeedReducer from './homeFeedReducer';
 import { joinReducer } from './joinReducer';
@@ -13,6 +13,6 @@ export default combineReducers({
     joinfinal: joinFinalReducer,
     search: searchReducer,
     profile: profileReducer,
-    addproduct: addProductReducer,
+    product: productReducer,
     homefeed: homeFeedReducer,
 });

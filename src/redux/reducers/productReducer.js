@@ -7,13 +7,14 @@ let initialState = {
     author: '',
 };
 
-function addProductReducer(state = initialState, action) {
+function productReducer(state = initialState, action) {
     let { type, payload } = action;
+    console.log(action);
     switch (type) {
-        case 'ADDPRODUCT_SUCCESS':
+        case 'PRODUCT_SUCCESS':
             return {
                 ...state,
-                id: payload.id,
+                product_id: payload.id,
                 itemName: payload.itemName,
                 price: payload.price,
                 link: payload.link,
@@ -27,4 +28,4 @@ function addProductReducer(state = initialState, action) {
     }
 }
 
-export default addProductReducer;
+export default productReducer;

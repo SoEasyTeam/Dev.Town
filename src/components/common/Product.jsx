@@ -42,16 +42,14 @@ const ProductItemBox = styled.div`
     }
 `;
 
-const Product = ({ name, price, src, itemLink, writerId, alertOnModal }) => {
+const Product = ({ name, price, src, itemLink, writerId, alertOnModal, product_id, author }) => {
     const userId = useSelector(state => state.auth.id);
     const [modalOn, setModalOn] = useState(false);
     const priceShow = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
     function openModal() {
         console.log('상품등록유저', writerId);
         console.log('유저:', userId);
         console.log('링크', itemLink);
-
         if (userId !== writerId) {
             setModalOn(false);
             console.log('상품링크로 이동')
@@ -77,7 +75,18 @@ const Product = ({ name, price, src, itemLink, writerId, alertOnModal }) => {
                 <p className='txt-productName'>{name}</p>
                 <span className='txt-productPrice'>{priceShow}원</span>
             </ProductItemBox>
-            {modalOn === true ? <MyProductModal closeModal={closeModal} itemLink={itemLink} alertOnModal={alertOnModal} /> : ''}
+            {modalOn === true ?
+            <MyProductModal
+                itemName={name}
+                src={src}
+                price={price}
+                itemImage={src}
+                product_id={product_id}
+                closeModal={closeModal}
+                link={itemLink}
+                alertOnModal={alertOnModal}
+                author={author}
+                /> : ''}
         </>
     );
 };

@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import ImgBtn from '../assets/img-button.png'
 import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components/common/TextAciveInput'
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { addProductAction, productAction } from '../redux/actions/productAcition'
 import { SaveBtn } from '../components/common/Buttons'
-import { productAction } from '../redux/actions/productAcition'
 
 const ProductForm = styled.form`
 `
@@ -64,19 +64,25 @@ const ProductNameLabel = styled(TextLabel)`
     margin-top: 30px;
 `
 
-function AddProductPage() {
-    const [itemName, setItemName] = useState('');
-    const [price, setPrice] = useState('');
-    const [isPrice, setIsPrice] = useState('');
-    const [link, setLink] = useState('');
-    const [itemImage, setItemImage] = useState('');
-    const [previewImage, setPreviewImage] = useState('');
-    const [isActive, setisActive] = useState(true);
+function ProductModificationPage() {
+    const product_id = useSelector(state=>state.product.product_id);
+    const uitemName = useSelector(state=>state.product.itemName);
+    const uprice = useSelector(state=>state.product.price);
+    const ulink = useSelector(state=>state.product.link);
+    const uitemImage = useSelector(state=>state.product.itemImage);
+
+    const [itemName, setItemName] = useState(uitemName);
+    const [price, setPrice] = useState(uprice);
+    const [isPrice, setIsPrice] = useState(uprice);
+    const [link, setLink] = useState(ulink);
+    const [itemImage, setItemImage] = useState(uitemImage);
+    const [isActive, setisActive] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
 
     const saveActive = () => {
-        return itemName.length>1&&itemName.length<16&&isPrice.length>0&&link.length>0&&previewImage.length>0
+        return itemName.length>1&&itemName.length<16&&link.length>0&&itemImage.length>0
+        // &&isPrice.length>0&&link.length>0&&itemImage.length>0
             ? setisActive(false)
             : setisActive(true);
     }
@@ -84,7 +90,7 @@ function AddProductPage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
-        dispatch(productAction.addProduct(itemName, price, link, itemImage));
+        dispatch(productAction.productModification(itemName, price, link, itemImage, product_id));
         history.push('/myprofile');
     }
 
@@ -96,8 +102,6 @@ function AddProductPage() {
     }
 
     const onChangeProductImg = (event) => {
-        setPreviewImage(URL.createObjectURL(event.target.files[0]));
-
         let reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
@@ -129,4 +133,4 @@ function AddProductPage() {
     )
 }
 
-export default AddProductPage
+export default ProductModificationPage;

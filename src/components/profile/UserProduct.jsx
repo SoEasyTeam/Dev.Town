@@ -4,7 +4,6 @@ import Product from '../common/Product';
 import { useSelector } from 'react-redux';
 import { AlertProductModal } from '../common/AlertModal';
 
-
 const ProductAreaListUl = styled.ul`
     list-style: none;
     margin-left: 16px;
@@ -45,6 +44,7 @@ const ProductAreaList = ({ userProductData, alertOnModal }) => {
         <>
             {userProductData &&
                 userProductData.product.map((item) => {
+                    console.log(item);
                     return (
                         <div key={item.id} >
                             <Product
@@ -54,6 +54,8 @@ const ProductAreaList = ({ userProductData, alertOnModal }) => {
                                 itemLink={item.link}
                                 writerId={item.author._id}
                                 alertOnModal={alertOnModal}
+                                product_id={item.id}
+                                author={item.author}
                             />
                         </div>
                     )
