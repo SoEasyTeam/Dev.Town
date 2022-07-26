@@ -27,7 +27,6 @@ const TabMenuRowList = styled.ul`
     display: flex;
     justify-content: space-between;
     border-top: 0.5px solid #dbdbdb;
-`;
 
 const TabMenuItem = styled.li`
 `;
