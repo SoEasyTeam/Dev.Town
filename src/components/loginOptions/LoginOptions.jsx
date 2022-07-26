@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logoImgWhite from '../../assets/logo-white.png';
-import iconKakao from '../../assets/kakao.png'
-import iconGoogle from '../../assets/google.png'
-import iconFacebook from '../../assets/facebook.png'
+import iconKakao from '../../assets/kakao.png';
+import iconGoogle from '../../assets/google.png';
+import iconFacebook from '../../assets/facebook.png';
 
 const LogInColBox = styled.div`
     position: relative;
@@ -65,7 +65,7 @@ const LogInColBox = styled.div`
             width: 90%;
             height: 3.5rem;
             font-size: 1.01rem;
-            border: 1px solid #F2C94C;
+            border: 1px solid #f2c94c;
             border-radius: 44px;
             &:hover{
                 font-weight: bold;
@@ -111,12 +111,16 @@ const LogInColBox = styled.div`
             }
         }
     }
-`
+`;
 
 export default function LoginOptions({ isActive }) {
     return (
-        <LogInColBox isActive={isActive} >
-            <img className='img-logo-white' src={logoImgWhite} alt='데브타운 로그인' />
+        <LogInColBox isActive={isActive}>
+            <img
+                className='img-logo-white'
+                src={logoImgWhite}
+                alt='데브타운 로그인'
+            />
             <div className='login-box-col'>
                 <button className='options-login-row' type='button'>
                     카카오톡 계정으로 로그인
