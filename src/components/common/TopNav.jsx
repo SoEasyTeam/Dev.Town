@@ -1,12 +1,14 @@
-import React from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ArrowImg from '../../assets/icon/icon-arrow-left.png';
 import MoreImg from '../../assets/icon/icon-more-vertical.png';
 import SearchImg from '../../assets/icon/icon-search.png';
 import { MsBtn } from './Buttons';
+import { useHistory } from 'react-router-dom';
+import { ProfileModal } from './Modal';
 
-const TopNavRowBox = styled.div`
+export const TopNavRowBox = styled.div`
     width: 100vw;
     position: sticky;
     z-index: 10;
@@ -32,13 +34,32 @@ const TopNavRowBox = styled.div`
         line-height: 18px;
         margin: 7px;
     }
-    .followLeft {
-        margin-left: 8px;
-        padding-right:100%;
-    }
 `;
 
-const TopNavLinkS = styled(Link)`
+export const TopNavRowBoxLeft = styled.div`
+    width: 100vw;
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    background-color: var(--bg-color);
+    border-bottom: 0.5px solid #DBDBDB;
+    display: flex;
+    justify-content: flex-start;
+    padding: 8px 16px;
+    .chatTitle {
+        font-family: 'Spoqa Han Sans Neo';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        margin: 7px;
+    }
+    .followLeft {
+        margin-left: 8px;
+    }
+`
+
+export const TopNavLinkS = styled(Link)`
     padding: 5px 0;
     img {
         width: 22px;
@@ -48,7 +69,7 @@ const TopNavLinkS = styled(Link)`
     }
 `;
 
-const TopNavLink = styled(Link)`
+export const TopNavLink = styled(Link)`
     padding: 4px 0;
     img {
         width: 24px;
@@ -58,7 +79,7 @@ const TopNavLink = styled(Link)`
     }
 `;
 
-const SearchInput = styled.input.attrs({
+export const SearchInput = styled.input.attrs({
     type: 'text',
     id: 'search',
     placeholder: '계정 검색',
@@ -77,46 +98,69 @@ const SearchInput = styled.input.attrs({
     margin-left: 4px;
 `;
 
+
 function ArrowLeftLink() {
+    let history = useHistory();
     return (
         <>
-            <TopNavLinkS to='#'>
+            <TopNavLinkS onClick={() => { history.goBack(); }}>
                 <img src={ArrowImg} alt='뒤로가기링크' />
             </TopNavLinkS>
         </>
     );
 }
 
-function TopFollowNav() {
+function TopFollowerNav() {
     return (
         <>
-            <TopNavRowBox>
+            <TopNavRowBoxLeft>
                 <ArrowLeftLink />
                 <p className='chatTitle followLeft'>Followers</p>
-            </TopNavRowBox>
+            </TopNavRowBoxLeft>
         </>
     )
 }
 
-function TopBasicNav() {
+function TopFollowingNav() {
+    return (
+        <>
+            <TopNavRowBoxLeft>
+                <ArrowLeftLink />
+                <p className='chatTitle followLeft'>Followings</p>
+            </TopNavRowBoxLeft>
+        </>
+    )
+}
+
+function TopBasicNav({ alertOnModal }) {
+    // 모달창
+    const [modalOn, setModalOn] = useState(false);
+    function openModal() {
+        setModalOn(true);
+    }
+    function closeModal() {
+        document.body.style.overflow = "unset";
+        setModalOn(false);
+    }
     return (
         <>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <TopNavLink to='#'>
+                <TopNavLink onClick={openModal}>
                     <img src={MoreImg} alt='더보기링크' />
                 </TopNavLink>
             </TopNavRowBox>
+            {modalOn === true ? <ProfileModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} /> : ''}
         </>
     );
 }
 
-function TopSearchNav() {
+function TopSearchNav({ onChange }) {
     return (
         <>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <SearchInput />
+                <SearchInput onChange={onChange} />
             </TopNavRowBox>
         </>
     );
@@ -127,8 +171,8 @@ function TopMainNav() {
         <>
             <TopNavRowBox>
                 <p className='navTitle'>데브타운 피드</p>
-                <TopNavLink to='#'>
-                    <img src={SearchImg} alt='찾기링크' />
+                <TopNavLink to='/search'>
+                    <img src={SearchImg} alt='찾기링크' style={{ cursor: 'pointer' }} />
                 </TopNavLink>
             </TopNavRowBox>
         </>
@@ -139,8 +183,8 @@ function TopUploadNav() {
     return (
         <>
             <TopNavRowBox>
-                <ArrowLeftLink />
-                <MsBtn />
+                <ArrowLeftLink to='' />
+                <MsBtn type='submit'>저장</MsBtn>
             </TopNavRowBox>
         </>
     );
@@ -160,4 +204,5 @@ function TopChatNav() {
     );
 }
 
-export { TopFollowNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav };
+export { TopFollowerNav, TopFollowingNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav, ArrowLeftLink };
+

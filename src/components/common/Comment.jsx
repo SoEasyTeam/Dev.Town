@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { DefaultProfileImg } from './ProfileButtons';
+import IconFillImg from '../../assets/upload-file.png'
 
 const CommentBox = styled.div`
     width: 100%;
@@ -7,7 +8,7 @@ const CommentBox = styled.div`
     display: flex;
     position: absolute;
     bottom: 0;
-    border:  0.5px solid #DBDBDB;
+    border: 0.5px solid #dbdbdb;
 `;
 const ProfileImgBox = styled.div`
     min-width: 36px;

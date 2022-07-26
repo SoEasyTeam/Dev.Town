@@ -1,5 +1,6 @@
-import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { SBtn } from './Buttons';
 import {
     UserSearchBox,
     NameIdBox,
@@ -7,38 +8,51 @@ import {
     IdP,
     ProfileLogoImg,
 } from './UserSearch';
-import EllipseImg from '../../assets/Ellipse-1.png';
 
 export const UserFollowBox = styled(UserSearchBox)`
     position: relative;
+    margin-bottom: 16px;
 `;
 
-const FollowBtn = styled.button`
-    width: 56px;
-    height: 28px;
+const FollowSBtn = styled(SBtn)`
     font-family: 'Spoqa Han Sans Neo';
     font-size: 12px;
     font-weight: 400;
     line-height: 15px;
-    text-align: center;
-    background: var(--main-color);
-    border-radius: 26px;
-    color: var(--bg-color);
     position: absolute;
     right: 0px;
     top: 11px;
-`;
+`
 
-function UserFollow() {
+function UserFollow({ src, name, accountname, isfollow }) {
+    const [isFollow, setIsFollow] = useState(isfollow);
+    const [isFollowWord, setIsFollowWord] = useState('팔로우');
+    const [isUnfollowWord, setIsUnfollowWord] = useState('취소');
+    function changeIsFollow() {
+        console.log('팔로우취소 가동!', isfollow)
+        setIsFollow(!isFollow);
+        if (isFollowWord === '팔로우' || isUnfollowWord === '취소') {
+            setIsFollowWord('취소')
+            setIsUnfollowWord('팔로우')
+        } else {
+            setIsFollowWord('팔로우')
+            setIsUnfollowWord('취소')
+        }
+    }
+    function moveProfilePage() {
+        console.log('프로필로 이동')
+        // window.location.href = '/myprofile'
+    }
+
     return (
         <>
-            <UserFollowBox>
-                <ProfileLogoImg src={EllipseImg} alt='프로필로고' />
+            <UserFollowBox onClick={moveProfilePage}>
+                <ProfileLogoImg src={src} alt='프로필로고' />
                 <NameIdBox>
-                    <NickNameP>애월읍 위니브 감귤농장</NickNameP>
-                    <IdP>@ weniv_Mandarin</IdP>
+                    <NickNameP>{name}</NickNameP>
+                    <IdP>@ {accountname}</IdP>
                 </NameIdBox>
-                <FollowBtn>팔로우</FollowBtn>
+                <FollowSBtn onClick={changeIsFollow} isFollowed={isFollow}>{isfollow ? isUnfollowWord : isFollowWord}</FollowSBtn>
             </UserFollowBox>
         </>
     );

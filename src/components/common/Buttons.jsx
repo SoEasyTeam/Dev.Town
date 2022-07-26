@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const LBtn = styled.button`
@@ -12,13 +13,18 @@ const LBtn = styled.button`
     color: var(--subtitle-text);
 `;
 
-const MlBtn = styled.button`
+const MlBtn = styled(Link)`
     width: 120px;
-    height: 44px;
     border-radius: 44px;
     background-color: var(--main-color);
     color: var(--subtitle-text);
-`; //검색하기, 이전페이지(404)
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+    padding: 13px;
+`//검색하기, 이전페이지(404)
 
 const MBtn = styled.button`
     width: 120px;
@@ -28,7 +34,11 @@ const MBtn = styled.button`
             ? `background-color: var(--bg-color)`
             : `background-color: var(--main-color)`;
     }};
-    border: 1px solid var(--border-gray);
+    ${({ isFollowed }) => {
+        return isFollowed === true
+            ? `border: 1px solid var(--border-gray)`
+            : `border: none`;
+    }};
     border-radius: 30px;
     color: var(--subtitle-text);
 `;
@@ -40,6 +50,12 @@ const MsBtn = styled.button`
     border-radius: 32px;
     color: var(--subtitle-text);
 `; //저장, 업로드 버튼
+
+const SaveBtn = styled(MsBtn)`
+    ${({ disabled }) => {
+        return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
+    }}
+`
 
 const SBtn = styled.button`
     width: 56px;
@@ -58,4 +74,4 @@ const SBtn = styled.button`
     color: var(--subtitle-text);
 `;
 
-export { LBtn, MlBtn, MBtn, MsBtn, SBtn };
+export { LBtn, MlBtn, MBtn, MsBtn, SBtn, SaveBtn };
