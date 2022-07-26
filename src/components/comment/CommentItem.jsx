@@ -39,8 +39,7 @@ const Comment = styled.p`
     font-size: 14px;
 `
 
-function CommentItem({CommentFrom, CommentDate, Comment}){
-    // const commentList = useSelector(state=>state.commentList.comments)
+function CommentItem({commentFrom, commentYear, commentMonth, commentDay, comment}){
 
     return (
         <CommentItemLi>
@@ -49,11 +48,11 @@ function CommentItem({CommentFrom, CommentDate, Comment}){
             </div>
             <div className="comment-box">
                 <CommentInfo>
-                    <CommentFrom>{CommentFrom}</CommentFrom>
-                    <CommentDate>{CommentDate}</CommentDate>
+                    <CommentFrom>{commentFrom}</CommentFrom>
+                    <CommentDate>{commentYear}.{commentMonth}.{commentDay}</CommentDate>
                     <DetailOptionsBtn src={moreBtn}/>
                 </CommentInfo>
-                <Comment>{Comment}</Comment>
+                <Comment>{comment}</Comment>
             </div>
         </CommentItemLi>
     )
