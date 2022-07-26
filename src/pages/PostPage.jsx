@@ -33,7 +33,7 @@ function PostPage() {
         setAlertOn(false);
     }
 
-
+//댓글 서버에 요청
     useEffect(()=>{
         dispatch(commentListAction.commentList(postId, token))
     },[dispatch, postId, token])

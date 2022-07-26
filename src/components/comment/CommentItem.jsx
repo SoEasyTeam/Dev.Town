@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import styled from "styled-components"
 import { DefaultProfileImg } from "../common/ProfileButtons"
 import moreBtn from '../../assets/icon/icon-more-vertical.png'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector} from "react-redux"
 
 const CommentItemLi = styled.li`
 
@@ -39,11 +39,9 @@ const Comment = styled.p`
     font-size: 14px;
 `
 
-function CommentItem(){
-    const dispatch = useDispatch()
-    useEffect(()=>{
-        dispatch()
-    },)
+function CommentItem({CommentFrom, CommentDate, Comment}){
+    // const commentList = useSelector(state=>state.commentList.comments)
+
     return (
         <CommentItemLi>
             <div className="profile-img">
@@ -51,11 +49,11 @@ function CommentItem(){
             </div>
             <div className="comment-box">
                 <CommentInfo>
-                    <CommentFrom>서귀포시 농장 주인</CommentFrom>
-                    <CommentDate>2022.07.24</CommentDate>
+                    <CommentFrom>{CommentFrom}</CommentFrom>
+                    <CommentDate>{CommentDate}</CommentDate>
                     <DetailOptionsBtn src={moreBtn}/>
                 </CommentInfo>
-                <Comment>방가방가</Comment>
+                <Comment>{Comment}</Comment>
             </div>
         </CommentItemLi>
     )
