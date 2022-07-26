@@ -52,23 +52,23 @@ const TabMenuLink = styled(Link)`
         margin-bottom: 4px;
     }
     &.home-link::before{
-        ${({ isActive }) => {
-        return isActive === 1 ? `background-image: url(${LinkHomeClickImg});` : `background-image: url(${LinkHomeImg});`
+        ${({ paint }) => {
+        return paint === 1 ? `background-image: url(${LinkHomeClickImg});` : `background-image: url(${LinkHomeImg});`
     }}
     }
     &.chat-link::before{
-        ${({ isActive }) => {
-        return isActive === 2 ? `background-image: url(${LinkChatClickImg});` : `background-image: url(${LinkChatImg});`
+        ${({ paint }) => {
+        return paint === 2 ? `background-image: url(${LinkChatClickImg});` : `background-image: url(${LinkChatImg});`
     }}
     }
     &.post-link::before{
-        ${({ isActive }) => {
-        return isActive === 3 ? `background-image: url(${LinkIconEditClickImg});` : `background-image: url(${LinkIconEditImg});`
+        ${({ paint }) => {
+        return paint === 3 ? `background-image: url(${LinkIconEditClickImg});` : `background-image: url(${LinkIconEditImg});`
     }}
     }
     &.myprofile-link::before {
-        ${({ isActive }) => {
-        return isActive === 4 ? `background-image: url(${LinkProfileClickImg});` : `background-image: url(${LinkIconProfileImg});`
+        ${({ paint }) => {
+        return paint === 4 ? `background-image: url(${LinkProfileClickImg});` : `background-image: url(${LinkIconProfileImg});`
     }}
     }
 
@@ -78,38 +78,38 @@ const TabMenuLink = styled(Link)`
 `
 
 const TabMenu = () => {
-    const [isPaint, setIsPaint] = useState(1);
+    const [paint, setIsPaint] = useState('');
 
     useEffect(() => {
-        console.log(isPaint)
-    }, [isPaint])
+        console.log(paint)
+    }, [paint])
 
     return (
         <>
             <TabMenuRowList>
                 <TabMenuItem>
-                    <TabMenuLink className='home-link' to='/home' isActive={isPaint} onClick={() => {
+                    <TabMenuLink className='home-link' to='/home' paint={paint} onClick={() => {
                         setIsPaint(1);
                     }}>
                         <span>홈</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='chat-link' to='#' isActive={isPaint} onClick={() => {
+                    <TabMenuLink className='chat-link' to='#' paint={paint} onClick={() => {
                         setIsPaint(2);
                     }}>
                         <span>채팅</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='post-link' to='/post/:id' isActive={isPaint} onClick={() => {
+                    <TabMenuLink className='post-link' to='/post' paint={paint} onClick={() => {
                         setIsPaint(3);
                     }}>
                         <span>게시물 작성</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='myprofile-link' to='/myprofile' isActive={isPaint} onClick={() => {
+                    <TabMenuLink className='myprofile-link' to='/myprofile' paint={paint} onClick={() => {
                         setIsPaint(4);
                     }}>
                         <span>프로필</span>
