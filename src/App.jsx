@@ -15,6 +15,7 @@ import ProductModificationPage from './pages/ProductModificationPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
 import ChatPage from './pages/ChatPage';
 
+
 function App() {
     return (
         <Switch>
@@ -34,7 +35,7 @@ function App() {
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
-            <Route exact path='/post' component={()=><PostUploadPage/>}/>
+            <Route exact path='/post' component={() => <PostUploadPage />} />
             <Route path='/search' component={() => <SearchPage />} />
             <Route path='/follower' component={() => <FollowerPage />} />
             <Route path='/following' component={() => <FollowingPage />} />
