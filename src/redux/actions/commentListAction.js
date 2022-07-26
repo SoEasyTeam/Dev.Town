@@ -25,6 +25,7 @@ function commentList(postId, token){
 }
 
 function writeComment(postId, token, comment){
+    console.log(postId, token, comment);
     return async(dispatch)=>{
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/post/${postId}/comments`

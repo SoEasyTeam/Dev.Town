@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import { DefaultProfileImg } from '../common/ProfileButtons';
-import IconFillImg from '../../assets/upload-file.png'
 import { useDispatch, useSelector } from 'react-redux';
-import {commentAction} from '../../redux/actions/commentAction'
+import { useParams } from 'react-router-dom';
+import IconFillImg from '../../assets/upload-file.png'
+import { DefaultProfileImg } from '../common/ProfileButtons';
+
+import {commentListAction} from '../../redux/actions/commentListAction'
 
 const CommentBox = styled.form`
     width: 100%;
@@ -31,18 +34,26 @@ const CommentSubmitBtn = styled.button`
 export default function CommentInputBox() {
     const dispatch = useDispatch()
     const token = useSelector(state => state.auth.token);
+    const { id } = useParams();
+    const postViewId = useSelector(state => state.homefeed.item).map((i) => i.id);
+    const postId = postViewId.filter(i => i === id);
+    const [comment, setComment]=useState('')
 
 
     const handleOnSubmit = (e) =>{
         e.preventDefault()
-        // dispatch(commentAction.postComment(post_id, token, content))
+        dispatch(commentListAction.writeComment(postId,token, comment))
+    }
+
+    const handleOnChange = (e)=>{
+        setComment(e.target.value)
     }
     return (
         <CommentBox onSubmit={handleOnSubmit}>
             <ProfileImgBox>
                 <DefaultProfileImg />
             </ProfileImgBox>
-            <CommentInput placeholder='댓글 입력하기...' required />
+            <CommentInput placeholder='댓글 입력하기...' required onChange={handleOnChange}/>
             <CommentSubmitBtn>게시</CommentSubmitBtn>
         </CommentBox>
     );

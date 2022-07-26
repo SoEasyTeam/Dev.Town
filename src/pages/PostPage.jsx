@@ -19,6 +19,7 @@ function PostPage() {
     const postId = postViewId.filter(i => i === id);
     console.log(postId);
 
+    //댓글 가져오기
     const commentList = useSelector(state=>state.commentList.comment)
     const token = useSelector(state=>state.auth.token)
     
