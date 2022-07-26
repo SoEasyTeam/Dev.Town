@@ -89,7 +89,7 @@ function ChatList() {
     );
 }
 
-function ChatPage() {
+function ChatPage(paint, setIsPaint) {
     return (
         <>
             <TopBasicNav />
@@ -129,7 +129,7 @@ function ChatPage() {
                     <p className='chatDate-p'>2020.10.25</p>
                 </ChatItemLink>
             </ChatListBox>
-            <TabMenu/>
+            <TabMenu paint={paint} setIsPaint={setIsPaint}/>
         </>
     );
 }

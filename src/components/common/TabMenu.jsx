@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import LinkHomeImg from '../../assets/icon/icon-home.svg';
 import LinkHomeClickImg from '../../assets/icon-home-fill.png'
 import LinkChatClickImg from '../../assets/icon-message-circle-fill.png'
@@ -9,8 +9,6 @@ import LinkChatImg from '../../assets/icon/icon-message-circle.svg';
 import LinkIconProfileImg from '../../assets/icon/icon-user.svg';
 import LinkIconEditImg from '../../assets/icon/icon-edit.svg';
 import LinkIconEditClickImg from '../../assets/icon-fill-post.png';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const BlankBox = styled.div`
     width: 100vw;
@@ -32,7 +30,7 @@ const TabMenuRowList = styled.ul`
 const TabMenuItem = styled.li`
 `;
 
-const TabMenuLink = styled(Link)`
+const TabMenuLink = styled(NavLink)`
     display: block;
     /* flex-direction: column; */
     padding: 12px 30px 6px 30px;
@@ -52,24 +50,31 @@ const TabMenuLink = styled(Link)`
         margin-bottom: 4px;
     }
     &.home-link::before{
-        ${({ paint }) => {
-        return paint === 1 ? `background-image: url(${LinkHomeClickImg});` : `background-image: url(${LinkHomeImg});`
-    }}
+        background-image: url(${LinkHomeImg});
     }
     &.chat-link::before{
-        ${({ paint }) => {
-        return paint === 2 ? `background-image: url(${LinkChatClickImg});` : `background-image: url(${LinkChatImg});`
-    }}
+        background-image: url(${LinkChatImg});
     }
     &.post-link::before{
-        ${({ paint }) => {
-        return paint === 3 ? `background-image: url(${LinkIconEditClickImg});` : `background-image: url(${LinkIconEditImg});`
-    }}
+        background-image: url(${LinkIconEditImg});
     }
     &.myprofile-link::before {
-        ${({ paint }) => {
-        return paint === 4 ? `background-image: url(${LinkProfileClickImg});` : `background-image: url(${LinkIconProfileImg});`
-    }}
+        background-image: url(${LinkIconProfileImg});
+    }
+
+    &.active {
+        &.home-link::before{
+            background-image: url(${LinkHomeClickImg})
+        }
+        &.chat-link::before{
+            background-image: url(${LinkChatClickImg})
+        }
+        &.post-link::before{
+            background-image: url(${LinkIconEditClickImg})
+        }
+        &.myprofile-link::before{
+            background-image: url(${LinkProfileClickImg})
+        }
     }
 
     span {
@@ -78,40 +83,27 @@ const TabMenuLink = styled(Link)`
 `
 
 const TabMenu = () => {
-    const [paint, setIsPaint] = useState('');
-
-    useEffect(() => {
-        console.log(paint)
-    }, [paint])
 
     return (
         <>
             <TabMenuRowList>
                 <TabMenuItem>
-                    <TabMenuLink className='home-link' to='/home' paint={paint} onClick={() => {
-                        setIsPaint(1);
-                    }}>
+                    <TabMenuLink className='home-link' to='/home'  >
                         <span>홈</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='chat-link' to='#' paint={paint} onClick={() => {
-                        setIsPaint(2);
-                    }}>
+                    <TabMenuLink className='chat-link' to='/chatlist' >
                         <span>채팅</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='post-link' to='/post' paint={paint} onClick={() => {
-                        setIsPaint(3);
-                    }}>
+                    <TabMenuLink className='post-link' to='/post' >
                         <span>게시물 작성</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='myprofile-link' to='/myprofile' paint={paint} onClick={() => {
-                        setIsPaint(4);
-                    }}>
+                    <TabMenuLink className='myprofile-link' to='/myprofile' >
                         <span>프로필</span>
                     </TabMenuLink>
                 </TabMenuItem>

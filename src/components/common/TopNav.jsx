@@ -145,8 +145,8 @@ function TopBasicNav({ alertOnModal }) {
     return (
         <>
             <TopNavRowBox>
-                <ArrowLeftLink />
-                <TopNavLink onClick={openModal}>
+                <ArrowLeftLink to='/'/>
+                <TopNavLink onClick={openModal} to='/'>
                     <img src={MoreImg} alt='더보기링크' />
                 </TopNavLink>
             </TopNavRowBox>

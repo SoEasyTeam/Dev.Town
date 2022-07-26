@@ -13,6 +13,7 @@ import FollowingPage from './pages/FollowingPage';
 import PostUploadPage from './pages/PostUploadPage'
 import ProductModificationPage from './pages/ProductModificationPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
+import ChatPage from './pages/ChatPage';
 
 function App() {
     return (
@@ -27,14 +28,13 @@ function App() {
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
-            
+            <Route path='/chatlist' component={() => <ChatPage/>} />
             <Route path='/home' component={() => <HomePage />} />
             <Route
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
-            <Route path='/post' component={()=><PostUploadPage/>}/>
-
+            <Route exact path='/post' component={()=><PostUploadPage/>}/>
             <Route path='/search' component={() => <SearchPage />} />
             <Route path='/follower' component={() => <FollowerPage />} />
             <Route path='/following' component={() => <FollowingPage />} />
