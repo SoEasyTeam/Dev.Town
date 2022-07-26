@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import JoinMembershipPage from './pages/JoinMembershipPage';
@@ -7,15 +6,14 @@ import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
 import AddProductPage from './pages/AddProductPage';
 import ProfileSettingPage from './pages/ProfileSettingPage';
-import ProfileModificationPage from './pages/ProfileModificationPage';
 import PostPage from './pages/PostPage';
 import SearchPage from './pages/SearchPage';
 import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
+import ProductModificationPage from './pages/ProductModificationPage';
 
 
 function App() {
-    let localToken = localStorage.getItem('key');
 
     return (
         <Switch>
@@ -29,18 +27,17 @@ function App() {
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
-            <Route path='/home' component={() => <HomePage localToken={localToken}/>} />
-            <Route path='/search' component={() => <SearchPage localToken={localToken}/>} />
-
+            <Route path='/home' component={() => <HomePage />} />
+            <Route path='/search' component={() => <SearchPage />} />
             <Route
                 path='/myprofile'
                 component={() => <MyProfilePage />}
             />
-            <Route path='/follower' component={() => <FollowerPage localToken={localToken}/>} />
-            <Route path='/following' component={() => <FollowingPage localToken={localToken}/>} />
-            <Route path='/product' component={() => <AddProductPage localToken={localToken}/>} />
-            <Route path='/profilemodification' component={() => <ProfileModificationPage localToken={localToken}/>} />
-            <Route path='/post/:id' component={() => <PostPage localToken={localToken}/>} />
+            <Route path='/follower' component={() => <FollowerPage />} />
+            <Route path='/following' component={() => <FollowingPage />} />
+            <Route exact path='/product' component={() => <AddProductPage />} />
+            <Route path='/post/:id' component={() => <PostPage />} />
+            <Route path='/product/:product_id' component={() => <ProductModificationPage />} />
         </Switch>
     );
 }

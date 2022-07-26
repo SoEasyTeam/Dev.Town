@@ -11,6 +11,7 @@ export const ProfileLogoImg = styled.img`
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    border: 1px solid var(--border-gray);
 `;
 
 export const NameIdBox = styled.div`

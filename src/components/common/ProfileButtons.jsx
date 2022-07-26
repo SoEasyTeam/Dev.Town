@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import defaultProfile from '../../assets/basic-profile-img-2x.png';
 import IconFillImg from '../../assets/upload-file.png';
 import uploadImageGray from '../../assets/img-button.png';
 
-const BasicProfileImg = styled.img.attrs({
-    src: `${defaultProfile}`,
-})`
+const BasicProfileImg = styled.img`
     width: 100%;
     height: 100%;
+    border-radius: 50%;
+    border: 1px solid var(--border-gray);
 `;
 
 const ImgUpload = styled.img`
@@ -18,8 +17,9 @@ const ImgGray = styled.img`
     width: 100%;
 `;
 
-function DefaultProfileImg() {
-    return <BasicProfileImg src={defaultProfile} />;
+function DefaultProfileImg({ image }) {
+
+    return <BasicProfileImg src={image} />;
 }
 
 function ImgUploadBtn() {

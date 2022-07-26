@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { MyProductModal } from '../common/Modal';
+import { AlertProductModal } from './AlertModal';
 
 
 const ProductItemBox = styled.div`
@@ -41,26 +42,25 @@ const ProductItemBox = styled.div`
     }
 `;
 
-const Product = ({ name, price, src, itemLink, writerId }) => {
+const Product = ({ name, price, src, itemLink, writerId, alertOnModal, product_id, author }) => {
     const userId = useSelector(state => state.auth.id);
     const [modalOn, setModalOn] = useState(false);
     const priceShow = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
     function openModal() {
         console.log('상품등록유저', writerId);
         console.log('유저:', userId);
         console.log('링크', itemLink);
-
         if (userId !== writerId) {
             setModalOn(false);
             console.log('상품링크로 이동')
-            window.open({ itemLink }, '_blank')
+            window.open(`${itemLink}`, '_blank')
         } else {
             setModalOn(true);
         }
     }
 
     function closeModal() {
+        document.body.style.overflow = "unset";
         setModalOn(false);
     }
 
@@ -75,7 +75,18 @@ const Product = ({ name, price, src, itemLink, writerId }) => {
                 <p className='txt-productName'>{name}</p>
                 <span className='txt-productPrice'>{priceShow}원</span>
             </ProductItemBox>
-            {modalOn === true ? <MyProductModal closeModal={closeModal} itemLink={itemLink} /> : ''}
+            {modalOn === true ?
+            <MyProductModal
+                itemName={name}
+                src={src}
+                price={price}
+                itemImage={src}
+                product_id={product_id}
+                closeModal={closeModal}
+                link={itemLink}
+                alertOnModal={alertOnModal}
+                author={author}
+                /> : ''}
         </>
     );
 };
