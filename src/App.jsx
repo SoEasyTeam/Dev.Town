@@ -11,6 +11,7 @@ import SearchPage from './pages/SearchPage';
 import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
 import ProductModificationPage from './pages/ProductModificationPage';
+import ProfileModificationPage from './pages/ProfileModificationPage';
 
 function App() {
 
@@ -31,6 +32,10 @@ function App() {
             <Route
                 path='/myprofile'
                 component={() => <MyProfilePage />}
+            />
+            <Route
+                path='/profilemodification'
+                component={() => <ProfileModificationPage />}
             />
             <Route path='/follower' component={() => <FollowerPage />} />
             <Route path='/following' component={() => <FollowingPage />} />
