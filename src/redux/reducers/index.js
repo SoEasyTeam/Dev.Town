@@ -7,7 +7,7 @@ import { joinReducer } from './joinReducer';
 import { joinFinalReducer } from './joinReducer';
 import searchReducer from './searchReducer';
 import profileReducer from './profileReducer';
-import uploadFilesReducer from './uploadFilesReducer';
+
 
 export default combineReducers({
     auth: authenticateReducer,
@@ -16,7 +16,6 @@ export default combineReducers({
     search: searchReducer,
     profile: profileReducer,
     post: postReducer,
-    upload: uploadFilesReducer,
     addproduct: addProductReducer,
     homefeed: homeFeedReducer,
 });
