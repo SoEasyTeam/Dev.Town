@@ -16,20 +16,20 @@ let initialState = {
     //     "followerCount": '',
     //     "followingCount": ''
     // }
-    post:''
-}
+    post: '',
+};
 
-function postReducer(state=initialState,action){
-    let {type, payload} = action
-    switch(type){
+function postReducer(state = initialState, action) {
+    let { type, payload } = action;
+    switch (type) {
         case 'POST_SUCCESS':
             return {
                 ...state,
-                post: payload.post
-            }
-            default:
-                return {...state}
+                post: payload.post,
+            };
+        default:
+            return { ...state };
     }
 }
 
-export default postReducer
+export default postReducer;
