@@ -5,7 +5,6 @@ import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
 import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
-import UploadPage from './pages/PostUploadPage';
 import AddProductPage from './pages/AddProductPage';
 import ProfileSettingPage from './pages/ProfileSettingPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
@@ -13,6 +12,7 @@ import PostPage from './pages/PostPage';
 import SearchPage from './pages/SearchPage';
 import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
+import PostUploadPage from './pages/PostUploadPage'
 
 
 function App() {
@@ -35,12 +35,12 @@ function App() {
                 path='/myprofile'
                 component={() => <MyProfilePage/>}
             />
-            <Route path='/upload' component={()=><UploadPage/>}/>
+            <Route path='/post' component={()=><PostUploadPage/>}/>
             <Route path='/follower' component={() => <FollowerPage />} />
             <Route path='/following' component={() => <FollowingPage />} />
             <Route path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
-            <Route path='/post/:id' component={() => <PostPage />} />
+            <Route exact path='/post/:id' component={() => <PostPage />} />
         </Switch>
     );
 }
