@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
@@ -11,10 +11,11 @@ import SearchPage from './pages/SearchPage';
 import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
 import ProductModificationPage from './pages/ProductModificationPage';
+import Navigation from './nav'
 
 function App() {
-
     return (
+        // <Navigation/>
         <Switch>
             <Route exact path='/' component={() => <SplashPage />} />
             <Route path='/join' component={() => <JoinMembershipPage />} />
@@ -26,12 +27,14 @@ function App() {
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
-            <Route path='/home' component={() => <HomePage />} />
-            <Route path='/search' component={() => <SearchPage />} />
-            <Route
-                path='/myprofile'
-                component={() => <MyProfilePage />}
-            />
+            <Router>
+                <Route path='/home' component={() => <HomePage />} />
+                <Route path='/search' component={() => <SearchPage />} />
+                <Route
+                    path='/myprofile'
+                    component={() => <MyProfilePage />}
+                />
+            </Router>
             <Route path='/follower' component={() => <FollowerPage />} />
             <Route path='/following' component={() => <FollowingPage />} />
             <Route exact path='/product' component={() => <AddProductPage />} />

@@ -78,39 +78,39 @@ const TabMenuLink = styled(Link)`
 `
 
 const TabMenu = () => {
-    const [isactive, setIsActive] = useState(1);
+    const [isPaint, setIsPaint] = useState(1);
 
     useEffect(() => {
-        console.log(isactive)
-    }, [isactive])
+        console.log(isPaint)
+    }, [isPaint])
 
     return (
         <>
             <TabMenuRowList>
                 <TabMenuItem>
-                    <TabMenuLink className='home-link' to='/home' isactive={isactive} onClick={() => {
-                        setIsActive(1);
+                    <TabMenuLink className='home-link' to='/home' isActive={isPaint} onClick={() => {
+                        setIsPaint(1);
                     }}>
                         <span>홈</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='chat-link' to='#' isactive={isactive} onClick={() => {
-                        setIsActive(2);
+                    <TabMenuLink className='chat-link' to='#' isActive={isPaint} onClick={() => {
+                        setIsPaint(2);
                     }}>
                         <span>채팅</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='post-link' to='/post/:id' isactive={isactive} onClick={() => {
-                        setIsActive(3);
+                    <TabMenuLink className='post-link' to='/post/:id' isActive={isPaint} onClick={() => {
+                        setIsPaint(3);
                     }}>
                         <span>게시물 작성</span>
                     </TabMenuLink>
                 </TabMenuItem>
                 <TabMenuItem>
-                    <TabMenuLink className='myprofile-link' to='/myprofile' isactive={isactive} onClick={() => {
-                        setIsActive(4);
+                    <TabMenuLink className='myprofile-link' to='/myprofile' isActive={isPaint} onClick={() => {
+                        setIsPaint(4);
                     }}>
                         <span>프로필</span>
                     </TabMenuLink>
