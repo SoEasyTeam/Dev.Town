@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LinkHomeImg from '../../assets/icon/icon-home.svg';
 import LinkHomeClickImg from '../../assets/icon-home-fill.png'
 import LinkChatClickImg from '../../assets/icon-message-circle-fill.png'
@@ -27,6 +27,7 @@ const TabMenuRowList = styled.ul`
     display: flex;
     justify-content: space-between;
     border-top: 0.5px solid #dbdbdb;
+`;
 
 const TabMenuItem = styled.li`
 `;

@@ -12,7 +12,7 @@ import FollowerPage from './pages/FollowerPage';
 import FollowingPage from './pages/FollowingPage';
 import PostUploadPage from './pages/PostUploadPage'
 import ProductModificationPage from './pages/ProductModificationPage';
-
+import ProfileModificationPage from './pages/ProfileModificationPage';
 
 function App() {
     return (
@@ -38,10 +38,10 @@ function App() {
             <Route path='/search' component={() => <SearchPage />} />
             <Route path='/follower' component={() => <FollowerPage />} />
             <Route path='/following' component={() => <FollowingPage />} />
-            <Route path='/product' component={() => <AddProductPage />} />
-            <Route path='/profilemodification' component={() => <ProductModificationPage />} />
-            <Route exact path='/post/:id' component={() => <PostPage />} />
             <Route exact path='/product' component={() => <AddProductPage />} />
+            <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
+            <Route exact path='/post/:id' component={() => <PostPage />} />
+            <Route path='/product/:product_id' component={() => <ProductModificationPage />} />
         </Switch>
     );
 }
