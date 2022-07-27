@@ -33,7 +33,6 @@ export const HomePostBox = styled.div`
     width: 358px;
     margin: 0 auto;
     padding-bottom: 4px;
-    padding-top: 30px;
 `;
 
 export const HomePostProfileBox = styled(UserFollowBox)`
@@ -132,19 +131,9 @@ export const LikePostRowBox = ({ heartCount, commentCount, postId }) => {
     );
 };
 
-const parseDate = (dateString) => {
-    const postDate = new Date(dateString)
-    const postyear = postDate.getFullYear();
-    const postmonth = postDate.getMonth() + 1;
-    const postday = postDate.getDate();
-    return [postyear, postmonth, postday]
-}
-
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal, postId }) {
-    //포스트 
-    const post = useSelector(state=>state.getPost.post)
-    const [postyear, postmonth, postday] = parseDate(post.createdAt)
-    
+
+    const post = useSelector(state=>state.getPost)
     // 모달창
     const [modalOn, setModalOn] = useState(false);
 
@@ -156,23 +145,22 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
         setModalOn(false);
     }
 
-
     return (
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <HomePostProfileLogoImg src={post.author.image} alt='프로필로고' />
+                    <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
                     <NameIdBox>
                         <HomePostProfileNickName>
-                            {post.author.username}
+                            {nickname}
                         </HomePostProfileNickName>
-                        <IdP>@ {post.author.accountname}</IdP>
+                        <IdP>@ {id}</IdP>
                     </NameIdBox>
                     <SettingBtn onClick={openModal} />
                 </HomePostProfileBox>
                 <HomePostSmallLink to={`./post/${postId}`}>
                     <HomePostParagraph>
-                        {post.content}
+                        {postparagraph}
                     </HomePostParagraph>
                     {
                         postsrc === '' || typeof (postsrc) === 'undefined' ? null :
@@ -183,8 +171,8 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                             />
                     }
                 </HomePostSmallLink>
-                <LikePostRowBox heartCount={post.heartCount} commentCount={post.commentCount} postId={postId} />
-                <DateParagraph>{postyear}년 {postmonth}월 {postday}일</DateParagraph>
+                <LikePostRowBox heartCount={heartCount} commentCount={commentCount} postId={postId} />
+                <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
             </HomePostBox>
             {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} id={id} /> : ''}
 
