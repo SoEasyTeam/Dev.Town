@@ -42,7 +42,7 @@ export const HomePostProfileBox = styled(UserFollowBox)`
     width: 100%;
 `;
 
-export const HomePostSmallLink = styled(Link)`
+export const HomePostSmallBox = styled.div`
     margin-left: 54px;
     display: block;
     .post-img {
@@ -114,7 +114,6 @@ export const LikePostBox = styled.div`
     }
 `;
 
-
 export const LikePostRowBox = ({ heartCount, commentCount, postId }) => {
     return (
         <LikePostBox>
@@ -122,31 +121,40 @@ export const LikePostRowBox = ({ heartCount, commentCount, postId }) => {
                 <img className='heart-img' src={IconHeartImg} alt='하트버튼' />
                 <span className='likecount-span'>{heartCount}</span>
             </button>
-            <Link className='comment-btn' to={`./post/${postId}`}>
+            <div className='comment-btn'>
                 <img
                     className='comment-img'
                     src={IconCommentImg}
                     alt='댓글링크'
                 />
                 <span className='comment-span'>{commentCount}</span>
-            </Link>
+            </div>
         </LikePostBox>
     );
 };
 
 const parseDate = (dateString) => {
-    const postDate = new Date(dateString)
+    const postDate = new Date(dateString);
     const postyear = postDate.getFullYear();
     const postmonth = postDate.getMonth() + 1;
     const postday = postDate.getDate();
-    return [postyear, postmonth, postday]
-}
+    return [postyear, postmonth, postday];
+};
 
-function PostInDetail({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal, postId }) {
-    //포스트 
-    const post = useSelector(state=>state.getPost.post)
-    const [postyear, postmonth, postday] = parseDate(post.createdAt)
-    
+function PostInDetail({
+    profileimg,
+    nickname,
+    id,
+    postparagraph,
+    postsrc,
+    heartCount,
+    commentCount,
+    year,
+    month,
+    day,
+    alertOnModal,
+    postId,
+}) {
     // 모달창
     const [modalOn, setModalOn] = useState(false);
 
@@ -154,42 +162,56 @@ function PostInDetail({ profileimg, nickname, id, postparagraph, postsrc, heartC
         setModalOn(true);
     }
     function closeModal() {
-        document.body.style.overflow = "unset";
+        document.body.style.overflow = 'unset';
         setModalOn(false);
     }
-
 
     return (
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <HomePostProfileLogoImg src={post.author.image} alt='프로필로고' />
+                    <HomePostProfileLogoImg
+                        src={profileimg}
+                        alt='프로필로고'
+                    />
                     <NameIdBox>
                         <HomePostProfileNickName>
-                            {post.author.username}
+                            {nickname}
                         </HomePostProfileNickName>
-                        <IdP>@ {post.author.accountname}</IdP>
+                        <IdP>@ {id}</IdP>
                     </NameIdBox>
                     <SettingBtn onClick={openModal} />
                 </HomePostProfileBox>
-                <HomePostSmallLink to={`./post/${postId}`}>
-                    <HomePostParagraph>
-                        {post.content}
-                    </HomePostParagraph>
-                    {
-                        post.image === '' || typeof (post.image) === 'undefined' ? null :
-                            <img
-                                className='post-img'
-                                src={post.image}
-                                alt='포스트이미지'
-                            />
-                    }
-                </HomePostSmallLink>
-                <LikePostRowBox heartCount={post.heartCount} commentCount={post.commentCount} postId={postId} />
-                <DateParagraph>{postyear}년 {postmonth}월 {postday}일</DateParagraph>
+                <HomePostSmallBox>
+                    <HomePostParagraph>{postparagraph}</HomePostParagraph>
+                    {postsrc === '' ||
+                    typeof postsrc === 'undefined' ? null : (
+                        <img
+                            className='post-img'
+                            src={postsrc}
+                            alt='포스트이미지'
+                        />
+                    )}
+                </HomePostSmallBox>
+                <LikePostRowBox
+                    heartCount={heartCount}
+                    commentCount={commentCount}
+                    postId={postId}
+                />
+                <DateParagraph>
+                    {year}년 {month}월 {day}일
+                </DateParagraph>
             </HomePostBox>
-            {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} id={id} /> : ''}
-
+            {modalOn === true ? (
+                <MyPostModal
+                    openModal={openModal}
+                    closeModal={closeModal}
+                    alertOnModal={alertOnModal}
+                    id={id}
+                />
+            ) : (
+                ''
+            )}
         </>
     );
 }
