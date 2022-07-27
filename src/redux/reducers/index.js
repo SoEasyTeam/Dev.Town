@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import authenticateReducer from './authenticateReducer';
-import postReducer from './postReducer';
+import { postReducer, getPostReducer } from './postReducer';
 import homeFeedReducer from './homeFeedReducer';
 import { joinReducer } from './joinReducer';
 import { joinFinalReducer } from './joinReducer';
@@ -16,6 +16,7 @@ export default combineReducers({
     search: searchReducer,
     profile: profileReducer,
     post: postReducer,
+    getPost: getPostReducer,
     product: productReducer,
     homefeed: homeFeedReducer,
     writeComment:writeCommentReducer,

@@ -7,6 +7,7 @@ import CommentInputBox from '../components/comment/CommentInput'
 import CommentList from '../components/comment/CommentList'
 import { AlertLogoutModal } from '../components/common/AlertModal'
 import { commentListAction } from '../redux/actions/commentListAction'
+import { postAction } from '../redux/actions/postAction';
 
 function PostPage() {
     const dispatch = useDispatch()
@@ -18,6 +19,7 @@ function PostPage() {
     console.log(id);
     const postId = postViewId.filter(i => i === id);
     console.log(postId);
+    // const post = useSelector(state=>state.getPost.post)
 
     //댓글 가져오기
     const commentList = useSelector(state=>state.commentList.comment)
@@ -37,6 +39,7 @@ function PostPage() {
 //댓글 서버에 요청
     useEffect(()=>{
         dispatch(commentListAction.commentList(postId, token))
+        dispatch(postAction.getPost(postId))
     },[dispatch, postId, token])
 
     return (

@@ -19,6 +19,10 @@ let initialState = {
     post: '',
 };
 
+let initialPostState = {
+    post:''
+}
+
 function postReducer(state = initialState, action) {
     let { type, payload } = action;
     switch (type) {
@@ -32,4 +36,15 @@ function postReducer(state = initialState, action) {
     }
 }
 
-export default postReducer;
+function getPostReducer(state=initialPostState, action){
+    let {type, payload}=action
+    switch (type){
+        case 'GET_POST':
+            return {
+                ...state,
+                post: payload.post,
+            }
+        default: return {...state}
+    }
+}
+export {postReducer,getPostReducer};
