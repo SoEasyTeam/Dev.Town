@@ -3,7 +3,10 @@ function homeFeed() {
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/post/feed';
-        const token = getState().auth.token;
+        // const token = getState().auth.token;
+        // console.log(token);
+
+        const token = localStorage.getItem('token');
         console.log(token);
 
         // const token2 = localStorage.getItem('persist:root');

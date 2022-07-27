@@ -19,7 +19,6 @@ const persistConfig = {
     // root부터 시작한다고 지정해준다.
     storage: storage,
     // 위에 import 한 성격의 storage를 지정해준다.
-    whitelist: 'authenticateReducer',
     // 유지 및 보존하고 싶은 데이터를 배열안에 지정해준다.
     // string 형태이고 아래 combineReducers에 지정된 값들을 사용해주면 된다.
 };
@@ -37,4 +36,6 @@ const rootReducer = combineReducers({
     commentList: commentListReducer,
 });
 
-export default persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export { persistedReducer, rootReducer };

@@ -10,6 +10,10 @@ import HomeFeedBox from '../components/home/HomeFeedBox'
 function HomePage() {
     const dispatch = useDispatch();
     const posts = useSelector(state=>state.homefeed.item);
+    const localToken = useSelector(state=>state.auth.token);
+    const localAccountName = useSelector(state=>state.auth.accountname)
+    localStorage.setItem('token',localToken);
+    localStorage.setItem('accountname',localAccountName);
 
     useEffect(() => {
         dispatch(homeFeedAction.homeFeed());
