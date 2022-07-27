@@ -9,7 +9,6 @@ let initialState = {
 
 function productReducer(state = initialState, action) {
     let { type, payload } = action;
-    console.log(action);
     switch (type) {
         case 'PRODUCT_SUCCESS':
             return {

@@ -13,6 +13,8 @@ import FollowingPage from './pages/FollowingPage';
 import PostUploadPage from './pages/PostUploadPage'
 import ProductModificationPage from './pages/ProductModificationPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
+import ChatPage from './pages/ChatPage';
+
 
 function App() {
     return (
@@ -27,7 +29,7 @@ function App() {
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
-
+            <Route path='/chatlist' component={() => <ChatPage/>} />
             <Route path='/home' component={() => <HomePage />} />
             <Route
                 path='/myprofile'

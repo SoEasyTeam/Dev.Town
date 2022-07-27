@@ -59,8 +59,9 @@ export const TopNavRowBoxLeft = styled.div`
     }
 `
 
-export const TopNavLinkS = styled(Link)`
+export const TopNavLinkS = styled.div`
     padding: 5px 0;
+    cursor: pointer;
     img {
         width: 22px;
         height: 22px;
@@ -69,8 +70,9 @@ export const TopNavLinkS = styled(Link)`
     }
 `;
 
-export const TopNavLink = styled(Link)`
+export const TopNavLink = styled.div`
     padding: 4px 0;
+    cursor: pointer;
     img {
         width: 24px;
         height: 24px;
@@ -78,6 +80,16 @@ export const TopNavLink = styled(Link)`
         margin: 0 auto;
     }
 `;
+
+export const TopSearchLink = styled(Link)`
+    padding: 4px 0;
+    img {
+        width: 24px;
+        height: 24px;
+        display: block;
+        margin: 0 auto;
+    }
+`
 
 export const SearchInput = styled.input.attrs({
     type: 'text',
@@ -171,9 +183,9 @@ function TopMainNav() {
         <>
             <TopNavRowBox>
                 <p className='navTitle'>데브타운 피드</p>
-                <TopNavLink to='/search'>
+                <TopSearchLink to='/search'>
                     <img src={SearchImg} alt='찾기링크' style={{ cursor: 'pointer' }} />
-                </TopNavLink>
+                </TopSearchLink>
             </TopNavRowBox>
         </>
     );
@@ -183,7 +195,7 @@ function TopUploadNav() {
     return (
         <>
             <TopNavRowBox>
-                <ArrowLeftLink to='' />
+                <ArrowLeftLink />
                 <MsBtn type='submit'>저장</MsBtn>
             </TopNavRowBox>
         </>
@@ -196,7 +208,7 @@ function TopChatNav() {
             <TopNavRowBox>
                 <ArrowLeftLink />
                 <p className='chatTitle'>애월읍 위니브 감귤농장</p>
-                <TopNavLink to='#'>
+                <TopNavLink>
                     <img src={MoreImg} alt='더보기링크' />
                 </TopNavLink>
             </TopNavRowBox>

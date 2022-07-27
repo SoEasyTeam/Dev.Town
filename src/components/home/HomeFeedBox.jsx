@@ -23,7 +23,6 @@ const HomePostItem = styled.li`
 
 const HomeFeedBox = () => {
     const posts = useSelector(state => state.homefeed.item);
-    // console.log(posts);
     return (
         <>
             <HomeFollowerUl>

@@ -1,9 +1,14 @@
 function homeFeed() {
-    // console.log('homefeed success action');
+    console.log('homefeed success action');
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/post/feed';
         const token = getState().auth.token;
+        console.log(token);
+        // const token2 = localStorage.getItem('persist:root');
+        // console.log(token2);
+        if (token === '') {
+        }
         try {
             let res = await fetch(url + reqPath, {
                 method: 'GET',
