@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
+import styled from 'styled-components';
 import { TopBasicNav } from '../components/common/TopNav'
 import HomeImgPost from '../components/common/HomeImgPost'
 import CommentInputBox from '../components/comment/CommentInput'
@@ -8,6 +9,11 @@ import CommentList from '../components/comment/CommentList'
 import { AlertLogoutModal } from '../components/common/AlertModal'
 import { commentListAction } from '../redux/actions/commentListAction'
 import { postAction } from '../redux/actions/postAction';
+
+const PostSection = styled.section`
+    padding: 20px;
+
+`
 
 function PostPage() {
     const dispatch = useDispatch()
@@ -45,10 +51,12 @@ function PostPage() {
     return (
         <>
             <TopBasicNav alertOnModal={alertOnModal} />
-            <HomeImgPost />
-            {commentList !== '' ? 
-            <CommentList/> :
-            <></>}
+            <PostSection>
+                <HomeImgPost />
+                {commentList !== '' ? 
+                <CommentList/> :
+                <></>}
+            </PostSection>
             <CommentInputBox />
             {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
         </>
