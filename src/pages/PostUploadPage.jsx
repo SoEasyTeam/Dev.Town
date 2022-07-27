@@ -67,22 +67,22 @@ const UploadImgInput = styled.input`
 function UploadPage() {
     const history = useHistory();
     const [postText, setPostText] = useState('');
-    const [uploadedImg, setUploadedImg] = useState('');
-    const [imgPreview, SetImgPreview] = useState([]);
+    const [uploadedImg, setUploadedImg] = useState([]);
+    const [imgPreview, setImgPreview] = useState([]);
     const fileInputRef = useRef();
     const dispatch = useDispatch();
 
     const token = useSelector((state) => state.auth.token);
-    const imgUrl = useSelector((state)=>state.post.img)
+    const imgUrl = useSelector((state) => state.post.img);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        if (uploadedImg === '' && postText === '') {
+        if (uploadedImg === [] && postText === '') {
             alert('게시물을 작성해주세요');
         } else {
             console.log('submit succeed');
             history.push('/myprofile');
-            dispatch(uploadedImg, postText)
+            dispatch(postAction.post(uploadedImg, postText));
         }
     };
 
@@ -92,23 +92,27 @@ function UploadPage() {
     };
 
     const HandleOnchange = (e) => {
-        const file = e.target.files;
-        const reader = new FileReader();
-        reader.onload = () => {
-            SetImgPreview((prev) => {
-                if (prev.length < 3) {
-                    let newPreviews = [...prev, reader.result];
-                    return newPreviews;
-                } else {
-                    return prev;
-                }
-            });
-        };
-        reader.readAsDataURL(file);
-    
+        let prevImgs = [];
+        for (let index = 0; index < e.target.files.length; index++) {
+            const element = e.target.files[index];
+            const reader = new FileReader();
+            reader.onload = function () {
+                prevImgs.push(reader.result);
+                setImgPreview((prev) => {
+                    if (prevImgs.length <= 3) {
+                        let newPreviews = prevImgs;
+                        return newPreviews;
+                    } else {
+                        return prev;
+                    }
+                });
+            };
+            reader.readAsDataURL(element);
+        }
+
         setUploadedImg((prev) => {
-            if(prev.length < 3) {
-                let newList = [...prev, file];
+            if (prev.length < 3) {
+                let newList = e.target.files;
                 return newList;
             } else {
                 alert('이미지는 최대 3장까지 업로드가 가능합니다.');
