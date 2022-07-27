@@ -13,7 +13,7 @@ function HomePage() {
 
     useEffect(() => {
         dispatch(homeFeedAction.homeFeed());
-    },[dispatch])
+    },[])
 
     return (
         <>

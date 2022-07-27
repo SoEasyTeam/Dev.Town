@@ -1,5 +1,12 @@
-function post(formData, postText) {
-    // console.log(formData, '디스패치 성공!');
+function post(fileList, postText) {
+    const formData = new FormData();
+
+    if (fileList.length > 0) {
+        for (let index = 0; index < fileList.length; index++) {
+            const file = fileList[index];
+            formData.append('image', file);
+        console.log(formData)}
+    }
     console.log('포스트내용',postText);
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
@@ -7,15 +14,19 @@ function post(formData, postText) {
         const token = getState().auth.token;
         console.log(token);
         try {
-            let fileRes = await fetch(url + reqPath, {
-                method: 'POST',
-                body: formData,
-            });
-            const fileJson = await fileRes.json();
-            console.log('파일제이슨', fileJson);
-            const imageUrls = fileJson
+            let imageUrls = ''
+            if (fileList.length >0){
+                let fileRes = await fetch(url + reqPath, {
+                    method: 'POST',
+                    body: formData,
+                });
+                const fileJson = await fileRes.json();
+                console.log('파일제이슨', fileJson);
+                imageUrls = fileJson
                 .map((fileData) => url + '/' + fileData.filename)
                 .join(',');
+
+            }
             console.log(imageUrls);
             const postReq = '/post';
             
@@ -38,12 +49,6 @@ function post(formData, postText) {
                 type: 'POST_SUCCESS',
                 payload: {
                     post: postJson.post.post
-                    // _id: resJson.post._id,
-                    // username: resJson.post.username,
-                    // accountname: resJson.post.accountname,
-                    // image: resJson.post.image,
-                    // content:resJson.post.content
-                    // item: resJson.post
                 },
             });
         } catch (error) {

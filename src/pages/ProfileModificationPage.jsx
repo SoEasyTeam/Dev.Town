@@ -58,10 +58,11 @@ export const AddProfileLabel = styled.label`
 `;
 
 function ProfileModificationPage() {
-    const username = useSelector(state => state.profile.username);
-    const userimage = useSelector(state => state.profile.image);
-    const useraccountname = useSelector(state => state.profile.accountname);
-    const userintro = useSelector(state => state.profile.intro);
+    const userData = useSelector(state => state.profile.userData);
+    const username = userData.profile.username;
+    const userimage = userData.profile.image;
+    const useraccountname = userData.profile.accountname;
+    const userintro = userData.profile.intro;
 
     const [name, setname] = useState(username);
     const [image, setImage] = useState(userimage);
@@ -75,7 +76,7 @@ function ProfileModificationPage() {
         event.preventDefault();
         console.log('수정 submitHandler');
         dispatch(profileAction.profileModification(name, image, accountname, intro));
-        history.push('/myprofile');
+        history.push('/myprofile')
     }
 
     const onChangeProfileImg = (event) => {

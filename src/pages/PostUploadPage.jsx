@@ -67,22 +67,22 @@ const UploadImgInput = styled.input`
 function UploadPage() {
     const history = useHistory();
     const [postText, setPostText] = useState('');
-    const [uploadedImg, setUploadedImg] = useState('');
-    const [imgPreview, SetImgPreview] = useState([]);
+    const [uploadedImg, setUploadedImg] = useState([]);
+    const [imgPreview, setImgPreview] = useState([]);
     const fileInputRef = useRef();
     const dispatch = useDispatch();
 
     const token = useSelector((state) => state.auth.token);
-    const imgUrl = useSelector((state)=>state.post.img)
+    const imgUrl = useSelector((state) => state.post.img);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        if (uploadedImg === '' && postText === '') {
+        if (uploadedImg === [] && postText === '') {
             alert('게시물을 작성해주세요');
         } else {
             console.log('submit succeed');
             history.push('/myprofile');
-            dispatch(postText)
+            dispatch(postAction.post(uploadedImg, postText));
         }
     };
 
@@ -92,47 +92,52 @@ function UploadPage() {
     };
 
     const HandleOnchange = (e) => {
-        const fileList = e.target.files;
-        console.log(fileList);
-        const formData = new FormData();
-        if (fileList.length > 0) {
-            for (let index = 0; index < fileList.length; index++) {
-                const file = fileList[index];
-                formData.append('image', file);
-            }
-
-            
-            setUploadedImg(fileList);
-            // console.log('image set!');
-            // let formData = Array.from(new FormData())
-            // for(let i of fileList){
-            //     formData.push(i.filename)
-            // }
-            // console.log('폼데이터',formData);
-
-            dispatch(postAction.post(formData));
-        } else {
-            setUploadedImg(null);
-        }
-    };
-    useEffect(() => {
-        for (let index = 0; index < uploadedImg.length; index++) {
-            const file = uploadedImg[index];
+        let prevImgs = [];
+        for (let index = 0; index < e.target.files.length; index++) {
+            const element = e.target.files[index];
             const reader = new FileReader();
-            reader.onloadend = () => {
-                SetImgPreview((prev) => {
-                    let newPreviews = [...prev, reader.result];
-                    if (newPreviews.length > 3) {
-                        alert('이미지는 최대 3장까지 업로드가 가능합니다.');
-                        newPreviews = newPreviews.slice(0, 3);
+            reader.onload = function () {
+                prevImgs.push(reader.result);
+                setImgPreview((prev) => {
+                    if (prevImgs.length <= 3) {
+                        let newPreviews = prevImgs;
                         return newPreviews;
+                    } else {
+                        return prev;
                     }
-                    return newPreviews;
                 });
             };
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(element);
         }
-    }, [uploadedImg]);
+
+        setUploadedImg((prev) => {
+            if (prev.length < 3) {
+                let newList = e.target.files;
+                return newList;
+            } else {
+                alert('이미지는 최대 3장까지 업로드가 가능합니다.');
+                return prev;
+            }
+        });
+    };
+    // useEffect(() => {
+    //     for (let index = 0; index < uploadedImg.length; index++) {
+    //         const file = uploadedImg[index];
+    //         const reader = new FileReader();
+    //         reader.onloadend = () => {
+    //             SetImgPreview((prev) => {
+    //                 let newPreviews = [...prev, reader.result];
+    //                 if (newPreviews.length > 3) {
+    //                     alert('이미지는 최대 3장까지 업로드가 가능합니다.');
+    //                     newPreviews = newPreviews.slice(0, 3);
+    //                     return newPreviews;
+    //                 }
+    //                 return newPreviews;
+    //             });
+    //         };
+    //         reader.readAsDataURL(file);
+    //     }
+    // }, [uploadedImg]);
 
     return (
         <>
