@@ -113,6 +113,7 @@ export const SearchInput = styled.input.attrs({
 
 function ArrowLeftLink() {
     let history = useHistory();
+    document.body.style.overflow = "unset";
     return (
         <>
             <TopNavLinkS onClick={() => { history.goBack(); }}>
