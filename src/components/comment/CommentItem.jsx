@@ -14,6 +14,7 @@ const CommentItemLi = styled.li`
     gap: 20px;
     .profile-img {
         width: 36px;
+        margin-right: 10px;
     }
 `
 
