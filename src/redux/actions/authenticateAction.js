@@ -1,6 +1,4 @@
 function login(email, password) {
-    console.log('login success action');
-
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/user/login';
@@ -33,6 +31,7 @@ function login(email, password) {
                         accountname: resJson.user.accountname,
                         image: resJson.user.image,
                         token: resJson.user.token,
+                        message: resJson.message,
                     },
                 });
             }

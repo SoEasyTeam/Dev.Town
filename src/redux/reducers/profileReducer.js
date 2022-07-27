@@ -33,6 +33,10 @@ function profileReducer(state = initialState, action) {
                 followerCount: payload.followerCount,
                 followingCount: payload.followingCount,
             };
+        case 'PROFILE_MODAL_SUCCESS':
+            return {
+                userData: payload.userData,
+            };
         default:
             return { ...state };
     }

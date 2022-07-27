@@ -48,7 +48,7 @@ function PostPage() {
             <HomeImgPost />
             {commentList !== '' ? 
             <CommentList/> :
-             <></>}
+            <></>}
             <CommentInputBox />
             {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
         </>

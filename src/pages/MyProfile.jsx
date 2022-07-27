@@ -6,6 +6,7 @@ import UserProfile from '../components/profile/UserProfile'
 import UserProduct from '../components/profile/UserProduct';
 import UserPost from '../components/profile/UserPost';
 import { AlertLogoutModal } from '../components/common/AlertModal'
+import { useEffect } from 'react';
 
 const ProfileSection = styled.section`
     display: flex;
@@ -28,6 +29,7 @@ function MyProfilePage() {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
+
     return (
         <>
             <TopBasicNav alertOnModal={alertOnModal} />
@@ -36,7 +38,7 @@ function MyProfilePage() {
                 <UserProduct />
                 <UserPost />
             </ProfileSection>
-            <TabMenu />
+            <TabMenu/>
             {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
         </>
     )
