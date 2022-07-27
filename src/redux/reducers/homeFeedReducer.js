@@ -1,5 +1,6 @@
 let initialState = {
     item: '',
+    token: '',
 };
 
 function homeFeedReducer(state = initialState, action) {
@@ -11,6 +12,7 @@ function homeFeedReducer(state = initialState, action) {
             return {
                 ...state,
                 item: payload.item,
+                lastToken: payload.token,
             };
 
         default:
