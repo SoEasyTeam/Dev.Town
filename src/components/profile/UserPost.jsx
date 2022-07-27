@@ -1,16 +1,35 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import HomeImgPost from '../common/HomeImgPost';
 import IconPostListOn from '../../assets/icon/icon-post-list-on.png';
+import IconPostListOff from '../../assets/icon/icon-post-list-off.png';
 import IconPostAlbumOff from '../../assets/icon/icon-post-album-off.png';
+import IconPostAlbumOn from '../../assets/icon/icon-post-album-on.png';
 import { useSelector } from 'react-redux';
 import { AlertPostModal, AlertDeclareModal } from '../common/AlertModal';
 
-const PostShowBtns = styled.button`
+const PostListBtns = styled.button`
     width: 26px;
     height: 26px;
     margin-right: 16px;
+    background-image: url(${IconPostListOn});
+    ${({ isActive }) =>
+        isActive &&
+        `
+            background-image: url(${IconPostListOff});
+        `};
+`
+
+const PostAlbumBtns = styled.button`
+    width: 26px;
+    height: 26px;
+    margin-right: 16px; 
+    background-image: url(${IconPostAlbumOff});
+    ${({ isActive }) =>
+        isActive &&
+        `
+            background-image: url(${IconPostAlbumOn});
+        `};
 `
 
 const PostArea = styled.article`
@@ -105,16 +124,16 @@ function UserPost(id) {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
+
+    function changeActive() {
+
+    }
     return (
         <>
             <PostArea>
                 <div className='postAreaTop'>
-                    <PostShowBtns>
-                        <img className='postBtnImg' src={IconPostListOn} alt='포스트리스트형식' />
-                    </PostShowBtns>
-                    <PostShowBtns>
-                        <img className='postBtnImg' src={IconPostAlbumOff} alt='포스트앨범형식' />
-                    </PostShowBtns>
+                    <PostListBtns onClick={changeActive} />
+                    <PostAlbumBtns onClick={changeActive} />
                 </div>
                 <PostAreaListUl>
                     <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
