@@ -1,4 +1,5 @@
 // dispatch로 보내준 token과 accountname을 파라미터로 불러온다. profile 함수 안에서 사용할 수 있게!!
+import { ProductName } from '../../components/common/TextAciveInput';
 function profile(token, accountname) {
     // console.log('profile success action');
     // 잘불러져왔는지 콘솔로 찍어봄
@@ -43,9 +44,9 @@ function profile(token, accountname) {
     };
 }
 
-function profileModification(id, image, accountname, intro) {
+function profileModification(username, image, accountname, intro) {
     console.log('profileModification success action');
-    console.log(id);
+    console.log(username);
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/user`;
@@ -60,7 +61,7 @@ function profileModification(id, image, accountname, intro) {
                 },
                 body: JSON.stringify({
                     user: {
-                        id: id,
+                        name: username,
                         accountname: accountname,
                         intro: intro,
                         image: image,
@@ -70,20 +71,6 @@ function profileModification(id, image, accountname, intro) {
 
             const resJson = await res.json();
             console.log(resJson);
-            if (resJson.message === '이미 사용중인 계정 ID입니다.') {
-                alert('이미 사용중인 계정 ID입니다.');
-            }
-            dispatch({
-                type: 'PROFILE_SUCCESS',
-                payload: {
-                    id,
-                    accountname,
-                    intro,
-                    newImage: resJson.image,
-                    message: resJson.message,
-                },
-            });
-
         } catch (error) { }
     };
 
