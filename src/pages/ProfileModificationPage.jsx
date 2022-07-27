@@ -57,7 +57,6 @@ export const AddProfileLabel = styled.label`
     }
 `;
 
-// 계정 ID에 대한 중복 유무, 형식(사용자이름 2-10자이내, 소개입력받기) 검사
 function ProfileModificationPage() {
     const username = useSelector(state => state.profile.username);
     const userimage = useSelector(state => state.profile.image);
@@ -88,7 +87,7 @@ function ProfileModificationPage() {
         }
     };
 
-    const signUpActive = () => {
+    const changeActive = () => {
         return (name.length > 1 && name.length < 11 && accountname.length > 0 && intro.length > 0)
             ? setIsActive(false)
             : setIsActive(true);
@@ -112,15 +111,15 @@ function ProfileModificationPage() {
                 <ProfileImgInput onChange={onChangeProfileImg} id='addprofileImg' type='file' accept='image/*' />
                 <div className='input-cont'>
                     <TextLabel>사용자 이름</TextLabel>
-                    <ProfileNameInput value={name} onChange={(event) => setname(event.target.value)} onKeyUp={signUpActive} />
+                    <ProfileNameInput value={name} onChange={(event) => setname(event.target.value)} onKeyUp={changeActive} />
                 </div>
                 <div className='input-cont'>
                     <TextLabel>계정 ID</TextLabel>
-                    <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp={signUpActive} />
+                    <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp={changeActive} />
                 </div>
                 <div className='input-cont'>
                     <TextLabel>소개</TextLabel>
-                    <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp={signUpActive} />
+                    <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp={changeActive} />
                 </div>
             </ProfileSettingBox>
         </ProfileModificationForm>
