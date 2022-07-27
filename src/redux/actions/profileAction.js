@@ -44,9 +44,9 @@ function profile(token, accountname) {
     };
 }
 
-function profileModification(id, image, accountname, intro) {
+function profileModification(name, image, accountname, intro) {
     console.log('profileModification success action');
-    console.log(id);
+    console.log('name', name);
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/user`;
@@ -61,7 +61,7 @@ function profileModification(id, image, accountname, intro) {
                 },
                 body: JSON.stringify({
                     user: {
-                        username: id,
+                        username: name,
                         accountname: accountname,
                         intro: intro,
                         image: image,
