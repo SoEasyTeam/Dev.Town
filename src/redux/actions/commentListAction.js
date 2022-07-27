@@ -46,7 +46,9 @@ function writeComment(postId, token, comment){
             dispatch({
                 type:'WRITE_COMMENT',
                 payload:{
-
+                    
+                    comment: resJson.comment
+                
                 }
             })
         } catch {
