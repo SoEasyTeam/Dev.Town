@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 import { TopBasicNav } from '../components/common/TopNav'
-import HomeImgPost from '../components/common/HomeImgPost'
+import PostInDetail from '../components/common/PostInDetail';
 import CommentInputBox from '../components/comment/CommentInput'
 import CommentList from '../components/comment/CommentList'
 import { AlertLogoutModal } from '../components/common/AlertModal'
@@ -48,11 +48,13 @@ function PostPage() {
         dispatch(postAction.getPost(postId))
     },[dispatch, postId, token])
 
+    const post = useSelector(state=>state.getPost.post)
+
     return (
         <>
             <TopBasicNav alertOnModal={alertOnModal} />
             <PostSection>
-                <HomeImgPost />
+                <PostInDetail />
                 {commentList !== '' ? 
                 <CommentList/> :
                 <></>}
