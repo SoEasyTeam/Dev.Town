@@ -82,7 +82,7 @@ function UploadPage() {
         } else {
             console.log('submit succeed');
             history.push('/myprofile');
-            dispatch(postText)
+            dispatch(uploadedImg, postText)
         }
     };
 
@@ -92,47 +92,48 @@ function UploadPage() {
     };
 
     const HandleOnchange = (e) => {
-        const fileList = e.target.files;
-        console.log(fileList);
-        const formData = new FormData();
-        if (fileList.length > 0) {
-            for (let index = 0; index < fileList.length; index++) {
-                const file = fileList[index];
-                formData.append('image', file);
-            }
-
-            
-            setUploadedImg(fileList);
-            // console.log('image set!');
-            // let formData = Array.from(new FormData())
-            // for(let i of fileList){
-            //     formData.push(i.filename)
-            // }
-            // console.log('폼데이터',formData);
-
-            dispatch(postAction.post(formData));
-        } else {
-            setUploadedImg(null);
-        }
-    };
-    useEffect(() => {
-        for (let index = 0; index < uploadedImg.length; index++) {
-            const file = uploadedImg[index];
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                SetImgPreview((prev) => {
+        const file = e.target.files;
+        const reader = new FileReader();
+        reader.onload = () => {
+            SetImgPreview((prev) => {
+                if (prev.length < 3) {
                     let newPreviews = [...prev, reader.result];
-                    if (newPreviews.length > 3) {
-                        alert('이미지는 최대 3장까지 업로드가 가능합니다.');
-                        newPreviews = newPreviews.slice(0, 3);
-                        return newPreviews;
-                    }
                     return newPreviews;
-                });
-            };
-            reader.readAsDataURL(file);
-        }
-    }, [uploadedImg]);
+                } else {
+                    return prev;
+                }
+            });
+        };
+        reader.readAsDataURL(file);
+    
+        setUploadedImg((prev) => {
+            if(prev.length < 3) {
+                let newList = [...prev, file];
+                return newList;
+            } else {
+                alert('이미지는 최대 3장까지 업로드가 가능합니다.');
+                return prev;
+            }
+        });
+    };
+    // useEffect(() => {
+    //     for (let index = 0; index < uploadedImg.length; index++) {
+    //         const file = uploadedImg[index];
+    //         const reader = new FileReader();
+    //         reader.onloadend = () => {
+    //             SetImgPreview((prev) => {
+    //                 let newPreviews = [...prev, reader.result];
+    //                 if (newPreviews.length > 3) {
+    //                     alert('이미지는 최대 3장까지 업로드가 가능합니다.');
+    //                     newPreviews = newPreviews.slice(0, 3);
+    //                     return newPreviews;
+    //                 }
+    //                 return newPreviews;
+    //             });
+    //         };
+    //         reader.readAsDataURL(file);
+    //     }
+    // }, [uploadedImg]);
 
     return (
         <>
