@@ -37,8 +37,9 @@ function writeComment(postId, token, comment){
                     "Content-type" : "application/json"
                 },
                 body:JSON.stringify({
+                    "comment":{
                         "content":comment
-                })
+                }})
             })
             const resJson=await res.json()
             console.log(resJson,'댓글제발');
