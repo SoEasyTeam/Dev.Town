@@ -1,16 +1,20 @@
+const token = localStorage.getItem('token');
+const acountname = localStorage.getItem('accountname');
+
 let initialState = {
     email: '',
     id: '',
     username: '',
-    accountname: '',
+    accountname: acountname,
     image: '',
-    token: '',
+    token: token,
     authenticate: false,
+    message: '',
 };
 
 function authenticateReducer(state = initialState, action) {
     let { type, payload } = action;
-    // console.log(action);
+    console.log(action);
     switch (type) {
         case 'LOGIN_SUCCESS':
             // console.log('login success reducer');
@@ -23,6 +27,7 @@ function authenticateReducer(state = initialState, action) {
                 image: payload.image,
                 token: payload.token,
                 authenticate: true,
+                message: payload.message,
             };
         default:
             return { ...state };

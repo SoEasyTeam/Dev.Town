@@ -113,11 +113,10 @@ function UserProfile() {
     const [userData, setUserData] = useState()
     const [isFollow, setIsFollow] = useState();
     const [isFollowWord, setIsFollowWord] = useState('팔로우');
-    const userId = useSelector(state => state.auth);
+    // const userId = useSelector(state => state.auth);
     // console.log('유저:', userId);
     // authenticateReducer에서 받아온 상태 값
-    const token = useSelector(state => state.auth.token);
-    const image = useSelector(state => state.auth.image);
+    // const token = useSelector(state => state.auth.token);
     const Myaccountname = useSelector(state => state.auth.accountname);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -134,6 +133,7 @@ function UserProfile() {
     // const profileImg = useSelector(state => state.profile.image);
     // console.log('isfollow?', isfollow);
     // console.log(followingCount);
+    const token = localStorage.getItem('token');
 
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${Myaccountname}`, {
@@ -186,7 +186,7 @@ function UserProfile() {
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
-                        <ProfileImg src={image} alt='프로필이미지' />
+                        <ProfileImg src={userData.profile.image} alt='프로필이미지' />
                     </div>
                     <div className='followings'>
                         <FollowLink to='/following'>{userData.profile.followingCount}</FollowLink>
