@@ -12,24 +12,18 @@ const PostListBtns = styled.button`
     width: 26px;
     height: 26px;
     margin-right: 16px;
-    background-image: url(${IconPostListOn});
-    ${({ isActive }) =>
-        isActive &&
-        `
-            background-image: url(${IconPostListOff});
-        `};
+    ${({ isActive }) => {
+        return isActive === true ? `background-image: url(${IconPostListOn});` : `background-image: url(${IconPostListOff});`;
+    }}
 `
 
 const PostAlbumBtns = styled.button`
     width: 26px;
     height: 26px;
     margin-right: 16px; 
-    background-image: url(${IconPostAlbumOff});
-    ${({ isActive }) =>
-        isActive &&
-        `
-            background-image: url(${IconPostAlbumOn});
-        `};
+    ${({ isActive }) => {
+        return isActive === true ? `background-image: url(${IconPostAlbumOff});` : `background-image: url(${IconPostAlbumOn});`
+    }}
 `
 
 const PostArea = styled.article`
@@ -97,7 +91,8 @@ function UserPost(id) {
     const accountname = useSelector(state => state.auth.accountname);
     const [userPostData, setUserPostData] = useState('')
     const [alertOn, setAlertOn] = useState(false);
-
+    const [isActive, setIsActive] = useState(true);
+    // console.log('버튼', isActive)
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${accountname}/userpost`, {
             method: "GET",
@@ -124,16 +119,16 @@ function UserPost(id) {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
-
     function changeActive() {
-
+        console.log('버튼바뀜', isActive)
+        setIsActive(!isActive)
     }
     return (
         <>
             <PostArea>
                 <div className='postAreaTop'>
-                    <PostListBtns onClick={changeActive} />
-                    <PostAlbumBtns onClick={changeActive} />
+                    <PostListBtns onClick={changeActive} isActive={isActive} />
+                    <PostAlbumBtns onClick={changeActive} isActive={isActive} />
                 </div>
                 <PostAreaListUl>
                     <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
