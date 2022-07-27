@@ -58,11 +58,12 @@ function post(fileList, postText) {
 }
 
 function getPost(postId){
+    // console.log('디스패치 되는중!!');
     return async(dispatch, getState)=>{
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/post/${postId}`
         const token = getState().auth.token;
-        console.log(token);
+        // console.log(token);
         try {
             let postRes = await fetch(url+reqPath,{
                 method: 'GET',

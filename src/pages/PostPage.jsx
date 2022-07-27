@@ -48,7 +48,7 @@ function PostPage() {
         dispatch(postAction.getPost(postId))
     },[dispatch, postId, token])
 
-    const post = useSelector(state=>state.getPost.post)
+    // const post = useSelector(state=>state.getPost.post)
 
     return (
         <>
