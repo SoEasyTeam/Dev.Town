@@ -49,7 +49,6 @@ function profile(token) {
 
 function profileModification(name, image, accountname, intro) {
     console.log('profileModification success action');
-    console.log(name);
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/user`;
