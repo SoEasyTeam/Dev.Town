@@ -5,10 +5,14 @@ function homeFeed() {
         const reqPath = '/post/feed';
         const token = getState().auth.token;
         console.log(token);
+
         // const token2 = localStorage.getItem('persist:root');
         // console.log(token2);
-        if (token === '') {
-        }
+        // const token3 = JSON.parse(token2);
+        // const token4 = JSON.parse(token3.auth);
+        // const lastToken = token4.token;
+        // console.log(lastToken);
+
         try {
             let res = await fetch(url + reqPath, {
                 method: 'GET',

@@ -59,10 +59,11 @@ export const AddProfileLabel = styled.label`
 
 // 계정 ID에 대한 중복 유무, 형식(사용자이름 2-10자이내, 소개입력받기) 검사
 function ProfileModificationPage() {
-    const username = useSelector(state => state.profile.username);
-    const userimage = useSelector(state => state.profile.image);
-    const useraccountname = useSelector(state => state.profile.accountname);
-    const userintro = useSelector(state => state.profile.intro);
+    const userData = useSelector(state => state.profile.userData);
+    const username = userData.profile.username;
+    const userimage = userData.profile.image;
+    const useraccountname = userData.profile.accountname;
+    const userintro = userData.profile.intro;
 
     const [name, setname] = useState(username);
     const [image, setImage] = useState(userimage);
@@ -76,7 +77,7 @@ function ProfileModificationPage() {
         event.preventDefault();
         console.log('수정 submitHandler');
         dispatch(profileAction.profileModification(name, image, accountname, intro));
-        history.push('/myprofile');
+        history.push('/myprofile')
     }
 
     const onChangeProfileImg = (event) => {

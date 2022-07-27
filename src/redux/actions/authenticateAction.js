@@ -1,5 +1,5 @@
 function login(email, password) {
-    console.log('login success action');
+    // console.log('login success action');
 
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';

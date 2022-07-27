@@ -80,7 +80,7 @@ function UserProduct() {
             }
         })
         const json = await res.json()
-        console.log('상품 : ', json)
+        // console.log('상품 : ', json)
         setUserProductData(json)
     }
 

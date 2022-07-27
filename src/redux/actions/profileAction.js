@@ -1,12 +1,16 @@
 // dispatch로 보내준 token과 accountname을 파라미터로 불러온다. profile 함수 안에서 사용할 수 있게!!
-function profile(token, accountname) {
+function profile(token) {
     // console.log('profile success action');
     // 잘불러져왔는지 콘솔로 찍어봄
     // console.log(accountname);
     return async (dispatch, getState) => {
         // 명세서 확인!
+
+        const authaccountname = getState().auth.accountname;
+
         let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/profile/${accountname}`;
+        const reqPath = `/profile/${authaccountname}`;
+
         try {
             // 명세서 확인!
             let res = await fetch(url + reqPath, {
@@ -39,18 +43,19 @@ function profile(token, accountname) {
                 },
             });
             // 에러가 나면 catch의 값을 불러온다.
-        } catch (error) { }
+        } catch (error) {}
     };
 }
 
-function profileModification(id, image, accountname, intro) {
+function profileModification(name, image, accountname, intro) {
     console.log('profileModification success action');
-    console.log(id);
+    console.log(name);
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/user`;
         const token = getState().auth.token;
         console.log(token);
+        console.log(name);
         try {
             let res = await fetch(url + reqPath, {
                 method: 'PUT',
@@ -60,7 +65,7 @@ function profileModification(id, image, accountname, intro) {
                 },
                 body: JSON.stringify({
                     user: {
-                        id: id,
+                        username: name,
                         accountname: accountname,
                         intro: intro,
                         image: image,
@@ -76,16 +81,36 @@ function profileModification(id, image, accountname, intro) {
             dispatch({
                 type: 'PROFILE_SUCCESS',
                 payload: {
-                    id,
-                    accountname,
-                    intro,
-                    newImage: resJson.image,
-                    message: resJson.message,
+                    id: resJson.profile._id,
+                    username: resJson.profile.username,
+                    accountname: resJson.profile.accountname,
+                    intro: resJson.profile.intro,
+                    image: resJson.profile.image,
+                    isfollow: resJson.profile.isfollow,
+                    following: resJson.profile.following,
+                    follower: resJson.profile.follower,
+                    followerCount: resJson.profile.followerCount,
+                    followingCount: resJson.profile.followingCount,
                 },
             });
-
-        } catch (error) { }
+        } catch (error) {}
     };
-
 }
-export const profileAction = { profile, profileModification, };
+
+function profileModificationModal(userData) {
+    console.log('productModificationModal success action');
+    return async (dispatch, getState) => {
+        dispatch({
+            type: 'PROFILE_MODAL_SUCCESS',
+            payload: {
+                userData: userData,
+            },
+        });
+    };
+}
+
+export const profileAction = {
+    profile,
+    profileModification,
+    profileModificationModal,
+};

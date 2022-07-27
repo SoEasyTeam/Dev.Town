@@ -87,7 +87,7 @@ function UserPost(id) {
             }
         })
         const json = await res.json()
-        console.log('게시물 : ', json)
+        // console.log('게시물 : ', json)
         setUserPostData(json)
     }
     useEffect(() => {
