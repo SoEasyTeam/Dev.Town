@@ -90,7 +90,7 @@ const ProfileAreaCol = styled.article`
     }
 `
 
-const ProfileImg = styled.img`
+export const ProfileImg = styled.img`
     width: 110px;
     height: 110px;
     border-radius: 50%;
