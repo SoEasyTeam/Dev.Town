@@ -1,5 +1,4 @@
 function commentList(postId, token){
-    console.log(postId);
     return async (dispatch, getState)=>{
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/post/${postId}/comments`
@@ -12,7 +11,6 @@ function commentList(postId, token){
                 },
         })
         const resJson=await res.json()
-        console.log(resJson,'oook?');
         dispatch({
             type: 'GET_COMMENTLIST',
             payload:{
@@ -26,4 +24,36 @@ function commentList(postId, token){
 }
 }
 
-export const commentListAction = {commentList}
+function writeComment(postId, token, comment){
+    console.log(postId, token, comment);
+    return async(dispatch)=>{
+        let url = 'https://mandarin.api.weniv.co.kr';
+        const reqPath = `/post/${postId}/comments`
+        try {
+            let res = await fetch(url+reqPath,{
+                method:'POST',
+                headers:{
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-type" : "application/json"
+                },
+                body:JSON.stringify({
+                    "comment":{
+                        "content":comment
+                }})
+            })
+            const resJson=await res.json()
+            console.log(resJson,'댓글제발');
+            dispatch({
+                type:'WRITE_COMMENT',
+                payload:{
+                    
+                    comment: resJson.comment
+                
+                }
+            })
+        } catch {
+
+        }
+    }
+}
+export const commentListAction = {commentList, writeComment}

@@ -56,4 +56,33 @@ function post(fileList, postText) {
         }
     };
 }
-export const postAction = { post };
+
+function getPost(postId){
+    // console.log('디스패치 되는중!!');
+    return async(dispatch, getState)=>{
+        let url = 'https://mandarin.api.weniv.co.kr';
+        const reqPath = `/post/${postId}`
+        const token = getState().auth.token;
+        // console.log(token);
+        try {
+            let postRes = await fetch(url+reqPath,{
+                method: 'GET',
+                headers:{
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-type" : "application/json"
+                }
+            })
+            const postJson = await postRes.json()
+            console.log(postJson,'포스트 성공?!~');
+            dispatch({
+                type:'GET_POST',
+                payload:{
+                    post:postJson.post
+                }
+            })
+        } catch {
+            alert('존재하지 않는 게시물입니다.')
+        }
+    }
+}
+export const postAction = { post, getPost };

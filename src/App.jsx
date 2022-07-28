@@ -15,6 +15,7 @@ import PostUploadPage from './pages/PostUploadPage'
 import ProductModificationPage from './pages/ProductModificationPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
 import ChatPage from './pages/ChatPage';
+import Error404Page from './pages/Error404Page'
 
 
 function App() {
@@ -46,8 +47,9 @@ function App() {
             <Route path='/following' component={() => <FollowingPage />} />
             <Route exact path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
-            <Route exact path='/post/:id' component={() => <PostPage />} />
+            <Route path='/post/:id' component={() => <PostPage />} />
             <Route path='/product/:product_id' component={() => <ProductModificationPage />} />
+            <Route path='*' component={Error404Page} />
         </Switch>
     );
 }
