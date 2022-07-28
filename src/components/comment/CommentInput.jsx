@@ -12,7 +12,7 @@ const CommentBox = styled.form`
     display: flex;
     position: absolute;
     bottom: 0;
-    border: 0.5px solid #dbdbdb;
+    border-top: 0.5px solid #dbdbdb;
 `;
 const ProfileImgBox = styled.div`
     min-width: 36px;
