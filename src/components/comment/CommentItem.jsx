@@ -14,7 +14,10 @@ const CommentItemLi = styled.li`
         margin-right: 10px;
     }
 `
-
+const CommentorProfileImg = styled.img`
+    width: 50px;
+    height: 50px;
+`
 const CommentInfo = styled.div`
     gap: 6px;
     line-height: 40px;
@@ -38,12 +41,12 @@ const Comment = styled.p`
     font-size: 14px;
 `
 
-function CommentItem({commentFrom, commentYear, commentMonth, commentDay, comment}){
+function CommentItem({commentFrom, commentorImg, commentYear, commentMonth, commentDay, comment}){
 
     return (
         <CommentItemLi>
             <div className="profile-img">
-                <DefaultProfileImg/>
+                <CommentorProfileImg src={commentorImg}/>
             </div>
             <div className="comment-box">
                 <CommentInfo>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {useSelector} from 'react-redux'
 import CommentItem from "./CommentItem";
+import { useEffect } from 'react';
 
 const parseDate = (dateString) => {
     const postDate = new Date(dateString)
@@ -12,6 +13,7 @@ const parseDate = (dateString) => {
 
 export default function CommentList(){
     const commentList = useSelector(state=>state.commentList.comments)
+    useEffect(()=>{},[commentList])
     return (
         <ul>
             {commentList && commentList.map((comment, index)=>{
@@ -19,6 +21,7 @@ export default function CommentList(){
                     return <CommentItem 
                     key={index} 
                     commentFrom = {comment.author.username}
+                    commentorImg = {comment.author.image}
                     commentYear = {year}
                     commentMonth = {month}
                     commentDay = {day}
