@@ -7,7 +7,7 @@ import { useDispatch, useSelector} from "react-redux"
 const CommentItemLi = styled.li`
     display: flex;
     padding: 0 50px;
-    margin: 10px 0;
+    margin: 20px 0;
     gap: 20px;
     .profile-img {
         width: 36px;
@@ -17,10 +17,11 @@ const CommentItemLi = styled.li`
 const CommentorProfileImg = styled.img`
     width: 50px;
     height: 50px;
+    border-radius: 50%;
 `
 const CommentInfo = styled.div`
     gap: 6px;
-    line-height: 40px;
+    line-height: 20px;
 `
 
 const CommentFrom = styled.b`
@@ -39,6 +40,7 @@ const DetailOptionsBtn = styled.img`
 `
 const Comment = styled.p`
     font-size: 14px;
+    line-height: 20px;
 `
 
 function CommentItem({commentFrom, commentorImg, commentYear, commentMonth, commentDay, comment}){

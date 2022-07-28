@@ -8,29 +8,32 @@ import {commentListAction} from '../../redux/actions/commentListAction'
 
 const CommentBox = styled.form`
     width: 100%;
-    height: 61px;
     display: flex;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     border-top: 0.5px solid #dbdbdb;
 `;
 const ProfileImgBox = styled.div`
-    min-width: 36px;
-    margin: 12px;
+    /* min-width: 36px; */
+    padding: 10px;
+    
+    /* margin: 12px; */
 `;
 const MyProfileOnComment = styled(ProfileImg)`
-    width: 50px;
-    height: 50px;
+    width: 36px;
+    height: 36px;
 `
 const CommentInput = styled.input`
     flex-grow: 1;
     border: none;
-    padding: 0 20px;
+    padding: 0 10px;
 `;
 
 const CommentSubmitBtn = styled.button`
     min-width: 60px;
     padding: 5px;
+    background-color: white;
+    cursor: pointer;
 `;
 
 export default function CommentInputBox() {

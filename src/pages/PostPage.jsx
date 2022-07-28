@@ -12,6 +12,7 @@ import { postAction } from '../redux/actions/postAction';
 
 const PostSection = styled.section`
     padding: 20px;
+    margin-bottom: 50px;
 
 `
 
