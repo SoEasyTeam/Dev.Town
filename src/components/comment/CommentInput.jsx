@@ -43,17 +43,22 @@ export default function CommentInputBox() {
     const handleOnSubmit = (e) =>{
         e.preventDefault()
         dispatch(commentListAction.writeComment(postId,token, comment))
+        dispatch(commentListAction.commentList(postId,token))
     }
 
     const handleOnChange = (e)=>{
         setComment(e.target.value)
     }
+
+    // const resetInput = (e)=>{
+    //     setComment(e.target.value = '')
+    // }
     return (
         <CommentBox onSubmit={handleOnSubmit}>
             <ProfileImgBox>
                 <DefaultProfileImg />
             </ProfileImgBox>
-            <CommentInput placeholder='댓글 입력하기...' required onChange={handleOnChange}/>
+            <CommentInput placeholder='댓글 입력하기...' required onChange={handleOnChange} value={comment}/>
             <CommentSubmitBtn>게시</CommentSubmitBtn>
         </CommentBox>
     );
