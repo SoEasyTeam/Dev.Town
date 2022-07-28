@@ -41,7 +41,7 @@ function App() {
             <Route path='/following' component={() => <FollowingPage />} />
             <Route exact path='/product' component={() => <AddProductPage />} />
             <Route path='/profilemodification' component={() => <ProfileModificationPage />} />
-            <Route exact path='/post/:id' component={() => <PostPage />} />
+            <Route path='/post/:id' component={() => <PostPage />} />
             <Route path='/product/:product_id' component={() => <ProductModificationPage />} />
         </Switch>
     );

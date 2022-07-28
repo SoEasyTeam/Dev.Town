@@ -5,15 +5,13 @@ import moreBtn from '../../assets/icon/icon-more-vertical.png'
 import { useDispatch, useSelector} from "react-redux"
 
 const CommentItemLi = styled.li`
-
     display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 0 50px;
     margin: 10px 0;
     gap: 20px;
     .profile-img {
         width: 36px;
+        margin-right: 10px;
     }
 `
 
@@ -33,7 +31,8 @@ const CommentDate = styled.span`
 
 const DetailOptionsBtn = styled.img`
     width: 20px;
-    margin-left: 140px;
+    position: absolute;
+    right: 10px;
 `
 const Comment = styled.p`
     font-size: 14px;

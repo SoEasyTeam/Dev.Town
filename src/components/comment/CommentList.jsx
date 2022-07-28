@@ -12,7 +12,6 @@ const parseDate = (dateString) => {
 
 export default function CommentList(){
     const commentList = useSelector(state=>state.commentList.comments)
-    console.log('going well?', commentList);
     return (
         <ul>
             {commentList && commentList.map((comment, index)=>{
