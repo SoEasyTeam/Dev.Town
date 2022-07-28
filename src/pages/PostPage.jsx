@@ -71,17 +71,19 @@ function PostPage() {
         <>
             <TopBasicNav alertOnModal={alertOnModal} />
             <PostSection>
-                <PostInDetail profileimg={item.author.image}
-            nickname={item.author.username}
-            id={item.author.accountname}
-            postparagraph={item.content}
-            postsrc={item.image}
-            heartCount={item.heartCount}
-            commentCount={item.commentCount}
-            year={year}
-            month={month}
-            day={day}
-            postId={item.id}/>
+                <PostInDetail 
+                    profileimg={item.author.image}
+                    nickname={item.author.username}
+                    id={item.author.accountname}
+                    postparagraph={item.content}
+                    postsrc={item.image}
+                    heartCount={item.heartCount}
+                    commentCount={item.commentCount}
+                    year={year}
+                    month={month}
+                    day={day}
+                    postId={item.id}
+                />
                 {commentList !== '' ? 
                 <CommentList/> :
                 <></>}

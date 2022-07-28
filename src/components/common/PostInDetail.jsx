@@ -2,7 +2,6 @@ import { React, useState } from 'react';
 import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { UserFollowBox } from './UserFollow';
 import SettingImg from '../../assets/icon/s-icon-more-vertical.png';
@@ -19,6 +18,7 @@ export const SettingBtn = styled.button`
     position: absolute;
     right: 0px;
     top: 4px;
+    cursor: pointer;
 `;
 
 export const HomePostProfileNickName = styled(NickNameP)`
