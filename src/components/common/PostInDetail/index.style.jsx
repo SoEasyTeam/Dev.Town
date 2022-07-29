@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import SettingImg from '../../../assets/icon/s-icon-more-vertical.png'
-import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../UserSearch'
+import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../search/index.style'
 import { UserFollowBox } from '../../list/followList/index.style'
 
 export const SettingBtn = styled.button`

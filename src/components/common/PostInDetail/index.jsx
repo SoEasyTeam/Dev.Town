@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {SettingBtn, HomePostProfileNickName,HomePostProfileLogoImg,HomePostBox,HomePostProfileBox,HomePostSmallBox,HomePostParagraph,DateParagraph,LikePostBox,} from './index.style'
-import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../UserSearch'
+import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../search/index.style'
 import LikePostRowBox  from '../HomeImgPost/LkePostRowBox'
 import { MyPostModal } from '../modal';
 
