@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
 import styled from 'styled-components';
-import { UserFollowBox } from './UserFollow';
+import { UserFollowBox } from '../list/followList/follow.style';
 import SettingImg from '../../assets/icon/s-icon-more-vertical.png';
 import IconHeartImg from '../../assets/icon/icon-heart.png';
 import IconCommentImg from '../../assets/icon/icon-message-circle.png';
