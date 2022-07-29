@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
+import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../common/search/index.style';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { UserFollowBox } from '../list/followList/index.style';

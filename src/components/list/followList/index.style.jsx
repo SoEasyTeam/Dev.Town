@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { SBtn } from '../../common/button/index.style';
-import { UserSearchBox } from '../../common/UserSearch';
+import { UserSearchBox } from '../../common/search/index.style';
 
 export const FollowBoxUl = styled.ul`
 padding: 24px 16px;
