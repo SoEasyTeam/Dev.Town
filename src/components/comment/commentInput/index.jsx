@@ -1,39 +1,8 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { commentListAction } from '../../../redux/actions/commentListAction'
 import { useParams } from 'react-router-dom';
-import { ProfileImg } from '../profile/userProfile/index.style';
-import { commentListAction } from '../../redux/actions/commentListAction'
-
-const CommentBox = styled.form`
-    width: 100%;
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    border-top: 0.5px solid #dbdbdb;
-`;
-const ProfileImgBox = styled.div`
-    /* min-width: 36px; */
-    padding: 10px;
-    
-    /* margin: 12px; */
-`;
-const MyProfileOnComment = styled(ProfileImg)`
-    width: 36px;
-    height: 36px;
-`
-const CommentInput = styled.input`
-    flex-grow: 1;
-    border: none;
-    padding: 0 10px;
-`;
-
-const CommentSubmitBtn = styled.button`
-    min-width: 60px;
-    padding: 5px;
-    background-color: white;
-    cursor: pointer;
-`;
+import { CommentBox, ProfileImgBox, MyProfileOnComment, CommentInput, CommentSubmitBtn } from './index.style';
 
 export default function CommentInputBox() {
     const dispatch = useDispatch()
@@ -56,9 +25,6 @@ export default function CommentInputBox() {
         setComment(e.target.value)
     }
 
-    // const resetInput = (e)=>{
-    //     setComment(e.target.value = '')
-    // }
     return (
         <CommentBox onSubmit={handleOnSubmit}>
             <ProfileImgBox>
