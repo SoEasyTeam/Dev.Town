@@ -1,20 +1,14 @@
-import { useEffect, useState } from 'react'
+import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
-import styled from 'styled-components';
-import { TopBasicNav } from '../components/common/nav'
+import { useParams } from 'react-router-dom';
+import { TopBasicNav } from '../components/common/nav';
 import PostInDetail from '../components/common/PostInDetail';
-import CommentInputBox from '../components/comment/CommentInput'
-import CommentList from '../components/comment/CommentList'
-import { AlertLogoutModal } from '../components/common/alert'
-import { commentListAction } from '../redux/actions/commentListAction'
+import CommentInputBox from '../components/comment/CommentInput';
+import CommentList from '../components/comment/CommentList';
+import { AlertLogoutModal } from '../components/common/alert';
+import { commentListAction } from '../redux/actions/commentListAction';
 import { postAction } from '../redux/actions/postAction';
-
-const PostSection = styled.section`
-    padding: 20px;
-    margin-bottom: 50px;
-
-`
+import { PostSection } from '../components/post/index.style';
 
 function PostPage() {
     const dispatch = useDispatch()
