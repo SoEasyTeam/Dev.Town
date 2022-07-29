@@ -1,28 +1,6 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import { SBtn } from './Buttons';
-import {
-    UserSearchBox,
-    NameIdBox,
-    NickNameP,
-    IdP,
-    ProfileLogoImg,
-} from './UserSearch';
-
-export const UserFollowBox = styled(UserSearchBox)`
-    position: relative;
-    margin-bottom: 16px;
-`;
-
-const FollowSBtn = styled(SBtn)`
-    font-family: 'Spoqa Han Sans Neo';
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 15px;
-    position: absolute;
-    right: 0px;
-    top: 11px;
-`
+import { NameIdBox, NickNameP, IdP, ProfileLogoImg } from './UserSearch';
+import { UserFollowBox, FollowPageLink, FollowSBtn } from '../list/followList/index.style'
 
 function UserFollow({ src, name, accountname, isfollow }) {
     const [isFollow, setIsFollow] = useState(isfollow);
@@ -39,19 +17,17 @@ function UserFollow({ src, name, accountname, isfollow }) {
             setIsUnfollowWord('취소')
         }
     }
-    function moveProfilePage() {
-        console.log('프로필로 이동')
-        // window.location.href = '/myprofile'
-    }
 
     return (
         <>
-            <UserFollowBox onClick={moveProfilePage}>
-                <ProfileLogoImg src={src} alt='프로필로고' />
-                <NameIdBox>
-                    <NickNameP>{name}</NickNameP>
-                    <IdP>@ {accountname}</IdP>
-                </NameIdBox>
+            <UserFollowBox>
+                <FollowPageLink to='/yourpage' >
+                    <ProfileLogoImg src={src} alt='프로필로고' />
+                    <NameIdBox>
+                        <NickNameP>{name}</NickNameP>
+                        <IdP>@ {accountname}</IdP>
+                    </NameIdBox>
+                </FollowPageLink>
                 <FollowSBtn onClick={changeIsFollow} isFollowed={isFollow}>{isfollow ? isUnfollowWord : isFollowWord}</FollowSBtn>
             </UserFollowBox>
         </>

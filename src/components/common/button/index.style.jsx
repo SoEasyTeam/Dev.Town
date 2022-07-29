@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import defaultProfile from '../../../assets/basic-profile-img-2x.png';
+import IconFillImg from '../../../assets/upload-file.png';
+
 
 const LBtn = styled.button`
     width: 322px;
@@ -72,6 +75,31 @@ const SBtn = styled.button`
     }};
     border-radius: 28px;
     color: var(--subtitle-text);
+`;
+
+//profilebutton
+export const BasicProfileImg = styled.img.attrs({
+    src: `${defaultProfile}`,
+})`
+    width: 50px;
+    height:50px;
+`
+
+export const ImgUpload = styled.label`
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-image: url(${IconFillImg});
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    z-index: 100;
+    bottom:50px;
+    right:20%;
+`;
+
+export const ImgGray = styled.img`
+    width: 100%;
 `;
 
 export { LBtn, MlBtn, MBtn, MsBtn, SBtn, SaveBtn };

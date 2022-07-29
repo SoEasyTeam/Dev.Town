@@ -1,61 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { TopNavRowBox, ArrowLeftLink } from '../components/common/TopNav'
-import { SaveBtn } from '../components/common/Buttons'
-import JoinProfileImg from '../assets/basic-profile-img.png';
+import { React, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
-import UploadfileImg from '../assets/upload-file.png';
-import {
-    ProfileId,
-    ProfileIntroduce,
-    ProfileNameInput,
-    TextLabel,
-} from '../components/common/TextAciveInput';
 import { profileAction } from '../redux/actions/profileAction'
-
-const ProfileModificationForm = styled.form`
-    
-`
-const ProfileSettingBox = styled.form`
-    width: 100vw;
-    padding: 30px 34px;
-    display: flex;
-    flex-direction: column;
-    .input-cont {
-        margin: 0 auto;
-    }
-`;
-
-const ProfileImgInput = styled.input`
-    position: absolute;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-    left: -999999px;
-`
-
-export const AddProfileLabel = styled.label`
-    margin: 0 auto 30px;
-    position: relative;
-    cursor: pointer;
-    .addprofile-img {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-    }
-    &::after {
-        position: absolute;
-        content: '';
-        right: 0px;
-        bottom: 0px;
-        width: 36px;
-        height: 36px;
-        background: url(${UploadfileImg}) no-repeat center / 36px 36px;
-        border-radius: 50%;
-    }
-`;
+import { useHistory } from 'react-router-dom'
+import { TopNavRowBox } from '../components/common/nav/index.style'
+import { ArrowLeftLink } from '../components/common/nav'
+import { SaveBtn } from '../components/common/button/index.style'
+import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../components/common/textActiveInput/index.style';
+import { ProfileModificationForm, ProfileSettingBox, ProfileImgInput, AddProfileLabel } from '../components/profile/userProfile/index.style';
 
 function ProfileModificationPage() {
     const userData = useSelector(state => state.profile.userData);

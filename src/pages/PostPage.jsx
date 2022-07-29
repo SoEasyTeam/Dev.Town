@@ -1,20 +1,14 @@
-import { useEffect, useState } from 'react'
+import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
-import styled from 'styled-components';
-import { TopBasicNav } from '../components/common/TopNav'
+import { useParams } from 'react-router-dom';
+import { TopBasicNav } from '../components/common/nav';
 import PostInDetail from '../components/common/PostInDetail';
-import CommentInputBox from '../components/comment/CommentInput'
-import CommentList from '../components/comment/CommentList'
-import { AlertLogoutModal } from '../components/common/AlertModal'
-import { commentListAction } from '../redux/actions/commentListAction'
+import CommentInputBox from '../components/comment/CommentInput';
+import CommentList from '../components/comment/CommentList';
+import { AlertLogoutModal } from '../components/common/alert';
+import { commentListAction } from '../redux/actions/commentListAction';
 import { postAction } from '../redux/actions/postAction';
-
-const PostSection = styled.section`
-    padding: 20px;
-    margin-bottom: 50px;
-
-`
+import { PostSection } from '../components/post/index.style';
 
 function PostPage() {
     const dispatch = useDispatch()
@@ -28,13 +22,13 @@ function PostPage() {
     const postId = postViewId.filter(i => i === id);
     console.log(postId);
 
-    const postItem = useSelector(state=>state.homefeed.item);
+    const postItem = useSelector(state => state.homefeed.item);
     console.log(postItem);
 
     const number = postViewId.indexOf(id);
-    const item = useSelector(state=>state.homefeed.item[number]);
+    const item = useSelector(state => state.homefeed.item[number]);
     console.log(item);
-    
+
     function parseDate(dateString) {
         const postDate = new Date(dateString)
         const year = postDate.getFullYear();
@@ -42,13 +36,13 @@ function PostPage() {
         const day = postDate.getDate();
         return [year, month, day]
     }
-    
+
     const [year, month, day] = parseDate(item.createdAt);
 
     //댓글 가져오기
-    const commentList = useSelector(state=>state.commentList.comment)
-    const token = useSelector(state=>state.auth.token)
-    
+    const commentList = useSelector(state => state.commentList.comment)
+    const token = useSelector(state => state.auth.token)
+
     // alert 모달창
     const [alertOn, setAlertOn] = useState(false);
 
@@ -60,11 +54,11 @@ function PostPage() {
         setAlertOn(false);
     }
 
-//댓글 서버에 요청
-    useEffect(()=>{
+    //댓글 서버에 요청
+    useEffect(() => {
         dispatch(commentListAction.commentList(postId, token))
         dispatch(postAction.getPost(postId))
-    },[dispatch, postId, token])
+    }, [dispatch, postId, token])
 
     // const post = useSelector(state=>state.getPost.post)
 
@@ -72,7 +66,7 @@ function PostPage() {
         <>
             <TopBasicNav alertOnModal={alertOnModal} />
             <PostSection>
-                <PostInDetail 
+                <PostInDetail
                     profileimg={item.author.image}
                     nickname={item.author.username}
                     id={item.author.accountname}
@@ -85,9 +79,9 @@ function PostPage() {
                     day={day}
                     postId={item.id}
                 />
-                {commentList !== '' ? 
-                <CommentList/> :
-                <></>}
+                {commentList !== '' ?
+                    <CommentList /> :
+                    <></>}
             </PostSection>
             <CommentInputBox />
             {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}

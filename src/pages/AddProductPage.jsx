@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
-import { ArrowLeftLink, TopNavRowBox } from '../components/common/TopNav'
+import { TopNavRowBox } from '../components/common/nav/index.style'
+import { ArrowLeftLink } from '../components/common/nav'
 import styled from 'styled-components'
 import ImgBtn from '../assets/img-button.png'
-import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components/common/TextAciveInput'
+import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components/common/textActiveInput/index.style'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { SaveBtn } from '../components/common/Buttons'
+import { SaveBtn } from '../components/common/button/index.style'
 import { productAction } from '../redux/actions/productAcition'
 
 const ProductForm = styled.form`
@@ -76,7 +77,7 @@ function AddProductPage() {
     const dispatch = useDispatch();
 
     const saveActive = () => {
-        return itemName.length>1&&itemName.length<16&&isPrice.length>0&&link.length>0&&previewImage.length>0
+        return itemName.length > 1 && itemName.length < 16 && isPrice.length > 0 && link.length > 0 && previewImage.length > 0
             ? setisActive(false)
             : setisActive(true);
     }
@@ -119,11 +120,11 @@ function AddProductPage() {
                 </AddProductLabel>
                 <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*' />
                 <ProductNameLabel>상품명</ProductNameLabel>
-                <ProductName value = {itemName} onChange={(event) => setItemName(event.target.value)} onKeyUp={saveActive} />
+                <ProductName value={itemName} onChange={(event) => setItemName(event.target.value)} onKeyUp={saveActive} />
                 <TextLabel>가격</TextLabel>
-                <ProductPrice value = {isPrice} onChange={onChangePrice} onKeyUp={saveActive} />
+                <ProductPrice value={isPrice} onChange={onChangePrice} onKeyUp={saveActive} />
                 <TextLabel>판매링크</TextLabel>
-                <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} onKeyUp={saveActive} />
+                <ProductLink value={link} onChange={(event) => setLink(event.target.value)} onKeyUp={saveActive} />
             </ProductBox>
         </ProductForm>
     )

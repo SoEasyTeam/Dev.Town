@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react'
-import styled from 'styled-components';
-import { TopFollowerNav } from '../components/common/TopNav'
 import { useSelector } from 'react-redux';
+import { TopFollowerNav } from '../components/common/nav'
 import UserFollow from '../components/common/UserFollow';
-
-const FollowBoxUl = styled.ul`
-    padding: 24px 16px;
-`
+import { FollowBoxUl } from '../components/list/followList/index.style';
 
 const FollowList = ({ userFollowerData }) => {
     return (

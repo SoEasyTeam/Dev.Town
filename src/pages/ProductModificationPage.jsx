@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
-import { ArrowLeftLink, TopNavRowBox } from '../components/common/TopNav'
+import { TopNavRowBox } from '../components/common/nav/index.style'
+import { ArrowLeftLink } from '../components/common/nav'
 import styled from 'styled-components'
 import ImgBtn from '../assets/img-button.png'
-import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components/common/TextAciveInput'
+import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components/common/textActiveInput/index.style'
 import { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductAction, productAction } from '../redux/actions/productAcition'
-import { SaveBtn } from '../components/common/Buttons'
+import { SaveBtn } from '../components/common/button/index.style'
 
 const ProductForm = styled.form`
 `
@@ -65,11 +66,11 @@ const ProductNameLabel = styled(TextLabel)`
 `
 
 function ProductModificationPage() {
-    const product_id = useSelector(state=>state.product.product_id);
-    const uitemName = useSelector(state=>state.product.itemName);
-    const uprice = useSelector(state=>state.product.price);
-    const ulink = useSelector(state=>state.product.link);
-    const uitemImage = useSelector(state=>state.product.itemImage);
+    const product_id = useSelector(state => state.product.product_id);
+    const uitemName = useSelector(state => state.product.itemName);
+    const uprice = useSelector(state => state.product.price);
+    const ulink = useSelector(state => state.product.link);
+    const uitemImage = useSelector(state => state.product.itemImage);
 
     const [itemName, setItemName] = useState(uitemName);
     const [price, setPrice] = useState(uprice);
@@ -81,8 +82,8 @@ function ProductModificationPage() {
     const dispatch = useDispatch();
 
     const saveActive = () => {
-        return itemName.length>1&&itemName.length<16&&link.length>0&&itemImage.length>0
-        // &&isPrice.length>0&&link.length>0&&itemImage.length>0
+        return itemName.length > 1 && itemName.length < 16 && link.length > 0 && itemImage.length > 0
+            // &&isPrice.length>0&&link.length>0&&itemImage.length>0
             ? setisActive(false)
             : setisActive(true);
     }
@@ -123,11 +124,11 @@ function ProductModificationPage() {
                 </AddProductLabel>
                 <AddProductImgInput onChange={onChangeProductImg} id='addProductImg' type='file' accept='image/*' />
                 <ProductNameLabel>상품명</ProductNameLabel>
-                <ProductName value = {itemName} onChange={(event) => setItemName(event.target.value)} onKeyUp={saveActive} />
+                <ProductName value={itemName} onChange={(event) => setItemName(event.target.value)} onKeyUp={saveActive} />
                 <TextLabel>가격</TextLabel>
-                <ProductPrice value = {isPrice} onChange={onChangePrice} onKeyUp={saveActive} />
+                <ProductPrice value={isPrice} onChange={onChangePrice} onKeyUp={saveActive} />
                 <TextLabel>판매링크</TextLabel>
-                <ProductLink value = {link} onChange={(event) => setLink(event.target.value)} onKeyUp={saveActive} />
+                <ProductLink value={link} onChange={(event) => setLink(event.target.value)} onKeyUp={saveActive} />
             </ProductBox>
         </ProductForm>
     )

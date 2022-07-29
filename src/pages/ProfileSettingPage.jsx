@@ -3,13 +3,13 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import JoinProfileImg from '../assets/basic-profile-img.png';
 import UploadfileImg from '../assets/upload-file.png';
-import { LBtn } from '../components/common/Buttons';
+import { LBtn } from '../components/common/button/index.style';
 import {
     ProfileId,
     ProfileIntroduce,
     ProfileNameInput,
     TextLabel,
-} from '../components/common/TextAciveInput';
+} from '../components/common/textActiveInput/index.style';
 import { useDispatch, useSelector } from 'react-redux'
 import { joinAction } from '../redux/actions/joinAction';
 import { WarningParagraph } from './LoginPage';
@@ -75,7 +75,7 @@ const ProfileImgInput = styled.input`
 
 const SignUpBtn = styled(LBtn)`
     margin: 14px auto 0;
-    ${({disabled}) => {
+    ${({ disabled }) => {
         return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
     }}
 `;
@@ -103,9 +103,9 @@ function ProfileSettingPage() {
     };
 
     const signUpActive = () => {
-        return (username.length > 1 && username.length < 11 && accountname.length>0 && intro.length > 0)
-        ? setIsActive(false)
-        : setIsActive(true);
+        return (username.length > 1 && username.length < 11 && accountname.length > 0 && intro.length > 0)
+            ? setIsActive(false)
+            : setIsActive(true);
     };
 
     const onSubmitHandler = (event) => {
@@ -116,10 +116,10 @@ function ProfileSettingPage() {
 
     useEffect(() => {
         console.log(message);
-        if(message === '회원가입 성공'){
+        if (message === '회원가입 성공') {
             history.push('/login');
         }
-    },[message])
+    }, [message])
 
     return (
         <ProfileSettingForm onSubmit={onSubmitHandler}>
@@ -135,15 +135,15 @@ function ProfileSettingPage() {
             <ProfileImgInput onChange={onChangeProfileImg} id='profileImg' type='file' accept='image/*' />
             <div className='input-cont'>
                 <TextLabel>사용자 이름</TextLabel>
-                <ProfileNameInput value={username} onChange={(event) => setUsername(event.target.value)} onKeyUp = {signUpActive} />
+                <ProfileNameInput value={username} onChange={(event) => setUsername(event.target.value)} onKeyUp={signUpActive} />
             </div>
             <div className='input-cont'>
                 <TextLabel>계정 ID</TextLabel>
-                <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp = {signUpActive}/>
+                <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp={signUpActive} />
             </div>
             <div className='input-cont'>
                 <TextLabel>소개</TextLabel>
-                <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp = {signUpActive} />
+                <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp={signUpActive} />
             </div>
             <SignUpBtn disabled={isActive}>감귤마켓 시작하기</SignUpBtn>
         </ProfileSettingForm>

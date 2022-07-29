@@ -4,6 +4,7 @@ import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
 import SplashPage from './pages/SplashPage';
 import MyProfilePage from './pages/MyProfile';
+import YourProfilePage from './pages/YourProfile';
 import AddProductPage from './pages/AddProductPage';
 import ProfileSettingPage from './pages/ProfileSettingPage';
 import PostPage from './pages/PostPage';
@@ -30,11 +31,15 @@ function App() {
                 )}
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
-            <Route path='/chatlist' component={() => <ChatPage/>} />
+            <Route path='/chatlist' component={() => <ChatPage />} />
             <Route path='/home' component={() => <HomePage />} />
             <Route
                 path='/myprofile'
                 component={() => <MyProfilePage />}
+            />
+            <Route
+                path='/yourpage'
+                component={() => <YourProfilePage />}
             />
             <Route exact path='/post' component={() => <PostUploadPage />} />
             <Route path='/search' component={() => <SearchPage />} />
