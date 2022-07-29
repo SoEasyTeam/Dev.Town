@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import TabMenu from '../components/common/TabMenu';
+import TabMenu from '../components/common/tabMenu';
 import { TopSearchNav } from '../components/common/nav';
 import { searchAction } from '../redux/actions/searchAction';
 

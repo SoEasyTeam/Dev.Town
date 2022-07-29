@@ -3,7 +3,7 @@ import UserProfile from '../components/profile/userProfile'
 import UserProduct from '../components/profile/userProduct';
 import UserPost from '../components/profile/userPost';
 import { TopBasicNav } from '../components/common/nav';
-import TabMenu from '../components/common/TabMenu';
+import TabMenu from '../components/common/tabMenu';
 import { AlertLogoutModal } from '../components/common/alert'
 import { ProfileSection } from '../components/profile/userProfile/index.style'
 

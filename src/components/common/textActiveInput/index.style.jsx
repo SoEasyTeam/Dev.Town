@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const TextInputBox = styled.div`
+export const TextInputBox = styled.div`
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -19,7 +18,7 @@ export const TextLabel = styled.label`
     color: var(--subtitle-text);
 `;
 
-const TextInput = styled.input.attrs({
+export const TextInput = styled.input.attrs({
     type: 'text',
     id: 'productName',
 })`
@@ -40,6 +39,7 @@ const TextInput = styled.input.attrs({
         border-bottom: 1px solid var(--main-color);
     }
 `;
+
 
 // 패스워드 Input
 export const PassWordInput = styled(TextInput).attrs({
@@ -86,16 +86,3 @@ export const ProductLink = styled(TextInput).attrs({
     id: 'productLink',
     placeholder: 'URL을 입력해 주세요.',
 })``;
-
-function TextAciveInput() {
-    return (
-        <>
-            <TextInputBox>
-                <TextLabel>이메일</TextLabel>
-                <EmailInput />
-            </TextInputBox>
-        </>
-    );
-}
-
-export default TextAciveInput;

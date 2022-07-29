@@ -9,7 +9,7 @@ import {
     ProfileIntroduce,
     ProfileNameInput,
     TextLabel,
-} from '../components/common/TextAciveInput';
+} from '../components/common/textActiveInput/index.style';
 import { useDispatch, useSelector } from 'react-redux'
 import { joinAction } from '../redux/actions/joinAction';
 import { WarningParagraph } from './LoginPage';

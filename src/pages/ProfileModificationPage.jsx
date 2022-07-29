@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { TopNavRowBox } from '../components/common/nav/index.style'
 import { ArrowLeftLink } from '../components/common/nav'
 import { SaveBtn } from '../components/common/button/index.style'
-import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../components/common/TextAciveInput';
+import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../components/common/textActiveInput/index.style';
 import { ProfileModificationForm, ProfileSettingBox, ProfileImgInput, AddProfileLabel } from '../components/profile/userProfile/index.style';
 
 function ProfileModificationPage() {

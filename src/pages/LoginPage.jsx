@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { LBtn } from '../components/common/button/index.style';
-import { EmailInput, PassWordInput, TextLabel } from '../components/common/TextAciveInput'
+import { EmailInput, PassWordInput, TextLabel } from '../components/common/textActiveInput/index.style'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authenticateAction } from '../redux/actions/authenticateAction';

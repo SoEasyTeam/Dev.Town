@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Product from '../../common/Product';
+import Product from '../../common/product';
 import { AlertProductModal } from '../../common/alert';
 import { ProductAreaListUl, ProductArea } from './index.style'
 
