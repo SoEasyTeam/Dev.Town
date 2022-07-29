@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { LBtn } from '../components/common/button/index.style';
+import { LBtn } from '../components/common/Buttons';
 import { EmailInput, PassWordInput, TextLabel } from '../components/common/TextAciveInput'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,7 +28,7 @@ const LoginMain = styled.section`
 
 const LoginBtn = styled(LBtn)`
     margin: 30px 0 20px;
-    ${({ disabled }) => {
+    ${({disabled}) => {
         return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
     }}
 `
@@ -57,21 +57,21 @@ function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();   
     const history = useHistory();
     let authLogin = useSelector(state => state.auth.authenticate);
-
+    
     //이메일 주소 유효성 검사
     const checkEmail =
-        /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
     //로그인버튼 활성화 검사
     const loginActive = () => {
-        return checkEmail.test(email) && password.length > 5
-            ? setIsActive(false)
-            : setIsActive(true);
+        return checkEmail.test(email)&&password.length>5
+        ? setIsActive(false)
+        : setIsActive(true);
     };
-
+    
     const onSubmitHandler = (event) => {
         event.preventDefault();
         // console.log('login user function issue');
@@ -80,10 +80,10 @@ function LoginPage() {
 
 
     useEffect(() => {
-        if (authLogin === true) {
+        if(authLogin === true) {
             history.push('/home');
         }
-    }, [authLogin, history]);
+    },[authLogin, history]);
 
     return (
         <LoginMain>
@@ -91,9 +91,9 @@ function LoginPage() {
             <h2 className='loginTitle'>로그인</h2>
             <form className='loginForm' onSubmit={onSubmitHandler}>
                 <TextLabel>이메일</TextLabel>
-                <EmailInput value={email} onChange={(event) => setEmail(event.target.value)} onKeyUp={loginActive} />
+                <EmailInput value={email} onChange = {(event) => setEmail(event.target.value)} onKeyUp={loginActive} />
                 <TextLabel>비밀번호</TextLabel>
-                <PassWordInput value={password} onChange={(event) => setPassword(event.target.value)} onKeyUp={loginActive} />
+                <PassWordInput value={password} onChange = {(event) => setPassword(event.target.value)} onKeyUp={loginActive}/>
                 <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
                 <div className='loginBtnWrap'>
                     <LoginBtn disabled={isActive} >로그인</LoginBtn>
