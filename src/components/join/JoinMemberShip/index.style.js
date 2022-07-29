@@ -1,4 +1,4 @@
-import { LBtn } from '../../common/Buttons';
+import { LBtn } from '../../common/button/index.style';
 import { EmailInput, PassWordInput } from '../../common/TextAciveInput';
 import styled from 'styled-components';
 

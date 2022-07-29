@@ -1,26 +1,32 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { productAction } from '../../../redux/actions/productAcition.js';
-import { SaveBtn } from '../../common/Buttons.jsx';
-import { ProductLink, ProductName, ProductPrice, TextLabel } from '../../common/TextAciveInput.jsx';
+import { productAction } from '../../../redux/actions/productAcition';
+import { SaveBtn } from '../../common/button/index.style.jsx';
 import { ArrowLeftLink } from '../../common/nav';
-import {TopNavRowBox} from '../../common/nav/index.style.jsx';
-import { AddProductImgInput, AddProductLabel, AddProductSpan, ProductBox, ProductForm, ProductNameLabel } from './index.style.js';
+import {TopNavRowBox} from '../../common/nav/index.style.jsx'
+import { AddProductImgInput, AddProductLabel, AddProductSpan, ProductBox, ProductForm, ProductNameLabel } from './index.style';
+import { ProductLink, ProductName, ProductPrice, TextLabel } from '../../common/TextAciveInput';
 
-function AddProduct() {
-    const [itemName, setItemName] = useState('');
-    const [price, setPrice] = useState('');
-    const [isPrice, setIsPrice] = useState('');
-    const [link, setLink] = useState('');
-    const [itemImage, setItemImage] = useState('');
-    const [previewImage, setPreviewImage] = useState('');
-    const [isActive, setisActive] = useState(true);
+function ProductModification() {
+    const product_id = useSelector(state=>state.product.product_id);
+    const uitemName = useSelector(state=>state.product.itemName);
+    const uprice = useSelector(state=>state.product.price);
+    const ulink = useSelector(state=>state.product.link);
+    const uitemImage = useSelector(state=>state.product.itemImage);
+
+    const [itemName, setItemName] = useState(uitemName);
+    const [price, setPrice] = useState(uprice);
+    const [isPrice, setIsPrice] = useState(uprice);
+    const [link, setLink] = useState(ulink);
+    const [itemImage, setItemImage] = useState(uitemImage);
+    const [isActive, setisActive] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
 
     const saveActive = () => {
-        return itemName.length>1&&itemName.length<16&&isPrice.length>0&&link.length>0&&previewImage.length>0
+        return itemName.length>1&&itemName.length<16&&link.length>0&&itemImage.length>0
+        // &&isPrice.length>0&&link.length>0&&itemImage.length>0
             ? setisActive(false)
             : setisActive(true);
     }
@@ -28,7 +34,7 @@ function AddProduct() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('onSubmitHandler');
-        dispatch(productAction.addProduct(itemName, price, link, itemImage));
+        dispatch(productAction.productModification(itemName, price, link, itemImage, product_id));
         history.push('/myprofile');
     }
 
@@ -40,8 +46,6 @@ function AddProduct() {
     }
 
     const onChangeProductImg = (event) => {
-        setPreviewImage(URL.createObjectURL(event.target.files[0]));
-
         let reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
@@ -49,6 +53,7 @@ function AddProduct() {
             setItemImage(readerUrl);
         }
     };
+
     return (
         <ProductForm onSubmit={onSubmitHandler}>
             <TopNavRowBox>
@@ -72,4 +77,4 @@ function AddProduct() {
     )
 }
 
-export default AddProduct;
+export default ProductModification
