@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { SBtn } from './Buttons';
 import {
     UserSearchBox,
@@ -13,6 +14,10 @@ export const UserFollowBox = styled(UserSearchBox)`
     position: relative;
     margin-bottom: 16px;
 `;
+
+const FollowPageLink = styled(Link)`
+    display: inherit;
+`
 
 const FollowSBtn = styled(SBtn)`
     font-family: 'Spoqa Han Sans Neo';
@@ -39,19 +44,17 @@ function UserFollow({ src, name, accountname, isfollow }) {
             setIsUnfollowWord('취소')
         }
     }
-    function moveProfilePage() {
-        console.log('프로필로 이동')
-        // window.location.href = '/myprofile'
-    }
 
     return (
         <>
-            <UserFollowBox onClick={moveProfilePage}>
-                <ProfileLogoImg src={src} alt='프로필로고' />
-                <NameIdBox>
-                    <NickNameP>{name}</NickNameP>
-                    <IdP>@ {accountname}</IdP>
-                </NameIdBox>
+            <UserFollowBox>
+                <FollowPageLink to='/yourpage' >
+                    <ProfileLogoImg src={src} alt='프로필로고' />
+                    <NameIdBox>
+                        <NickNameP>{name}</NickNameP>
+                        <IdP>@ {accountname}</IdP>
+                    </NameIdBox>
+                </FollowPageLink>
                 <FollowSBtn onClick={changeIsFollow} isFollowed={isFollow}>{isfollow ? isUnfollowWord : isFollowWord}</FollowSBtn>
             </UserFollowBox>
         </>

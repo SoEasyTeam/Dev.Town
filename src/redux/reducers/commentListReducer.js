@@ -26,7 +26,7 @@ function writeCommentReducer(state = initialCommentWriteState, action){
         case 'WRITE_COMMENT':
             return{
                 ...state, 
-                comment:payload.comment
+                comment:payload.comment,
             }
         default:
             return {...state}

@@ -5,7 +5,7 @@ import { UserFollowBox } from './UserFollow';
 import SettingImg from '../../assets/icon/s-icon-more-vertical.png';
 import IconHeartImg from '../../assets/icon/icon-heart.png';
 import IconCommentImg from '../../assets/icon/icon-message-circle.png';
-import { MyPostModal } from './Modal';
+import { MyPostModal } from './modal';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { postAction } from '../../redux/actions/postAction';
@@ -133,7 +133,7 @@ export const LikePostRowBox = ({ heartCount, commentCount, postId }) => {
 
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal, postId }) {
 
-    const post = useSelector(state=>state.getPost)
+    const post = useSelector(state => state.getPost)
     // 모달창
     const [modalOn, setModalOn] = useState(false);
 

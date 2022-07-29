@@ -1,64 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
-import { TopNavRowBox, ArrowLeftLink } from '../components/common/TopNav'
-import { SaveBtn } from '../components/common/Buttons'
-import JoinProfileImg from '../assets/basic-profile-img.png';
+import { React, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
-import UploadfileImg from '../assets/upload-file.png';
-import {
-    ProfileId,
-    ProfileIntroduce,
-    ProfileNameInput,
-    TextLabel,
-} from '../components/common/TextAciveInput';
 import { profileAction } from '../redux/actions/profileAction'
-const ProfileModificationForm = styled.form`
-    
-`
-const ProfileSettingBox = styled.form`
-    width: 100vw;
-    padding: 30px 34px;
-    display: flex;
-    flex-direction: column;
-    .input-cont {
-        margin: 0 auto;
-    }
-`;
-const ProfileImgInput = styled.input`
-    position: absolute;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-    left: -999999px;
-`
-export const AddProfileLabel = styled.label`
-    margin: 0 auto 30px;
-    position: relative;
-    cursor: pointer;
-    .addprofile-img {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-    }
-    &::after {
-        position: absolute;
-        content: '';
-        right: 0px;
-        bottom: 0px;
-        width: 36px;
-        height: 36px;
-        background: url(${UploadfileImg}) no-repeat center / 36px 36px;
-        border-radius: 50%;
-    }
-`;
+import { useHistory } from 'react-router-dom'
+import { TopNavRowBox } from '../components/common/nav/index.style'
+import { ArrowLeftLink } from '../components/common/nav'
+import { SaveBtn } from '../components/common/Buttons'
+import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../components/common/TextAciveInput';
+import { ProfileModificationForm, ProfileSettingBox, ProfileImgInput, AddProfileLabel } from '../components/profile/userProfile/index.style';
 
 function ProfileModificationPage() {
-    const username = useSelector(state => state.profile.username);
-    const userimage = useSelector(state => state.profile.image);
-    const useraccountname = useSelector(state => state.profile.accountname);
-    const userintro = useSelector(state => state.profile.intro);
+    const userData = useSelector(state => state.profile.userData);
+    const username = userData.profile.username;
+    const userimage = userData.profile.image;
+    const useraccountname = userData.profile.accountname;
+    const userintro = userData.profile.intro;
 
     const [name, setname] = useState(username);
     const [image, setImage] = useState(userimage);
@@ -67,11 +22,12 @@ function ProfileModificationPage() {
     const [isActive, setIsActive] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
+
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('수정 submitHandler');
         dispatch(profileAction.profileModification(name, image, accountname, intro));
-        history.push('/myprofile');
+        history.push('/myprofile')
     }
 
     const onChangeProfileImg = (event) => {
@@ -82,11 +38,13 @@ function ProfileModificationPage() {
             setImage(readerUrl);
         }
     };
+
     const changeActive = () => {
         return (name.length > 1 && name.length < 11 && accountname.length > 0 && intro.length > 0)
             ? setIsActive(false)
             : setIsActive(true);
     };
+
     return (
         <ProfileModificationForm onSubmit={onSubmitHandler}>
             <TopNavRowBox>
@@ -119,4 +77,5 @@ function ProfileModificationPage() {
         </ProfileModificationForm>
     );
 }
+
 export default ProfileModificationPage;

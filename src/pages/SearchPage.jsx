@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import TabMenu from '../components/common/TabMenu';
-import { TopSearchNav } from '../components/common/TopNav';
+import { TopSearchNav } from '../components/common/nav';
 import { searchAction } from '../redux/actions/searchAction';
 
 export default function SearchPage() {
@@ -22,7 +22,7 @@ export default function SearchPage() {
             const searchData = async () => {
                 const res = await fetch(
                     'https://mandarin.api.weniv.co.kr/user/searchuser/?keyword=' +
-                        keyword,
+                    keyword,
                     {
                         method: 'GET',
                         headers: {
@@ -42,11 +42,11 @@ export default function SearchPage() {
     return (
         <>
             <TopSearchNav onChange={(e) => setKeyword(e.target.value)} />
-            {searchResult ? 
-            searchResult.map((user) => {
-                return <p key={user.id}>{user.username}</p>;
-            }) : 
-            <p>검색결과가 없습니다.</p>}
+            {searchResult ?
+                searchResult.map((user) => {
+                    return <p key={user.id}>{user.username}</p>;
+                }) :
+                <p>검색결과가 없습니다.</p>}
             <TabMenu />
         </>
     );

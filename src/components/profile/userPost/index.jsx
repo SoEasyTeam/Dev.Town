@@ -1,58 +1,8 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import HomeImgPost from '../common/HomeImgPost';
-import IconPostListOn from '../../assets/icon/icon-post-list-on.png';
-import IconPostListOff from '../../assets/icon/icon-post-list-off.png';
-import IconPostAlbumOff from '../../assets/icon/icon-post-album-off.png';
-import IconPostAlbumOn from '../../assets/icon/icon-post-album-on.png';
+import { React, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { AlertPostModal, AlertDeclareModal } from '../common/AlertModal';
-
-const PostListBtns = styled.button`
-    width: 26px;
-    height: 26px;
-    margin-right: 16px;
-    background-image: url(${IconPostListOn});
-    ${({ isActive }) =>
-        isActive &&
-        `
-            background-image: url(${IconPostListOff});
-        `};
-`
-
-const PostAlbumBtns = styled.button`
-    width: 26px;
-    height: 26px;
-    margin-right: 16px; 
-    background-image: url(${IconPostAlbumOff});
-    ${({ isActive }) =>
-        isActive &&
-        `
-            background-image: url(${IconPostAlbumOn});
-        `};
-`
-
-const PostArea = styled.article`
-    width: 100vw;
-    border-top: 0.5px solid #DBDBDB;
-    background: #FFFFFF;
-    .postBtnImg {
-        width: 26px;
-    }
-    .postAreaTop {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        border-bottom: 0.5px solid #DBDBDB;
-        height: 43px
-    }
-`
-const PostAreaListUl = styled.ul`
-    list-style: none;
-    li {
-        margin: 20px 0;
-    }
-`
+import HomeImgPost from '../../common/HomeImgPost';
+import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
+import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl } from './index.style';
 
 function parseDate(dateString) {
     const postDate = new Date(dateString)
@@ -95,7 +45,8 @@ function PostAreaList({ userPostData, alertOnModal }) {
 function UserPost({token, accountname, id}) {
     const [userPostData, setUserPostData] = useState('')
     const [alertOn, setAlertOn] = useState(false);
-
+    const [isActive, setIsActive] = useState(true);
+    // console.log('버튼', isActive)
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${accountname}/userpost`, {
             method: "GET",
@@ -122,16 +73,16 @@ function UserPost({token, accountname, id}) {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
-
     function changeActive() {
-
+        console.log('버튼바뀜', isActive)
+        setIsActive(!isActive)
     }
     return (
         <>
             <PostArea>
                 <div className='postAreaTop'>
-                    <PostListBtns onClick={changeActive} />
-                    <PostAlbumBtns onClick={changeActive} />
+                    <PostListBtns onClick={changeActive} isActive={isActive} />
+                    <PostAlbumBtns onClick={changeActive} isActive={isActive} />
                 </div>
                 <PostAreaListUl>
                     <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />

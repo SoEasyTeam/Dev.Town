@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { MyProductModal } from '../common/Modal';
-import { AlertProductModal } from './AlertModal';
+import { MyProductModal } from '../common/modal';
+import { AlertProductModal } from '../common/alert';
 
 
 const ProductItemBox = styled.div`
@@ -78,16 +78,16 @@ const Product = ({ name, price, src, itemLink, writerId, alertOnModal, product_i
                 <span className='txt-productPrice'>{priceShow}원</span>
             </ProductItemBox>
             {modalOn === true ?
-            <MyProductModal
-                itemName={name}
-                src={src}
-                price={price}
-                itemImage={src}
-                product_id={product_id}
-                closeModal={closeModal}
-                link={itemLink}
-                alertOnModal={alertOnModal}
-                author={author}
+                <MyProductModal
+                    itemName={name}
+                    src={src}
+                    price={price}
+                    itemImage={src}
+                    product_id={product_id}
+                    closeModal={closeModal}
+                    link={itemLink}
+                    alertOnModal={alertOnModal}
+                    author={author}
                 /> : ''}
         </>
     );

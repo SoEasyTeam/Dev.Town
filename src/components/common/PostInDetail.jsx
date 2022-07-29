@@ -2,13 +2,12 @@ import { React, useState } from 'react';
 import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from './UserSearch';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { UserFollowBox } from './UserFollow';
 import SettingImg from '../../assets/icon/s-icon-more-vertical.png';
 import IconHeartImg from '../../assets/icon/icon-heart.png';
 import IconCommentImg from '../../assets/icon/icon-message-circle.png';
-import { MyPostModal } from './Modal';
+import { MyPostModal } from './modal';
 
 import { postAction } from '../../redux/actions/postAction';
 
@@ -19,6 +18,7 @@ export const SettingBtn = styled.button`
     position: absolute;
     right: 0px;
     top: 4px;
+    cursor: pointer;
 `;
 
 export const HomePostProfileNickName = styled(NickNameP)`
@@ -185,7 +185,7 @@ function PostInDetail({
                 <HomePostSmallBox>
                     <HomePostParagraph>{postparagraph}</HomePostParagraph>
                     {postsrc === '' ||
-                    typeof postsrc === 'undefined' ? null : (
+                        typeof postsrc === 'undefined' ? null : (
                         <img
                             className='post-img'
                             src={postsrc}

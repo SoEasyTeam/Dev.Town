@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { productAction } from '../../../redux/actions/productAcition';
 import { SaveBtn } from '../../common/Buttons';
-import { ArrowLeftLink, TopNavRowBox } from '../../common/TopNav';
+import { ArrowLeftLink } from '../../common/nav';
+import {TopNavRowBox} from '../../common/nav/index.style.jsx'
 import { AddProductImgInput, AddProductLabel, AddProductSpan, ProductBox, ProductForm, ProductNameLabel } from './index.style';
 import { ProductLink, ProductName, ProductPrice, TextLabel } from '../../common/TextAciveInput';
 

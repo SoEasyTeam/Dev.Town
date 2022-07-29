@@ -4,7 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { productAction } from '../../../redux/actions/productAcition.js';
 import { SaveBtn } from '../../common/Buttons.jsx';
 import { ProductLink, ProductName, ProductPrice, TextLabel } from '../../common/TextAciveInput.jsx';
-import { ArrowLeftLink, TopNavRowBox } from '../../common/TopNav.jsx';
+import { ArrowLeftLink } from '../../common/nav';
+import {TopNavRowBox} from '../../common/nav/index.style.jsx';
 import { AddProductImgInput, AddProductLabel, AddProductSpan, ProductBox, ProductForm, ProductNameLabel } from './index.style.js';
 
 function AddProduct() {
