@@ -4,10 +4,17 @@ import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import App from './App';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { store, persistor } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
-
+    li {
+        list-style: none;
+    }
     a {
         text-decoration : none;
         color : inherit;
@@ -40,7 +47,8 @@ const GlobalStyle = createGlobalStyle`
 
     input {
         &:focus {
-        outline:none;
+            outline: none;
+            border: none;
         }
     }
 
@@ -77,10 +85,12 @@ const GlobalStyle = createGlobalStyle`
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <>
-        <GlobalStyle />
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </>
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <GlobalStyle />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </PersistGate>
+    </Provider>
 );
