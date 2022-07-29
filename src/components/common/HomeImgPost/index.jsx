@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { MyPostModal } from '../modal';
-import LikePostRowBox from './likePostRowBox';
+import LikePostRowBox from './LkePostRowBox';
 import { NameIdBox, IdP } from '../UserSearch';
 import {SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg,HomePostBox,HomePostProfileBox,HomePostSmallLink,HomePostParagraph,DateParagraph} from './index.style'
 
