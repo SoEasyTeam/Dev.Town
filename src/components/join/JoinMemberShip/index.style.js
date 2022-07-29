@@ -1,5 +1,8 @@
 import { LBtn } from '../../common/button/index.style';
-import { EmailInput, PassWordInput } from '../../common/TextAciveInput';
+import {
+    EmailInput,
+    PassWordInput,
+} from '../../common/textActiveInput/index.style';
 import styled from 'styled-components';
 
 export const LoginMain = styled.section`

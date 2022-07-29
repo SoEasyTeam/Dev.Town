@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { TopFollowingNav } from '../components/common/nav'
 import { useSelector } from 'react-redux';
 import UserFollow from '../components/common/UserFollow';
-import { FollowBoxUl } from '../components/list/followList/follow.style';
+import { FollowBoxUl } from '../components/list/followList/index.style';
 
 const FollowingList = ({ userFollowingData }) => {
     return (

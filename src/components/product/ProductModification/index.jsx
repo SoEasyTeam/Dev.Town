@@ -6,7 +6,7 @@ import { SaveBtn } from '../../common/button/index.style.jsx';
 import { ArrowLeftLink } from '../../common/nav';
 import {TopNavRowBox} from '../../common/nav/index.style.jsx'
 import { AddProductImgInput, AddProductLabel, AddProductSpan, ProductBox, ProductForm, ProductNameLabel } from './index.style';
-import { ProductLink, ProductName, ProductPrice, TextLabel } from '../../common/TextAciveInput';
+import { ProductLink, ProductName, ProductPrice, TextLabel } from '../../common/textActiveInput/index.style';
 
 function ProductModification() {
     const product_id = useSelector(state=>state.product.product_id);

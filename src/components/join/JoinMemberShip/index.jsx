@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { WarningParagraph } from '../../login/LoginMain/index.style';
 import { joinAction } from '../../../redux/actions/joinAction';
-import { TextLabel } from '../../common/TextAciveInput';
+import { TextLabel } from '../../common/textActiveInput/index.style';
 import { JoinEmailInput, JoinPassWordInput, LoginMain, NextBtn } from './index.style';
 
 function JoinMembership() {

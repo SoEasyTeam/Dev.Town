@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { joinAction } from '../../../redux/actions/joinAction';
 import JoinProfileImg from '../../../assets/basic-profile-img.png';
 import { ProfileImgInput, Profilelabel, ProfileSettingForm, SignUpBtn } from './index.style';
-import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../../common/TextAciveInput';
+import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../../common/textActiveInput/index.style';
 
 function ProfileSetting() {
     const [username, setUsername] = useState('');
