@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { authenticateAction } from '../../../redux/actions/authenticateAction';
 import { EmailInput, PassWordInput, TextLabel } from '../../common/textActiveInput/index.style';
-import { JoinEmailLink, LoginBtn, WarningParagraph } from './index.style';
+import { JoinEmailLink, LoginBtn, LoginContainer, WarningParagraph } from './index.style';
 
 function LoginMain() {
     const [email, setEmail] = useState('');
@@ -37,7 +37,7 @@ function LoginMain() {
     },[authLogin, history]);
 
     return (
-        <LoginMain>
+        <LoginContainer>
             <h1 className='ir'>데브타운 로그인 화면</h1>
             <h2 className='loginTitle'>로그인</h2>
             <form className='loginForm' onSubmit={onSubmitHandler}>
@@ -51,7 +51,7 @@ function LoginMain() {
                     <JoinEmailLink to='/join'>이메일로 회원가입</JoinEmailLink>
                 </div>
             </form>
-        </LoginMain>
+        </LoginContainer>
     )
 }
 
