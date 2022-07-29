@@ -1,24 +1,11 @@
-import { useState, React } from 'react';
-import styled from 'styled-components';
-import { TopBasicNav } from '../components/common/TopNav';
+import { React, useState } from 'react';
+import UserProfile from '../components/profile/userProfile'
+import UserProduct from '../components/profile/userProduct';
+import UserPost from '../components/profile/userPost';
+import { TopBasicNav } from '../components/common/nav';
 import TabMenu from '../components/common/TabMenu';
-import OtherProfile from '../components/profile/OtherProfile'
-import UserProduct from '../components/profile/UserProduct';
-import UserPost from '../components/profile/UserPost';
-import { AlertLogoutModal } from '../components/common/AlertModal'
-import { useEffect } from 'react';
-
-const ProfileSection = styled.section`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0 auto;
-    font-family: 'Spoqa Han Sans Neo';
-    background-color: #F2F2F2;
-    min-height: 892px;
-`
-
+import { AlertLogoutModal } from '../components/common/alert'
+import { ProfileSection } from '../components/profile/userProfile/index.style';
 
 function YourProfilePage() {
     const [alertOn, setAlertOn] = useState(false);
@@ -34,7 +21,7 @@ function YourProfilePage() {
         <>
             <TopBasicNav alertOnModal={alertOnModal} />
             <ProfileSection>
-                <OtherProfile />
+                <UserProfile />
                 <UserProduct />
                 <UserPost />
             </ProfileSection>

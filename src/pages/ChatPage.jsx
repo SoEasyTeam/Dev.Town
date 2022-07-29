@@ -1,6 +1,6 @@
 import React from 'react';
 import TabMenu from '../components/common/TabMenu';
-import { TopBasicNav } from '../components/common/TopNav';
+import { TopBasicNav } from '../components/common/nav';
 import styled from 'styled-components';
 import ProfileImg from '../assets/basic-profile-img.png';
 import { Link } from 'react-router-dom';
@@ -67,7 +67,7 @@ const ChatListBox = styled.div`
 function ChatList() {
     return (
         <>
-            <ChatItemLink to = '#'>
+            <ChatItemLink to='#'>
                 <label>
                     <div className='login-box'></div>
                     <img
@@ -93,8 +93,8 @@ function ChatPage() {
         <>
             <TopBasicNav />
             <ChatListBox>
-                <ChatList/>
-                <ChatItemLink to = '#'>
+                <ChatList />
+                <ChatItemLink to='#'>
                     <label>
                         <div className='login-box'></div>
                         <img
@@ -111,7 +111,7 @@ function ChatPage() {
                     </div>
                     <p className='chatDate-p'>2020.10.25</p>
                 </ChatItemLink>
-                <ChatItemLink to = '#'>
+                <ChatItemLink to='#'>
                     <label>
                         <img
                             className='profile-img'

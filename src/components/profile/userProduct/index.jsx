@@ -1,46 +1,10 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import Product from '../common/Product';
+import { React, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { AlertProductModal } from '../common/AlertModal';
-
-const ProductAreaListUl = styled.ul`
-    list-style: none;
-    margin-left: 16px;
-    height: 152px;
-    display: flex;
-    white-space: nowrap;
-    overflow-x: auto;
-    li {
-        float:left;
-        margin-right: 16px;
-        margin-bottom: 19.5px;
-        cursor: pointer;
-    }
-`
-
-const ProductArea = styled.article`
-    width: 100vw;
-    border-bottom: 0.5px solid #DBDBDB;
-    border-top: 0.5px solid #DBDBDB;
-    background: #FFFFFF;
-    margin-bottom: 6px;
-    .productAreaDiv {
-        max-width: 640px;
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-    }
-    .productAreaTitle {
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 20px;
-        margin: 19.5px 0 16px 16px;
-    }
-`
+import Product from '../../common/Product';
+import { AlertProductModal } from '../../common/alert';
+import { ProductAreaListUl, ProductArea } from './index.style'
 
 const ProductAreaList = ({ userProductData, alertOnModal }) => {
-
     return (
         <>
             {userProductData &&
@@ -95,7 +59,7 @@ function UserProduct() {
     function alertOnModal() {
         setAlertOn(true);
     }
-    
+
     function alertOffModal() {
         document.body.style.overflow = "unset";
         setAlertOn(false);
@@ -116,9 +80,4 @@ function UserProduct() {
 
 }
 
-
-
 export default UserProduct;
-
-
-

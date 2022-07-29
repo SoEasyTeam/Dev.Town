@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { TopUploadNav } from '../components/common/TopNav';
+import { TopUploadNav } from '../components/common/nav';
 import {
     DefaultProfileImg,
     ImgUploadBtn,

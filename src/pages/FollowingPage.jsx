@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react'
-import styled from 'styled-components';
-import { TopFollowingNav } from '../components/common/TopNav'
+import { TopFollowingNav } from '../components/common/nav'
 import { useSelector } from 'react-redux';
 import UserFollow from '../components/common/UserFollow';
-
-const FollowingBoxUl = styled.ul`
-    padding: 24px 16px;
-`
+import { FollowBoxUl } from '../components/list/followList/Follow.style';
 
 const FollowingList = ({ userFollowingData }) => {
     return (
@@ -53,9 +49,9 @@ function FollowingPage() {
     return (
         <>
             <TopFollowingNav />
-            <FollowingBoxUl>
+            <FollowBoxUl>
                 <FollowingList userFollowingData={userFollowingData} />
-            </FollowingBoxUl>
+            </FollowBoxUl>
         </>
 
     )
