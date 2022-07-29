@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components';
-import { LBtn } from '../components/common/Buttons';
+import { LBtn } from '../components/common/button/index.style';
 import { EmailInput, PassWordInput, TextLabel } from '../components/common/TextAciveInput'
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,7 +29,7 @@ const LoginMain = styled.section`
 
 const NextBtn = styled(LBtn)`
     margin: 30px 0 20px;
-    ${({disabled}) => {
+    ${({ disabled }) => {
         return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
     }}
 `
@@ -49,27 +49,27 @@ function JoinMembershipPage() {
     // const [isEmailValid, setEmailValid] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    const message = useSelector(state=> state.join.message);
+    const message = useSelector(state => state.join.message);
 
     //이메일 주소 유효성 검사
     const checkEmail =
-    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+        /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
     //다음버튼 활성화 검사
     const nextSignUpActive = () => {
-        return checkEmail.test(email)&&password.length>5
-        ? setIsActive(false)
-        : setIsActive(true);
+        return checkEmail.test(email) && password.length > 5
+            ? setIsActive(false)
+            : setIsActive(true);
     };
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('버튼 클릭')
-        dispatch(joinAction.join(email,password));
+        dispatch(joinAction.join(email, password));
     }
 
     useEffect(() => {
-        if(message === '사용 가능한 이메일 입니다.'){
+        if (message === '사용 가능한 이메일 입니다.') {
             history.push('/profilesetting');
         }
     }, [message])
@@ -78,11 +78,11 @@ function JoinMembershipPage() {
         <LoginMain>
             <h1 className='ir'>데브타운 회원가입 화면</h1>
             <h2 className='loginTitle'>이메일로 회원가입</h2>
-            <form className='loginForm' onSubmit={ onSubmitHandler }>
+            <form className='loginForm' onSubmit={onSubmitHandler}>
                 <TextLabel>이메일</TextLabel>
-                <JoinEmailInput value={email} onChange={(event) => setEmail(event.currentTarget.value)} onKeyUp={nextSignUpActive}/>
+                <JoinEmailInput value={email} onChange={(event) => setEmail(event.currentTarget.value)} onKeyUp={nextSignUpActive} />
                 <TextLabel>비밀번호</TextLabel>
-                <JoinPassWordInput value={password} onChange={(event) => setPassword(event.currentTarget.value)} onKeyUp={nextSignUpActive}/>
+                <JoinPassWordInput value={password} onChange={(event) => setPassword(event.currentTarget.value)} onKeyUp={nextSignUpActive} />
                 <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
                 {/* <WarningParagraph visible={isEmailValid}>*이미 가입된 이메일 주소 입니다.</WarningParagraph> */}
                 <div className='nextBtnWrap'>

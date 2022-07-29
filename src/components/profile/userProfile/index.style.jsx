@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { MBtn } from '../../../components/common/Buttons';
+import { MBtn } from '../../common/button/index.style';
 // import UploadfileImg from '../assets/upload-file.png';
 import UploadfileImg from '../../../assets/upload-file.png';
 

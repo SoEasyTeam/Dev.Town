@@ -50,3 +50,44 @@ export const AlertUl = styled.ul`
         border-left: 0.5px solid #DBDBDB;
     }
 `
+
+export const DeleteAlertBox = styled.div`
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 252px;
+    border: 1px solid #c4c4c4;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+`;
+
+export const AlertP = styled.p`
+    width: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 44px;
+    padding: 22px 0;
+`;
+
+export const ButtonBox = styled.div`
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-top: 0.5px solid #dbdbdb;
+`;
+
+export const CancelBtn = styled.button`
+    box-sizing: border-box;
+    padding: 14px 0;
+    width: 50%;
+    height: inherit;
+    float: left;
+    font-size: 14px;
+`;
+
+export const DeleteBtn = styled(CancelBtn)`
+    color: #f26e22;
+    border-left: 0.5px solid #dbdbdb;
+`;
