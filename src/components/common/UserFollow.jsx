@@ -1,33 +1,6 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { SBtn } from './Buttons';
-import {
-    UserSearchBox,
-    NameIdBox,
-    NickNameP,
-    IdP,
-    ProfileLogoImg,
-} from './UserSearch';
-
-export const UserFollowBox = styled(UserSearchBox)`
-    position: relative;
-    margin-bottom: 16px;
-`;
-
-const FollowPageLink = styled(Link)`
-    display: inherit;
-`
-
-const FollowSBtn = styled(SBtn)`
-    font-family: 'Spoqa Han Sans Neo';
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 15px;
-    position: absolute;
-    right: 0px;
-    top: 11px;
-`
+import { NameIdBox, NickNameP, IdP, ProfileLogoImg } from './UserSearch';
+import { UserFollowBox, FollowPageLink, FollowSBtn } from '../list/followList/follow.style'
 
 function UserFollow({ src, name, accountname, isfollow }) {
     const [isFollow, setIsFollow] = useState(isfollow);
