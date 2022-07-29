@@ -1,5 +1,5 @@
 import React from 'react'
-import { AlertBox, AlertOutside, AlertContainer, AlertUl } from './index.style'
+import { AlertBox, AlertOutside, AlertContainer, AlertUl, DeleteAlertBox, AlertP, ButtonBox, CancelBtn, DeleteBtn } from './index.style'
 
 // 상품 삭제
 function AlertProductModal({ alertOffModal }) {
@@ -80,4 +80,17 @@ function AlertLogoutModal({ alertOffModal }) {
     );
 }
 
-export { AlertProductModal, AlertPostModal, AlertDeclareModal, AlertLogoutModal };
+// 삭제
+function DeleteAlert() {
+    return (
+        <DeleteAlertBox>
+            <AlertP>상품을 삭제할까요?</AlertP>
+            <ButtonBox>
+                <CancelBtn>취소</CancelBtn>
+                <DeleteBtn>삭제</DeleteBtn>
+            </ButtonBox>
+        </DeleteAlertBox>
+    );
+}
+
+export { AlertProductModal, AlertPostModal, AlertDeclareModal, AlertLogoutModal, DeleteAlert };

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import ArrowImg from '../../../assets/icon/icon-arrow-left.png';
 import MoreImg from '../../../assets/icon/icon-more-vertical.png';
 import SearchImg from '../../../assets/icon/icon-search.png';
-import { MsBtn } from '../Buttons';
+import { MsBtn } from '../button/index.style';
 import { ProfileModal } from '../modal';
 import { TopNavRowBox, TopNavRowBoxLeft, TopNavLinkS, TopNavLink, TopSearchLink, SearchInput } from './index.style';
 

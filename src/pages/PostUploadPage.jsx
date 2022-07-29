@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postAction } from '../redux/actions/postAction';
 import { useHistory } from 'react-router-dom';
 import { TopUploadNav } from '../components/common/nav';
-import { DefaultProfileImg, ImgUploadBtn } from '../components/common/ProfileButtons';
+import { DefaultProfileImg, ImgUploadBtn } from '../components/common/button';
 import { UploadForm, UploadSection, UploadInputSection, UploadImgInput } from '../components/post/index.style'
 
 function UploadPage() {

@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { MBtn } from '../../../components/common/Buttons';
+import { MBtn } from '../../common/button/index.style';
 import { profileAction } from '../../../redux/actions/profileAction';
 import IconMesssageImg from '../../../assets/icon/icon-message-circle.png';
 import IconShareImg from '../../../assets/icon/icon-share.png';

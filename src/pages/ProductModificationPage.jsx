@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductAction, productAction } from '../redux/actions/productAcition'
-import { SaveBtn } from '../components/common/Buttons'
+import { SaveBtn } from '../components/common/button/index.style'
 
 const ProductForm = styled.form`
 `

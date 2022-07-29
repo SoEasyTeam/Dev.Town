@@ -7,7 +7,7 @@ import { ProductLink, ProductName, ProductPrice, TextLabel } from '../components
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { SaveBtn } from '../components/common/Buttons'
+import { SaveBtn } from '../components/common/button/index.style'
 import { productAction } from '../redux/actions/productAcition'
 
 const ProductForm = styled.form`

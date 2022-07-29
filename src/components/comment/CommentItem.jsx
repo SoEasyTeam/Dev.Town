@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import styled from "styled-components"
-import { DefaultProfileImg } from "../common/ProfileButtons"
+import { DefaultProfileImg } from "../common/button"
 import moreBtn from '../../assets/icon/icon-more-vertical.png'
-import { useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 const CommentItemLi = styled.li`
     display: flex;
@@ -43,18 +43,18 @@ const Comment = styled.p`
     line-height: 20px;
 `
 
-function CommentItem({commentFrom, commentorImg, commentYear, commentMonth, commentDay, comment}){
+function CommentItem({ commentFrom, commentorImg, commentYear, commentMonth, commentDay, comment }) {
 
     return (
         <CommentItemLi>
             <div className="profile-img">
-                <CommentorProfileImg src={commentorImg}/>
+                <CommentorProfileImg src={commentorImg} />
             </div>
             <div className="comment-box">
                 <CommentInfo>
                     <CommentFrom>{commentFrom}</CommentFrom>
                     <CommentDate>{commentYear}.{commentMonth}.{commentDay}</CommentDate>
-                    <DetailOptionsBtn src={moreBtn}/>
+                    <DetailOptionsBtn src={moreBtn} />
                 </CommentInfo>
                 <Comment>{comment}</Comment>
             </div>

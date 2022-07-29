@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { SBtn } from '../../common/Buttons';
+import { SBtn } from '../../common/button/index.style';
 import { UserSearchBox } from '../../common/UserSearch';
 
 export const FollowBoxUl = styled.ul`

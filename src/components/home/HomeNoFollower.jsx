@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import BasicProfileImg from '../../assets/basic-profile-img.png'
-import { MlBtn } from '../common/Buttons'
+import { MlBtn } from '../common/button/index.style'
 
 const NoFollowerMainBox = styled.div`
     width: 100vw;
@@ -32,7 +32,7 @@ export const HomeNoFollower = () => {
     return (
         <>
             <NoFollowerMainBox>
-                <NoFollowerImg src={BasicProfileImg}/>
+                <NoFollowerImg src={BasicProfileImg} />
                 <SearchUserParagraph>유저를 검색해 팔로우 해보세요!</SearchUserParagraph>
                 <MlBtn to='#'>검색하기</MlBtn>
             </NoFollowerMainBox>
