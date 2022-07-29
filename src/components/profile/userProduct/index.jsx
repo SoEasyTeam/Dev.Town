@@ -30,8 +30,8 @@ const ProductAreaList = ({ userProductData, alertOnModal }) => {
 }
 
 function UserProduct() {
-    const token = useSelector(state => state.auth.token);
-    const accountname = useSelector(state => state.auth.accountname);
+    const token = sessionStorage.getItem('token');
+    const accountname = sessionStorage.getItem('accountname');
     const [userProductData, setUserProductData] = useState('');
     const [alertOn, setAlertOn] = useState(false);
 

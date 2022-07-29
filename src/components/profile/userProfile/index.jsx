@@ -11,10 +11,10 @@ function UserProfile() {
     const [userData, setUserData] = useState()
     const [isFollow, setIsFollow] = useState();
     const [isFollowWord, setIsFollowWord] = useState('팔로우');
-    const Myaccountname = useSelector(state => state.auth.accountname);
+    const Myaccountname = sessionStorage.getItem('accountname');
     const dispatch = useDispatch();
     const history = useHistory();
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
 
     const getData = async () => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${Myaccountname}`, {
