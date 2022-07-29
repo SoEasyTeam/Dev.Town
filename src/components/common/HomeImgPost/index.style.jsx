@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SettingImg from '../../../assets/icon/s-icon-more-vertical.png';
 import { ProfileLogoImg, NickNameP} from '../UserSearch';
-import { UserFollowBox } from '../UserFollow';
+import { UserFollowBox } from '../../list/followList/index.style';
 
 export const SettingBtn = styled.button`
     background-image: url(${SettingImg});
