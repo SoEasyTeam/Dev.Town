@@ -6,9 +6,7 @@ import reset from 'styled-reset';
 import App from './App';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store, persistor } from './redux/store';
-import { PersistGate } from 'redux-persist/integration/react';
-import { persistStore } from 'redux-persist';
+import store from './redux/store';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -86,11 +84,9 @@ const GlobalStyle = createGlobalStyle`
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <GlobalStyle />
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </PersistGate>
+        <GlobalStyle />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </Provider>
 );

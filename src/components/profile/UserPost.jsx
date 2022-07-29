@@ -92,9 +92,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
     )
 }
 
-function UserPost(id) {
-    const token = useSelector(state => state.auth.token);
-    const accountname = useSelector(state => state.auth.accountname);
+function UserPost({token, accountname, id}) {
     const [userPostData, setUserPostData] = useState('')
     const [alertOn, setAlertOn] = useState(false);
 

@@ -135,9 +135,38 @@ function productDelete(product_id) {
     };
 }
 
+function productList(token, accountname) {
+    return async (dispatch, getState) => {
+        console.log('action 성공');
+
+        let url = 'https://mandarin.api.weniv.co.kr';
+        const reqPath = `/product/${accountname}`;
+        try {
+            let res = await fetch(url + reqPath, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-type': 'application/json',
+                },
+            });
+
+            const resJson = await res.json();
+            console.log(resJson);
+
+            dispatch({
+                type: 'PRODUCT_LIST_SUCCESS',
+                payload: {
+                    products: resJson,
+                },
+            });
+        } catch (error) {}
+    };
+}
+
 export const productAction = {
     addProduct,
     productModification,
     productModificationModal,
     productDelete,
+    productList,
 };

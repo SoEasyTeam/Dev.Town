@@ -20,6 +20,10 @@ function productReducer(state = initialState, action) {
                 itemImage: payload.itemImage,
                 author: payload.author,
             };
+        case 'PRODUCT_LIST_SUCCESS':
+            return {
+                products: payload.products,
+            };
         default:
             return {
                 ...state,

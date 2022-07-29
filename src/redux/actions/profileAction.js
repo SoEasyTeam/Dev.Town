@@ -1,15 +1,15 @@
 // dispatch로 보내준 token과 accountname을 파라미터로 불러온다. profile 함수 안에서 사용할 수 있게!!
-function profile(token) {
+function profile(token, accountname) {
     // console.log('profile success action');
     // 잘불러져왔는지 콘솔로 찍어봄
     // console.log(accountname);
+    console.log('안녕2');
+    console.log(token);
     return async (dispatch, getState) => {
         // 명세서 확인!
 
-        const authaccountname = getState().auth.accountname;
-
         let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/profile/${authaccountname}`;
+        const reqPath = `/profile/${accountname}`;
 
         try {
             // 명세서 확인!
@@ -53,8 +53,6 @@ function profileModification(name, image, accountname, intro) {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/user`;
         const token = getState().auth.token;
-        console.log(token);
-        console.log(name);
         try {
             let res = await fetch(url + reqPath, {
                 method: 'PUT',
@@ -80,16 +78,15 @@ function profileModification(name, image, accountname, intro) {
             dispatch({
                 type: 'PROFILE_SUCCESS',
                 payload: {
-                    id: resJson.profile._id,
-                    username: resJson.profile.username,
-                    accountname: resJson.profile.accountname,
-                    intro: resJson.profile.intro,
-                    image: resJson.profile.image,
-                    isfollow: resJson.profile.isfollow,
-                    following: resJson.profile.following,
-                    follower: resJson.profile.follower,
-                    followerCount: resJson.profile.followerCount,
-                    followingCount: resJson.profile.followingCount,
+                    id: resJson.user._id,
+                    username: resJson.user.username,
+                    accountname: resJson.user.accountname,
+                    intro: resJson.user.intro,
+                    image: resJson.user.image,
+                    following: resJson.user.following,
+                    follower: resJson.user.follower,
+                    followerCount: resJson.user.followerCount,
+                    followingCount: resJson.user.followingCount,
                 },
             });
         } catch (error) {}

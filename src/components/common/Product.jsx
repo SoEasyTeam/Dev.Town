@@ -44,6 +44,8 @@ const ProductItemBox = styled.div`
 
 const Product = ({ name, price, src, itemLink, writerId, alertOnModal, product_id, author }) => {
     const userId = useSelector(state => state.auth.id);
+    console.log(userId);
+    console.log(writerId);
     const [modalOn, setModalOn] = useState(false);
     const priceShow = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     function openModal() {

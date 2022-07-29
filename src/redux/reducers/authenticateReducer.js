@@ -1,13 +1,10 @@
-const token = localStorage.getItem('token');
-const acountname = localStorage.getItem('accountname');
-
 let initialState = {
     email: '',
     id: '',
     username: '',
-    accountname: acountname,
+    accountname: '',
     image: '',
-    token: token,
+    token: '',
     authenticate: false,
     message: '',
 };

@@ -15,7 +15,6 @@ import ProductModificationPage from './pages/ProductModificationPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
 import ChatPage from './pages/ChatPage';
 
-
 function App() {
     return (
         <Switch>

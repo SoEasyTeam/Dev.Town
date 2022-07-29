@@ -7,6 +7,7 @@ import UserProduct from '../components/profile/UserProduct';
 import UserPost from '../components/profile/UserPost';
 import { AlertLogoutModal } from '../components/common/AlertModal'
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const ProfileSection = styled.section`
     display: flex;
@@ -19,24 +20,27 @@ const ProfileSection = styled.section`
     min-height: 892px;
 `
 
-
 function MyProfilePage() {
     const [alertOn, setAlertOn] = useState(false);
     function alertOnModal() {
         setAlertOn(true);
     }
+    
     function alertOffModal() {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
 
+    const token = useSelector(state => state.auth.token);
+    const accountname = useSelector(state => state.auth.accountname);
+
     return (
         <>
             <TopBasicNav alertOnModal={alertOnModal} />
             <ProfileSection>
-                <UserProfile />
-                <UserProduct />
-                <UserPost />
+                <UserProfile token={token} accountname={accountname}/>
+                <UserProduct token={token} accountname={accountname}/>
+                <UserPost token={token} accountname={accountname}/>
             </ProfileSection>
             <TabMenu/>
             {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}

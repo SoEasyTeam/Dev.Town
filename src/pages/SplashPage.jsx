@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import LoginOptions from '../components/loginOptions/LoginOptions';
-import Splash from '../components/splash/Splash';
+import LoginOptions from '../components/login/LoginOptions';
+import Splash from '../components/login/Splash';
 
 export default function SplashPage() {
     const [isActive, setIsActive] = useState(false);

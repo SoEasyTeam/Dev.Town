@@ -14,7 +14,6 @@ import {
     TextLabel,
 } from '../components/common/TextAciveInput';
 import { profileAction } from '../redux/actions/profileAction'
-
 const ProfileModificationForm = styled.form`
     
 `
@@ -27,7 +26,6 @@ const ProfileSettingBox = styled.form`
         margin: 0 auto;
     }
 `;
-
 const ProfileImgInput = styled.input`
     position: absolute;
     overflow: hidden;
@@ -35,7 +33,6 @@ const ProfileImgInput = styled.input`
     height: 1px;
     left: -999999px;
 `
-
 export const AddProfileLabel = styled.label`
     margin: 0 auto 30px;
     position: relative;
@@ -58,11 +55,10 @@ export const AddProfileLabel = styled.label`
 `;
 
 function ProfileModificationPage() {
-    const userData = useSelector(state => state.profile.userData);
-    const username = userData.profile.username;
-    const userimage = userData.profile.image;
-    const useraccountname = userData.profile.accountname;
-    const userintro = userData.profile.intro;
+    const username = useSelector(state => state.profile.username);
+    const userimage = useSelector(state => state.profile.image);
+    const useraccountname = useSelector(state => state.profile.accountname);
+    const userintro = useSelector(state => state.profile.intro);
 
     const [name, setname] = useState(username);
     const [image, setImage] = useState(userimage);
@@ -71,12 +67,11 @@ function ProfileModificationPage() {
     const [isActive, setIsActive] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
-
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('수정 submitHandler');
         dispatch(profileAction.profileModification(name, image, accountname, intro));
-        history.push('/myprofile')
+        history.push('/myprofile');
     }
 
     const onChangeProfileImg = (event) => {
@@ -87,13 +82,11 @@ function ProfileModificationPage() {
             setImage(readerUrl);
         }
     };
-
     const changeActive = () => {
         return (name.length > 1 && name.length < 11 && accountname.length > 0 && intro.length > 0)
             ? setIsActive(false)
             : setIsActive(true);
     };
-
     return (
         <ProfileModificationForm onSubmit={onSubmitHandler}>
             <TopNavRowBox>
@@ -126,5 +119,4 @@ function ProfileModificationPage() {
         </ProfileModificationForm>
     );
 }
-
 export default ProfileModificationPage;

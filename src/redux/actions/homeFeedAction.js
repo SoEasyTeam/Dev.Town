@@ -6,8 +6,7 @@ function homeFeed() {
         // const token = getState().auth.token;
         // console.log(token);
 
-        const token = localStorage.getItem('token');
-        console.log(token);
+        const token = getState().auth.token;
 
         // const token2 = localStorage.getItem('persist:root');
         // console.log(token2);
