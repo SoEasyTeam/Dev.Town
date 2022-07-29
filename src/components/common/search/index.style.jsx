@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import EllipseImg from '../../assets/Ellipse-1.png';
 
 export const UserSearchBox = styled.div`
     width: 100%;
@@ -35,19 +33,3 @@ export const IdP = styled.p`
     text-align: left;
     color: var(--subtitle-text);
 `;
-
-const UserSearch = () => {
-    return (
-        <>
-            <UserSearchBox>
-                <ProfileLogoImg src={EllipseImg} alt='프로필로고' />
-                <NameIdBox>
-                    <NickNameP>애월읍 위니브 감귤농장</NickNameP>
-                    <IdP>@ weniv_Mandarin</IdP>
-                </NameIdBox>
-            </UserSearchBox>
-        </>
-    );
-};
-
-export default UserSearch;
