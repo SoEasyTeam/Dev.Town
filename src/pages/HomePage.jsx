@@ -1,5 +1,5 @@
 import React from 'react'
-import TabMenu from '../components/common/TabMenu'
+import TabMenu from '../components/common/tabMenu'
 import { TopMainNav } from '../components/common/nav'
 import { HomeNoFollower } from '../components/home/HomeNoFollower'
 import { useEffect } from 'react'

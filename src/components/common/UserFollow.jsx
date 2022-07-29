@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NameIdBox, NickNameP, IdP, ProfileLogoImg } from './UserSearch';
-import { UserFollowBox, FollowPageLink, FollowSBtn } from '../list/followList/follow.style'
+import { UserFollowBox, FollowPageLink, FollowSBtn } from '../list/followList/index.style'
 
 function UserFollow({ src, name, accountname, isfollow }) {
     const [isFollow, setIsFollow] = useState(isfollow);

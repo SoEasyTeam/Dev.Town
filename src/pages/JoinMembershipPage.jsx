@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components';
 import { LBtn } from '../components/common/button/index.style';
-import { EmailInput, PassWordInput, TextLabel } from '../components/common/TextAciveInput'
+import { EmailInput, PassWordInput, TextLabel } from '../components/common/textActiveInput/index.style'
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { joinAction } from '../redux/actions/joinAction';
