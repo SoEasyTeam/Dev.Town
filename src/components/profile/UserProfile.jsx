@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
-import { MBtn } from '../../components/common/Buttons';
+import { MBtn } from '../common/Buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import { profileAction } from '../../redux/actions/profileAction';
 import IconMesssageImg from '../../assets/icon/icon-message-circle.png';
