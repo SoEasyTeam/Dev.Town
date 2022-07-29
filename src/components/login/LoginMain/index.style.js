@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { LBtn } from '../../common/button/index.style';
 
-export const LoginMain = styled.section`
+export const LoginContainer = styled.section`
     width: 100vw;
     padding: 0 5%;
     .loginTitle {

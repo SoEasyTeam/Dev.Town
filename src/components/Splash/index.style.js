@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import logoImg from '../../assets/full-logo.png';
 
-const SplashRowBox = styled.div`
+export const SplashRowBox = styled.div`
     position: absolute;
     inset: 0;
     width: 100vw;
@@ -29,12 +28,3 @@ const SplashRowBox = styled.div`
         font-weight: 800;
     }
 `;
-
-export default function Splash({ isActive }) {
-    return (
-        <SplashRowBox isActive={isActive}>
-            <img className='img-logo' src={logoImg} alt='' />
-            <h1 className='tit-app'>데브타운</h1>
-        </SplashRowBox>
-    );
-}

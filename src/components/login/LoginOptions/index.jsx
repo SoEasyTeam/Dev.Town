@@ -21,8 +21,8 @@ function LoginOptions({ isActive }) {
                     페이스북 계정으로 로그인
                 </button>
                 <div className='signup-box-row'>
-                    <Link to={'/login'} className='email-link'>이메일로 로그인</Link>
-                    <Link to={'/join'} className='join-link'>회원가입</Link>
+                    <Link to='/login' className='email-link'>이메일로 로그인</Link>
+                    <Link to='/join' className='join-link'>회원가입</Link>
                 </div>
             </div>
         </LogInColBox>
