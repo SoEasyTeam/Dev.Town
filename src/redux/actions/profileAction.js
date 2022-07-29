@@ -6,7 +6,7 @@ function profile(token) {
     return async (dispatch, getState) => {
         // 명세서 확인!
 
-        const authaccountname = getState().auth.accountname;
+        const authaccountname = sessionStorage.getItem('accountname');
 
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = `/profile/${authaccountname}`;

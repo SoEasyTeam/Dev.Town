@@ -11,9 +11,11 @@ function HomePage() {
     const dispatch = useDispatch();
     const posts = useSelector(state => state.homefeed.item);
     const localToken = useSelector(state => state.auth.token);
-    const localAccountName = useSelector(state => state.auth.accountname)
-    localStorage.setItem('token', localToken);
-    localStorage.setItem('accountname', localAccountName);
+    const localAccountName = useSelector(state => state.auth.accountname);
+    const localUserId = useSelector(state => state.auth.id);
+    sessionStorage.setItem('token', localToken);
+    sessionStorage.setItem('accountname', localAccountName);
+    sessionStorage.setItem('id', localUserId);
 
     useEffect(() => {
         dispatch(homeFeedAction.homeFeed());
