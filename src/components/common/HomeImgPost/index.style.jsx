@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SettingImg from '../../../assets/icon/s-icon-more-vertical.png';
-import { ProfileLogoImg, NickNameP} from '../UserSearch';
+import { ProfileLogoImg, NickNameP } from '../search/index.style';
 import { UserFollowBox } from '../../list/followList/index.style';
 
 export const SettingBtn = styled.button`

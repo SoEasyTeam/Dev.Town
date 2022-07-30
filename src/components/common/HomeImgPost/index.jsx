@@ -1,14 +1,14 @@
 import { React, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { MyPostModal } from '../modal';
-import LikePostRowBox from './likePostRowBox';
-import { NameIdBox, IdP } from '../UserSearch';
-import {SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg,HomePostBox,HomePostProfileBox,HomePostSmallLink,HomePostParagraph,DateParagraph} from './index.style'
+import LikePostRowBox from './LkePostRowBox'
+import { NameIdBox, IdP } from '../search/index.style';
+import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBox, HomePostProfileBox, HomePostSmallLink, HomePostParagraph, DateParagraph } from './index.style'
 
 
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal, postId }) {
 
-    const post = useSelector(state=>state.getPost)
+    const post = useSelector(state => state.getPost)
     // 모달창
     const [modalOn, setModalOn] = useState(false);
 
