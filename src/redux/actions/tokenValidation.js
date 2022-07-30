@@ -1,17 +1,17 @@
-function homeFeed() {
+function tokenValid() {
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = '/post/feed';
-
-        const token = sessionStorage.getItem('token');
-
-        if (token !== 'undefined') {
+        const reqPath = '/user/checktoken';
+        const token = getState().auth.token;
+        if (token === null) {
+            console.log('token이 존재하지 않습니다.');
+        } else {
             try {
                 let res = await fetch(url + reqPath, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${token}`,
-                        'Content-type': 'application/json',
+                        'Content-Type': 'application/json',
                     },
                 });
                 const resJson = await res.json();
@@ -19,14 +19,14 @@ function homeFeed() {
                 dispatch({
                     type: 'HOMEFEED_SUCCESS',
                     payload: {
-                        item: resJson.posts.map((item) => {
-                            return item;
-                        }),
+                        isValid: resJson,
                     },
                 });
-            } catch (error) {}
+            } catch (err) {
+                console.log(err);
+            }
         }
     };
 }
 
-export const homeFeedAction = { homeFeed };
+export const tokenValidation = { tokenValid };

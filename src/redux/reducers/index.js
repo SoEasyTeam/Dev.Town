@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import authenticateReducer from './authenticateReducer';
+import { authenticateReducer, tokenValidReducer } from './authenticateReducer';
 import { postReducer, getPostReducer } from './postReducer';
 import homeFeedReducer from './homeFeedReducer';
 import { joinReducer } from './joinReducer';
 import { joinFinalReducer } from './joinReducer';
 import searchReducer from './searchReducer';
 import profileReducer from './profileReducer';
-import {writeCommentReducer,commentListReducer} from './commentListReducer'
+import { writeCommentReducer, commentListReducer } from './commentListReducer';
 import productReducer from './productReducer';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -24,6 +24,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     auth: authenticateReducer,
+    token: tokenValidReducer,
     join: joinReducer,
     joinfinal: joinFinalReducer,
     search: searchReducer,
@@ -32,8 +33,8 @@ const rootReducer = combineReducers({
     getPost: getPostReducer,
     product: productReducer,
     homefeed: homeFeedReducer,
-    writeComment:writeCommentReducer,
-    commentList:commentListReducer,
+    writeComment: writeCommentReducer,
+    commentList: commentListReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

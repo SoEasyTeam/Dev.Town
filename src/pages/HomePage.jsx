@@ -13,10 +13,13 @@ function HomePage() {
     const localToken = useSelector(state => state.auth.token);
     const localAccountName = useSelector(state => state.auth.accountname);
     const localUserId = useSelector(state => state.auth.id);
+    const tokenValid = useSelector(state=>state.token.tokenValid);
+    
     sessionStorage.setItem('token', localToken);
     sessionStorage.setItem('accountname', localAccountName);
     sessionStorage.setItem('id', localUserId);
-
+    sessionStorage.setItem('tokenValid', tokenValid.isValid);
+    
     useEffect(() => {
         dispatch(homeFeedAction.homeFeed());
     }, [])
