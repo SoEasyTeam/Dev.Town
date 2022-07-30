@@ -158,3 +158,10 @@ export const AddProfileLabel = styled.label`
         border-radius: 50%;
     }
 `;
+
+export const FollowMBtn = styled(MBtn)`
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+`
