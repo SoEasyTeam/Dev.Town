@@ -48,7 +48,7 @@
   
 </div>
 
-## 👩🏻‍💻 조다희
+## 👩🏻‍💻 조다희 - `팀리더 및 문서화`
 
 -   게시물 업로드
 -   게시물 상세 확인
@@ -58,7 +58,7 @@
 
 <br>
 
-## 👩🏻‍💻 임다현
+## 👩🏻‍💻 임다현 - `프로젝트 기획 및 디자인`
 
 -   데브 타운 아이디어 기획 및 아이콘 디자인
 -   개인 프로필 페이지
@@ -68,7 +68,7 @@
 
 <br>
 
-## 🧑🏻‍💻 추경훈
+## 🧑🏻‍💻 추경훈 - `API 통신 및 Redux 환경 구축`
 
 -   로그인
 -   회원가입
@@ -83,13 +83,13 @@
 
 ### [기술]
 
-###### - Front-End
+##### - Front-End
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
 
-###### - Back-End: 제공된 API 사용
+##### - Back-End: 제공된 API 사용
 
-###### - Deployment: Netlify
+##### - Deployment: `Netlify`
 
 </br>
 
@@ -307,13 +307,14 @@ function UploadPage() {
 ```
 <br>
 
-## ✅ `Live Share, Gather를 통한 협업과 문제 해결력`
+## ✅ `Redux 적용의 어려움 해결`
 
 ```
--   각자 기능 구현시 발생한 에러를 해결하기 위해 팀원들과 Live Share 기능을 통해 페어프로그래밍을 진행했습니다.
--   Live Share를 하면서 서로의 코드 공유를 통해, 혼자라면 어려웠을 문제점을 함께 고민하고 해결하였습니다.
--   또한, 매일 게더에 모여 함께 코딩을 진행했습니다.
--   온라인이더라도 함께 하면서 서로의 열정과 의지를 보이며 나아갈 수 있었습니다.
+- state의 관리가 어려워짐에 따라 코드의 복잡함을 최소화하기 위해 리덕스를 적용하였습니다.
+- Live Share 기능을 통한 페어프로그래밍을 진행하여 redux 적용방법에 대해 함께 고민하고 공부하였습니다.
+-
+-
+-
 ```
 <br>
 
@@ -338,7 +339,6 @@ function UploadPage() {
 
 ```
 1. 아직 구현하지 못한 기능
-
     - 팔로우 / 언팔로우 기능
     - 좋아요 기능
     - 채팅 기능
