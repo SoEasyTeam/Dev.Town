@@ -32,8 +32,8 @@ function YourProfilePage() {
             <TopBasicNav alertOnModal={alertOnModal} />
             <ProfileSection>
                 <UserProfile accountname={accountname} />
-                <UserProduct />
-                <UserPost />
+                <UserProduct accountname={accountname} />
+                <UserPost accountname={accountname} />
             </ProfileSection>
             <TabMenu />
             {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
