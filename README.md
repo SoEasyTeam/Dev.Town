@@ -13,7 +13,7 @@
 
 <br>
   
-<h1>📍 개요</h1>
+<h1>📍 프로젝트 소개</h1>
   
 </div>
 
@@ -48,19 +48,13 @@
   
 </div>
 
-## 👩🏻‍💻 조다희 - ``
+## 👩🏻‍💻 조다희 
 
 - 게시물 업로드 
 - 게시물 상세 확인 
 - 댓글 작성 
 - 잘못된 경로일 경우 404 에러 페이지 라우팅
 - 유저 검색  
-
-*사용 API*
-  - 이미지 API (여러 개의 이미지)
-  - 게시글 (게시글 작성 / 팔로워 게시글 목록 / 나의 게시글 목록 / 게시글 상세 / 게시글 수정 / 게시글 삭제 / 게시글 신고)
-  - 댓글(댓글 작성 / 댓글 리스트 / 댓글 삭제 / 댓글 신고)
-  - 유저 API (회원가입 / 로그인 / 이메일 검증 / 전체 유저 목록(개발용) / 계정검증)
 
 <br>
 
@@ -112,18 +106,78 @@
 
 </br>
 
-### [협업]
+<div align="center">
+  
+<h1>📁 파일 구조</h1>  
 
-- DevTown WorkPlace: [데브타운 워크플레이스](https://github.com/SoEasyTeam/Dev.Town)
-- Conference: [회의록](https://github.com/SoEasyTeam/Dev.Town/wiki/22-07-07-%ED%9A%8C%EC%9D%98%EB%A1%9D)
-- Coding Convention: [코딩 컨벤션](https://github.com/SoEasyTeam/Dev.Town/wiki/Code-Convention)
-
-</br>
+  
+</div>
 
 
+```
+📦 src
+ ┣ 📂 assets
+ ┣ 📂 pages
+ ┃ 📂 redux
+ ┃ ┣ 📂 actions
+ ┃ ┣ 📂 reducers
+ ┃ ┗ 📜 store.js
+ ┣ 📂 components
+ ┃ ┣ 📂 common
+ ┃ ┃ ┣ 📂 alert
+ ┃ ┃ ┣ 📂 button
+ ┃ ┃ ┣ 📂 HomeImgPost
+ ┃ ┃ ┣ 📂 modal
+ ┃ ┃ ┣ 📂 nav
+ ┃ ┃ ┣ 📂 PostInDetail
+ ┃ ┃ ┣ 📂 product
+ ┃ ┃ ┣ 📂 search
+ ┃ ┃ ┣ 📂 tabMenu
+ ┃ ┃ ┗ 📂 textActiveInput
+ ┃ ┣ 📂 error
+ ┃ ┣ 📂 home
+ ┃ ┃ ┣ 📂 HomeFeed
+ ┃ ┃ ┗ 📂 HomeNoFollower
+ ┃ ┣ 📂 join
+ ┃ ┃ ┣ 📂 JoinMemberShip
+ ┃ ┃ ┗ 📂 ProfileSetting
+ ┃ ┣ 📂 list
+ ┃ ┃ ┣ 📂 chatList
+ ┃ ┃ ┗ 📂 followList
+ ┃ ┣ 📂 information
+ ┃ ┃ ┣ 📂 InformationCard
+ ┃ ┃ ┗ 📂 InformationContainer
+ ┃ ┣ 📂 join
+ ┃ ┃ ┣ 📂 JoinMember
+ ┃ ┃ ┗ 📂 JoinProfile
+ ┃ ┣ 📂 login
+ ┃ ┃ ┣ 📂 LoginMain
+ ┃ ┃ ┣ 📂 LoginOptions
+ ┃ ┃ ┗ 📂 Splash
+ ┃ ┣ 📂 post
+ ┃ ┣ 📂 product
+ ┃ ┃ ┣ 📂 AddProduct
+ ┃ ┃ ┗ 📂 ProductModification
+ ┃ ┗ 📂 profile
+ ┃   ┣ 📂 userPost
+ ┃   ┣ 📂 userProduct
+ ┃   ┗ 📂 userProfile
+ ┣ 📜 App.jsx
+ ┗ 📜 index.js
+
+```
 <br>
 
+<div align="center">
 
+<h1>🎞 프로젝트 진행</h1>
+  <img src ='https://user-images.githubusercontent.com/74031552/181871503-de06c2eb-0e56-4c0e-8a5b-a74b4eeae162.png'>
+
+### [협업]
+- DevTown 회의, 회고: [게더타운](https://app.gather.town/app/T09wCurdXgLi1Cmp/so-easy)
+- DevTown WorkPlace: [데브타운 노션](https://github.com/SoEasyTeam/Dev.Town)
+- Conference: [회의록](https://github.com/SoEasyTeam/Dev.Town/wiki/22-07-07-%ED%9A%8C%EC%9D%98%EB%A1%9D)
+- Coding Convention: [코딩 컨벤션](https://github.com/SoEasyTeam/Dev.Town/wiki/Code-Convention)
 <div align="center">
 
 <h1>🎞 구현 기능</h1>
@@ -242,66 +296,7 @@
 <br>
 
 
-<div align="center">
-  
-<h1>📁 파일 구조</h1>  
-  
-</div>
 
-
-```
-📦 src
- ┣ 📂 assets
- ┣ 📂 pages
- ┃ 📂 redux
- ┃ ┣ 📂 actions
- ┃ ┣ 📂 reducers
- ┃ ┗ 📜 store.js
- ┣ 📂 components
- ┃ ┣ 📂 common
- ┃ ┃ ┣ 📂 alert
- ┃ ┃ ┣ 📂 button
- ┃ ┃ ┣ 📂 HomeImgPost
- ┃ ┃ ┣ 📂 modal
- ┃ ┃ ┣ 📂 nav
- ┃ ┃ ┣ 📂 PostInDetail
- ┃ ┃ ┣ 📂 product
- ┃ ┃ ┣ 📂 search
- ┃ ┃ ┣ 📂 tabMenu
- ┃ ┃ ┗ 📂 textActiveInput
- ┃ ┣ 📂 error
- ┃ ┣ 📂 home
- ┃ ┃ ┣ 📂 HomeFeed
- ┃ ┃ ┗ 📂 HomeNoFollower
- ┃ ┣ 📂 join
- ┃ ┃ ┣ 📂 JoinMemberShip
- ┃ ┃ ┗ 📂 ProfileSetting
- ┃ ┣ 📂 list
- ┃ ┃ ┣ 📂 chatList
- ┃ ┃ ┗ 📂 followList
- ┃ ┣ 📂 information
- ┃ ┃ ┣ 📂 InformationCard
- ┃ ┃ ┗ 📂 InformationContainer
- ┃ ┣ 📂 join
- ┃ ┃ ┣ 📂 JoinMember
- ┃ ┃ ┗ 📂 JoinProfile
- ┃ ┣ 📂 login
- ┃ ┃ ┣ 📂 LoginMain
- ┃ ┃ ┣ 📂 LoginOptions
- ┃ ┃ ┗ 📂 Splash
- ┃ ┣ 📂 post
- ┃ ┣ 📂 product
- ┃ ┃ ┣ 📂 AddProduct
- ┃ ┃ ┗ 📂 ProductModification
- ┃ ┗ 📂 profile
- ┃   ┣ 📂 userPost
- ┃   ┣ 📂 userProduct
- ┃   ┗ 📂 userProfile
- ┣ 📜 App.jsx
- ┗ 📜 index.js
-
-```
-<br>
 
 <div align="center">
   

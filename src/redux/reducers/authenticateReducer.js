@@ -1,9 +1,10 @@
-const token = localStorage.getItem('token');
-const acountname = localStorage.getItem('accountname');
+const token = sessionStorage.getItem('token');
+const acountname = sessionStorage.getItem('accountname');
+const id = sessionStorage.getItem('id');
 
 let initialState = {
     email: '',
-    id: '',
+    id: id,
     username: '',
     accountname: acountname,
     image: '',
