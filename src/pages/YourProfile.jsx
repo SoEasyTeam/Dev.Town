@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import { useLocation } from "react-router-dom";
 import UserProfile from '../components/profile/userProfile'
 import UserProduct from '../components/profile/userProduct';
 import UserPost from '../components/profile/userPost';
@@ -16,12 +17,21 @@ function YourProfilePage() {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
+    const location = useLocation();
+    const checkAccountName = () => {
+        if (location.pathname.split("/")[1] === "yourpage") {
+            const accountname = location.search.split("id=")[1];
+            return accountname;
+        }
+    };
+
+    const accountname = checkAccountName();
 
     return (
         <>
             <TopBasicNav alertOnModal={alertOnModal} />
             <ProfileSection>
-                <UserProfile />
+                <UserProfile accountname={accountname} />
                 <UserProduct />
                 <UserPost />
             </ProfileSection>

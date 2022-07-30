@@ -18,10 +18,13 @@ function UserFollow({ src, name, accountname, isfollow }) {
         }
     }
 
+    function accountnameconsole() {
+        console.log(accountname)
+    }
     return (
         <>
             <UserFollowBox>
-                <FollowPageLink to='/yourpage' >
+                <FollowPageLink to={{ pathname: '/yourpage', search: `?id=${accountname}` }} onClick={accountnameconsole}>
                     <ProfileLogoImg src={src} alt='프로필로고' />
                     <NameIdBox>
                         <NickNameP>{name}</NickNameP>

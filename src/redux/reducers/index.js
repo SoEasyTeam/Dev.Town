@@ -6,7 +6,7 @@ import { joinReducer } from './joinReducer';
 import { joinFinalReducer } from './joinReducer';
 import searchReducer from './searchReducer';
 import profileReducer from './profileReducer';
-import {writeCommentReducer,commentListReducer} from './commentListReducer'
+import { writeCommentReducer, commentListReducer } from './commentListReducer'
 import productReducer from './productReducer';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -32,8 +32,8 @@ const rootReducer = combineReducers({
     getPost: getPostReducer,
     product: productReducer,
     homefeed: homeFeedReducer,
-    writeComment:writeCommentReducer,
-    commentList:commentListReducer,
+    writeComment: writeCommentReducer,
+    commentList: commentListReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

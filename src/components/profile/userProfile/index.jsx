@@ -7,7 +7,7 @@ import IconMesssageImg from '../../../assets/icon/icon-message-circle.png';
 import IconShareImg from '../../../assets/icon/icon-share.png';
 import { ProfileName, ProfileAccount, ProfileIntro, FollowLink, MyProfileBtn, ProfileAreaCol, ProfileImg, CircleBtns } from './index.style';
 
-function UserProfile() {
+function UserProfile(props) {
     const [userData, setUserData] = useState()
     const [isFollow, setIsFollow] = useState();
     const [isFollowWord, setIsFollowWord] = useState('팔로우');
@@ -16,8 +16,8 @@ function UserProfile() {
     const history = useHistory();
     const token = sessionStorage.getItem('token');
 
-    const getData = async () => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${Myaccountname}`, {
+    const getData = async (account) => {
+        const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -30,7 +30,12 @@ function UserProfile() {
     }
 
     useEffect(() => {
-        getData()
+        if (props.accountname) {
+            getData(props.accountname)
+        }
+        else {
+            getData(Myaccountname)
+        }
     }, [])
 
     if (!userData) {
