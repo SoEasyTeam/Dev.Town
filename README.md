@@ -3,15 +3,11 @@
 ### [배포 URL]
 
 - URL: [주니어 개발자들의 커뮤니티 데브타운](https://spontaneous-cuchufli-e25085.netlify.app/)
-- 계정
+- 테스트 계정
   - `ID`: devtown@test.com
   - `PassWord`: 123456
 
 <div align="center">
-  
-![메인사진]()
-
-<br>
   
 <h1>📍 프로젝트 소개</h1>
   
@@ -30,7 +26,7 @@
 <br>
 <div align='center'>
   
-<h1> 👥 팀원 소개 </h1>
+<h1>팀원 소개</h1>
 
 |                                                         **조다희**                                                         |                                                               **임다현**                                                               |                                                  **추경훈**                                             
 | :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
@@ -44,12 +40,13 @@
 
 <div align="center">
 
-<h1>👤 역할 분담</h1>
+<h1>역할 분담</h1>
   
 </div>
 
 ## 👩🏻‍💻 조다희 
 
+###### 기능
 - 게시물 업로드 
 - 게시물 상세 확인 
 - 댓글 작성 
@@ -91,18 +88,13 @@
 <div align="center">
 
 <h1>⚙️ 개발 환경</h1>
-  
-</div>
-<div align="center">
-  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> 
- <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=React&logoColor=white"> 
- <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"> 
-</div>
 
 ### [기술]
 
-- FrontEnd: React, Redux, Styled-components
-- BackEnd: 제공된 API 사용
+###### - Front-End
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"> 
+###### - Back-End: 제공된 API 사용
+###### - Deployment: Netlify
 
 </br>
 
@@ -110,7 +102,6 @@
   
 <h1>📁 파일 구조</h1>  
 
-  
 </div>
 
 
@@ -175,12 +166,12 @@
 
 ### [협업]
 - DevTown 회의, 회고: [게더타운](https://app.gather.town/app/T09wCurdXgLi1Cmp/so-easy)
-- DevTown WorkPlace: [데브타운 노션](https://github.com/SoEasyTeam/Dev.Town)
+- Documentation: [데브타운 노션](https://github.com/SoEasyTeam/Dev.Town)
 - Conference: [회의록](https://github.com/SoEasyTeam/Dev.Town/wiki/22-07-07-%ED%9A%8C%EC%9D%98%EB%A1%9D)
 - Coding Convention: [코딩 컨벤션](https://github.com/SoEasyTeam/Dev.Town/wiki/Code-Convention)
 <div align="center">
 
-<h1>🎞 구현 기능</h1>
+<h1>구현 기능</h1>
   
 </div>
 
@@ -254,22 +245,96 @@
 </div>
 
 
-## ✅ `트러블슈팅이나 협업시 같이 해결한 문제 쓰기 1`
+##### ✅ `트러블슈팅` 게시물 업로드 기능에서 이미지 미리보기와 서버 전송 
 
 
+- Blob, FileReader, FormData 객체의 이해
+- FormData 객체 생성 후 이미지 url을 넣어 서버로 보내는 작업 
+[시도]
+- 이미지를 서버에 업로드하는 액션과 포스트하는 액션을 따로 설정 <br> => 오히려 코드의 복잡도가 올라가고 그다지 효율적이지 않아 postAction 이라는 하나의 함수로 dispatch 설정
+2. 
 
-```
-- 
-- 
-- 
-- 
-- 
-- 
-- 
+
+```js
+function UploadPage() {
+    const [postText, setPostText] = useState('');
+    const [uploadedImg, setUploadedImg] = useState([]);
+    const [imgPreview, setImgPreview] = useState([]);
+
+    //중략
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        if (uploadedImg === [] && postText === '') {
+            alert('게시물을 작성해주세요');
+        } else {
+            history.push('/myprofile');
+            dispatch(postAction.post(uploadedImg, postText));
+        }
+    };
+
+    const HandlePostText = (e) => {
+        setPostText(e.target.value);
+    };
+
+    const HandleOnchange = (e) => {
+        let prevImgs = [];
+        for (let index = 0; index < e.target.files.length; index++) {
+            const element = e.target.files[index];
+            const reader = new FileReader(); //file을 비동기로 읽기 위한 FileReader 객체를 생성
+            reader.onload = function () { //FileReader가 이미지를 잘 인코딩하고 난 후의 결과를 처리
+                prevImgs.push(reader.result);
+                setImgPreview((prev) => {
+                    if (prevImgs.length <= 3) {
+                        let newPreviews = prevImgs;
+                        return newPreviews;
+                    } else {
+                        return prev;
+                    }
+                });
+            };
+            reader.readAsDataURL(element);
+        }
+
+        setUploadedImg((prev) => {
+            if (prev.length < 3) {
+                let newList = e.target.files;
+                return newList;
+            } else {
+                alert('이미지는 최대 3장까지 업로드가 가능합니다.');
+                return prev;
+            }
+        });
+    };
+};
+// 이전 코드: 이미지 미리보기 로직과 이미지 url 만드는 로직을 useEffect 안에다 작성하여 코드가 제대로 동작이 안됨.
+// useEffect(() => {
+//         for (let index = 0; index < uploadedImg.length; index++) {
+//             const file = uploadedImg[index];
+//             const reader = new FileReader();
+//             reader.onloadend = () => {
+//                 SetImgPreview((prev) => {
+//                     let newPreviews = [...prev, reader.result];
+//                     if (newPreviews.length > 3){
+//                         alert('이미지는 최대 3장까지 업로드가 가능합니다.')
+//                         newPreviews = newPreviews.slice(0,3)
+//                         return newPreviews
+//                     }
+//                     return newPreviews;
+//                 });
+//             };
+//             reader.readAsDataURL(file);
+//             const formData = new FormData()
+//             formData.append('image',file)
+//             console.log(formData);
+//         }
+//     }, [uploadedImg]);
+
+//후략
 ```
 <br>
 
-## ✅ `트러블슈팅이나 협업시 같이 해결한 문제 쓰기 2`
+##### ✅ `트러블슈팅이나 협업시 같이 해결한 문제 쓰기 2`
 ```
 - 
 - 
@@ -283,7 +348,7 @@
 <br>
 
 
-## ✅ `트러블슈팅이나 협업시 같이 해결한 문제 쓰기 3`
+##### ✅ `트러블슈팅이나 협업시 같이 해결한 문제 쓰기 3`
 ```
 - 
 - 
@@ -300,15 +365,22 @@
 
 <div align="center">
   
-<h1>♻️ 보완할 부분</h1>  
+<h1>♻️ 추후 보완할 부분</h1>  
 </div>
-
-```
-- 팔로우 / 언팔로우 기능
-- 좋아요 기능
-- 채팅 기능
-- 계정 검색 후 해당 계정으로 이동 기능
-- 신고하기 기능
-```
-
+1. 아직 완성 못한 기능 구현
 <br>
+
+```
+- 팔로우 / 언팔로우
+- 좋아요 
+- 채팅
+- 계정 검색 후 해당 계정으로 이동 
+- 게시물 수정
+- 신고하기 
+```
+<br>
+2. 컴포넌트의 아토믹화
+<br>
+3. 반복되는 코드를 없애고 커스텀훅, 모듈 제작하여 적용
+<br>
+4. 리렌더링 최소화
