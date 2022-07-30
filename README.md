@@ -32,11 +32,11 @@
   
 <h1> 👥 팀원 소개 </h1>
 
-|                                                               **조다희**                                                               |                                                                **임다현**                                                                 |                                                                **추경훈**                                                                 |
-| :------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://user-images.githubusercontent.com/74031552/180374703-22c36d16-5a0f-4cb8-8f94-e35b9aee6167.png" height=180 width=180> |  <img src="https://user-images.githubusercontent.com/82689971/181879561-ea00bf01-07ec-4cdc-8bcd-b6dd2b4cba6f.jpeg" height=180 width=180>  |  <img src="https://user-images.githubusercontent.com/74031552/180374844-9ca5abad-6ad9-4ea0-9420-405519e9e14c.png" height=180 width=180>   |
-|               **blog**: [daheejo](https://daheejo.tistory.com/) </br> **github**: [daheejo](https://github.com/daheejo)                |                    **blog**: [Dayhun](https://velog.io/@dayhun) </br> **github**: [Dayhun](https://github.com/Dayhun)                     |               **blog**: [chuhoon](https://blog.naver.com/khchu1220) </br> **github**: [chuhoon](https://github.com/chuhoon)               |
-|            ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![](https://img.shields.io/badge/-Team%20leader-green)            | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Functional%20Design](https://img.shields.io/badge/Functional%20Design-f8b62d) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Functional%20Design](https://img.shields.io/badge/Functional%20Design-f8b62d) |
+|                                                               **조다희**                                                               |                                                                **임다현**                                                                 |                                                               **추경훈**                                                               |
+| :------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: | -------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://user-images.githubusercontent.com/74031552/180374703-22c36d16-5a0f-4cb8-8f94-e35b9aee6167.png" height=180 width=180> |  <img src="https://user-images.githubusercontent.com/82689971/181879561-ea00bf01-07ec-4cdc-8bcd-b6dd2b4cba6f.jpeg" height=180 width=180>  | <img src="https://user-images.githubusercontent.com/74031552/180374844-9ca5abad-6ad9-4ea0-9420-405519e9e14c.png" height=180 width=180> |
+|               **blog**: [daheejo](https://daheejo.tistory.com/) </br> **github**: [daheejo](https://github.com/daheejo)                |                    **blog**: [Dayhun](https://velog.io/@dayhun) </br> **github**: [Dayhun](https://github.com/Dayhun)                     |             **blog**: [chuhoon](https://blog.naver.com/khchu1220) </br> **github**: [chuhoon](https://github.com/chuhoon)              |
+|            ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![](https://img.shields.io/badge/-Team%20leader-green)            | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Functional%20Design](https://img.shields.io/badge/Functional%20Design-f8b62d) |               ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![](https://img.shields.io/badge/-Design-orange)               | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Planning](https://img.shields.io/badge/-Planning-f67280) |
 
 </div>
 
@@ -68,13 +68,20 @@
 
 <br>
 
-## 🧑🏻‍💻 추경훈
+## 🧑🏻‍💻 추경훈 - `ㅇㅇㅇㅇ`
 
 -   로그인
 -   회원가입
 -   프로필 설정
 -   홈 피드리스트
 -   판매 상품 등록, 수정, 삭제
+
+_사용 API_
+
+-   이미지 API (한 개의 이미지)
+-   유저 API (회원가입 / 로그인 / 이메일 검증 / 전체 유저 목록(개발용) / 계정검증)
+-   상품 (상품 리스트 / 상품 상세 / 상품 등록 / 상품 수정 / 상품 삭제 )
+-   프로필 설정
 
 <br>
 <div align="center">
@@ -90,7 +97,7 @@
 
 ### [기술]
 
--   FrontEnd: React, Redux, Redux-Thunk, Styled-components
+-   FrontEnd: React, Redux, Styled-components
 -   BackEnd: 제공된 API 사용
 
 </br>
@@ -279,14 +286,16 @@
 
 <br>
 
-## ✅ `깃허브를 통한 협업 도전과 성장`
+## ✅ `트러블슈팅이나 협업시 같이 해결한 문제 쓰기 3`
 
 ```
-- Git을 실전으로 사용해 부딪혀 보며 명령어를 자연스럽게 익히게 되었습니다.
-- Git-flow 전략을 간단하게 살펴보고 우리에 맞는 Git-flow 규칙을 만들어 활용했습니다.
-- 한 번에 하나의 기능만 있는 Commit을 작성해야 한다는 것을 깨달았습니다. 코드를 수정해야 할 때 기능 하나씩 Commit을 하지 않았을 경우 원치 않은 코드까지 날아가기 때문입니다.
-- 풀 리퀘스트 시에 코드 리뷰를 통해 서로를 피드백하며 코드를 개선하는 과정을 가졌습니다. 코드 리뷰를 통해 스타일링을 통일하고 장애를 사전에 예방하였습니다.
-- 풀 리퀘스트 conflict 발생 시 해결 능력이 생겼습니다.
+-
+-
+-
+-
+-
+-
+-
 ```
 
 <br>
