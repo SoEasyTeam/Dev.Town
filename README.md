@@ -34,7 +34,7 @@
 
 |                                                         **조다희**                                                         |                                                               **임다현**                                                               |                                                  **추경훈**                                             
 | :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
-|                     <img src="https://user-images.githubusercontent.com/74031552/180374703-22c36d16-5a0f-4cb8-8f94-e35b9aee6167.png" height=180 width=180>                     |                           <img src="https://user-images.githubusercontent.com/74031552/180374979-0d57af54-87a4-4d0d-a318-f92aa5f831e9.png" height=180 width=180>                           |              <img src="https://user-images.githubusercontent.com/74031552/180374844-9ca5abad-6ad9-4ea0-9420-405519e9e14c.png" height=180 width=180>                         |
+|                     <img src="https://user-images.githubusercontent.com/74031552/180374703-22c36d16-5a0f-4cb8-8f94-e35b9aee6167.png" height=180 width=180>                     |                           <img src="https://user-images.githubusercontent.com/82689971/181879561-ea00bf01-07ec-4cdc-8bcd-b6dd2b4cba6f.jpeg" height=180 width=180>                           |              <img src="https://user-images.githubusercontent.com/74031552/180374844-9ca5abad-6ad9-4ea0-9420-405519e9e14c.png" height=180 width=180>                         |
 |  **blog**: [daheejo](https://daheejo.tistory.com/) </br> **github**: [daheejo](https://github.com/daheejo)  |                  **blog**: [Dayhun](https://velog.io/@dayhun) </br> **github**: [Dayhun](https://github.com/Dayhun)                   |          **blog**: [chuhoon](https://blog.naver.com/khchu1220) </br> **github**: [chuhoon](https://github.com/chuhoon)       |
 | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![](https://img.shields.io/badge/-Team%20leader-green) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Functional%20Design](https://img.shields.io/badge/Functional%20Design-f8b62d) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![](https://img.shields.io/badge/-Design-orange) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Planning](https://img.shields.io/badge/-Planning-f67280) |
 
@@ -253,16 +253,14 @@
 <h1> ⚠️ 개발하며 겪은 이슈 </h1>
 </div>
 
-## ✅ `트러블슈팅이나 협업시 같이 해결한 문제 쓰기 1`
+## ✅ `Live Share, Gather를 통한 협업과 문제 해결력`
 
 ```
-- 
-- 
-- 
-- 
-- 
-- 
-- 
+- 각자 기능 구현시 발생한 에러를 해결하기 위해 팀원들과 Live Share 기능을 통해 페어프로그래밍을 진행했습니다.
+- Live Share를 하면서 서로의 코드 공유를 통해, 혼자라면 어려웠을 문제점을 함께 고민하고 해결하였습니다.
+- 또한, 매일 게더에 모여 함께 코딩을 진행했습니다.
+- 온라인이더라도 함께 하면서 서로의 열정과 의지를 보이며 나아갈 수 있었습니다.
+- 문제가 생기거나 의견이 생기면, 즉각적으로 소통할 수 있는 환경을 만들어 원활한 협업을 진행했습니다.
 ```
 <br>
 
