@@ -6,6 +6,7 @@ function UserFollow({ src, name, accountname, isfollow }) {
     const [isFollow, setIsFollow] = useState(isfollow);
     const [isFollowWord, setIsFollowWord] = useState('팔로우');
     const [isUnfollowWord, setIsUnfollowWord] = useState('취소');
+
     function changeIsFollow() {
         console.log('팔로우취소 가동!', isfollow)
         setIsFollow(!isFollow);
@@ -18,13 +19,10 @@ function UserFollow({ src, name, accountname, isfollow }) {
         }
     }
 
-    function accountnameconsole() {
-        console.log(accountname)
-    }
     return (
         <>
             <UserFollowBox>
-                <FollowPageLink to={{ pathname: '/yourpage', search: `?id=${accountname}` }} onClick={accountnameconsole}>
+                <FollowPageLink to={{ pathname: '/yourpage', search: `?id=${accountname}` }} >
                     <ProfileLogoImg src={src} alt='프로필로고' />
                     <NameIdBox>
                         <NickNameP>{name}</NickNameP>

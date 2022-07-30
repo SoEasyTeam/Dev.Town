@@ -65,14 +65,14 @@ function UserProfile(props) {
             <ProfileAreaCol>
                 <div className='profileTop'>
                     <div className='followers'>
-                        <FollowLink to='/follower'>{userData.profile.followerCount}</FollowLink>
+                        <FollowLink to={{ pathname: '/follower', search: `?id=${userData.profile.accountname}` }} >{userData.profile.followerCount}</FollowLink>
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
                         <ProfileImg src={userData.profile.image} alt='프로필이미지' />
                     </div>
                     <div className='followings'>
-                        <FollowLink to='/following'>{userData.profile.followingCount}</FollowLink>
+                        <FollowLink to={{ pathname: '/following', search: `?id=${userData.profile.accountname}` }}>{userData.profile.followingCount}</FollowLink>
                         <p>followings</p>
                     </div>
                 </div>
