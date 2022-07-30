@@ -158,10 +158,9 @@
 
 <h1>📋 프로젝트 진행</h1>
   <img src ='https://user-images.githubusercontent.com/74031552/181871503-de06c2eb-0e56-4c0e-8a5b-a74b4eeae162.png'>
-
-### [협업]
-
 </div>
+   
+### [협업]
 
 -   DevTown 회의, 회고: [게더타운](https://app.gather.town/app/T09wCurdXgLi1Cmp/so-easy)
 -   Documentation: [데브타운 노션](https://github.com/SoEasyTeam/Dev.Town)
@@ -214,17 +213,18 @@
 | <img src="" width="300"/> |
 
 <br>
-<br>
   
 </div>
+
 <div align='center'>
 <h1> ⚠️ 개발하며 겪은 이슈 </h1>
 </div>
 
 [시도]
-
 - 이미지를 서버에 업로드하는 액션과 포스트하는 액션을 따로 설정 
+
 => 오히려 코드의 복잡도가 올라가고 그다지 효율적이지 않아 postAction 이라는 하나의 함수로 dispatch 설정
+
 - useEffect 안에서 formData와 ~~~~ 했다가 제거
 
 ```js
@@ -305,17 +305,17 @@ function UploadPage() {
 
 //후략
 ```
+<br>
 
 ## ✅ `Live Share, Gather를 통한 협업과 문제 해결력`
 
 ```
-
 -   각자 기능 구현시 발생한 에러를 해결하기 위해 팀원들과 Live Share 기능을 통해 페어프로그래밍을 진행했습니다.
 -   Live Share를 하면서 서로의 코드 공유를 통해, 혼자라면 어려웠을 문제점을 함께 고민하고 해결하였습니다.
 -   또한, 매일 게더에 모여 함께 코딩을 진행했습니다.
 -   온라인이더라도 함께 하면서 서로의 열정과 의지를 보이며 나아갈 수 있었습니다.
-
 ```
+<br>
 
 ## ✅ `깃허브를 통한 협업 도전과 성장`
 
@@ -328,7 +328,6 @@ function UploadPage() {
 - 코드 리뷰를 통해 스타일링을 통일하고 장애를 사전에 예방하였습니다.
 - 풀 리퀘스트 conflict 발생 시 해결 능력이 생겼습니다.
 ```
-
 <br>
 
 <div align="center">
@@ -340,11 +339,11 @@ function UploadPage() {
 ```
 1. 아직 구현하지 못한 기능
 
-- 팔로우 / 언팔로우 기능
-- 좋아요 기능
-- 채팅 기능
-- 계정 검색 후 해당 계정으로 이동 기능
-- 신고하기 기능
+    - 팔로우 / 언팔로우 기능
+    - 좋아요 기능
+    - 채팅 기능
+    - 계정 검색 후 해당 계정으로 이동 기능
+    - 신고하기 기능
 
 2. 컴포넌트의 아토믹화
 
