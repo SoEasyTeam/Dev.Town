@@ -26,6 +26,11 @@ function JoinMembership() {
         : setIsActive(true);
     };
 
+    const onChangeEmailValid = (event) => {
+        setEmail(event.currentTarget.value);
+        // dispatch(joinAction.join(email,password));
+    }
+
     const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log('버튼 클릭')
@@ -44,7 +49,7 @@ function JoinMembership() {
             <h2 className='loginTitle'>이메일로 회원가입</h2>
             <form className='loginForm' onSubmit={ onSubmitHandler }>
                 <TextLabel>이메일</TextLabel>
-                <JoinEmailInput value={email} onChange={(event) => setEmail(event.currentTarget.value)} onKeyUp={nextSignUpActive}/>
+                <JoinEmailInput value={email} onChange={onChangeEmailValid} onKeyUp={nextSignUpActive}/>
                 <TextLabel>비밀번호</TextLabel>
                 <JoinPassWordInput value={password} onChange={(event) => setPassword(event.currentTarget.value)} onKeyUp={nextSignUpActive}/>
                 <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
