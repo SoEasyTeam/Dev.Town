@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { MyPostModal } from '../modal';
 import LikePostRowBox from './LkePostRowBox'
 import { NameIdBox, IdP } from '../search/index.style';
-import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBox, HomePostProfileBox, HomePostSmallLink, HomePostParagraph, DateParagraph } from './index.style'
+import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBox, HomePostProfileBox, HomePostSmallLink, HomePostParagraph, DateParagraph, HomePostProfileLink } from './index.style'
 
 
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal, postId }) {
@@ -23,14 +23,16 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
     return (
         <>
             <HomePostBox>
-                <HomePostProfileBox>
-                    <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
-                    <NameIdBox>
-                        <HomePostProfileNickName>
-                            {nickname}
-                        </HomePostProfileNickName>
-                        <IdP>@ {id}</IdP>
-                    </NameIdBox>
+                <HomePostProfileBox >
+                    <HomePostProfileLink to={{ pathname: '/yourpage', search: `?id=${id}` }}>
+                        <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
+                        <NameIdBox>
+                            <HomePostProfileNickName>
+                                {nickname}
+                            </HomePostProfileNickName>
+                            <IdP>@ {id}</IdP>
+                        </NameIdBox>
+                    </HomePostProfileLink>
                     <SettingBtn onClick={openModal} />
                 </HomePostProfileBox>
                 <HomePostSmallLink to={`./post/${postId}`}>

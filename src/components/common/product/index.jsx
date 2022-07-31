@@ -14,7 +14,7 @@ const Product = ({ name, price, src, itemLink, writerId, alertOnModal, product_i
         if (userId !== writerId) {
             setModalOn(false);
             console.log('상품링크로 이동')
-            window.open(`${itemLink}`, '_blank')
+            window.open(itemLink, '_blank')
         } else {
             setModalOn(true);
         }

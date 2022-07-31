@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useLocation } from "react-router-dom";
 import { TopFollowerNav } from '../components/common/nav'
 import UserFollow from '../components/list/followList';
 import { FollowBoxUl } from '../components/list/followList/index.style';
@@ -25,12 +25,21 @@ const FollowList = ({ userFollowerData }) => {
     )
 }
 
-function FollowerPage() {
-    const token = useSelector(state => state.auth.token);
-    const accountname = useSelector(state => state.auth.accountname);
+function FollowerPage(props) {
+    const token = sessionStorage.getItem('token');
     const [userFollowerData, setUserFollowerData] = useState('')
-    const getData = async () => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}/follower`, {
+
+    const location = useLocation();
+    const checkAccountName = () => {
+        if (location.pathname.split("/")[1] === "follower") {
+            const accountname = location.search.split("id=")[1];
+            return accountname;
+        }
+    };
+    const accountname = checkAccountName();
+
+    const getData = async (account) => {
+        const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}/follower`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -43,7 +52,12 @@ function FollowerPage() {
     }
 
     useEffect(() => {
-        getData()
+        if (props.accountname) {
+            getData(props.accountname)
+        }
+        else {
+            getData(accountname)
+        }
     }, [])
 
     return (
