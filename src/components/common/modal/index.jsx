@@ -95,7 +95,7 @@ function ProfileModal({ closeModal, alertOnModal }) {
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
-                <ButtonLink onClick={closeModal}>설정 및 개인정보</ButtonLink>
+                <ButtonLink onClick={closeModal} to={'/myprofile'}>설정 및 개인정보</ButtonLink>
                 <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>로그아웃</ButtonLink>
             </ModalContainer>
         </>
