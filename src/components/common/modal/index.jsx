@@ -11,10 +11,10 @@ function MyProductModal({ itemName, price, link, itemImage, product_id, closeMod
         dispatch(productAction.productModificationModal(itemName, price, link, itemImage, product_id, author));
     }
 
-    // const onClickDeleteBtn = () => {
-    //     dispatch(productAction.productDelete(product_id));
-    //     closeModal();
-    // }
+    const onClickDeleteBtn = () => {
+        dispatch(productAction.productDelete(product_id));
+        closeModal();
+    }
 
     document.body.style.overflow = "hidden";
     return (
@@ -22,8 +22,8 @@ function MyProductModal({ itemName, price, link, itemImage, product_id, closeMod
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
-                {/* <ButtonLink onClick={onClickDeleteBtn}>삭제</ButtonLink> */}
-                <ButtonLink onClick={() => {closeModal(); alertOnModal() }}>삭제</ButtonLink>
+                <ButtonLink onClick={onClickDeleteBtn}>삭제</ButtonLink>
+                {/* <ButtonLink onClick={() => {closeModal(); alertOnModal() }}>삭제</ButtonLink> */}
                 <ButtonLink onClick={onClickModifictionBtn} to={`./product/${product_id}`}>수정</ButtonLink>
                 <a href={link} target='_blank' rel="noreferrer">웹사이트에서 상품보기</a>
             </ModalContainer>

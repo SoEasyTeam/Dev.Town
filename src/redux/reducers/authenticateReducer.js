@@ -1,13 +1,15 @@
 const token = sessionStorage.getItem('token');
 const acountname = sessionStorage.getItem('accountname');
 const id = sessionStorage.getItem('id');
+const image = sessionStorage.getItem('image');
+const username = sessionStorage.getItem('username');
 
 let initialState = {
     email: '',
     id: id,
-    username: '',
+    username: username,
     accountname: acountname,
-    image: '',
+    image: image,
     token: token,
     authenticate: false,
     message: '',
