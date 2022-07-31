@@ -6,6 +6,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { homeFeedAction } from '../redux/actions/homeFeedAction'
 import HomeFeedBox from '../components/home/HomeFeed'
+import { authenticateAction } from '../redux/actions/authenticateAction'
+import { useHistory } from 'react-router-dom'
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -19,7 +21,11 @@ function HomePage() {
 
     useEffect(() => {
         dispatch(homeFeedAction.homeFeed());
-    }, [])
+    }, [dispatch]);
+
+    // useEffect(() => {
+    //     dispat
+    // }, [])
 
     return (
         <>

@@ -36,6 +36,7 @@ export default function CommentList() {
                     commentMonth={month}
                     commentDay={day}
                     comment={comment.content}
+                    id={comment.author.accountname}
                 />
             })
             }

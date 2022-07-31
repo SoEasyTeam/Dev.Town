@@ -43,7 +43,7 @@ function UserProfile(props) {
 
 
     if (!userData) {
-        return <div>데이터 없을 때 화면 띄우기</div>
+        return <></>
     }
 
 

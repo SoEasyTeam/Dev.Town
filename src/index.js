@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
+import ScrollToTop from './components/scroll';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -89,6 +90,7 @@ root.render(
         <PersistGate loading={null} persistor={persistor}>
             <GlobalStyle />
             <BrowserRouter>
+                <ScrollToTop />
                 <App />
             </BrowserRouter>
         </PersistGate>

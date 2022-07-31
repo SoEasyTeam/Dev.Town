@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
 import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl } from './index.style';
@@ -31,6 +31,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
                                 year={year}
                                 month={month}
                                 day={day}
+                                postId = {item.id}
                                 alertOnModal={alertOnModal}
                             />
                         </li>
@@ -41,12 +42,15 @@ function PostAreaList({ userPostData, alertOnModal }) {
     )
 }
 
-function UserPost(props, id) {
+function UserPost(props) {
     const token = sessionStorage.getItem('token');
     const accountname = sessionStorage.getItem('accountname');
     const [userPostData, setUserPostData] = useState('')
     const [alertOn, setAlertOn] = useState(false);
     const [isActive, setIsActive] = useState(true);
+    const location = useLocation();
+
+
     // console.log('버튼', isActive)
     const getData = async (account) => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${account}/userpost`, {
@@ -94,8 +98,8 @@ function UserPost(props, id) {
                     <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
                 </PostAreaListUl>
             </PostArea>
-            {alertOn === true && id !== accountname ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
-            {alertOn === true && id === accountname ? <AlertDeclareModal alertOffModal={alertOffModal} /> : ''}
+            {alertOn === true && location.pathname.split("/")[1] === "myprofile" ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
+            {alertOn === true && location.pathname.split("/")[1] === "yourpage" ? <AlertDeclareModal alertOffModal={alertOffModal} /> : ''}
         </>
     )
 }
