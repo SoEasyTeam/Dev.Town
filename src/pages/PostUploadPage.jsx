@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { TopUploadNav } from '../components/common/nav';
 import { DefaultProfileImg, ImgUploadBtn } from '../components/common/button';
 import { UploadForm, UploadSection, UploadInputSection, UploadImgInput } from '../components/post/index.style'
+import {MyProfileOnComment} from '../components/comment/commentInput/index.style'
 
 function UploadPage() {
     const history = useHistory();
@@ -13,8 +14,7 @@ function UploadPage() {
     const [imgPreview, setImgPreview] = useState([]);
     const fileInputRef = useRef();
     const dispatch = useDispatch();
-    const token = useSelector((state) => state.auth.token);
-    const imgUrl = useSelector((state) => state.post.img);
+    const profileImg = useSelector(state=>state.auth)
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -68,7 +68,8 @@ function UploadPage() {
                 <TopUploadNav />
                 <UploadSection>
                     <div className='profileImg'>
-                        <DefaultProfileImg />
+                        {/* <DefaultProfileImg /> */}
+                        <MyProfileOnComment src={profileImg.image}/>
                     </div>
                     <UploadInputSection>
                         <textarea
