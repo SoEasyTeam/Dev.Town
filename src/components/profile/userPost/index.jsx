@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
 import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl } from './index.style';
@@ -42,7 +42,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
     )
 }
 
-function UserPost(props, id) {
+function UserPost(props) {
     const token = sessionStorage.getItem('token');
     const accountname = sessionStorage.getItem('accountname');
     const [userPostData, setUserPostData] = useState('')
@@ -78,8 +78,6 @@ function UserPost(props, id) {
     }
     function alertOnModal() {
         setAlertOn(true);
-        console.log('게시물 계정이름', id);
-        console.log('로그인 유저 계정이름', accountname);
     }
     function alertOffModal() {
         document.body.style.overflow = "unset";
