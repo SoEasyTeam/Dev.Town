@@ -240,12 +240,16 @@
 ```
 <br>
 
-## ✅ `Redux 적용 이슈`
+## ✅ `Redux 및 Redux-Persist 적용 이슈`
 
 ```
 - 팀원 모두 리덕스를 잘 모르는 상태에서 사용하려다보니, 리덕스에 대해 공부하고 적용하기까지 시간이 많이 소요되었습니다.
 - Live Share와 게더타운을 이용한 페어프로그래밍을 통해, 리덕스를 적용하여 코드를 작성하였습니다.
 - 이해한 내용을 주석으로 작성하여, 리덕스 활용시 쉽게 이해할 수 있도록 하였습니다.
+- Redux-Persist를 사용해 새로고침이나 웹을 종료해도 store가 리셋된는 것을 방지하고 싶었지만
+  적용을 해도 계속해서 데이터가 휘발되는 이슈가 있었습니다.
+- 또한 특정한 reducer에만 데이터를 사용하고 싶은 경우 persistConfig에 whitelist를 설정해 넣어줬지만
+  데이터가 휘발되어 현재는 Redux-Persist를 사용하지 않고 sessionStorage를 통해 새로고침을 방지하고 있습니다.
 ```
 <div align='center'>
 <img src="https://user-images.githubusercontent.com/82689971/181918721-eb7c221e-2dfb-4351-8344-0c67f4800d80.png" height=300>
