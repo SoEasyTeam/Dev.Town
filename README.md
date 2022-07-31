@@ -248,8 +248,8 @@
 - 이해한 내용을 주석으로 작성하여, 리덕스 활용시 쉽게 이해할 수 있도록 하였습니다.
 ```
 <div align='center'>
-<img src="https://user-images.githubusercontent.com/82689971/181918721-eb7c221e-2dfb-4351-8344-0c67f4800d80.png" height=300>
-<img height="300" alt="스크린샷 2022-07-30 오후 11 29 07" src="https://user-images.githubusercontent.com/82689971/181918896-cdf05c31-731b-4d02-9ab1-971942f2d44a.png">
+<img src="https://user-images.githubusercontent.com/82689971/181918721-eb7c221e-2dfb-4351-8344-0c67f4800d80.png" height=250>
+<img height="250" alt="스크린샷 2022-07-30 오후 11 29 07" src="https://user-images.githubusercontent.com/82689971/181918896-cdf05c31-731b-4d02-9ab1-971942f2d44a.png">
 </div>
 <br>
 
