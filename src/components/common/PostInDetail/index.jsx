@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBox, HomePostProfileBox, HomePostSmallBox, HomePostParagraph, DateParagraph, LikePostBox, } from './index.style'
+import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBox, HomePostProfileBox, HomePostSmallBox, HomePostParagraph, DateParagraph, LikePostBox, HomePostProfileLink } from './index.style'
 import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../search/index.style'
 import LikePostRowBox from '../HomeImgPost/LkePostRowBox'
 import { MyPostModal } from '../modal';
@@ -34,16 +34,18 @@ function PostInDetail({
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <HomePostProfileLogoImg
-                        src={profileimg}
-                        alt='프로필로고'
-                    />
-                    <NameIdBox>
-                        <HomePostProfileNickName>
-                            {nickname}
-                        </HomePostProfileNickName>
-                        <IdP>@ {id}</IdP>
-                    </NameIdBox>
+                    <HomePostProfileLink to={{ pathname: '/yourpage', search: `?id=${id}` }}>
+                        <HomePostProfileLogoImg
+                            src={profileimg}
+                            alt='프로필로고'
+                        />
+                        <NameIdBox>
+                            <HomePostProfileNickName>
+                                {nickname}
+                            </HomePostProfileNickName>
+                            <IdP>@ {id}</IdP>
+                        </NameIdBox>
+                    </HomePostProfileLink>
                     <SettingBtn onClick={openModal} />
                 </HomePostProfileBox>
                 <HomePostSmallBox>
