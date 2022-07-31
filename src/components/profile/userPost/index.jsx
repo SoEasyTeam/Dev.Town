@@ -18,7 +18,6 @@ function PostAreaList({ userPostData, alertOnModal }) {
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
-                    console.log(item);
                     return (
                         <li key={item.id}>
                             <HomeImgPost
@@ -62,7 +61,7 @@ function UserPost(props) {
             }
         })
         const json = await res.json()
-        // console.log('게시물 : ', json)
+        console.log('게시물 : ', json)
         setUserPostData(json)
     }
     useEffect(() => {
