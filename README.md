@@ -173,45 +173,45 @@
 
 <div align='center'>
 
-|         0.splash          | 1.회원가입 |
+|         0. splash          | 1. 회원가입 |
 | :-----------------------: | :--------: |
 | <img src="https://user-images.githubusercontent.com/82689971/182021870-3cd5c981-9730-47d5-ac05-17a571f48263.gif" width="300"/> |<img src="https://user-images.githubusercontent.com/82689971/182022928-0eb992ed-a13a-4dc5-969e-99c2ddedb42f.gif" width="300"/>
 
-|         2.프로필 설정          | 3.로그인 |
+|         2. 프로필 설정          | 3. 로그인 |
 | :-----------------------: | :------: |
-| <img src="https://user-images.githubusercontent.com/82689971/182022982-39bdbf6b-d248-428d-8933-f91720358d44.gif" width="300"/> |  <img src="https://user-images.githubusercontent.com/82689971/182023004-7a40b81c-70d7-4e0e-8456-bdb61a6dea78.gif" width="300"/>  
+| <img src="https://user-images.githubusercontent.com/82689971/182022982-39bdbf6b-d248-428d-8933-f91720358d44.gif" width="300"/> |  <img src="https://user-images.githubusercontent.com/82689971/182031026-72b72f10-bef6-48e9-a85c-23b74d3b01fa.gif" width="300"/>  
 
-|         2.로그인          | 3.홈화면 |
+|         4. 홈화면         | 5. 계정 검색 |
 | :-----------------------: | :------: |
-| <img src="" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/82689971/182031235-be2c998c-fb33-4b47-98fa-d7d725db09be.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182031388-8f0bca25-dbf9-4ebf-9a85-979cbd0e22c0.gif" width="300"/>
 
-|        4.계정 검색        | 5. 소식 |
+|        6. 채팅(수정중)       | 7. 내 프로필 |
 | :-----------------------: | :-----: |
-| <img src="" width="300"/> |
+|  <img src="" width="300"/>  | <img src="https://user-images.githubusercontent.com/82689971/182031732-7d0a4931-2c67-4565-8a78-b3fb17c79bc2.gif" width="300"/> 
 
-|       6.마이 프로필       | 6-1.마이 프로필 수정 |
+|      8. 내 프로필 수정       | 9. 상품 등록 |
 | :-----------------------: | :------------------: |
-| <img src="" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/82689971/182031911-c97f1a38-5600-49a1-b543-40799d270985.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182032375-c3f64a70-c987-44cf-b3b5-d94e3f380d49.gif" width="300"/> 
 
-|        7.상품 등록        | 7-1.상품 등록 수정 |
+|       10. 내 상품 수정        | 11. 내 상품 삭제 |
 | :-----------------------: | :----------------: |
-| <img src="" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/82689971/182032579-e0064495-51c3-47e4-970b-f3bf6601aa3e.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182035684-9eae944d-85b5-4642-99a3-514dfe30dacc.gif" width="300"/> 
 
-|       8.게시글 등록       | 8-1.게시글 등록 수정 |
+|        12. 내 상품 링크 이동     | 13.팔로우, 팔로워 |
 | :-----------------------: | :------------------: |
-| <img src="" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/82689971/182032920-8dc967cc-a100-4d6e-aefb-2f7bd66c599b.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182033019-ac098c62-101f-49dc-ade8-5652efaeb529.gif" width="300"/> 
 
-|     9.팔로우, 팔로워      | 10.유저 프로필 |
+|     14. 게시글 등록   | 15. 게시글 댓글 등록 |
 | :-----------------------: | :------------: |
-| <img src="" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/82689971/182033245-10b31535-d4a7-4056-89aa-c6b81070dee4.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182033537-61266d47-83d3-4e91-8c27-7946c57e91e1.gif" width="300"/> 
 
-|   11.게시글 댓글, 삭제    | 12.게시글 신고 |
+|   16. 상대 프로필   | 17. 상대 게시글 신고 |
 | :-----------------------: | :------------: |
-| <img src="" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/82689971/182033634-2d4a00a1-6224-4423-b778-bbb89d502081.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182033759-88b13db7-0916-4776-8e72-121f58b04b33.gif" width="300"/> 
 
-|    13.상품 댓글, 삭제     | 14.상품 신고 |
-| :-----------------------: | :----------: |
-| <img src="" width="300"/> |
+|   18. 상대 상품 클릭시 링크 이동   | 19. 설정 및 로그아웃 |
+| :-----------------------: | :------------: |
+| <img src="https://user-images.githubusercontent.com/82689971/182033847-b58fa02c-60af-4f6e-bf6a-411ecafddf9b.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182035763-8086894c-5192-44c2-bd38-b78e7a982b08.gif" width="300"/> 
 
 <br>
   
@@ -252,8 +252,8 @@
   데이터가 휘발되어 현재는 Redux-Persist를 사용하지 않고 sessionStorage를 통해 새로고침을 방지하고 있습니다.
 ```
 <div align='center'>
-<img src="https://user-images.githubusercontent.com/82689971/181918721-eb7c221e-2dfb-4351-8344-0c67f4800d80.png" height=300>
-<img height="300" alt="스크린샷 2022-07-30 오후 11 29 07" src="https://user-images.githubusercontent.com/82689971/181918896-cdf05c31-731b-4d02-9ab1-971942f2d44a.png">
+<img src="https://user-images.githubusercontent.com/82689971/181918721-eb7c221e-2dfb-4351-8344-0c67f4800d80.png" height=250>
+<img height="250" alt="스크린샷 2022-07-30 오후 11 29 07" src="https://user-images.githubusercontent.com/82689971/181918896-cdf05c31-731b-4d02-9ab1-971942f2d44a.png">
 </div>
 <br>
 

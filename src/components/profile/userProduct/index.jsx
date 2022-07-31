@@ -5,6 +5,7 @@ import { AlertProductModal } from '../../common/alert';
 import { ProductAreaListUl, ProductArea } from './index.style'
 
 const ProductAreaList = ({ userProductData, alertOnModal }) => {
+
     return (
         <>
             {userProductData &&
