@@ -1,19 +1,27 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { authenticateAction } from '../../../redux/actions/authenticateAction';
 import { productAction } from '../../../redux/actions/productAcition';
 import { AlertBox, AlertOutside, AlertContainer, AlertUl, DeleteAlertBox, AlertP, ButtonBox, CancelBtn, DeleteBtn } from './index.style'
 
 // 상품 삭제
-function AlertProductModal({ product_id, alertOffModal }) {
+function AlertProductModal({ alertOffModal }) {
     document.body.style.overflow = "hidden";
     console.log('alertmodal 나옴')
     const dispatch = useDispatch();
+    useSelector()
+    // console.log(product_id)
 
     const onClickDeleteBtn = () => {
         console.log('삭제해라')
-        dispatch(productAction.productDelete(product_id));
         alertOffModal();
     }
+
+    // useEffect(() => {
+    //     dispatch(productAction.productDelete(product_id));
+    // }, [product_id])
     return (
         <>
             <AlertBox>
@@ -73,6 +81,11 @@ function AlertDeclareModal({ alertOffModal }) {
 // 왜 로그아웃 alert만 화면 왼쪽으로 붙는지 모르겠습니다..
 function AlertLogoutModal({ alertOffModal }) {
     document.body.style.overflow = "hidden";
+    const history = useHistory();
+    const onClickLogoutHandler = () => {
+        sessionStorage.clear();
+        history.push('/');
+    }
     return (
         <>
             <AlertBox>
@@ -81,7 +94,7 @@ function AlertLogoutModal({ alertOffModal }) {
                     <strong className='alertMsg'>로그아웃하시겠어요?</strong>
                     <AlertUl>
                         <li onClick={alertOffModal}>취소</li>
-                        <li className='selectColor'>로그아웃</li>
+                        <li className='selectColor' onClick={onClickLogoutHandler}>로그아웃</li>
                     </AlertUl>
                 </AlertContainer>
             </AlertBox>

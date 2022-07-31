@@ -6,8 +6,6 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { homeFeedAction } from '../redux/actions/homeFeedAction'
 import HomeFeedBox from '../components/home/HomeFeed'
-import { authenticateAction } from '../redux/actions/authenticateAction'
-import { useHistory } from 'react-router-dom'
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -15,17 +13,15 @@ function HomePage() {
     const localToken = useSelector(state => state.auth.token);
     const localAccountName = useSelector(state => state.auth.accountname);
     const localUserId = useSelector(state => state.auth.id);
+    const localImg = useSelector(state=>state.auth.image);
     sessionStorage.setItem('token', localToken);
     sessionStorage.setItem('accountname', localAccountName);
     sessionStorage.setItem('id', localUserId);
+    sessionStorage.setItem('image', localImg);
 
     useEffect(() => {
         dispatch(homeFeedAction.homeFeed());
     }, [dispatch]);
-
-    // useEffect(() => {
-    //     dispat
-    // }, [])
 
     return (
         <>
