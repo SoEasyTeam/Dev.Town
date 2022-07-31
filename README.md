@@ -193,11 +193,11 @@
 | :-----------------------: | :------------------: |
 | <img src="https://user-images.githubusercontent.com/82689971/182031911-c97f1a38-5600-49a1-b543-40799d270985.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182032375-c3f64a70-c987-44cf-b3b5-d94e3f380d49.gif" width="300"/> 
 
-|       10. 내 상품 수정        | 11. 내 상품 삭제(수정중)) |
+|       10. 내 상품 수정        | 11. 내 상품 삭제 |
 | :-----------------------: | :----------------: |
-| <img src="https://user-images.githubusercontent.com/82689971/182032579-e0064495-51c3-47e4-970b-f3bf6601aa3e.gif" width="300"/> | <img src="" width="300"/> 
+| <img src="https://user-images.githubusercontent.com/82689971/182032579-e0064495-51c3-47e4-970b-f3bf6601aa3e.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182035684-9eae944d-85b5-4642-99a3-514dfe30dacc.gif" width="300"/> 
 
-|        12. 내 상품 링크 이동     | 13.팔로우, 팔로워 (일단 버튼만)|
+|        12. 내 상품 링크 이동     | 13.팔로우, 팔로워 |
 | :-----------------------: | :------------------: |
 | <img src="https://user-images.githubusercontent.com/82689971/182032920-8dc967cc-a100-4d6e-aefb-2f7bd66c599b.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182033019-ac098c62-101f-49dc-ade8-5652efaeb529.gif" width="300"/> 
 
@@ -209,9 +209,9 @@
 | :-----------------------: | :------------: |
 | <img src="https://user-images.githubusercontent.com/82689971/182033634-2d4a00a1-6224-4423-b778-bbb89d502081.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182033759-88b13db7-0916-4776-8e72-121f58b04b33.gif" width="300"/> 
 
-|   18. 상대 상품 클릭시 링크 이동   | 19. 로그아웃(수정중) |
+|   18. 상대 상품 클릭시 링크 이동   | 19. 설정 및 로그아웃 |
 | :-----------------------: | :------------: |
-| <img src="https://user-images.githubusercontent.com/82689971/182033847-b58fa02c-60af-4f6e-bf6a-411ecafddf9b.gif" width="300"/> | <img src="" width="300"/> 
+| <img src="https://user-images.githubusercontent.com/82689971/182033847-b58fa02c-60af-4f6e-bf6a-411ecafddf9b.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182035763-8086894c-5192-44c2-bd38-b78e7a982b08.gif" width="300"/> 
 
 <br>
   
