@@ -175,7 +175,11 @@
 
 |         0.splash          | 1.회원가입 |
 | :-----------------------: | :--------: |
-| <img src="" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/82689971/182021870-3cd5c981-9730-47d5-ac05-17a571f48263.gif" width="300"/> |<img src="https://user-images.githubusercontent.com/82689971/182022928-0eb992ed-a13a-4dc5-969e-99c2ddedb42f.gif" width="300"/>
+
+|         2.프로필 설정          | 3.로그인 |
+| :-----------------------: | :------: |
+| <img src="https://user-images.githubusercontent.com/82689971/182022982-39bdbf6b-d248-428d-8933-f91720358d44.gif" width="300"/> |  <img src="https://user-images.githubusercontent.com/82689971/182023004-7a40b81c-70d7-4e0e-8456-bdb61a6dea78.gif" width="300"/>  
 
 |         2.로그인          | 3.홈화면 |
 | :-----------------------: | :------: |
