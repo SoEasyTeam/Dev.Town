@@ -6,9 +6,11 @@ import { TopBasicNav } from '../components/common/nav';
 import TabMenu from '../components/common/tabMenu';
 import { AlertLogoutModal } from '../components/common/alert'
 import { ProfileSection } from '../components/profile/userProfile/index.style'
+import { useSelector } from 'react-redux';
 
 function MyProfilePage() {
     const [alertOn, setAlertOn] = useState(false);
+    
     function alertOnModal() {
         setAlertOn(true);
     }

@@ -27,7 +27,7 @@ function PostPage() {
 
     const number = postViewId.indexOf(id);
     const item = useSelector(state => state.homefeed.item[number]);
-    console.log(item);
+    // console.log(item,'왜에러니');
 
     function parseDate(dateString) {
         const postDate = new Date(dateString)
@@ -57,6 +57,7 @@ function PostPage() {
     //댓글 서버에 요청
     useEffect(() => {
         dispatch(commentListAction.commentList(postId, token))
+        console.log('댓글받아와!!');
         dispatch(postAction.getPost(postId))
     }, [dispatch, postId, token])
 

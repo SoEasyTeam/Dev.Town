@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
 import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl } from './index.style';
@@ -18,7 +18,6 @@ function PostAreaList({ userPostData, alertOnModal }) {
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
-                    // console.log(item.image)
                     return (
                         <li key={item.id}>
                             <HomeImgPost
@@ -32,6 +31,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
                                 year={year}
                                 month={month}
                                 day={day}
+                                postId = {item.id}
                                 alertOnModal={alertOnModal}
                             />
                         </li>
@@ -61,7 +61,7 @@ function UserPost(props) {
             }
         })
         const json = await res.json()
-        // console.log('게시물 : ', json)
+        console.log('게시물 : ', json)
         setUserPostData(json)
     }
     useEffect(() => {
