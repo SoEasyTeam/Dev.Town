@@ -10,7 +10,8 @@ function JoinMembership() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
-    // const [isEmailValid, setEmailValid] = useState(false);
+    const [emailPop, setEmailPop] = useState(false);
+    const [passwordPop, setpasswordPop] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
     const message = useSelector(state=> state.join.message);
@@ -21,39 +22,52 @@ function JoinMembership() {
 
     //다음버튼 활성화 검사
     const nextSignUpActive = () => {
-        return checkEmail.test(email)&&password.length>5
+        return message==='사용 가능한 이메일 입니다.'&&password.length>5
         ? setIsActive(false)
         : setIsActive(true);
     };
 
-    const onChangeEmailValid = (event) => {
-        setEmail(event.currentTarget.value);
-        // dispatch(joinAction.join(email,password));
-    }
-
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log('버튼 클릭')
         dispatch(joinAction.join(email,password));
+        history.push('/profilesetting')
     }
 
+    // const onChangeEmailHandler = (event) => {
+    //     setEmail(event.currentTarget.value);
+    // }
+
     useEffect(() => {
-        if(message === '사용 가능한 이메일 입니다.'){
-            history.push('/profilesetting');
+        if(checkEmail.test(email)){
+            dispatch(joinAction.join(email,password));
+            setEmailPop(true);
         }
-    }, [message])
+    }, [email])
+
+    useEffect(() => {
+        if(checkEmail.test(email)&&password.length<6){
+            setEmailPop(false);
+            setpasswordPop(true);
+        }else if(password.length>5) {
+            setpasswordPop(false)
+        }
+    }, [password])
+
+    // useEffect(() => {
+    //     message === '사용 가능한 이메일 입니다.' ? setEmailPop(false) : setEmailPop(true);
+    // }, [message])
 
     return (
         <LoginMain>
             <h1 className='ir'>데브타운 회원가입 화면</h1>
             <h2 className='loginTitle'>이메일로 회원가입</h2>
-            <form className='loginForm' onSubmit={ onSubmitHandler }>
+            <form className='loginForm' onSubmit={onSubmitHandler}>
                 <TextLabel>이메일</TextLabel>
-                <JoinEmailInput value={email} onChange={onChangeEmailValid} onKeyUp={nextSignUpActive}/>
+                <JoinEmailInput value={email} onChange={(event) => setEmail(event.target.value)} onKeyUp={nextSignUpActive}/>
                 <TextLabel>비밀번호</TextLabel>
-                <JoinPassWordInput value={password} onChange={(event) => setPassword(event.currentTarget.value)} onKeyUp={nextSignUpActive}/>
-                <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
-                {/* <WarningParagraph visible={isEmailValid}>*이미 가입된 이메일 주소 입니다.</WarningParagraph> */}
+                <JoinPassWordInput value={password} onChange={(event) => setPassword(event.target.value)} onKeyUp={nextSignUpActive}/>
+                <WarningParagraph visible={emailPop}>*{message}</WarningParagraph>
+                <WarningParagraph visible={passwordPop}>*비밀번호는 6자 이상이어야 합니다.</WarningParagraph>
                 <div className='nextBtnWrap'>
                     <NextBtn disabled={isActive}>다음</NextBtn>
                 </div>
@@ -62,4 +76,4 @@ function JoinMembership() {
     )
 }
 
-export default JoinMembership;
+export default React.memo(JoinMembership);
