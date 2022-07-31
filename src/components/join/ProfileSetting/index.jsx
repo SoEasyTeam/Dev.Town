@@ -28,9 +28,9 @@ function ProfileSetting() {
     };
 
     const signUpActive = () => {
-        return (username.length > 1 && username.length < 11 && accountname.length>0 && intro.length > 0)
-        ? setIsActive(false)
-        : setIsActive(true);
+        return (username.length > 1 && username.length < 11 && accountname.length > 0 && intro.length > 0)
+            ? setIsActive(false)
+            : setIsActive(true);
     };
 
     const onSubmitHandler = (event) => {
@@ -41,10 +41,10 @@ function ProfileSetting() {
 
     useEffect(() => {
         console.log(message);
-        if(message === '회원가입 성공'){
+        if (message === '회원가입 성공') {
             history.push('/login');
         }
-    },[message])
+    }, [message])
 
     return (
         <ProfileSettingForm onSubmit={onSubmitHandler}>
@@ -60,17 +60,17 @@ function ProfileSetting() {
             <ProfileImgInput onChange={onChangeProfileImg} id='profileImg' type='file' accept='image/*' />
             <div className='input-cont'>
                 <TextLabel>사용자 이름</TextLabel>
-                <ProfileNameInput value={username} onChange={(event) => setUsername(event.target.value)} onKeyUp = {signUpActive} />
+                <ProfileNameInput value={username} onChange={(event) => setUsername(event.target.value)} onKeyUp={signUpActive} />
             </div>
             <div className='input-cont'>
                 <TextLabel>계정 ID</TextLabel>
-                <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp = {signUpActive}/>
+                <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp={signUpActive} />
             </div>
             <div className='input-cont'>
                 <TextLabel>소개</TextLabel>
-                <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp = {signUpActive} />
+                <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp={signUpActive} />
             </div>
-            <SignUpBtn disabled={isActive}>감귤마켓 시작하기</SignUpBtn>
+            <SignUpBtn disabled={isActive}>데브타운 시작하기</SignUpBtn>
         </ProfileSettingForm>
     );
 }
