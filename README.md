@@ -203,7 +203,7 @@
 
 |     14. 게시글 등록   | 15. 게시글 댓글 등록 |
 | :-----------------------: | :------------: |
-| <img src="https://user-images.githubusercontent.com/82689971/182033245-10b31535-d4a7-4056-89aa-c6b81070dee4.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182033537-61266d47-83d3-4e91-8c27-7946c57e91e1.gif" width="300"/> 
+| <img src="https://user-images.githubusercontent.com/82689971/182036546-92b74da6-45ab-4e97-9e55-f060b2eb439b.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182033537-61266d47-83d3-4e91-8c27-7946c57e91e1.gif" width="300"/> 
 
 |   16. 상대 프로필   | 17. 상대 게시글 신고 |
 | :-----------------------: | :------------: |
