@@ -1,59 +1,55 @@
-function commentList(postId, token){
-    return async (dispatch, getState)=>{
+function commentList(id, token) {
+    return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/post/${postId}/comments`
+        const reqPath = `/post/${id}/comments`;
         try {
-            let res = await fetch(url+reqPath,{
-                method:'GET',
-                headers:{
-                    "Authorization" : `Bearer ${token}`,
-                    "Content-type" : "application/json"
+            let res = await fetch(url + reqPath, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-type': 'application/json',
                 },
-        })
-        const resJson=await res.json()
-        dispatch({
-            type: 'GET_COMMENTLIST',
-            payload:{
-                    comments: resJson.comments
-            },
-            
-        })
-    } catch (error) {
-        console.log('something wrong!!!');
-    }
-}
-}
-
-function writeComment(postId, token, comment){
-    console.log(postId, token, comment);
-    return async(dispatch)=>{
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/post/${postId}/comments`
-        try {
-            let res = await fetch(url+reqPath,{
-                method:'POST',
-                headers:{
-                    "Authorization" : `Bearer ${token}`,
-                    "Content-type" : "application/json"
-                },
-                body:JSON.stringify({
-                    "comment":{
-                        "content":comment
-                }})
-            })
-            const resJson=await res.json()
-            console.log(resJson,'댓글제발');
+            });
+            const resJson = await res.json();
             dispatch({
-                type:'WRITE_COMMENT',
-                payload:{
-                    
-                    comment: resJson.comment
-                
-                }
-            })
-        } catch {
-
+                type: 'GET_COMMENTLIST',
+                payload: {
+                    comments: resJson.comments,
+                },
+            });
+        } catch (error) {
+            console.log('something wrong!!!');
         }
-    }
+    };
 }
-export const commentListAction = {commentList, writeComment}
+
+function writeComment(postId, token, comment) {
+    console.log(postId, token, comment);
+    return async (dispatch) => {
+        let url = 'https://mandarin.api.weniv.co.kr';
+        const reqPath = `/post/${postId}/comments`;
+        try {
+            let res = await fetch(url + reqPath, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    comment: {
+                        content: comment,
+                    },
+                }),
+            });
+            const resJson = await res.json();
+            console.log(resJson, '댓글제발');
+            dispatch({
+                type: 'WRITE_COMMENT',
+                payload: {
+                    comment: resJson.comment,
+                },
+            });
+        } catch {}
+    };
+}
+export const commentListAction = { commentList, writeComment };

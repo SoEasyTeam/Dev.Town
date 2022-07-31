@@ -5,6 +5,7 @@ import { AlertProductModal } from '../../common/alert';
 import { ProductAreaListUl, ProductArea } from './index.style'
 
 const ProductAreaList = ({ userProductData, alertOnModal }) => {
+
     return (
         <>
             {userProductData &&
@@ -29,14 +30,14 @@ const ProductAreaList = ({ userProductData, alertOnModal }) => {
     )
 }
 
-function UserProduct() {
+function UserProduct(props) {
     const token = sessionStorage.getItem('token');
     const accountname = sessionStorage.getItem('accountname');
     const [userProductData, setUserProductData] = useState('');
     const [alertOn, setAlertOn] = useState(false);
 
-    const getData = async () => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/product/${accountname}`, {
+    const getData = async (account) => {
+        const res = await fetch(`https://mandarin.api.weniv.co.kr/product/${account}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -49,13 +50,17 @@ function UserProduct() {
     }
 
     useEffect(() => {
-        getData()
+        if (props.accountname) {
+            getData(props.accountname)
+        }
+        else {
+            getData(accountname)
+        }
     }, [])
 
     if (userProductData.data === 0) {
         return <></>
     }
-
     function alertOnModal() {
         setAlertOn(true);
     }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SettingImg from '../../../assets/icon/s-icon-more-vertical.png'
 import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../search/index.style'
@@ -105,3 +106,7 @@ margin-left: 54px;
     top: 3px;
 }
 `;
+
+export const HomePostProfileLink = styled(Link)`
+    display: inherit;  
+`

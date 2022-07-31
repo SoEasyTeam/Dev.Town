@@ -9,10 +9,17 @@ function LoginMain() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
+    const [warningActive, setWarningActive] =useState(false);
     const dispatch = useDispatch();   
     const history = useHistory();
-    let authLogin = useSelector(state => state.auth.authenticate);
-    
+    let message = useSelector(state=>state.auth.message);
+    let token = useSelector(state=> state.auth.token);
+
+    if(token !== null){
+        dispatch(authenticateAction.tokenValid(token));
+    }
+
+    let tokenValid = useSelector(state=>state.token.tokenValid);
     //이메일 주소 유효성 검사
     const checkEmail =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -31,10 +38,14 @@ function LoginMain() {
     }
 
     useEffect(() => {
-        if(authLogin === true) {
+        message=== '이메일 또는 비밀번호가 일치하지 않습니다.' ? setWarningActive(true) : setWarningActive(false);
+    },[message]);
+
+    useEffect(() => {
+        if(tokenValid.isValid === true) {
             history.push('/home');
         }
-    },[authLogin, history]);
+    },[tokenValid]);
 
     return (
         <LoginContainer>
@@ -45,7 +56,7 @@ function LoginMain() {
                 <EmailInput value={email} onChange = {(event) => setEmail(event.target.value)} onKeyUp={loginActive} />
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput value={password} onChange = {(event) => setPassword(event.target.value)} onKeyUp={loginActive}/>
-                <WarningParagraph visible={isActive}>*필수 입력사항을 입력해주세요.</WarningParagraph>
+                <WarningParagraph visible={warningActive}>*{message}</WarningParagraph>
                 <div className='loginBtnWrap'>
                     <LoginBtn disabled={isActive} >로그인</LoginBtn>
                     <JoinEmailLink to='/join'>이메일로 회원가입</JoinEmailLink>
@@ -55,4 +66,4 @@ function LoginMain() {
     )
 }
 
-export default LoginMain;
+export default React.memo(LoginMain);

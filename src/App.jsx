@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, useHistory } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import JoinMembershipPage from './pages/JoinMembershipPage';
 import LoginPage from './pages/LoginPage';
@@ -15,10 +15,11 @@ import PostUploadPage from './pages/PostUploadPage'
 import ProductModificationPage from './pages/ProductModificationPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
 import ChatPage from './pages/ChatPage';
+import ChatItemPage from './pages/ChatItemPage';
 import Error404Page from './pages/Error404Page'
 
-
 function App() {
+
     return (
         <Switch>
             <Route exact path='/' component={() => <SplashPage />} />
@@ -32,7 +33,8 @@ function App() {
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
             <Route path='/chatlist' component={() => <ChatPage />} />
-            <Route path='/home' component={() => <HomePage />} />
+            <Route path='/chatroom' component={() => <ChatItemPage />} />
+            <Route path='/home' component={() => <HomePage/>} />
             <Route
                 path='/myprofile'
                 component={() => <MyProfilePage />}
