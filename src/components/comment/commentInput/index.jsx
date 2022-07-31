@@ -13,12 +13,12 @@ export default function CommentInputBox() {
     const [comment, setComment] = useState('')
     const profileImg = useSelector(state => state.auth)
 
-    console.log(profileImg);
     const handleOnSubmit = (e) => {
         e.preventDefault()
         dispatch(commentListAction.writeComment(postId, token, comment))
         dispatch(commentListAction.commentList(postId, token))
-        e.target.value = ''
+        console.log('~~~~~~~~~댓글받아와!!');
+        setComment('')
     }
 
     const handleOnChange = (e) => {
@@ -30,8 +30,8 @@ export default function CommentInputBox() {
             <ProfileImgBox>
                 <MyProfileOnComment src={profileImg.image} />
             </ProfileImgBox>
-            <CommentInput placeholder='댓글 입력하기...' required onChange={handleOnChange} />
-            <CommentSubmitBtn>게시</CommentSubmitBtn>
+            <CommentInput placeholder='댓글 입력하기...' required value = {comment} onChange={handleOnChange} />
+            <CommentSubmitBtn >게시</CommentSubmitBtn>
         </CommentBox>
     );
 }

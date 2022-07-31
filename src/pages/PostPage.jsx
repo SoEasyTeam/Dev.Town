@@ -57,6 +57,7 @@ function PostPage() {
     //댓글 서버에 요청
     useEffect(() => {
         dispatch(commentListAction.commentList(postId, token))
+        console.log('댓글받아와!!');
         dispatch(postAction.getPost(postId))
     }, [dispatch, postId, token])
 
