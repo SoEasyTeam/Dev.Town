@@ -185,9 +185,9 @@
 | :-----------------------: | :------: |
 | <img src="https://user-images.githubusercontent.com/82689971/182031235-be2c998c-fb33-4b47-98fa-d7d725db09be.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182031388-8f0bca25-dbf9-4ebf-9a85-979cbd0e22c0.gif" width="300"/>
 
-|        6. 채팅(수정중)       | 7. 내 프로필 |
+|        6. 채팅       | 7. 내 프로필 |
 | :-----------------------: | :-----: |
-|  <img src="" width="300"/>  | <img src="https://user-images.githubusercontent.com/82689971/182031732-7d0a4931-2c67-4565-8a78-b3fb17c79bc2.gif" width="300"/> 
+|  <img src="https://user-images.githubusercontent.com/82689971/182037663-ade91674-9ba2-4345-a5d2-9dfbdf04a816.gif" width="300"/>  | <img src="https://user-images.githubusercontent.com/82689971/182031732-7d0a4931-2c67-4565-8a78-b3fb17c79bc2.gif" width="300"/> 
 
 |      8. 내 프로필 수정       | 9. 상품 등록 |
 | :-----------------------: | :------------------: |
