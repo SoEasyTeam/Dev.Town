@@ -62,4 +62,4 @@ function LoginMain() {
     )
 }
 
-export default LoginMain;
+export default React.memo(LoginMain);

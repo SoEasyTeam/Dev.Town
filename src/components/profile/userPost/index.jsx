@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
 import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl } from './index.style';
@@ -18,7 +18,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
-                    // console.log(item.image)
+                    console.log(item);
                     return (
                         <li key={item.id}>
                             <HomeImgPost
@@ -32,6 +32,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
                                 year={year}
                                 month={month}
                                 day={day}
+                                postId = {item.id}
                                 alertOnModal={alertOnModal}
                             />
                         </li>
@@ -42,15 +43,18 @@ function PostAreaList({ userPostData, alertOnModal }) {
     )
 }
 
-function UserPost(id) {
-    const token = useSelector(state => state.auth.token);
-    const accountname = useSelector(state => state.auth.accountname);
+function UserPost(props) {
+    const token = sessionStorage.getItem('token');
+    const accountname = sessionStorage.getItem('accountname');
     const [userPostData, setUserPostData] = useState('')
     const [alertOn, setAlertOn] = useState(false);
     const [isActive, setIsActive] = useState(true);
+    const location = useLocation();
+
+
     // console.log('버튼', isActive)
-    const getData = async () => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${accountname}/userpost`, {
+    const getData = async (account) => {
+        const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${account}/userpost`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -62,7 +66,12 @@ function UserPost(id) {
         setUserPostData(json)
     }
     useEffect(() => {
-        getData()
+        if (props.accountname) {
+            getData(props.accountname)
+        }
+        else {
+            getData(accountname)
+        }
     }, [])
 
     if (Array.isArray(userPostData.post) && userPostData.post.length === 0) {
@@ -90,8 +99,8 @@ function UserPost(id) {
                     <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
                 </PostAreaListUl>
             </PostArea>
-            {alertOn === true && id !== accountname ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
-            {alertOn === true && id === accountname ? <AlertDeclareModal alertOffModal={alertOffModal} /> : ''}
+            {alertOn === true && location.pathname.split("/")[1] === "myprofile" ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
+            {alertOn === true && location.pathname.split("/")[1] === "yourpage" ? <AlertDeclareModal alertOffModal={alertOffModal} /> : ''}
         </>
     )
 }

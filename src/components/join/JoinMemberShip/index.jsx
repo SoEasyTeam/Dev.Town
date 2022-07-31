@@ -76,4 +76,4 @@ function JoinMembership() {
     )
 }
 
-export default JoinMembership;
+export default React.memo(JoinMembership);

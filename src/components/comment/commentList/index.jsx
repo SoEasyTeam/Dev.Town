@@ -12,6 +12,7 @@ const parseDate = (dateString) => {
 
 export default function CommentList() {
     const commentList = useSelector(state => state.commentList.comments)
+    console.log('댓글정보', commentList)
     useEffect(() => { }, [commentList])
     return (
         <ul>
@@ -25,6 +26,7 @@ export default function CommentList() {
                     commentMonth={month}
                     commentDay={day}
                     comment={comment.content}
+                    id={comment.author.accountname}
                 />
             })
             }

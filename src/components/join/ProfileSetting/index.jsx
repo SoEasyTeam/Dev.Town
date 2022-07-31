@@ -85,4 +85,4 @@ function ProfileSetting() {
     );
 }
 
-export default ProfileSetting;
+export default React.memo(ProfileSetting);

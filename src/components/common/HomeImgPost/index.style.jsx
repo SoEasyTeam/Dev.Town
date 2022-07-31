@@ -66,3 +66,6 @@ export const DateParagraph = styled.p`
     color: #767676;
 `;
 
+export const HomePostProfileLink = styled(Link)`
+    display: inherit;   
+`
