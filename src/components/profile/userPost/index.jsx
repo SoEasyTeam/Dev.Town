@@ -42,15 +42,15 @@ function PostAreaList({ userPostData, alertOnModal }) {
     )
 }
 
-function UserPost(id) {
-    const token = useSelector(state => state.auth.token);
-    const accountname = useSelector(state => state.auth.accountname);
+function UserPost(props, id) {
+    const token = sessionStorage.getItem('token');
+    const accountname = sessionStorage.getItem('accountname');
     const [userPostData, setUserPostData] = useState('')
     const [alertOn, setAlertOn] = useState(false);
     const [isActive, setIsActive] = useState(true);
     // console.log('버튼', isActive)
-    const getData = async () => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${accountname}/userpost`, {
+    const getData = async (account) => {
+        const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${account}/userpost`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -62,7 +62,12 @@ function UserPost(id) {
         setUserPostData(json)
     }
     useEffect(() => {
-        getData()
+        if (props.accountname) {
+            getData(props.accountname)
+        }
+        else {
+            getData(accountname)
+        }
     }, [])
 
     if (Array.isArray(userPostData.post) && userPostData.post.length === 0) {

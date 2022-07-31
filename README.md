@@ -30,26 +30,21 @@
 <br>
 <div align='center'>
   
-<h1>팀원 소개</h1>
+<h1>팀원 소개 및 역할 분담</h1>
 
 |                                                               **조다희**                                                               |                                                                **임다현**                                                                 |                                                                **추경훈**                                                                 |
 | :------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://user-images.githubusercontent.com/74031552/180374703-22c36d16-5a0f-4cb8-8f94-e35b9aee6167.png" height=180 width=180> |  <img src="https://user-images.githubusercontent.com/82689971/181879561-ea00bf01-07ec-4cdc-8bcd-b6dd2b4cba6f.jpeg" height=180 width=180>  |  <img src="https://user-images.githubusercontent.com/74031552/180374844-9ca5abad-6ad9-4ea0-9420-405519e9e14c.png" height=180 width=180>   |
 |               **blog**: [daheejo](https://daheejo.tistory.com/) </br> **github**: [daheejo](https://github.com/daheejo)                |                    **blog**: [Dayhun](https://velog.io/@dayhun) </br> **github**: [Dayhun](https://github.com/Dayhun)                     |               **blog**: [chuhoon](https://blog.naver.com/khchu1220) </br> **github**: [chuhoon](https://github.com/chuhoon)               |
-|            ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![](https://img.shields.io/badge/-Team%20leader-green)            | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Functional%20Design](https://img.shields.io/badge/Functional%20Design-f8b62d) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Functional%20Design](https://img.shields.io/badge/Functional%20Design-f8b62d) |
+|            ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb)          | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) |
 
 </div>
 
 <br>
 
-<div align="center">
+## 👩🏻‍💻 조다희 - `팀리더 및 문서화`
 
-<h1>역할 분담</h1>
-  
-</div>
-
-## 👩🏻‍💻 조다희
-
+-   공통 컴포넌트 제작 (버튼, alert창)
 -   게시물 업로드
 -   게시물 상세 확인
 -   댓글 작성
@@ -58,8 +53,9 @@
 
 <br>
 
-## 👩🏻‍💻 임다현
+## 👩🏻‍💻 임다현 - `프로젝트 기획 및 디자인`
 
+-   공통 컴포넌트 제작 (nav, modal창)
 -   데브 타운 아이디어 기획 및 아이콘 디자인
 -   개인 프로필 페이지
 -   상대 프로필 페이지
@@ -68,8 +64,9 @@
 
 <br>
 
-## 🧑🏻‍💻 추경훈
+## 🧑🏻‍💻 추경훈 - `API 통신 및 Redux 환경 구축`
 
+-   공통 컴포넌트 제작 (Auth 인풋, 탭 메뉴, 검색창, 팔로우, 이미지포스트, 상품창)
 -   로그인
 -   회원가입
 -   프로필 설정
@@ -83,13 +80,13 @@
 
 ### [기술]
 
-###### - Front-End
+##### - Front-End
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
 
-###### - Back-End: 제공된 API 사용
+##### - Back-End: 제공된 API 사용
 
-###### - Deployment: Netlify
+##### - Deployment: `Netlify`
 
 </br>
 
@@ -220,12 +217,46 @@
 <h1> ⚠️ 개발하며 겪은 이슈 </h1>
 </div>
 
+## ✅ `깃허브를 통한 협업 이슈`
+
+```
+- 코드 되돌리기 및 수정에 대한 어려움
+    - 코드를 수정해야 할 때 기능 하나씩 Commit을 하지 않았을 경우 원치 않은 코드까지 수정되었습니다.
+      따라서 한 번에 하나의 기능만 있는 Commit을 작성해야 한다는 것을 깨달았습니다.
+- 깃 CLI 숙지 부족으로 인한 어려움
+    - Git을 실전으로 사용해 부딪혀 보며 CLI 명령어들을 찾아 자연스럽게 익히게 되었습니다.
+- 여러 브랜치 사용 경험 부족으로 인한 구조 설정에 대한 어려움
+    - 브랜치 전략을 공부하고 우리에게 맞는 브랜치 전략을 만들어 사용했습니다.
+- Coding 및 Commit Covention 규칙에 대한 어려움
+    - 풀 리퀘스트 시에 코드 리뷰를 통해 서로를 피드백하며 코드를 개선하는 과정을 가졌습니다.
+      코드 리뷰를 통해 컨벤션을 통일하려고 노력하고 장애를 사전에 예방했습니다.
+- conflict 수정에 대한 어려움
+    - develop 브랜치에서 현재 작업하고 있는 브랜치로 pull을 받아와서 merge 후에 push를 하여 conflict를 예방했습니다.
+    - 만약 conflict가 발생하면, 충돌이 일어난 부분에 대해 알려주는데 원인이 되는 파일로 이동해서 직접 수정하였습니다.
+```
+<br>
+
+## ✅ `Redux 적용 이슈`
+
+```
+- 팀원 모두 리덕스를 잘 모르는 상태에서 사용하려다보니, 리덕스에 대해 공부하고 적용하기까지 시간이 많이 소요되었습니다.
+- Live Share와 게더타운을 이용한 페어프로그래밍을 통해, 리덕스를 적용하여 코드를 작성하였습니다.
+- 이해한 내용을 주석으로 작성하여, 리덕스 활용시 쉽게 이해할 수 있도록 하였습니다.
+```
+<div align='center'>
+<img src="https://user-images.githubusercontent.com/82689971/181918721-eb7c221e-2dfb-4351-8344-0c67f4800d80.png" height=300>
+<img height="300" alt="스크린샷 2022-07-30 오후 11 29 07" src="https://user-images.githubusercontent.com/82689971/181918896-cdf05c31-731b-4d02-9ab1-971942f2d44a.png">
+</div>
+<br>
+
+## ✅ `트러블슈팅; 게시물 업로드 기능에서 이미지 미리보기와 이미지 url서버 전송`
+
 [시도]
 - 이미지를 서버에 업로드하는 액션과 포스트하는 액션을 따로 설정 
 
-=> 오히려 코드의 복잡도가 올라가고 그다지 효율적이지 않아 postAction 이라는 하나의 함수로 dispatch 설정
+    => 오히려 코드의 복잡도가 올라가고 그다지 효율적이지 않아 postAction 이라는 하나의 함수로 dispatch 설정
 
-- useEffect 안에서 formData와 ~~~~ 했다가 제거
+- useEffect 안에서 formData와 fileReader를 동시에 만들어서 감시하도록 했지만 useEffect 코드를 제거하고 formData 관련 코드를 리덕스의 액션함수 파일로 이동
 
 ```js
 function UploadPage() {
@@ -307,29 +338,6 @@ function UploadPage() {
 ```
 <br>
 
-## ✅ `Live Share, Gather를 통한 협업과 문제 해결력`
-
-```
--   각자 기능 구현시 발생한 에러를 해결하기 위해 팀원들과 Live Share 기능을 통해 페어프로그래밍을 진행했습니다.
--   Live Share를 하면서 서로의 코드 공유를 통해, 혼자라면 어려웠을 문제점을 함께 고민하고 해결하였습니다.
--   또한, 매일 게더에 모여 함께 코딩을 진행했습니다.
--   온라인이더라도 함께 하면서 서로의 열정과 의지를 보이며 나아갈 수 있었습니다.
-```
-<br>
-
-## ✅ `깃허브를 통한 협업 도전과 성장`
-
-```
-- Git을 실전으로 사용해 부딪혀 보며 명령어를 자연스럽게 익히게 되었습니다.
-- Git-flow 전략을 간단하게 살펴보고 우리에 맞는 Git-flow 규칙을 만들어 활용했습니다.
-- 한 번에 하나의 기능만 있는 Commit을 작성해야 한다는 것을 깨달았습니다. 
-- 코드를 수정해야 할 때 기능 하나씩 Commit을 하지 않았을 경우 원치 않은 코드까지 날아가기 때문입니다.
-- 풀 리퀘스트 시에 코드 리뷰를 통해 서로를 피드백하며 코드를 개선하는 과정을 가졌습니다. 
-- 코드 리뷰를 통해 스타일링을 통일하고 장애를 사전에 예방하였습니다.
-- 풀 리퀘스트 conflict 발생 시 해결 능력이 생겼습니다.
-```
-<br>
-
 <div align="center">
 
 <h1>♻️ 보완할 부분</h1>
@@ -338,7 +346,6 @@ function UploadPage() {
 
 ```
 1. 아직 구현하지 못한 기능
-
     - 팔로우 / 언팔로우 기능
     - 좋아요 기능
     - 채팅 기능
