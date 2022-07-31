@@ -161,7 +161,7 @@
 
 -   DevTown 회의, 회고: [게더타운](https://app.gather.town/app/T09wCurdXgLi1Cmp/so-easy)
 -   Documentation: [데브타운 노션](https://github.com/SoEasyTeam/Dev.Town)
--   Conference: [회의록](https://github.com/SoEasyTeam/Dev.Town/wiki/22-07-07-%ED%9A%8C%EC%9D%98%EB%A1%9D)
+-   Github-Wiki: [회의록](https://github.com/SoEasyTeam/Dev.Town/wiki/22-07-07-%ED%9A%8C%EC%9D%98%EB%A1%9D)
 -   Coding Convention: [코딩 컨벤션](https://github.com/SoEasyTeam/Dev.Town/wiki/Code-Convention)
 
 <br>
@@ -175,7 +175,11 @@
 
 |         0.splash          | 1.회원가입 |
 | :-----------------------: | :--------: |
-| <img src="" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/82689971/182021870-3cd5c981-9730-47d5-ac05-17a571f48263.gif" width="300"/> |<img src="https://user-images.githubusercontent.com/82689971/182022928-0eb992ed-a13a-4dc5-969e-99c2ddedb42f.gif" width="300"/>
+
+|         2.프로필 설정          | 3.로그인 |
+| :-----------------------: | :------: |
+| <img src="https://user-images.githubusercontent.com/82689971/182022982-39bdbf6b-d248-428d-8933-f91720358d44.gif" width="300"/> |  <img src="https://user-images.githubusercontent.com/82689971/182023004-7a40b81c-70d7-4e0e-8456-bdb61a6dea78.gif" width="300"/>  
 
 |         2.로그인          | 3.홈화면 |
 | :-----------------------: | :------: |
@@ -250,8 +254,10 @@
 <br>
 
 ## ✅ `트러블슈팅; 게시물 업로드 기능에서 이미지 미리보기와 이미지 url서버 전송`
-
-[시도]
+### [문제]
+이미지 프리뷰가 뜨면 서버로 전송이 안되고, 반대로 서버로 전송이 되면 프리뷰가 보이지 않음.
+<br>
+### [해결 과정]
 - 이미지를 서버에 업로드하는 액션과 포스트하는 액션을 따로 설정 
 
     => 오히려 코드의 복잡도가 올라가고 그다지 효율적이지 않아 postAction 이라는 하나의 함수로 dispatch 설정
@@ -335,6 +341,54 @@ function UploadPage() {
 //     }, [uploadedImg]);
 
 //후략
+```
+```js
+function post(fileList, postText) {
+    const formData = new FormData(); 
+
+    if (fileList.length > 0) {
+        for (let index = 0; index < fileList.length; index++) {
+            const file = fileList[index];
+            formData.append('image', file);
+    }
+    //formData 처리 후 이미지업로드 요청
+    return async (dispatch, getState) => {
+        let url = 'https://mandarin.api.weniv.co.kr';
+        const reqPath = '/image/uploadfiles';
+        const token = getState().auth.token;
+        console.log(token);
+        try {
+            let imageUrls = ''
+            if (fileList.length >0){
+                let fileRes = await fetch(url + reqPath, {
+                    method: 'POST',
+                    body: formData,
+                });
+                const fileJson = await fileRes.json();
+                imageUrls = fileJson
+                .map((fileData) => url + '/' + fileData.filename)
+                .join(',');
+
+            }
+            //게시물 포스트 요청
+            const postReq = '/post';
+            
+            let postRes = await fetch(url + postReq, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    post: {
+                        content: postText,
+                        image: imageUrls,
+                    },
+                }),
+            });
+
+//후략
+
 ```
 <br>
 

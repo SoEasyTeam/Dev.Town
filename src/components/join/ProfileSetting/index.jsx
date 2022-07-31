@@ -53,7 +53,7 @@ function ProfileSetting() {
         if(message==='회원가입 성공'){
             history.push('/login');
         }
-    },[message])
+    }, [message])
 
     return (
         <ProfileSettingForm onSubmit={onSubmitHandler}>
@@ -80,7 +80,7 @@ function ProfileSetting() {
                 <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp = {signUpActive}/>
                 <WarningParagraph visible={isActive}>{message}</WarningParagraph>
             </div>
-            <SignUpBtn disabled={isActive}>감귤마켓 시작하기</SignUpBtn>
+            <SignUpBtn disabled={isActive}>데브타운 시작하기</SignUpBtn>
         </ProfileSettingForm>
     );
 }
