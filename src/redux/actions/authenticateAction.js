@@ -16,7 +16,6 @@ function login(email, password) {
                 }),
             });
             const resJson = await res.json();
-            console.log(resJson);
             if (
                 resJson.message === '이메일 또는 비밀번호가 일치하지 않습니다.'
             ) {
@@ -51,7 +50,6 @@ function tokenValid() {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/user/checktoken';
         const token = getState().auth.token;
-        console.log(token);
         if (token) {
             try {
                 let res = await fetch(url + reqPath, {
@@ -62,7 +60,6 @@ function tokenValid() {
                     },
                 });
                 const resJson = await res.json();
-                console.log(resJson);
                 dispatch({
                     type: 'TOKEN_VALID_SUCCESS',
                     payload: {

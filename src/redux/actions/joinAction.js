@@ -15,7 +15,6 @@ function join(email, password) {
                 }),
             });
             const resJson = await res.json();
-            console.log(resJson);
             if (resJson.message === '사용 가능한 이메일 입니다.') {
                 dispatch({
                     type: 'JOIN_EMAILVALID_SUCCESS',
@@ -54,7 +53,6 @@ function accountValid(accountname) {
                 }),
             });
             const resJson = await res.json();
-            console.log(resJson);
             if (resJson.message === '사용 가능한 계정ID 입니다.') {
                 dispatch({
                     type: 'JOIN_ACCOUNTVALID_SUCCESS',
@@ -75,7 +73,6 @@ function accountValid(accountname) {
 }
 
 function joinfinal(email, password, username, accountname, intro, itemImage) {
-    // console.log('join final success action');
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/user';
@@ -97,7 +94,6 @@ function joinfinal(email, password, username, accountname, intro, itemImage) {
                 }),
             });
             const resJson = await res.json();
-            console.log(resJson);
             if (resJson.message === '이미 사용중인 계정 ID입니다.') {
                 alert('이미 사용중인 계정 ID입니다.');
             } else if (resJson.message === '회원가입 성공') {
