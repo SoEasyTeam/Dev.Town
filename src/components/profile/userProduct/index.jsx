@@ -61,7 +61,6 @@ function UserProduct(props) {
     if (userProductData.data === 0) {
         return <></>
     }
-
     function alertOnModal() {
         setAlertOn(true);
     }

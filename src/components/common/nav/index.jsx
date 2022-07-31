@@ -104,7 +104,7 @@ function TopChatNav() {
         <>
             <TopNavRowBox>
                 <ArrowLeftLink />
-                <p className='chatTitle'>애월읍 위니브 감귤농장</p>
+                <p className='chatTitle'>리액트 면접 질문</p>
                 <TopNavLink>
                     <img src={MoreImg} alt='더보기링크' />
                 </TopNavLink>

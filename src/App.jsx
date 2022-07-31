@@ -15,32 +15,10 @@ import PostUploadPage from './pages/PostUploadPage'
 import ProductModificationPage from './pages/ProductModificationPage';
 import ProfileModificationPage from './pages/ProfileModificationPage';
 import ChatPage from './pages/ChatPage';
+import ChatItemPage from './pages/ChatItemPage';
 import Error404Page from './pages/Error404Page'
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { authenticateAction } from './redux/actions/authenticateAction';
 
 function App() {
-    const dispatch = useDispatch();
-    // const history = useHistory();
-    // const tokenValid = useSelector(state=>state.token.tokenValid);
-    // console.log(tokenValid);
-    // useEffect(()=> {
-    //     if(tokenValid === null || tokenValid.isValid === 'false') {
-    //         history.push('/');
-    //     }else {
-    //         dispatch(authenticateAction.tokenValid());
-    //     }
-    // }, []);
-    /*useEffect(() => {
-        if(tokenValid === null || tokenValid.isValid === 'false'){
-            history.push('/');
-            tokenValid.isValid===true?history.push('/home'):history.push('/');
-        }else {
-            dispatch(authenticateAction.tokenValid());
-            tokenValid.isValid===true?history.push('/home'):history.push('/');
-        }
-    }, [])*/
 
     return (
         <Switch>
@@ -55,6 +33,7 @@ function App() {
             />
             <Route path='/profilesetting' component={() => <ProfileSettingPage />} />
             <Route path='/chatlist' component={() => <ChatPage />} />
+            <Route path='/chatroom' component={() => <ChatItemPage />} />
             <Route path='/home' component={() => <HomePage/>} />
             <Route
                 path='/myprofile'
