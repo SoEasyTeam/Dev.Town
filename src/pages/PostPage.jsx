@@ -27,7 +27,7 @@ function PostPage() {
 
     const number = postViewId.indexOf(id);
     const item = useSelector(state => state.homefeed.item[number]);
-    console.log(item);
+    // console.log(item,'왜에러니');
 
     function parseDate(dateString) {
         const postDate = new Date(dateString)
