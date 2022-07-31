@@ -14,10 +14,12 @@ function HomePage() {
     const localAccountName = useSelector(state => state.auth.accountname);
     const localUserId = useSelector(state => state.auth.id);
     const localImg = useSelector(state=>state.auth.image);
+    const localusername = useSelector(state=>state.auth.localusername);
     sessionStorage.setItem('token', localToken);
     sessionStorage.setItem('accountname', localAccountName);
     sessionStorage.setItem('id', localUserId);
     sessionStorage.setItem('image', localImg);
+    sessionStorage.setItem('username', localusername);
 
     useEffect(() => {
         dispatch(homeFeedAction.homeFeed());
