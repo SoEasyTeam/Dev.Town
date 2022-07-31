@@ -1,7 +1,6 @@
 const token = sessionStorage.getItem('token');
 const acountname = sessionStorage.getItem('accountname');
 const id = sessionStorage.getItem('id');
-const tokenValid = sessionStorage.getItem('tokenValid');
 
 let initialState = {
     email: '',
@@ -15,13 +14,14 @@ let initialState = {
 };
 
 let initialState_token = {
-    tokenValid: tokenValid,
+    tokenValid: false,
 };
 
 function authenticateReducer(state = initialState, action) {
     let { type, payload } = action;
     switch (type) {
         case 'LOGIN_SUCCESS':
+            // console.log('login success reducer');
             return {
                 ...state,
                 id: payload.id,
@@ -31,6 +31,10 @@ function authenticateReducer(state = initialState, action) {
                 image: payload.image,
                 token: payload.token,
                 authenticate: true,
+                message: payload.message,
+            };
+        case 'LOGIN_FAIL':
+            return {
                 message: payload.message,
             };
         default:

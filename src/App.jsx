@@ -22,17 +22,26 @@ import { authenticateAction } from './redux/actions/authenticateAction';
 
 function App() {
     const dispatch = useDispatch();
-    const history = useHistory();
-    const tokenValid = useSelector(state=>state.token.tokenValid);
-    console.log(tokenValid);
-    useEffect(() => {
+    // const history = useHistory();
+    // const tokenValid = useSelector(state=>state.token.tokenValid);
+    // console.log(tokenValid);
+    // useEffect(()=> {
+    //     if(tokenValid === null || tokenValid.isValid === 'false') {
+    //         history.push('/');
+    //     }else {
+    //         dispatch(authenticateAction.tokenValid());
+    //     }
+    // }, []);
+    /*useEffect(() => {
         if(tokenValid === null || tokenValid.isValid === 'false'){
             history.push('/');
+            tokenValid.isValid===true?history.push('/home'):history.push('/');
         }else {
             dispatch(authenticateAction.tokenValid());
             tokenValid.isValid===true?history.push('/home'):history.push('/');
         }
-    }, [])
+    }, [])*/
+
     return (
         <Switch>
             <Route exact path='/' component={() => <SplashPage />} />

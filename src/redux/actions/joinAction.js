@@ -1,5 +1,4 @@
 function join(email, password) {
-    console.log('join success action');
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/user/emailvalid';
@@ -17,15 +16,57 @@ function join(email, password) {
             });
             const resJson = await res.json();
             console.log(resJson);
-            if (resJson.message === '이미 가입된 이메일 주소 입니다.') {
-                alert('이미 가입된 이메일 주소 입니다.');
-            } else {
+            if (resJson.message === '사용 가능한 이메일 입니다.') {
                 dispatch({
                     type: 'JOIN_EMAILVALID_SUCCESS',
                     payload: {
                         message: resJson.message,
                         email: email,
                         password: password,
+                    },
+                });
+            } else {
+                dispatch({
+                    type: 'JOIN_EMAILVALID_FAIL',
+                    payload: {
+                        message: resJson.message,
+                    },
+                });
+            }
+        } catch (error) {}
+    };
+}
+
+function accountValid(accountname) {
+    return async (dispatch, getState) => {
+        let url = 'https://mandarin.api.weniv.co.kr';
+        const reqPath = '/user/accountnamevalid';
+        try {
+            let res = await fetch(url + reqPath, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user: {
+                        accountname: accountname,
+                    },
+                }),
+            });
+            const resJson = await res.json();
+            console.log(resJson);
+            if (resJson.message === '사용 가능한 계정ID 입니다.') {
+                dispatch({
+                    type: 'JOIN_ACCOUNTVALID_SUCCESS',
+                    payload: {
+                        message: resJson.message,
+                    },
+                });
+            } else if (resJson.message === '이미 가입된 계정ID 입니다.') {
+                dispatch({
+                    type: 'JOIN_ACCOUNTVALID_FAIL',
+                    payload: {
+                        message: resJson.message,
                     },
                 });
             }
@@ -77,4 +118,4 @@ function joinfinal(email, password, username, accountname, intro, itemImage) {
     };
 }
 
-export const joinAction = { join, joinfinal };
+export const joinAction = { join, joinfinal, accountValid };

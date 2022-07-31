@@ -2,7 +2,6 @@ function homeFeed() {
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/post/feed';
-
         const token = sessionStorage.getItem('token');
 
         if (token !== 'undefined') {
@@ -15,7 +14,6 @@ function homeFeed() {
                     },
                 });
                 const resJson = await res.json();
-                console.log(resJson);
                 dispatch({
                     type: 'HOMEFEED_SUCCESS',
                     payload: {
