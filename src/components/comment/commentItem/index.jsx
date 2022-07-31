@@ -1,9 +1,9 @@
 import moreBtn from '../../../assets/icon/icon-more-vertical.png';
 import { React, useState } from 'react';
 import { YourPostModal } from '../../common/modal';
-import { CommentItemLi, CommentorProfileImg, CommentInfo, CommentFrom, CommentDate, DetailOptionsBtn, Comment } from './index.style'
+import { CommentItemLi, CommentorProfileImg, CommentInfo, CommentFrom, CommentDate, DetailOptionsBtn, Comment, ProfileImgLink } from './index.style'
 
-function CommentItem({ commentFrom, commentorImg, commentYear, commentMonth, commentDay, comment, alertOnModal }) {
+function CommentItem({ commentFrom, commentorImg, commentYear, commentMonth, commentDay, comment, alertOnModal, id }) {
     // 모달창
     const [modalOn, setModalOn] = useState(false);
 
@@ -17,9 +17,9 @@ function CommentItem({ commentFrom, commentorImg, commentYear, commentMonth, com
     return (
         <>
             <CommentItemLi>
-                <div className="profile-img">
+                <ProfileImgLink to={{ pathname: '/yourpage', search: `?id=${id}` }}>
                     <CommentorProfileImg src={commentorImg} />
-                </div>
+                </ProfileImgLink>
                 <div className="comment-box">
                     <CommentInfo>
                         <CommentFrom>{commentFrom}</CommentFrom>
