@@ -1,5 +1,5 @@
 # 주니어 개발자들의 커뮤니티 데브타운
-
+### 멋쟁이사자처럼 프론트엔드스쿨 2기 TEAM 참쉽조잉🤷‍♀️
 ### [배포 URL]
 
 -   URL: [주니어 개발자들의 커뮤니티 데브타운](https://spontaneous-cuchufli-e25085.netlify.app/)
