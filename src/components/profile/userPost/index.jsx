@@ -3,14 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
 import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl } from './index.style';
-
-function parseDate(dateString) {
-    const postDate = new Date(dateString)
-    const year = postDate.getFullYear();
-    const month = postDate.getMonth() + 1;
-    const day = postDate.getDate();
-    return [year, month, day]
-}
+import parseDate from '../../../utils/parseDate';
 
 function PostAreaList({ userPostData, alertOnModal }) {
     return (

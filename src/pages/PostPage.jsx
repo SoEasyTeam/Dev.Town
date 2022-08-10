@@ -9,6 +9,7 @@ import { AlertLogoutModal } from '../components/common/alert';
 import { commentListAction } from '../redux/actions/commentListAction';
 import { postAction } from '../redux/actions/postAction';
 import { PostSection } from '../components/post/index.style';
+import parseDate from '../utils/parseDate';
 
 function PostPage() {
     const dispatch = useDispatch()
@@ -28,14 +29,6 @@ function PostPage() {
     const number = postViewId.indexOf(id);
     const item = useSelector(state => state.homefeed.item[number]);
     // console.log(item,'왜에러니');
-
-    function parseDate(dateString) {
-        const postDate = new Date(dateString)
-        const year = postDate.getFullYear();
-        const month = postDate.getMonth() + 1;
-        const day = postDate.getDate();
-        return [year, month, day]
-    }
 
     const [year, month, day] = parseDate(item.createdAt);
 
