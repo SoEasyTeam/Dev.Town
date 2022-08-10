@@ -86,7 +86,7 @@
 
 ##### - Back-End: 제공된 API 사용
 
-##### - Deployment: `Netlify`
+##### - Deployment: `Heroku`
 
 </br>
 
