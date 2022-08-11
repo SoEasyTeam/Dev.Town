@@ -1,42 +1,53 @@
+import axios from 'axios';
+import { API_URL } from '../../constants/defaultUrl';
+
 function addProduct(itemName, price, link, itemImage) {
     console.log('addProduct success action');
     return async (dispatch, getState) => {
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = '/product';
         const token = getState().auth.token;
-        console.log(token);
+        const addProductData = {
+            product: {
+                itemName: itemName,
+                price: parseInt(price),
+                link: link,
+                itemImage: itemImage,
+            },
+        };
         try {
-            let res = await fetch(url + reqPath, {
-                method: 'POST',
+            const res = await axios.post(API_URL + '/product', addProductData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-type': 'application/json',
                 },
-                body: JSON.stringify({
-                    product: {
-                        itemName: itemName,
-                        price: parseInt(price),
-                        link: link,
-                        itemImage: itemImage,
-                    },
-                }),
             });
+            // let res = await fetch(url + reqPath, {
+            //     method: 'POST',
+            //     headers: {
+            //         Authorization: `Bearer ${token}`,
+            //         'Content-type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //         product: {
+            //             itemName: itemName,
+            //             price: parseInt(price),
+            //             link: link,
+            //             itemImage: itemImage,
+            //         },
+            //     }),
+            // });
 
-            const resJson = await res.json();
-            console.log(resJson);
-
-            if (resJson.message === 'request entity too large') {
+            if (res.data.message === 'request entity too large') {
                 alert('이미지 용량이 큽니다. 10MB 이하로 해주세요.');
             } else {
                 dispatch({
                     type: 'PRODUCT_SUCCESS',
                     payload: {
-                        id: resJson.product.id,
-                        itemName: resJson.product.itemName,
-                        price: resJson.product.price,
-                        link: resJson.product.link,
-                        itemImage: resJson.product.itemImage,
-                        author: resJson.product.author,
+                        id: res.data.product.id,
+                        itemName: res.data.product.itemName,
+                        price: res.data.product.price,
+                        link: res.data.product.link,
+                        itemImage: res.data.product.itemImage,
+                        author: res.data.product.author,
                     },
                 });
             }
@@ -52,8 +63,6 @@ function productModificationModal(
     product_id,
     author
 ) {
-    console.log('productModificationModal success action');
-    console.log(product_id);
     return async (dispatch, getState) => {
         dispatch({
             type: 'PRODUCT_SUCCESS',
@@ -70,42 +79,38 @@ function productModificationModal(
 }
 
 function productModification(itemName, price, link, itemImage, product_id) {
-    console.log('productModification success action');
-    console.log(product_id);
     return async (dispatch, getState) => {
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/product/${product_id}`;
         const token = getState().auth.token;
-        console.log(token);
         try {
-            let res = await fetch(url + reqPath, {
-                method: 'PUT',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-type': 'application/json',
+            const productModificationData = {
+                product: {
+                    itemName: itemName,
+                    price: parseInt(price),
+                    link: link,
+                    itemImage: itemImage,
                 },
-                body: JSON.stringify({
-                    product: {
-                        itemName: itemName,
-                        price: parseInt(price),
-                        link: link,
-                        itemImage: itemImage,
-                    },
-                }),
-            });
+            };
 
-            const resJson = await res.json();
-            console.log(resJson);
+            const productModificationRes = await axios.put(
+                API_URL + `/product/${product_id}`,
+                productModificationData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-type': 'application/json',
+                    },
+                }
+            );
 
             dispatch({
                 type: 'PRODUCT_SUCCESS',
                 payload: {
-                    id: resJson.product.id,
-                    itemName: resJson.product.itemName,
-                    price: resJson.product.price,
-                    link: resJson.product.link,
-                    itemImage: resJson.product.itemImage,
-                    author: resJson.product.author,
+                    id: productModificationRes.data.product.id,
+                    itemName: productModificationRes.data.product.itemName,
+                    price: productModificationRes.data.product.price,
+                    link: productModificationRes.data.product.link,
+                    itemImage: productModificationRes.data.product.itemImage,
+                    author: productModificationRes.data.product.author,
                 },
             });
         } catch (error) {}
@@ -113,24 +118,21 @@ function productModification(itemName, price, link, itemImage, product_id) {
 }
 
 function productDelete(product_id) {
-    console.log('productDelete success action');
-    console.log(product_id);
     return async (dispatch, getState) => {
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/product/${product_id}`;
         const token = getState().auth.token;
         console.log(token);
         try {
-            let res = await fetch(url + reqPath, {
-                method: 'DELETE',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-type': 'application/json',
-                },
-            });
+            const productDeleteRes = await axios.delete(
+                API_URL + `/product/${product_id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-type': 'application/json',
+                    },
+                }
+            );
 
-            const resJson = await res.json();
-            console.log(resJson);
+            console.log(productDeleteRes.data);
         } catch (error) {}
     };
 }

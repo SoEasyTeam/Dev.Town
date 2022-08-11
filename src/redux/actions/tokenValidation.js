@@ -1,29 +1,27 @@
+import axios from 'axios';
+import { API_URL } from '../../constants/defaultUrl';
+
 function tokenValid() {
     return async (dispatch, getState) => {
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = '/user/checktoken';
         const token = getState().auth.token;
         if (token === null) {
             console.log('token이 존재하지 않습니다.');
         } else {
             try {
-                let res = await fetch(url + reqPath, {
-                    method: 'GET',
+                const res = await axios(API_URL + '/user/checktoken', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     },
                 });
-                const resJson = await res.json();
-                console.log(resJson);
                 dispatch({
                     type: 'HOMEFEED_SUCCESS',
                     payload: {
-                        isValid: resJson,
+                        isValid: res.data,
                     },
                 });
             } catch (err) {
-                console.log(err);
+                console.log('연결오류');
             }
         }
     };

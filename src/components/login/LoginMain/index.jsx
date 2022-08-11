@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { authenticateAction } from '../../../redux/actions/authenticateAction';
@@ -44,7 +44,7 @@ function LoginMain() {
         if(tokenValid.isValid === true) {
             history.push('/home');
         }
-    },[tokenValid, history]);
+    },[tokenValid, history])
 
     return (
         <LoginContainer>
