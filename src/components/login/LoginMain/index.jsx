@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { authenticateAction } from '../../../redux/actions/authenticateAction';
@@ -43,11 +43,12 @@ function LoginMain() {
         }
     },[message, dispatch, token]);
 
-    useEffect(() => {
-        if(tokenValid.isValid === true) {
-            history.push('/home');
-        }
-    },[tokenValid, history])
+    // useEffect(() => {
+    //     console.log(tokenValid.isValid);
+    //     if(tokenValid.isValid === true) {
+    //         history.push('/home');
+    //     }
+    // }, [tokenValid, history])
 
     return (
         <LoginContainer>
@@ -68,4 +69,4 @@ function LoginMain() {
     )
 }
 
-export default React.memo(LoginMain);
+export default LoginMain;
