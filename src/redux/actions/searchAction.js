@@ -1,7 +1,6 @@
 function search(keyword, token) {
     return async (dispatch, getState) => {
         let url = 'https://mandarin.api.weniv.co.kr';
-
         const reqPath = `/user/searchuser/?keyword=${keyword}`;
 
         try {

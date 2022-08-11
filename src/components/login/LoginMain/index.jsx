@@ -12,13 +12,8 @@ function LoginMain() {
     const [warningActive, setWarningActive] =useState(false);
     const dispatch = useDispatch();   
     const history = useHistory();
-    let message = useSelector(state=>state.auth.message);
     let token = useSelector(state=> state.auth.token);
-
-    if(token !== null){
-        dispatch(authenticateAction.tokenValid(token));
-    }
-
+    let message = useSelector(state=>state.auth.message);
     let tokenValid = useSelector(state=>state.token.tokenValid);
     //이메일 주소 유효성 검사
     const checkEmail =
@@ -33,19 +28,23 @@ function LoginMain() {
     
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        // console.log('login user function issue');
         dispatch(authenticateAction.login(email, password));
     }
 
     useEffect(() => {
-        message=== '이메일 또는 비밀번호가 일치하지 않습니다.' ? setWarningActive(true) : setWarningActive(false);
-    },[message]);
+        if(message === '이메일 또는 비밀번호가 일치하지 않습니다.'){
+            setWarningActive(true);
+        }else {
+            setWarningActive(false);
+        }
+        dispatch(authenticateAction.tokenValid(token));
+    },[message, dispatch, token]);
 
     useEffect(() => {
         if(tokenValid.isValid === true) {
             history.push('/home');
         }
-    },[tokenValid]);
+    },[tokenValid, history]);
 
     return (
         <LoginContainer>
