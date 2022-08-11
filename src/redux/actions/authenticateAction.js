@@ -49,23 +49,26 @@ function login(email, password) {
 
 function tokenValid(token) {
     return async (dispatch, getState) => {
-        console.log('토큰 action');
-        try {
-            const res = await axios.get(API_URL + '/user/checktoken', {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-            });
+        if (token === null || 'undefined') {
+            return;
+        } else {
+            try {
+                const res = await axios.get(API_URL + '/user/checktoken', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
 
-            dispatch({
-                type: 'TOKEN_VALID_SUCCESS',
-                payload: {
-                    isValid: res.data,
-                },
-            });
-        } catch (err) {
-            console.log(err);
+                dispatch({
+                    type: 'TOKEN_VALID_SUCCESS',
+                    payload: {
+                        isValid: res.data,
+                    },
+                });
+            } catch (err) {
+                console.log(err);
+            }
         }
     };
 }

@@ -37,6 +37,7 @@ function LoginMain() {
         }else {
             setWarningActive(false);
         }
+
         dispatch(authenticateAction.tokenValid(token));
     },[message, dispatch, token]);
 
