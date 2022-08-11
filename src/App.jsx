@@ -17,11 +17,18 @@ import ProfileModificationPage from './pages/ProfileModificationPage';
 import ChatPage from './pages/ChatPage';
 import ChatItemPage from './pages/ChatItemPage';
 import Error404Page from './pages/Error404Page'
+// import Auth from './nav/Auth';
+// import { useEffect } from 'react';
+// import { useSelector } from 'react-redux';
 
 function App() {
-
+    // let tokenValid = useSelector(state=>state.token.tokenValid)
+    // useEffect(() => {
+    //     console.log(tokenValid);
+    // }, [tokenValid])
     return (
         <Switch>
+            {/* <Auth /> */}
             <Route exact path='/' component={() => <SplashPage />} />
             <Route path='/join' component={() => <JoinMembershipPage />} />
             <Route

@@ -37,8 +37,10 @@ function LoginMain() {
         }else {
             setWarningActive(false);
         }
-
-        dispatch(authenticateAction.tokenValid(token));
+        
+        if(token !== null && typeof(token) !== 'undefined'){
+            dispatch(authenticateAction.tokenValid());
+        }
     },[message, dispatch, token]);
 
     useEffect(() => {
