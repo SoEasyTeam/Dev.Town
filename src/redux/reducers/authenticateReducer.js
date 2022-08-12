@@ -11,7 +11,6 @@ let initialState = {
     accountname: acountname,
     image: image,
     token: token,
-    authenticate: false,
     message: '',
 };
 
@@ -31,7 +30,6 @@ function authenticateReducer(state = initialState, action) {
                 accountname: payload.accountname,
                 image: payload.image,
                 token: payload.token,
-                authenticate: true,
                 message: payload.message,
             };
         case 'LOGIN_FAIL':

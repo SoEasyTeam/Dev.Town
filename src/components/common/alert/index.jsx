@@ -7,21 +7,17 @@ import { productAction } from '../../../redux/actions/productAcition';
 import { AlertBox, AlertOutside, AlertContainer, AlertUl, DeleteAlertBox, AlertP, ButtonBox, CancelBtn, DeleteBtn } from './index.style'
 
 // 상품 삭제
-function AlertProductModal({ alertOffModal }) {
+function AlertProductModal({ alertOffModal, product_id }) {
     document.body.style.overflow = "hidden";
     console.log('alertmodal 나옴')
     const dispatch = useDispatch();
-    useSelector()
-    // console.log(product_id)
 
     const onClickDeleteBtn = () => {
         console.log('삭제해라')
+        dispatch(productAction.productDelete(product_id));
         alertOffModal();
     }
 
-    // useEffect(() => {
-    //     dispatch(productAction.productDelete(product_id));
-    // }, [product_id])
     return (
         <>
             <AlertBox>

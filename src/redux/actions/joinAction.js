@@ -1,25 +1,29 @@
+import axios from 'axios';
+import { API_URL } from '../../constants/defaultUrl';
+
 function join(email, password) {
     return async (dispatch, getState) => {
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = '/user/emailvalid';
+        const joinData = {
+            user: {
+                email: email,
+            },
+        };
         try {
-            let res = await fetch(url + reqPath, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    user: {
-                        email: email,
+            const res = await axios.post(
+                API_URL + '/user/emailvalid',
+                joinData,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
-                }),
-            });
-            const resJson = await res.json();
-            if (resJson.message === '사용 가능한 이메일 입니다.') {
+                }
+            );
+
+            if (res.data.message === '사용 가능한 이메일 입니다.') {
                 dispatch({
                     type: 'JOIN_EMAILVALID_SUCCESS',
                     payload: {
-                        message: resJson.message,
+                        message: res.data.message,
                         email: email,
                         password: password,
                     },
@@ -28,7 +32,7 @@ function join(email, password) {
                 dispatch({
                     type: 'JOIN_EMAILVALID_FAIL',
                     payload: {
-                        message: resJson.message,
+                        message: res.data.message,
                     },
                 });
             }
@@ -38,33 +42,35 @@ function join(email, password) {
 
 function accountValid(accountname) {
     return async (dispatch, getState) => {
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = '/user/accountnamevalid';
+        const accounValidData = {
+            user: {
+                accountname: accountname,
+            },
+        };
+
         try {
-            let res = await fetch(url + reqPath, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    user: {
-                        accountname: accountname,
+            const res = await axios.post(
+                API_URL + '/user/accountnamevalid',
+                accounValidData,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
-                }),
-            });
-            const resJson = await res.json();
-            if (resJson.message === '사용 가능한 계정ID 입니다.') {
+                }
+            );
+
+            if (res.data.message === '사용 가능한 계정ID 입니다.') {
                 dispatch({
                     type: 'JOIN_ACCOUNTVALID_SUCCESS',
                     payload: {
-                        message: resJson.message,
+                        message: res.data.message,
                     },
                 });
-            } else if (resJson.message === '이미 가입된 계정ID 입니다.') {
+            } else if (res.data.message === '이미 가입된 계정ID 입니다.') {
                 dispatch({
                     type: 'JOIN_ACCOUNTVALID_FAIL',
                     payload: {
-                        message: resJson.message,
+                        message: res.data.message,
                     },
                 });
             }
@@ -74,29 +80,27 @@ function accountValid(accountname) {
 
 function joinfinal(email, password, username, accountname, intro, itemImage) {
     return async (dispatch, getState) => {
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = '/user';
+        const joinfinalData = {
+            user: {
+                username: username,
+                email: email,
+                password: password,
+                accountname: accountname,
+                intro: intro,
+                image: itemImage,
+            },
+        };
+
         try {
-            let res = await fetch(url + reqPath, {
-                method: 'POST',
+            const res = await axios.post(API_URL + '/user', joinfinalData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    user: {
-                        username: username,
-                        email: email,
-                        password: password,
-                        accountname: accountname,
-                        intro: intro,
-                        image: itemImage,
-                    },
-                }),
             });
-            const resJson = await res.json();
-            if (resJson.message === '이미 사용중인 계정 ID입니다.') {
+
+            if (res.data.message === '이미 사용중인 계정 ID입니다.') {
                 alert('이미 사용중인 계정 ID입니다.');
-            } else if (resJson.message === '회원가입 성공') {
+            } else if (res.data.message === '회원가입 성공') {
                 dispatch({
                     type: 'JOIN_EMAIL_PASSWORD_SUCCESS',
                     payload: {
@@ -105,8 +109,8 @@ function joinfinal(email, password, username, accountname, intro, itemImage) {
                         username,
                         accountname,
                         intro,
-                        image: resJson.image,
-                        message: resJson.message,
+                        image: res.data.image,
+                        message: res.data.message,
                     },
                 });
             }
