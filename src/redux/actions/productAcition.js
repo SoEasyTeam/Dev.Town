@@ -137,7 +137,6 @@ function productList() {
                     },
                 }
             );
-
             dispatch({
                 type: 'PRODUCT_LIST_SUCCESS',
                 payload: {

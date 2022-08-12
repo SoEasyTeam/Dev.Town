@@ -5,40 +5,16 @@ import { AlertProductModal } from '../../common/alert';
 import { ProductAreaListUl, ProductArea } from './index.style'
 import { productAction } from '../../../redux/actions/productAcition';
 
-const ProductAreaList = ({ alertOnModal }) => {
-    const userProductData = useSelector(state=>state.product.item);
-    return (
-        <>
-            {userProductData &&
-                userProductData.product.map((item) => {
-                    return (
-                        <div key={item.id} >
-                            <Product
-                                name={item.itemName}
-                                price={item.price}
-                                src={item.itemImage}
-                                itemLink={item.link}
-                                writerId={item.author._id}
-                                alertOnModal={alertOnModal}
-                                product_id={item.id}
-                                author={item.author}
-                            />
-                        </div>
-                    )
-                })
-            }
-        </>
-    )
-}
-
 function UserProduct() {
     const [alertOn, setAlertOn] = useState(false);
     const dispatch = useDispatch();
     const productListItem = useSelector(state=>state.product.item);
 
     useEffect(() => {
-        console.log('useEffect');
-        dispatch(productAction.productList());
+        setTimeout(() => {
+            console.log('useEffect');
+            dispatch(productAction.productList());
+        }, 300);
     }, [dispatch])
 
     function alertOnModal() {
@@ -58,7 +34,24 @@ function UserProduct() {
                     <div className='productAreaDiv'>
                         <h3 className='productAreaTitle'>판매 중인 상품</h3>
                         <ProductAreaListUl>
-                            <ProductAreaList alertOnModal={alertOnModal} />
+                            {productListItem &&
+                                productListItem.product.map((item) => {
+                                return (
+                                    <div key={item.id} >
+                                        <Product
+                                            name={item.itemName}
+                                            price={item.price}
+                                            src={item.itemImage}
+                                            itemLink={item.link}
+                                            writerId={item.author._id}
+                                            alertOnModal={alertOnModal}
+                                            product_id={item.id}
+                                            author={item.author}
+                                        />
+                                    </div>
+                                    )
+                                })
+                            }
                         </ProductAreaListUl>
                     </div>
                 </ProductArea>
