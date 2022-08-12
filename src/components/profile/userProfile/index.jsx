@@ -16,7 +16,6 @@ function UserProfile(props) {
     const history = useHistory();
     const token = sessionStorage.getItem('token');
 
-
     const getData = async (account) => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
             method: "GET",
@@ -29,8 +28,6 @@ function UserProfile(props) {
         console.log(json)
         setUserData(json)
     }
-
-
 
     useEffect(() => {
         if (props.accountname) {

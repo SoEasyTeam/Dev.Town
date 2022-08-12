@@ -9,6 +9,7 @@ function UserProduct() {
     const [alertOn, setAlertOn] = useState(false);
     const dispatch = useDispatch();
     const productListItem = useSelector(state=>state.product.item);
+    const [product_id, setProduct_id] = useState('');
 
     useEffect(() => {
         setTimeout(() => {
@@ -17,8 +18,9 @@ function UserProduct() {
         }, 300);
     }, [dispatch])
 
-    function alertOnModal() {
+    function alertOnModal(product_id) {
         setAlertOn(true);
+        setProduct_id(product_id);
     }
 
     function alertOffModal() {
@@ -56,7 +58,9 @@ function UserProduct() {
                     </div>
                 </ProductArea>
             }
-            {alertOn === true ? <AlertProductModal alertOffModal={alertOffModal} /> : ''}
+            {
+                alertOn === true ? <AlertProductModal alertOffModal={alertOffModal} product_id={product_id} /> : ''
+            }
         </>
     )
 
