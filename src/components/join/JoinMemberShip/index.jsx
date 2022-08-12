@@ -33,10 +33,6 @@ function JoinMembership() {
         history.push('/profilesetting')
     }
 
-    // const onChangeEmailHandler = (event) => {
-    //     setEmail(event.currentTarget.value);
-    // }
-
     useEffect(() => {
         if(checkEmail.test(email)){
             dispatch(joinAction.join(email,password));

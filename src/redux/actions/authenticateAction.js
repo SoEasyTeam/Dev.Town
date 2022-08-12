@@ -47,28 +47,25 @@ function login(email, password) {
     };
 }
 
-function tokenValid(token) {
+function tokenValid() {
     return async (dispatch, getState) => {
-        if (token === null || 'undefined') {
-            return;
-        } else {
-            try {
-                const res = await axios.get(API_URL + '/user/checktoken', {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
+        const token = getState().auth.token;
+        try {
+            const res = await axios.get(API_URL + '/user/checktoken', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
 
-                dispatch({
-                    type: 'TOKEN_VALID_SUCCESS',
-                    payload: {
-                        isValid: res.data,
-                    },
-                });
-            } catch (err) {
-                console.log(err);
-            }
+            dispatch({
+                type: 'TOKEN_VALID_SUCCESS',
+                payload: {
+                    isValid: res.data,
+                },
+            });
+        } catch (err) {
+            console.log(err);
         }
     };
 }

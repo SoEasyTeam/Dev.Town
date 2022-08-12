@@ -20,21 +20,6 @@ function addProduct(itemName, price, link, itemImage) {
                     'Content-type': 'application/json',
                 },
             });
-            // let res = await fetch(url + reqPath, {
-            //     method: 'POST',
-            //     headers: {
-            //         Authorization: `Bearer ${token}`,
-            //         'Content-type': 'application/json',
-            //     },
-            //     body: JSON.stringify({
-            //         product: {
-            //             itemName: itemName,
-            //             price: parseInt(price),
-            //             link: link,
-            //             itemImage: itemImage,
-            //         },
-            //     }),
-            // });
 
             if (res.data.message === 'request entity too large') {
                 alert('이미지 용량이 큽니다. 10MB 이하로 해주세요.');
@@ -137,9 +122,35 @@ function productDelete(product_id) {
     };
 }
 
+function productList() {
+    return async (dispatch, getState) => {
+        const token = getState().auth.token;
+        const accountname = getState().auth.accountname;
+        console.log(accountname);
+        try {
+            const productListRes = await axios.get(
+                API_URL + `/product/${accountname}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-type': 'application/json',
+                    },
+                }
+            );
+            dispatch({
+                type: 'PRODUCT_LIST_SUCCESS',
+                payload: {
+                    item: productListRes.data,
+                },
+            });
+        } catch (error) {}
+    };
+}
+
 export const productAction = {
     addProduct,
     productModification,
     productModificationModal,
     productDelete,
+    productList,
 };
