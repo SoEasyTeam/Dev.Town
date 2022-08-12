@@ -1,11 +1,12 @@
 import { React, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Product from '../../common/product';
 import { AlertProductModal } from '../../common/alert';
 import { ProductAreaListUl, ProductArea } from './index.style'
+import { productAction } from '../../../redux/actions/productAcition';
 
-const ProductAreaList = ({ userProductData, alertOnModal }) => {
-
+const ProductAreaList = ({ alertOnModal }) => {
+    const userProductData = useSelector(state=>state.product.item);
     return (
         <>
             {userProductData &&
@@ -30,37 +31,16 @@ const ProductAreaList = ({ userProductData, alertOnModal }) => {
     )
 }
 
-function UserProduct(props) {
-    const token = sessionStorage.getItem('token');
-    const accountname = sessionStorage.getItem('accountname');
-    const [userProductData, setUserProductData] = useState('');
+function UserProduct() {
     const [alertOn, setAlertOn] = useState(false);
-
-    const getData = async (account) => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/product/${account}`, {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-type": "application/json"
-            }
-        })
-        const json = await res.json()
-        // console.log('상품 : ', json)
-        setUserProductData(json)
-    }
+    const dispatch = useDispatch();
+    const productListItem = useSelector(state=>state.product.item);
 
     useEffect(() => {
-        if (props.accountname) {
-            getData(props.accountname)
-        }
-        else {
-            getData(accountname)
-        }
-    }, [])
+        console.log('useEffect');
+        dispatch(productAction.productList());
+    }, [dispatch])
 
-    if (userProductData.data === 0) {
-        return <></>
-    }
     function alertOnModal() {
         setAlertOn(true);
     }
@@ -69,16 +49,20 @@ function UserProduct(props) {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
+
     return (
         <>
-            <ProductArea>
-                <div className='productAreaDiv'>
-                    <h3 className='productAreaTitle'>판매 중인 상품</h3>
-                    <ProductAreaListUl>
-                        <ProductAreaList userProductData={userProductData} alertOnModal={alertOnModal} />
-                    </ProductAreaListUl>
-                </div>
-            </ProductArea>
+            {
+                productListItem===undefined||productListItem.data === 0 ? <></> :
+                <ProductArea>
+                    <div className='productAreaDiv'>
+                        <h3 className='productAreaTitle'>판매 중인 상품</h3>
+                        <ProductAreaListUl>
+                            <ProductAreaList alertOnModal={alertOnModal} />
+                        </ProductAreaListUl>
+                    </div>
+                </ProductArea>
+            }
             {alertOn === true ? <AlertProductModal alertOffModal={alertOffModal} /> : ''}
         </>
     )

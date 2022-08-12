@@ -26,8 +26,6 @@ const Nav = () => {
     const history = useHistory();
     console.log(tokenValid.isValid)
 
-    // let localTokenValid = sessionStorage.getItem('tokenValid')
-
     useEffect(() => {
         console.log(tokenValid.isValid);
         if(tokenValid.isValid === true) {

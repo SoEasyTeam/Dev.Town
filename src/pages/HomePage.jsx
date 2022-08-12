@@ -22,7 +22,7 @@ function HomePage() {
     sessionStorage.setItem('image', localImg);
     sessionStorage.setItem('username', localusername);
     sessionStorage.setItem('tokenValid', localTokenValid);
-
+    console.log(posts);
     useEffect(() => {
         dispatch(homeFeedAction.homeFeed());
     }, [dispatch]);

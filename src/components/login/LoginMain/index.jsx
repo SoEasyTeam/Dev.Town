@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { authenticateAction } from '../../../redux/actions/authenticateAction';
@@ -6,15 +7,14 @@ import { EmailInput, PassWordInput, TextLabel } from '../../common/textActiveInp
 import { JoinEmailLink, LoginBtn, LoginContainer, WarningParagraph } from './index.style';
 
 function LoginMain() {
+    // const [email, setEmail] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
     const [warningActive, setWarningActive] =useState(false);
     const dispatch = useDispatch();   
-    const history = useHistory();
     let token = useSelector(state=> state.auth.token);
     let message = useSelector(state=>state.auth.message);
-    let tokenValid = useSelector(state=>state.token.tokenValid);
     //이메일 주소 유효성 검사
     const checkEmail =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -31,6 +31,11 @@ function LoginMain() {
         dispatch(authenticateAction.login(email, password));
     }
 
+    const onChangeEmailHandler = useCallback((event) => {
+        setEmail(event.target.value);
+        return;
+    }, [])
+
     useEffect(() => {
         if(message === '이메일 또는 비밀번호가 일치하지 않습니다.'){
             setWarningActive(true);
@@ -43,20 +48,13 @@ function LoginMain() {
         }
     },[message, dispatch, token]);
 
-    // useEffect(() => {
-    //     console.log(tokenValid.isValid);
-    //     if(tokenValid.isValid === true) {
-    //         history.push('/home');
-    //     }
-    // }, [tokenValid, history])
-
     return (
         <LoginContainer>
             <h1 className='ir'>데브타운 로그인 화면</h1>
             <h2 className='loginTitle'>로그인</h2>
             <form className='loginForm' onSubmit={onSubmitHandler}>
                 <TextLabel>이메일</TextLabel>
-                <EmailInput value={email} onChange = {(event) => setEmail(event.target.value)} onKeyUp={loginActive} />
+                <EmailInput value={email} onChange = {onChangeEmailHandler} onKeyUp={loginActive} />
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput value={password} onChange = {(event) => setPassword(event.target.value)} onKeyUp={loginActive}/>
                 <WarningParagraph visible={warningActive}>*{message}</WarningParagraph>
