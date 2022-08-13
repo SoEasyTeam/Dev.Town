@@ -16,7 +16,6 @@ function UserProfile(props) {
     const history = useHistory();
     const token = sessionStorage.getItem('token');
 
-
     const getData = async (account) => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
             method: "GET",
@@ -30,8 +29,6 @@ function UserProfile(props) {
         setUserData(json)
     }
 
-
-
     useEffect(() => {
         if (props.accountname) {
             getData(props.accountname)
@@ -43,7 +40,7 @@ function UserProfile(props) {
 
 
     if (!userData) {
-        return <div>데이터 없을 때 화면 띄우기</div>
+        return <></>
     }
 
 

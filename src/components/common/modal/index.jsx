@@ -4,16 +4,15 @@ import { productAction } from '../../../redux/actions/productAcition';
 import { ModalOutside, ModalContainer, ButtonLink } from './index.style'
 
 // 상품 클릭시 모달
-function MyProductModal({ itemName, price, link, itemImage, product_id, closeModal, author }) {
+function MyProductModal({ itemName, price, link, itemImage, product_id, closeModal, alertOnModal, author }) {
     const dispatch = useDispatch();
-    console.log(product_id)
     const onClickModifictionBtn = () => {
         dispatch(productAction.productModificationModal(itemName, price, link, itemImage, product_id, author));
     }
 
     const onClickDeleteBtn = () => {
-        dispatch(productAction.productDelete(product_id));
         closeModal();
+        alertOnModal(product_id);
     }
 
     document.body.style.overflow = "hidden";
@@ -95,7 +94,7 @@ function ProfileModal({ closeModal, alertOnModal }) {
             <ModalOutside onClick={closeModal} />
             <ModalContainer>
                 <button className='deleteModalBtn' onClick={closeModal}></button>
-                <ButtonLink onClick={closeModal}>설정 및 개인정보</ButtonLink>
+                <ButtonLink onClick={closeModal} to={'/myprofile'}>설정 및 개인정보</ButtonLink>
                 <ButtonLink onClick={() => { closeModal(); alertOnModal() }}>로그아웃</ButtonLink>
             </ModalContainer>
         </>

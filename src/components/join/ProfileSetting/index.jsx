@@ -5,6 +5,7 @@ import { joinAction } from '../../../redux/actions/joinAction';
 import JoinProfileImg from '../../../assets/basic-profile-img.png';
 import { ProfileImgInput, Profilelabel, ProfileSettingForm, SignUpBtn } from './index.style';
 import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../../common/textActiveInput/index.style';
+import { WarningParagraph } from '../../login/LoginMain/index.style';
 
 function ProfileSetting() {
     const [username, setUsername] = useState('');
@@ -18,6 +19,7 @@ function ProfileSetting() {
     const dispatch = useDispatch();
     const [itemImage, setItemImage] = useState(JoinProfileImg);
 
+
     const onChangeProfileImg = (event) => {
         let reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
@@ -28,23 +30,30 @@ function ProfileSetting() {
     };
 
     const signUpActive = () => {
-        return (username.length > 1 && username.length < 11 && accountname.length>0 && intro.length > 0)
+        return (username.length > 1 && username.length < 11 && accountname.length>0 && intro.length > 0 && message === '사용 가능한 계정ID 입니다.')
         ? setIsActive(false)
         : setIsActive(true);
     };
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log('login user function issue');
         dispatch(joinAction.joinfinal(email, password, username, accountname, intro, itemImage));
-    }
-
-    useEffect(() => {
-        console.log(message);
         if(message === '회원가입 성공'){
             history.push('/login');
         }
-    },[message])
+    }
+
+    useEffect(() => {
+        if(accountname.length>0){
+            dispatch(joinAction.accountValid(accountname));
+        }
+    },[accountname])
+
+    useEffect(() => {
+        if(message==='회원가입 성공'){
+            history.push('/login');
+        }
+    }, [message])
 
     return (
         <ProfileSettingForm onSubmit={onSubmitHandler}>
@@ -60,19 +69,20 @@ function ProfileSetting() {
             <ProfileImgInput onChange={onChangeProfileImg} id='profileImg' type='file' accept='image/*' />
             <div className='input-cont'>
                 <TextLabel>사용자 이름</TextLabel>
-                <ProfileNameInput value={username} onChange={(event) => setUsername(event.target.value)} onKeyUp = {signUpActive} />
+                <ProfileNameInput value={username} onChange={(event) => setUsername(event.target.value)} onKeyUp = {signUpActive}/>
             </div>
             <div className='input-cont'>
                 <TextLabel>계정 ID</TextLabel>
-                <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp = {signUpActive}/>
+                <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp = {signUpActive} />
             </div>
             <div className='input-cont'>
                 <TextLabel>소개</TextLabel>
-                <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp = {signUpActive} />
+                <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp = {signUpActive}/>
+                <WarningParagraph visible={isActive}>{message}</WarningParagraph>
             </div>
-            <SignUpBtn disabled={isActive}>감귤마켓 시작하기</SignUpBtn>
+            <SignUpBtn disabled={isActive}>데브타운 시작하기</SignUpBtn>
         </ProfileSettingForm>
     );
 }
 
-export default ProfileSetting;
+export default React.memo(ProfileSetting);

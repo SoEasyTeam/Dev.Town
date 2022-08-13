@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { productAction } from '../../../redux/actions/productAcition';
 import { MyProductModal } from '../modal';
 import { ProductItemBox } from './index.style'
 
@@ -7,6 +8,7 @@ const Product = ({ name, price, src, itemLink, writerId, alertOnModal, product_i
     const userId = useSelector(state => state.auth.id);
     const [modalOn, setModalOn] = useState(false);
     const priceShow = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    const dispatch = useDispatch();
     function openModal() {
         console.log('상품등록유저', writerId);
         console.log('유저:', userId);
@@ -14,7 +16,7 @@ const Product = ({ name, price, src, itemLink, writerId, alertOnModal, product_i
         if (userId !== writerId) {
             setModalOn(false);
             console.log('상품링크로 이동')
-            window.open(`${itemLink}`, '_blank')
+            window.open(itemLink, '_blank')
         } else {
             setModalOn(true);
         }
@@ -23,6 +25,7 @@ const Product = ({ name, price, src, itemLink, writerId, alertOnModal, product_i
     function closeModal() {
         document.body.style.overflow = "unset";
         setModalOn(false);
+        dispatch(productAction.productList());
     }
 
     return (

@@ -1,59 +1,54 @@
-function commentList(postId, token){
-    return async (dispatch, getState)=>{
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/post/${postId}/comments`
-        try {
-            let res = await fetch(url+reqPath,{
-                method:'GET',
-                headers:{
-                    "Authorization" : `Bearer ${token}`,
-                    "Content-type" : "application/json"
-                },
-        })
-        const resJson=await res.json()
-        dispatch({
-            type: 'GET_COMMENTLIST',
-            payload:{
-                    comments: resJson.comments
-            },
-            
-        })
-    } catch (error) {
-        console.log('something wrong!!!');
-    }
-}
-}
+import axios from 'axios';
+import { API_URL } from '../../constants/defaultUrl';
 
-function writeComment(postId, token, comment){
-    console.log(postId, token, comment);
-    return async(dispatch)=>{
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = `/post/${postId}/comments`
+function commentList(id, token) {
+    return async (dispatch, getState) => {
         try {
-            let res = await fetch(url+reqPath,{
-                method:'POST',
-                headers:{
-                    "Authorization" : `Bearer ${token}`,
-                    "Content-type" : "application/json"
+            const res = await axios.get(API_URL + `/post/${id}/comments`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-type': 'application/json',
                 },
-                body:JSON.stringify({
-                    "comment":{
-                        "content":comment
-                }})
-            })
-            const resJson=await res.json()
-            console.log(resJson,'댓글제발');
+            });
+
             dispatch({
-                type:'WRITE_COMMENT',
-                payload:{
-                    
-                    comment: resJson.comment
-                
-                }
-            })
-        } catch {
-
+                type: 'GET_COMMENTLIST',
+                payload: {
+                    comments: res.data.comments,
+                },
+            });
+        } catch (error) {
+            console.log('something wrong!!!');
         }
-    }
+    };
 }
-export const commentListAction = {commentList, writeComment}
+
+function writeComment(postId, token, comment) {
+    console.log(postId, token, comment);
+    return async (dispatch) => {
+        const commentData = {
+            comment: {
+                content: comment,
+            },
+        };
+        try {
+            const res = await axios.post(
+                API_URL + `/post/${postId}/comments`,
+                commentData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-type': 'application/json',
+                    },
+                }
+            );
+            dispatch({
+                type: 'WRITE_COMMENT',
+                payload: {
+                    comment: res.data.comment,
+                },
+            });
+        } catch {}
+    };
+}
+export const commentListAction = { commentList, writeComment };

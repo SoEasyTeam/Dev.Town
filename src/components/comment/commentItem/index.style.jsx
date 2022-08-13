@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components"
 
 export const CommentItemLi = styled.li`
@@ -41,4 +42,8 @@ export const DetailOptionsBtn = styled.img`
 export const Comment = styled.p`
     font-size: 14px;
     line-height: 20px;
+`
+
+export const ProfileImgLink = styled(Link)`
+    display: inherit;  
 `
