@@ -1,8 +1,8 @@
 # 주니어 개발자들의 커뮤니티 데브타운
-
+### 멋쟁이사자처럼 프론트엔드스쿨 2기 TEAM 참쉽조잉🤷‍♀️
 ### [배포 URL]
 
--   URL: [주니어 개발자들의 커뮤니티 데브타운](https://spontaneous-cuchufli-e25085.netlify.app/)
+-   URL: [주니어 개발자들의 커뮤니티 데브타운](https://devtownapp1.herokuapp.com/)
 -   계정
     -   `ID`: devtown@test.com
     -   `PassWord`: 123456
@@ -73,13 +73,6 @@
 -   홈 피드리스트
 -   판매 상품 등록, 수정, 삭제
 
-_사용 API_
-
--   이미지 API (한 개의 이미지)
--   유저 API (회원가입 / 로그인 / 이메일 검증 / 전체 유저 목록(개발용) / 계정검증)
--   상품 (상품 리스트 / 상품 상세 / 상품 등록 / 상품 수정 / 상품 삭제 )
--   프로필 설정
-
 <br>
 <div align="center">
 <h1>⚙️ 개발 환경</h1>
@@ -93,7 +86,7 @@ _사용 API_
 
 ##### - Back-End: 제공된 API 사용
 
-##### - Deployment: `Netlify`
+##### - Deployment: `Heroku`
 
 </br>
 
