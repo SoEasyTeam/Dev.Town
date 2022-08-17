@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { MBtn } from '../../common/button/index.style';
 // import UploadfileImg from '../assets/upload-file.png';
 import UploadfileImg from '../../../assets/upload-file.png';
+import { css } from 'styled-components';
+
 
 export const ProfileName = styled.h3`
     font-weight: 700;
@@ -164,4 +166,14 @@ export const FollowMBtn = styled(MBtn)`
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-`
+    &::after {
+            ${(props) => props.isFollowed
+        ? css`
+            content: '언팔로우';
+            `
+        : css`
+            content: '팔로우';
+            `
+    };
+        }
+`;

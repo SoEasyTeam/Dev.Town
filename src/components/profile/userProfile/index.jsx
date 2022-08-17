@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { profileAction } from '../../../redux/actions/profileAction';
 import IconMesssageImg from '../../../assets/icon/icon-message-circle.png';
@@ -9,8 +9,6 @@ import { ProfileName, ProfileAccount, ProfileIntro, FollowLink, MyProfileBtn, Pr
 function UserProfile(props) {
     const [userData, setUserData] = useState();
     const [isFollow, setIsFollow] = useState();
-    const [isFollowWord, setIsFollowWord] = useState('팔로우');
-    const [isUnfollowWord, setIsUnfollowWord] = useState('언팔로우');
     const Myaccountname = sessionStorage.getItem('accountname');
     const dispatch = useDispatch();
     const history = useHistory();
@@ -47,14 +45,6 @@ function UserProfile(props) {
     function changeIsFollow() {
         console.log('팔로우취소 가동!', userData.profile.isfollow)
         setIsFollow(!isFollow);
-
-        if (isFollowWord === '팔로우' || isUnfollowWord === '언팔로우') {
-            setIsFollowWord('언팔로우')
-            setIsUnfollowWord('팔로우')
-        } else {
-            setIsFollowWord('팔로우')
-            setIsUnfollowWord('언팔로우')
-        }
     }
 
     console.log(userData)
@@ -92,7 +82,7 @@ function UserProfile(props) {
                             <CircleBtns>
                                 <img src={IconMesssageImg} alt='채팅링크' />
                             </CircleBtns>
-                            <FollowMBtn onClick={changeIsFollow} isFollowed={userData.profile.isfollow}>{userData.profile.isfollow ? isUnfollowWord : isFollowWord}</FollowMBtn>
+                            <FollowMBtn onClick={changeIsFollow} isFollowed={userData.profile.isfollow}></FollowMBtn>
                             <CircleBtns>
                                 <img src={IconShareImg} alt='공유링크' />
                             </CircleBtns>
