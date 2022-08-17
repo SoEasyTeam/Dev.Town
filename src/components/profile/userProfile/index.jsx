@@ -9,8 +9,6 @@ import { FollowMBtn } from '../../common/button/index'
 
 function UserProfile(props) {
     const [userData, setUserData] = useState();
-    // const [isFollow, setIsFollow] = useState();
-    // const [isFollow, setIsFollowed] = useState();
     const Myaccountname = sessionStorage.getItem('accountname');
     const dispatch = useDispatch();
     const history = useHistory();
@@ -43,11 +41,6 @@ function UserProfile(props) {
     }
 
 
-    // function changeIsFollow() {
-    //     console.log('팔로우취소 가동!', userData.profile.isfollow)
-    //     setIsFollow(!isFollow);
-    // }
-
     console.log('userData?', userData)
     console.log('follow?', userData.profile.isfollow)
 
@@ -63,7 +56,6 @@ function UserProfile(props) {
             }).then((res) => {
                 console.log(res);
                 userData.profile.isfollow = false;
-                // setIsFollowed(false);
             });
         } else {
             await fetch(`https://mandarin.api.weniv.co.kr/profile/${userData.profile.accountname}/follow`, {
@@ -75,7 +67,6 @@ function UserProfile(props) {
             }).then((res) => {
                 console.log(res);
                 userData.profile.isfollow = true;
-                // setIsFollowed(true);
             });
         }
     }

@@ -1,21 +1,32 @@
-import { useState } from 'react';
 import { NameIdBox, NickNameP, IdP, ProfileLogoImg } from '../../common/search/index.style';
-import { UserFollowBox, FollowPageLink, FollowSBtn } from './index.style'
+import { UserFollowBox, FollowPageLink } from './index.style'
+import { FollowSBtn } from '../../common/button/index'
 
 function UserFollow({ src, name, accountname, isfollow }) {
-    const [isFollow, setIsFollow] = useState(isfollow);
-    const [isFollowWord, setIsFollowWord] = useState('팔로우');
-    const [isUnfollowWord, setIsUnfollowWord] = useState('취소');
-
-    function changeIsFollow() {
-        console.log('팔로우취소 가동!', isfollow)
-        setIsFollow(!isFollow);
-        if (isFollowWord === '팔로우' || isUnfollowWord === '취소') {
-            setIsFollowWord('취소')
-            setIsUnfollowWord('팔로우')
+    const token = sessionStorage.getItem('token');
+    const changeFollow = async () => {
+        if (isfollow) {
+            await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}/unfollow`, {
+                method: "delete",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            }).then((res) => {
+                console.log(res);
+                isfollow = false;
+            });
         } else {
-            setIsFollowWord('팔로우')
-            setIsUnfollowWord('취소')
+            await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}/follow`, {
+                method: "post",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            }).then((res) => {
+                console.log(res);
+                isfollow = true;
+            });
         }
     }
 
@@ -29,7 +40,7 @@ function UserFollow({ src, name, accountname, isfollow }) {
                         <IdP>@ {accountname}</IdP>
                     </NameIdBox>
                 </FollowPageLink>
-                <FollowSBtn onClick={changeIsFollow} isFollowed={isFollow}>{isfollow ? isUnfollowWord : isFollowWord}</FollowSBtn>
+                <FollowSBtn changeFollow={changeFollow} isFollowed={isfollow}></FollowSBtn>
             </UserFollowBox>
         </>
     );

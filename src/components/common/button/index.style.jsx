@@ -53,8 +53,9 @@ const MsBtn = styled.button`
     background-color: var(--main-color);
     border-radius: 32px;
     color: var(--subtitle-text);
-`; //저장, 업로드 버튼
+`;
 
+//저장, 업로드 버튼
 const SaveBtn = styled(MsBtn)`
     ${({ disabled }) => {
         return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
@@ -119,5 +120,25 @@ line-height: 18px;
     };
     }
 `;
+
+export const FollowsBtn = styled(SBtn)`
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    position: absolute;
+    right: 0px;
+    top: 11px;
+    &::after {
+        ${(props) => props.isFollowed
+        ? css`
+        content: '취소';
+        `
+        : css`
+        content: '팔로우';
+        `
+    };
+    }
+`
 
 export { LBtn, MlBtn, MBtn, MsBtn, SBtn, SaveBtn };
