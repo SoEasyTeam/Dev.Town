@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MBtn } from '../../common/button/index.style';
 // import UploadfileImg from '../assets/upload-file.png';
 import UploadfileImg from '../../../assets/upload-file.png';
-import { css } from 'styled-components';
+// import { css } from 'styled-components';
 
 
 export const ProfileName = styled.h3`
@@ -161,19 +161,19 @@ export const AddProfileLabel = styled.label`
     }
 `;
 
-export const FollowMBtn = styled(MBtn)`
-    font-family: 'Spoqa Han Sans Neo';
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 18px;
-    &::after {
-            ${(props) => props.isFollowed
-        ? css`
-            content: '언팔로우';
-            `
-        : css`
-            content: '팔로우';
-            `
-    };
-        }
-`;
+// export const FollowMBtn = styled(MBtn)`
+//     font-family: 'Spoqa Han Sans Neo';
+//     font-weight: 500;
+//     font-size: 14px;
+//     line-height: 18px;
+//     &::after {
+//             ${(props) => props.isFollowed
+//         ? css`
+//             content: '언팔로우';
+//             `
+//         : css`
+//             content: '팔로우';
+//             `
+//     };
+//         }
+// `;

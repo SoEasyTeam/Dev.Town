@@ -1,5 +1,5 @@
 import uploadImageGray from '../../../assets/img-button.png';
-import { BasicProfileImg, ImgUpload, ImgGray } from './index.style';
+import { BasicProfileImg, ImgUpload, ImgGray, FollowBtn } from './index.style';
 
 function DefaultProfileImg({ image }) {
 
@@ -14,4 +14,8 @@ function ImgGrayBtn() {
     return <ImgGray src={uploadImageGray} />;
 }
 
-export { DefaultProfileImg, ImgUploadBtn, ImgGrayBtn };
+function FollowMBtn({ changeFollow }) {
+    return <FollowBtn onClick={changeFollow} />;
+}
+
+export { DefaultProfileImg, ImgUploadBtn, ImgGrayBtn, FollowMBtn };

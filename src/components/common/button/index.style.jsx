@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import defaultProfile from '../../../assets/basic-profile-img-2x.png';
 import IconFillImg from '../../../assets/upload-file.png';
+import { css } from 'styled-components';
 
 
 const LBtn = styled.button`
@@ -100,6 +101,23 @@ export const ImgUpload = styled.label`
 
 export const ImgGray = styled.img`
     width: 100%;
+`;
+
+export const FollowBtn = styled(MBtn)`
+font-family: 'Spoqa Han Sans Neo';
+font-weight: 500;
+font-size: 14px;
+line-height: 18px;
+&::after {
+        ${(props) => props.isFollowed
+        ? css`
+        content: '언팔로우';
+        `
+        : css`
+        content: '팔로우';
+        `
+    };
+    }
 `;
 
 export { LBtn, MlBtn, MBtn, MsBtn, SBtn, SaveBtn };

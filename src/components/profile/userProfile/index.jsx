@@ -4,11 +4,13 @@ import { Link, useHistory } from 'react-router-dom';
 import { profileAction } from '../../../redux/actions/profileAction';
 import IconMesssageImg from '../../../assets/icon/icon-message-circle.png';
 import IconShareImg from '../../../assets/icon/icon-share.png';
-import { ProfileName, ProfileAccount, ProfileIntro, FollowLink, MyProfileBtn, ProfileAreaCol, ProfileImg, CircleBtns, FollowMBtn } from './index.style';
+import { ProfileName, ProfileAccount, ProfileIntro, FollowLink, MyProfileBtn, ProfileAreaCol, ProfileImg, CircleBtns } from './index.style';
+import { FollowMBtn } from '../../common/button/index'
 
 function UserProfile(props) {
     const [userData, setUserData] = useState();
-    const [isFollow, setIsFollow] = useState();
+    // const [isFollow, setIsFollow] = useState();
+    // const [isFollow, setIsFollowed] = useState();
     const Myaccountname = sessionStorage.getItem('accountname');
     const dispatch = useDispatch();
     const history = useHistory();
@@ -23,7 +25,6 @@ function UserProfile(props) {
             }
         })
         const json = await res.json()
-        console.log(json)
         setUserData(json)
     }
 
@@ -42,12 +43,43 @@ function UserProfile(props) {
     }
 
 
-    function changeIsFollow() {
-        console.log('팔로우취소 가동!', userData.profile.isfollow)
-        setIsFollow(!isFollow);
+    // function changeIsFollow() {
+    //     console.log('팔로우취소 가동!', userData.profile.isfollow)
+    //     setIsFollow(!isFollow);
+    // }
+
+    console.log('userData?', userData)
+    console.log('follow?', userData.profile.isfollow)
+
+
+    const changeFollow = async () => {
+        if (userData.profile.isfollow) {
+            await fetch(`https://mandarin.api.weniv.co.kr/profile/${userData.profile.accountname}/unfollow`, {
+                method: "delete",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            }).then((res) => {
+                console.log(res);
+                userData.profile.isfollow = false;
+                // setIsFollowed(false);
+            });
+        } else {
+            await fetch(`https://mandarin.api.weniv.co.kr/profile/${userData.profile.accountname}/follow`, {
+                method: "post",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            }).then((res) => {
+                console.log(res);
+                userData.profile.isfollow = true;
+                // setIsFollowed(true);
+            });
+        }
     }
 
-    console.log(userData)
 
     const onClickModal = (event) => {
         event.preventDefault();
@@ -82,7 +114,7 @@ function UserProfile(props) {
                             <CircleBtns>
                                 <img src={IconMesssageImg} alt='채팅링크' />
                             </CircleBtns>
-                            <FollowMBtn onClick={changeIsFollow} isFollowed={userData.profile.isfollow}></FollowMBtn>
+                            <FollowMBtn isFollowed={userData.profile.isfollow} changeFollow={changeFollow}></FollowMBtn>
                             <CircleBtns>
                                 <img src={IconShareImg} alt='공유링크' />
                             </CircleBtns>
