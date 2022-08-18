@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { NameIdBox, NickNameP, IdP, ProfileLogoImg } from '../../common/search/index.style';
 import { UserFollowBox, FollowPageLink } from './index.style'
 import { FollowSBtn } from '../../common/button/index'
 
 function UserFollow({ src, name, accountname, isfollow }) {
     const token = sessionStorage.getItem('token');
+    const [isFollowed, setIsFollowed] = useState(isfollow);
     const changeFollow = async () => {
-        if (isfollow) {
+        if (isFollowed) {
             await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}/unfollow`, {
                 method: "delete",
                 headers: {
@@ -13,8 +15,8 @@ function UserFollow({ src, name, accountname, isfollow }) {
                     "Content-type": "application/json"
                 }
             }).then((res) => {
-                console.log(res);
-                isfollow = false;
+                console.log('언팔로우하기', res);
+                setIsFollowed(false);
             });
         } else {
             await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}/follow`, {
@@ -24,8 +26,8 @@ function UserFollow({ src, name, accountname, isfollow }) {
                     "Content-type": "application/json"
                 }
             }).then((res) => {
-                console.log(res);
-                isfollow = true;
+                console.log('팔로우하기', res);
+                setIsFollowed(true);
             });
         }
     }
@@ -40,7 +42,7 @@ function UserFollow({ src, name, accountname, isfollow }) {
                         <IdP>@ {accountname}</IdP>
                     </NameIdBox>
                 </FollowPageLink>
-                <FollowSBtn changeFollow={changeFollow} isFollowed={isfollow}></FollowSBtn>
+                <FollowSBtn changeFollow={changeFollow} isFollowed={isFollowed}></FollowSBtn>
             </UserFollowBox>
         </>
     );
