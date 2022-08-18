@@ -1,63 +1,45 @@
 import { React, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { profileAction } from '../../../redux/actions/profileAction';
 import IconMesssageImg from '../../../assets/icon/icon-message-circle.png';
 import IconShareImg from '../../../assets/icon/icon-share.png';
-import { ProfileName, ProfileAccount, ProfileIntro, FollowLink, MyProfileBtn, ProfileAreaCol, ProfileImg, CircleBtns, FollowMBtn } from './index.style';
+import { ProfileName, ProfileAccount, ProfileIntro, FollowLink, MyProfileBtn, ProfileAreaCol, ProfileImg, CircleBtns } from './index.style';
+import { FollowMBtn } from '../../common/button/index'
 
-function UserProfile(props) {
-    const [userData, setUserData] = useState();
-    const [isFollow, setIsFollow] = useState();
-    const [isFollowWord, setIsFollowWord] = useState('팔로우');
-    const [isUnfollowWord, setIsUnfollowWord] = useState('언팔로우');
+function UserProfile({ userData, accountname }) {
     const Myaccountname = sessionStorage.getItem('accountname');
     const dispatch = useDispatch();
     const history = useHistory();
     const token = sessionStorage.getItem('token');
+    const [isFollowed, setIsFollowed] = useState(userData.profile.isfollow);
 
-    const getData = async (account) => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-type": "application/json"
-            }
-        })
-        const json = await res.json()
-        console.log(json)
-        setUserData(json)
-    }
-
-    useEffect(() => {
-        if (props.accountname) {
-            getData(props.accountname)
-        }
-        else {
-            getData(Myaccountname)
-        }
-    }, [])
-
-
-    if (!userData) {
-        return <></>
-    }
-
-
-    function changeIsFollow() {
-        console.log('팔로우취소 가동!', userData.profile.isfollow)
-        setIsFollow(!isFollow);
-
-        if (isFollowWord === '팔로우' || isUnfollowWord === '언팔로우') {
-            setIsFollowWord('언팔로우')
-            setIsUnfollowWord('팔로우')
+    const changeFollow = async () => {
+        if (isFollowed) {
+            await fetch(`https://mandarin.api.weniv.co.kr/profile/${userData.profile.accountname}/unfollow`, {
+                method: "delete",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            }).then((res) => {
+                console.log('언팔로우하기', res);
+                setIsFollowed(false);
+            });
         } else {
-            setIsFollowWord('팔로우')
-            setIsUnfollowWord('언팔로우')
+            await fetch(`https://mandarin.api.weniv.co.kr/profile/${userData.profile.accountname}/follow`, {
+                method: "post",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            }).then((res) => {
+                console.log('팔로우하기', res);
+                setIsFollowed(true);
+            });
         }
     }
 
-    console.log(userData)
 
     const onClickModal = (event) => {
         event.preventDefault();
@@ -92,7 +74,7 @@ function UserProfile(props) {
                             <CircleBtns>
                                 <img src={IconMesssageImg} alt='채팅링크' />
                             </CircleBtns>
-                            <FollowMBtn onClick={changeIsFollow} isFollowed={userData.profile.isfollow}>{userData.profile.isfollow ? isUnfollowWord : isFollowWord}</FollowMBtn>
+                            <FollowMBtn isFollowed={isFollowed} changeFollow={changeFollow}></FollowMBtn>
                             <CircleBtns>
                                 <img src={IconShareImg} alt='공유링크' />
                             </CircleBtns>
