@@ -69,6 +69,7 @@ function login(email, password) {
 function tokenValid() {
     return async (dispatch, getState) => {
         const token = getState().auth.token;
+        console.log(token);
         if (token) {
             try {
                 const res = await axios.get(API_URL + '/user/checktoken', {

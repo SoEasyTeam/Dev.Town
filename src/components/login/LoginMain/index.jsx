@@ -13,6 +13,8 @@ function LoginMain() {
     const [isActive, setIsActive] = useState(true);
     const [warningActive, setWarningActive] =useState(false);
     const dispatch = useDispatch();   
+    const history = useHistory();
+    let tokenValid = useSelector(state=>state.token.tokenValid);
     let token = useSelector(state=> state.auth.token);
     // console.log(token);
     let message = useSelector(state=>state.auth.message);
@@ -48,6 +50,12 @@ function LoginMain() {
             dispatch(authenticateAction.tokenValid());
         }
     },[message, dispatch, token]);
+
+    useEffect(() => {
+        if(tokenValid.isValid === true){
+            history.push('/home');
+        }
+    },[tokenValid, history])
 
     return (
         <LoginContainer>
