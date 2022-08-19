@@ -3,6 +3,7 @@ const acountname = sessionStorage.getItem('accountname');
 const id = sessionStorage.getItem('id');
 const image = sessionStorage.getItem('image');
 const username = sessionStorage.getItem('username');
+const tokenValid = sessionStorage.getItem('tokenValid');
 
 console.log(token);
 
@@ -17,7 +18,9 @@ let initialState = {
 };
 
 let initialState_token = {
-    tokenValid: false,
+    tokenValid: {
+        isValid: tokenValid,
+    },
 };
 
 function authenticateReducer(state = initialState, action) {
