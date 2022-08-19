@@ -6,26 +6,31 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { homeFeedAction } from '../redux/actions/homeFeedAction'
 import HomeFeedBox from '../components/home/HomeFeed'
+import { authenticateAction } from '../redux/actions/authenticateAction'
+import { useHistory } from 'react-router-dom'
 
 function HomePage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const posts = useSelector(state => state.homefeed.item);
     const localToken = useSelector(state => state.auth.token);
     const localAccountName = useSelector(state => state.auth.accountname);
     const localUserId = useSelector(state => state.auth.id);
     const localImg = useSelector(state=>state.auth.image);
     const localusername = useSelector(state=>state.auth.localusername);
-    const localTokenValid = useSelector(state=>state.token.tokenValid);
+    // const localTokenValid = useSelector(state=>state.token.tokenValid);
     sessionStorage.setItem('token', localToken);
     sessionStorage.setItem('accountname', localAccountName);
     sessionStorage.setItem('id', localUserId);
     sessionStorage.setItem('image', localImg);
     sessionStorage.setItem('username', localusername);
-    sessionStorage.setItem('tokenValid', localTokenValid);
-    console.log(posts);
     useEffect(() => {
-        dispatch(homeFeedAction.homeFeed());
-    }, [dispatch]);
+        if(localToken === null) {
+            history.push('/');
+        }else {
+            dispatch(homeFeedAction.homeFeed());
+        }
+    }, [dispatch, history, localToken]);
 
     return (
         <>
