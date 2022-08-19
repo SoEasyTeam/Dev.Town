@@ -7,39 +7,39 @@ import IconShareImg from '../../../assets/icon/icon-share.png';
 import { ProfileName, ProfileAccount, ProfileIntro, FollowLink, MyProfileBtn, ProfileAreaCol, ProfileImg, CircleBtns } from './index.style';
 import { FollowMBtn } from '../../common/button/index'
 
-function UserProfile({ userData, accountname }) {
+function UserProfile({ userData }) {
     const Myaccountname = sessionStorage.getItem('accountname');
     const dispatch = useDispatch();
     const history = useHistory();
     const token = sessionStorage.getItem('token');
     const [isFollowed, setIsFollowed] = useState(userData.profile.isfollow);
+    const [newUserData, setNewUserData] = useState(userData);
 
     const changeFollow = async () => {
         if (isFollowed) {
-            await fetch(`https://mandarin.api.weniv.co.kr/profile/${userData.profile.accountname}/unfollow`, {
+            const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${userData.profile.accountname}/unfollow`, {
                 method: "delete",
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-type": "application/json"
                 }
-            }).then((res) => {
-                console.log('언팔로우하기', res);
-                setIsFollowed(false);
-            });
+            })
+            const json = await res.json()
+            setNewUserData(json)
+            setIsFollowed(false);
         } else {
-            await fetch(`https://mandarin.api.weniv.co.kr/profile/${userData.profile.accountname}/follow`, {
+            const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${userData.profile.accountname}/follow`, {
                 method: "post",
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-type": "application/json"
                 }
-            }).then((res) => {
-                console.log('팔로우하기', res);
-                setIsFollowed(true);
-            });
-        }
+            })
+            const json = await res.json()
+            setNewUserData(json)
+            setIsFollowed(true);
+        };
     }
-
 
     const onClickModal = (event) => {
         event.preventDefault();
@@ -52,7 +52,7 @@ function UserProfile({ userData, accountname }) {
             <ProfileAreaCol>
                 <div className='profileTop'>
                     <div className='followers'>
-                        <FollowLink to={{ pathname: '/follower', search: `?id=${userData.profile.accountname}` }} >{userData.profile.followerCount}</FollowLink>
+                        <FollowLink to={{ pathname: '/follower', search: `?id=${userData.profile.accountname}` }} >{newUserData.profile.followerCount}</FollowLink>
                         <p>followers</p>
                     </div>
                     <div className='profileTopImg'>
