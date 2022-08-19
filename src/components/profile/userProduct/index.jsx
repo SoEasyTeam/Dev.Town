@@ -5,18 +5,19 @@ import { AlertProductModal } from '../../common/alert';
 import { ProductAreaListUl, ProductArea } from './index.style'
 import { productAction } from '../../../redux/actions/productAcition';
 
-function UserProduct() {
+function UserProduct(productaccountname) {
     const [alertOn, setAlertOn] = useState(false);
     const dispatch = useDispatch();
     const productListItem = useSelector(state=>state.product.item);
     const [product_id, setProduct_id] = useState('');
+    console.log(productaccountname.accountname);
 
     useEffect(() => {
         setTimeout(() => {
             console.log('useEffect');
-            dispatch(productAction.productList());
+            dispatch(productAction.productList(productaccountname.accountname));
         }, 300);
-    }, [dispatch])
+    }, [dispatch, productaccountname])
 
     function alertOnModal(product_id) {
         setAlertOn(true);
