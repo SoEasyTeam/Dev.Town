@@ -14,6 +14,7 @@ function LoginMain() {
     const [warningActive, setWarningActive] =useState(false);
     const dispatch = useDispatch();   
     let token = useSelector(state=> state.auth.token);
+    // console.log(token);
     let message = useSelector(state=>state.auth.message);
     //이메일 주소 유효성 검사
     const checkEmail =
