@@ -4,6 +4,8 @@ const id = sessionStorage.getItem('id');
 const image = sessionStorage.getItem('image');
 const username = sessionStorage.getItem('username');
 
+console.log(token);
+
 let initialState = {
     email: '',
     id: id,
