@@ -7,7 +7,6 @@ import { EmailInput, PassWordInput, TextLabel } from '../../common/textActiveInp
 import { JoinEmailLink, LoginBtn, LoginContainer, WarningParagraph } from './index.style';
 
 function LoginMain() {
-    // const [email, setEmail] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
