@@ -12,7 +12,10 @@ function LoginMain() {
     const [isActive, setIsActive] = useState(true);
     const [warningActive, setWarningActive] =useState(false);
     const dispatch = useDispatch();   
+    const history = useHistory();
+    let tokenValid = useSelector(state=>state.token.tokenValid);
     let token = useSelector(state=> state.auth.token);
+    // console.log(token);
     let message = useSelector(state=>state.auth.message);
     //이메일 주소 유효성 검사
     const checkEmail =
@@ -46,6 +49,12 @@ function LoginMain() {
             dispatch(authenticateAction.tokenValid());
         }
     },[message, dispatch, token]);
+
+    useEffect(() => {
+        if(tokenValid.isValid === true){
+            history.push('/home');
+        }
+    },[tokenValid, history])
 
     return (
         <LoginContainer>

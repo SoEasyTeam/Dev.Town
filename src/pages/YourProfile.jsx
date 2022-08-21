@@ -33,7 +33,7 @@ function YourProfilePage() {
             <ProfileSection>
                 <UserProfile accountname={accountname} />
                 <UserProduct accountname={accountname} />
-                <UserPost accountname={accountname} />
+                <UserPost productaccountname={accountname} />
             </ProfileSection>
             <TabMenu />
             {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}

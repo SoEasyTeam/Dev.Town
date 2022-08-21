@@ -7,10 +7,14 @@ import TabMenu from '../components/common/tabMenu';
 import { AlertLogoutModal } from '../components/common/alert'
 import { ProfileSection } from '../components/profile/userProfile/index.style'
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function MyProfilePage() {
     const [alertOn, setAlertOn] = useState(false);
-    
+    const localTokenValid = useSelector(state=>state.token.tokenValid);
+    const history = useHistory();
+    console.log(localTokenValid)
     function alertOnModal() {
         setAlertOn(true);
     }
@@ -18,6 +22,12 @@ function MyProfilePage() {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
+
+    useEffect(() => {
+        if(localTokenValid.isValid === null || localTokenValid.isValid === 'null'){
+            history.push('*')
+        }
+    },[localTokenValid, history])
 
     return (
         <>
