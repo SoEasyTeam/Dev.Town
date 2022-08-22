@@ -17,7 +17,6 @@ export default function CommentInputBox() {
         e.preventDefault()
         dispatch(commentListAction.writeComment(postId, token, comment))
         dispatch(commentListAction.commentList(postId, token))
-        console.log('~~~~~~~~~댓글받아와!!');
         setComment('')
     }
 
