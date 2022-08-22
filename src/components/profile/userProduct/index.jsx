@@ -10,7 +10,8 @@ function UserProduct(productaccountname) {
     const dispatch = useDispatch();
     const productListItem = useSelector(state=>state.product.item);
     const [product_id, setProduct_id] = useState('');
-    console.log(productaccountname.accountname);
+    // console.log(productaccountname.accountname);
+    console.log(productListItem);
 
     useEffect(() => {
         setTimeout(() => {

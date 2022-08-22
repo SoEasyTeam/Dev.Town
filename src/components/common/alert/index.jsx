@@ -16,6 +16,9 @@ function AlertProductModal({ alertOffModal, product_id }) {
         console.log('삭제해라')
         dispatch(productAction.productDelete(product_id));
         alertOffModal();
+        setTimeout(() => {
+            dispatch(productAction.productList());
+        },300)
     }
 
     return (
