@@ -14,10 +14,7 @@ function UserProduct(productaccountname) {
     console.log(productListItem);
 
     useEffect(() => {
-        setTimeout(() => {
-            console.log('useEffect');
-            dispatch(productAction.productList(productaccountname.accountname));
-        }, 300);
+        dispatch(productAction.productList(productaccountname.accountname));
     }, [dispatch, productaccountname])
 
     function alertOnModal(product_id) {

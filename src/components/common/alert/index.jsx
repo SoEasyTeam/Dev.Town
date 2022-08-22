@@ -88,6 +88,9 @@ function AlertLogoutModal({ alertOffModal }) {
         sessionStorage.clear();
         history.push('/');
         dispatch(authenticateAction.login(email, password));
+        setTimeout(() => {
+            dispatch(authenticateAction.tokenValid());
+        }, 300);
     }
     return (
         <>
