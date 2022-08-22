@@ -361,7 +361,6 @@ function post(fileList, postText) {
                 imageUrls = fileJson
                 .map((fileData) => url + '/' + fileData.filename)
                 .join(',');
-
             }
             //게시물 포스트 요청
             const postReq = '/post';
