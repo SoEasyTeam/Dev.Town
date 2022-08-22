@@ -1,9 +1,10 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector, } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import { authenticateAction } from '../../../redux/actions/authenticateAction';
 import { productAction } from '../../../redux/actions/productAcition';
+import {postAction} from '../../../redux/actions/postAction'
 import { AlertBox, AlertOutside, AlertContainer, AlertUl, DeleteAlertBox, AlertP, ButtonBox, CancelBtn, DeleteBtn } from './index.style'
 
 // 상품 삭제
@@ -37,6 +38,15 @@ function AlertProductModal({ alertOffModal, product_id }) {
 // 게시글 삭제
 function AlertPostModal({ alertOffModal }) {
     document.body.style.overflow = "hidden";
+    const dispatch = useDispatch()
+    const { id } = useParams()
+    console.log(id)
+
+    const handleDelete = () =>{
+        dispatch(postAction.deletePost(id))
+        console.log('삭제디스패치!')
+    }
+
     return (
         <>
             <AlertBox>
@@ -45,7 +55,7 @@ function AlertPostModal({ alertOffModal }) {
                     <strong className='alertMsg'>게시글을 삭제할까요?</strong>
                     <AlertUl>
                         <li onClick={alertOffModal}>취소</li>
-                        <li className='selectColor'>삭제</li>
+                        <li className='selectColor' onClick={handleDelete}>삭제</li>
                     </AlertUl>
                 </AlertContainer>
             </AlertBox>

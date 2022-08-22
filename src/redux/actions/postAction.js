@@ -80,4 +80,26 @@ function getPost(id) {
         }
     };
 }
-export const postAction = { post, getPost };
+
+function deletePost(id){
+    return async (dispatch, getState)=>{
+        const token = getState().auth.token
+        try {
+            const deletePostRes = await axios(API_URL + `/post/${id}`, {
+                headers:{
+                    "Authorization" : `Bearer ${token}`,
+	                "Content-type" : "application/json",
+                },
+            })
+            dispatch({
+                type:'DELETE_POST',
+                payload:{
+                    post: deletePostRes.data.post
+                }
+            })
+        } catch {
+            alert('존재하지 않는 게시물입니다.')
+        }
+    }
+}
+export const postAction = { post, getPost, deletePost };
