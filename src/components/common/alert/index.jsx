@@ -7,21 +7,20 @@ import { productAction } from '../../../redux/actions/productAcition';
 import { AlertBox, AlertOutside, AlertContainer, AlertUl, DeleteAlertBox, AlertP, ButtonBox, CancelBtn, DeleteBtn } from './index.style'
 
 // 상품 삭제
-function AlertProductModal({ alertOffModal }) {
+function AlertProductModal({ alertOffModal, product_id }) {
     document.body.style.overflow = "hidden";
     console.log('alertmodal 나옴')
     const dispatch = useDispatch();
-    useSelector()
-    // console.log(product_id)
 
     const onClickDeleteBtn = () => {
         console.log('삭제해라')
+        dispatch(productAction.productDelete(product_id));
         alertOffModal();
+        setTimeout(() => {
+            dispatch(productAction.productList());
+        },300)
     }
 
-    // useEffect(() => {
-    //     dispatch(productAction.productDelete(product_id));
-    // }, [product_id])
     return (
         <>
             <AlertBox>
@@ -81,10 +80,17 @@ function AlertDeclareModal({ alertOffModal }) {
 // 왜 로그아웃 alert만 화면 왼쪽으로 붙는지 모르겠습니다..
 function AlertLogoutModal({ alertOffModal }) {
     document.body.style.overflow = "hidden";
+    const email = '';
+    const password = '';
     const history = useHistory();
+    const dispatch = useDispatch();
     const onClickLogoutHandler = () => {
         sessionStorage.clear();
         history.push('/');
+        dispatch(authenticateAction.login(email, password));
+        setTimeout(() => {
+            dispatch(authenticateAction.tokenValid());
+        }, 300);
     }
     return (
         <>

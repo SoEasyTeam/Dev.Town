@@ -3,6 +3,9 @@ const acountname = sessionStorage.getItem('accountname');
 const id = sessionStorage.getItem('id');
 const image = sessionStorage.getItem('image');
 const username = sessionStorage.getItem('username');
+const tokenValid = sessionStorage.getItem('tokenValid');
+
+console.log(token);
 
 let initialState = {
     email: '',
@@ -11,12 +14,13 @@ let initialState = {
     accountname: acountname,
     image: image,
     token: token,
-    authenticate: false,
     message: '',
 };
 
 let initialState_token = {
-    tokenValid: false,
+    tokenValid: {
+        isValid: tokenValid,
+    },
 };
 
 function authenticateReducer(state = initialState, action) {
@@ -31,7 +35,6 @@ function authenticateReducer(state = initialState, action) {
                 accountname: payload.accountname,
                 image: payload.image,
                 token: payload.token,
-                authenticate: true,
                 message: payload.message,
             };
         case 'LOGIN_FAIL':

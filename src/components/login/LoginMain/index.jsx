@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { authenticateAction } from '../../../redux/actions/authenticateAction';
@@ -12,14 +13,10 @@ function LoginMain() {
     const [warningActive, setWarningActive] =useState(false);
     const dispatch = useDispatch();   
     const history = useHistory();
-    let message = useSelector(state=>state.auth.message);
-    let token = useSelector(state=> state.auth.token);
-
-    if(token !== null){
-        dispatch(authenticateAction.tokenValid(token));
-    }
-
     let tokenValid = useSelector(state=>state.token.tokenValid);
+    let token = useSelector(state=> state.auth.token);
+    console.log(token);
+    let message = useSelector(state=>state.auth.message);
     //이메일 주소 유효성 검사
     const checkEmail =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -33,19 +30,31 @@ function LoginMain() {
     
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        // console.log('login user function issue');
         dispatch(authenticateAction.login(email, password));
     }
 
-    useEffect(() => {
-        message=== '이메일 또는 비밀번호가 일치하지 않습니다.' ? setWarningActive(true) : setWarningActive(false);
-    },[message]);
+    const onChangeEmailHandler = useCallback((event) => {
+        setEmail(event.target.value);
+        return;
+    }, [])
 
     useEffect(() => {
-        if(tokenValid.isValid === true) {
+        if(message === '이메일 또는 비밀번호가 일치하지 않습니다.'){
+            setWarningActive(true);
+        }else {
+            setWarningActive(false);
+        }
+        
+        if(token !== null && typeof(token) !== 'undefined'){
+            dispatch(authenticateAction.tokenValid());
+        }
+    },[message, dispatch, token]);
+
+    useEffect(() => {
+        if(tokenValid.isValid === true && token !== ''){
             history.push('/home');
         }
-    },[tokenValid]);
+    },[tokenValid, history, token])
 
     return (
         <LoginContainer>
@@ -53,7 +62,7 @@ function LoginMain() {
             <h2 className='loginTitle'>로그인</h2>
             <form className='loginForm' onSubmit={onSubmitHandler}>
                 <TextLabel>이메일</TextLabel>
-                <EmailInput value={email} onChange = {(event) => setEmail(event.target.value)} onKeyUp={loginActive} />
+                <EmailInput value={email} onChange = {onChangeEmailHandler} onKeyUp={loginActive} />
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput value={password} onChange = {(event) => setPassword(event.target.value)} onKeyUp={loginActive}/>
                 <WarningParagraph visible={warningActive}>*{message}</WarningParagraph>
@@ -66,4 +75,4 @@ function LoginMain() {
     )
 }
 
-export default React.memo(LoginMain);
+export default LoginMain;

@@ -1,23 +1,23 @@
+import axios from 'axios';
+import { API_URL } from '../../constants/defaultUrl';
+
 function homeFeed() {
     return async (dispatch, getState) => {
-        let url = 'https://mandarin.api.weniv.co.kr';
-        const reqPath = '/post/feed';
         const token = sessionStorage.getItem('token');
-
+        console.log(token);
         if (token !== 'undefined') {
             try {
-                let res = await fetch(url + reqPath, {
-                    method: 'GET',
+                const res = await axios.get(API_URL + '/post/feed', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         'Content-type': 'application/json',
                     },
                 });
-                const resJson = await res.json();
+
                 dispatch({
                     type: 'HOMEFEED_SUCCESS',
                     payload: {
-                        item: resJson.posts.map((item) => {
+                        item: res.data.posts.map((item) => {
                             return item;
                         }),
                     },
