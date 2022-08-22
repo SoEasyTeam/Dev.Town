@@ -6,6 +6,7 @@ import { authenticateAction } from '../../../redux/actions/authenticateAction';
 import { productAction } from '../../../redux/actions/productAcition';
 import {postAction} from '../../../redux/actions/postAction'
 import { AlertBox, AlertOutside, AlertContainer, AlertUl, DeleteAlertBox, AlertP, ButtonBox, CancelBtn, DeleteBtn } from './index.style'
+import { useState } from 'react';
 
 // 상품 삭제
 function AlertProductModal({ alertOffModal, product_id }) {
@@ -39,11 +40,9 @@ function AlertProductModal({ alertOffModal, product_id }) {
 function AlertPostModal({ alertOffModal }) {
     document.body.style.overflow = "hidden";
     const dispatch = useDispatch()
-    const { id } = useParams()
-    console.log(id)
 
     const handleDelete = () =>{
-        dispatch(postAction.deletePost(id))
+        // dispatch(postAction.deletePost(postId))
         console.log('삭제디스패치!')
     }
 
