@@ -30,7 +30,17 @@ function getPostReducer(state=initialPostState, action){
         default: return {...state}
     }
 }
-
+function getMyPostReducer(state=initialPostState, action) {
+    let {type, payload}=action
+    switch(type){
+        case 'GET_MY_POST':
+            return {
+                ...state,
+                post: payload.post,
+            }
+        default: return {...state}
+    }
+}
 function deletePostReducer(state=initialPostState, action){
     let {type, payload}=action
     switch(type){
@@ -42,4 +52,4 @@ function deletePostReducer(state=initialPostState, action){
         default: return {...state}
     }
 }
-export {postReducer,getPostReducer, deletePostReducer};
+export {postReducer,getPostReducer, deletePostReducer, getMyPostReducer};

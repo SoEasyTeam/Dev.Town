@@ -1,4 +1,6 @@
 import { React, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { postAction } from '../../../redux/actions/postAction';
 import { useLocation, useParams } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
@@ -9,7 +11,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
     return (
         <>
             {userPostData &&
-                userPostData.post.map((item) => {
+                userPostData.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
                     return (
                         <li key={item.id}>
@@ -42,29 +44,18 @@ function UserPost(props) {
     const [alertOn, setAlertOn] = useState(false);
     const [isActive, setIsActive] = useState(true);
     const location = useLocation();
+    const myPosts = useSelector(state=>state.getMyPost.post)
+    console.log(myPosts);
+    const dispatch = useDispatch()
 
-
-    // console.log('버튼', isActive)
-    const getData = async (account) => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${account}/userpost`, {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-type": "application/json"
-            }
-        })
-        const json = await res.json()
-        console.log('게시물 : ', json)
-        setUserPostData(json)
-    }
-    useEffect(() => {
-        if (props.accountname) {
-            getData(props.accountname)
+    useEffect(()=>{
+        setUserPostData(myPosts)
+        if (props.accountname){
+            dispatch(postAction.getMyPost(props.accountname))
+        } else {
+            dispatch(postAction.getMyPost(accountname))
         }
-        else {
-            getData(accountname)
-        }
-    }, [])
+    },[dispatch, props.accountname, accountname, myPosts])
 
     if (Array.isArray(userPostData.post) && userPostData.post.length === 0) {
         return <></>

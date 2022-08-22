@@ -80,7 +80,31 @@ function getPost(id) {
         }
     };
 }
-
+function getMyPost(account){
+    return async (dispatch, getState) =>{
+        const token = getState().auth.token
+        try {
+            const getMyPostRes = await axios(API_URL+`/post/${account}/userpost`,{
+                method:'GET',
+                headers:{
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            })
+            console.log(getMyPostRes);
+            dispatch({
+                type:'GET_MY_POST',
+                payload:{
+                    post:getMyPostRes.data.post,
+                }
+            })
+        } catch {
+            if (!account) {
+                alert('해당 계정이 존재하지 않습니다.')
+            }
+        }
+    }
+}
 function deletePost(id){
     return async (dispatch, getState)=>{
         const token = getState().auth.token
@@ -102,4 +126,4 @@ function deletePost(id){
         }
     }
 }
-export const postAction = { post, getPost, deletePost };
+export const postAction = { post, getPost, getMyPost, deletePost };
