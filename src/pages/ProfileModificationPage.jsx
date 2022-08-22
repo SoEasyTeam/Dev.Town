@@ -10,6 +10,8 @@ import { ProfileModificationForm, ProfileSettingBox, ProfileImgInput, AddProfile
 
 function ProfileModificationPage() {
     const userData = useSelector(state => state.profile.userData);
+    const history = useHistory();
+    
     const username = userData.profile.username;
     const userimage = userData.profile.image;
     const useraccountname = userData.profile.accountname;
@@ -20,7 +22,6 @@ function ProfileModificationPage() {
     const [accountname, setAccountname] = useState(useraccountname);
     const [intro, setIntro] = useState(userintro);
     const [isActive, setIsActive] = useState(false);
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const onSubmitHandler = (event) => {

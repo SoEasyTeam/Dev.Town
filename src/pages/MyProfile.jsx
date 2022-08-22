@@ -51,7 +51,6 @@ function MyProfilePage(props) {
         return <></>
     }
 
-
     return (
         <>
             <TopBasicNav alertOnModal={alertOnModal} />
