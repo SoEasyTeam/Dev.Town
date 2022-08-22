@@ -43,8 +43,8 @@ function LoginMain() {
         }else {
             setWarningActive(false);
         }
-        
-        if(token !== null && typeof(token) !== 'undefined'){
+        console.log(token);
+        if(token !== null && typeof(token) !== 'undefined' && token !== 'null'){
             dispatch(authenticateAction.tokenValid());
         }
     },[message, dispatch, token]);

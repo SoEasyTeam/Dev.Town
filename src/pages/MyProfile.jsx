@@ -26,16 +26,18 @@ function MyProfilePage(props) {
     const token = sessionStorage.getItem('token');
 
     const getData = async (account) => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
+        console.log(account)
+        if(account !== 'null'){
+            const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-type": "application/json"
-            }
-        })
-        const json = await res.json()
-        setUserData(json)
-        console.log('데이터', userData)
+                }
+            })
+            const json = await res.json()
+            setUserData(json)
+        }
     }
 
     useEffect(() => {
