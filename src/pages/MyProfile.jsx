@@ -7,6 +7,7 @@ import TabMenu from '../components/common/tabMenu';
 import { AlertLogoutModal } from '../components/common/alert'
 import { ProfileSection } from '../components/profile/userProfile/index.style'
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 //data 받아오기
 
 function MyProfilePage(props) {
@@ -24,6 +25,7 @@ function MyProfilePage(props) {
     const [userData, setUserData] = useState();
     const Myaccountname = sessionStorage.getItem('accountname');
     const token = sessionStorage.getItem('token');
+    const history = useHistory();
 
     const getData = async (account) => {
         console.log(account)
@@ -37,6 +39,8 @@ function MyProfilePage(props) {
             })
             const json = await res.json()
             setUserData(json)
+        }else {
+            history.push('*')
         }
     }
 

@@ -26,7 +26,11 @@ function HomePage() {
     sessionStorage.setItem('username', localusername);
     sessionStorage.setItem('tokenValid', localTokenValid.isValid);
     useEffect(() => {
-        dispatch(homeFeedAction.homeFeed());
+        if(localTokenValid.isValid === null || localTokenValid.isValid === 'null'){
+            history.push('*')
+        }else {
+            dispatch(homeFeedAction.homeFeed());
+        }
     }, [dispatch, history, localTokenValid]);
 
     return (

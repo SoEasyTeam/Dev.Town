@@ -29,8 +29,6 @@ const Nav = () => {
         console.log(tokenValid);
         if(tokenValid.isValid === true) {
             history.push('/home');
-        }else if(tokenValid.isValid === null || tokenValid.isValid === 'null'){
-            history.push('*');
         }
     }, [tokenValid, history])
     
