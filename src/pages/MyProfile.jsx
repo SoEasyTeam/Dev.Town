@@ -9,7 +9,6 @@ import { ProfileSection } from '../components/profile/userProfile/index.style'
 import { useSelector } from 'react-redux';
 //data 받아오기
 
-
 function MyProfilePage(props) {
     const [alertOn, setAlertOn] = useState(false);
 
@@ -51,7 +50,6 @@ function MyProfilePage(props) {
     if (!userData) {
         return <></>
     }
-
 
     return (
         <>

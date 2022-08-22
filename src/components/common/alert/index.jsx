@@ -16,6 +16,9 @@ function AlertProductModal({ alertOffModal, product_id }) {
         console.log('삭제해라')
         dispatch(productAction.productDelete(product_id));
         alertOffModal();
+        setTimeout(() => {
+            dispatch(productAction.productList());
+        },300)
     }
 
     return (
@@ -77,10 +80,17 @@ function AlertDeclareModal({ alertOffModal }) {
 // 왜 로그아웃 alert만 화면 왼쪽으로 붙는지 모르겠습니다..
 function AlertLogoutModal({ alertOffModal }) {
     document.body.style.overflow = "hidden";
+    const email = '';
+    const password = '';
     const history = useHistory();
+    const dispatch = useDispatch();
     const onClickLogoutHandler = () => {
         sessionStorage.clear();
         history.push('/');
+        dispatch(authenticateAction.login(email, password));
+        setTimeout(() => {
+            dispatch(authenticateAction.tokenValid());
+        }, 300);
     }
     return (
         <>

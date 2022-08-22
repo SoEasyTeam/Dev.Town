@@ -9,6 +9,7 @@ export default function SplashPage() {
             setIsActive(true);
         }, 1500);
     }, []);
+
     return (
         <>
             {isActive ? (

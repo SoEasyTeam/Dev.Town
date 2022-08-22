@@ -25,6 +25,7 @@ export const AddProductLabel = styled.label`
     position: relative;
     cursor: pointer;
     .addProduct-img {
+        object-fit: contain;
         display: block;
         background-color: #f2f2f2;
         height: 204px;

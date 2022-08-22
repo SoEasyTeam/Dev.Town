@@ -122,28 +122,49 @@ function productDelete(product_id) {
     };
 }
 
-function productList() {
+function productList(productaccountname) {
     return async (dispatch, getState) => {
         const token = getState().auth.token;
         const accountname = getState().auth.accountname;
         console.log(accountname);
-        try {
-            const productListRes = await axios.get(
-                API_URL + `/product/${accountname}`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        'Content-type': 'application/json',
+        console.log(productaccountname);
+        if (productaccountname !== undefined) {
+            try {
+                const productListRes = await axios.get(
+                    API_URL + `/product/${productaccountname}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            'Content-type': 'application/json',
+                        },
+                    }
+                );
+                dispatch({
+                    type: 'PRODUCT_LIST_SUCCESS',
+                    payload: {
+                        item: productListRes.data,
                     },
-                }
-            );
-            dispatch({
-                type: 'PRODUCT_LIST_SUCCESS',
-                payload: {
-                    item: productListRes.data,
-                },
-            });
-        } catch (error) {}
+                });
+            } catch (error) {}
+        } else {
+            try {
+                const productListRes = await axios.get(
+                    API_URL + `/product/${accountname}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            'Content-type': 'application/json',
+                        },
+                    }
+                );
+                dispatch({
+                    type: 'PRODUCT_LIST_SUCCESS',
+                    payload: {
+                        item: productListRes.data,
+                    },
+                });
+            } catch (error) {}
+        }
     };
 }
 

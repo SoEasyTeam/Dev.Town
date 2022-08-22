@@ -7,13 +7,15 @@ import { EmailInput, PassWordInput, TextLabel } from '../../common/textActiveInp
 import { JoinEmailLink, LoginBtn, LoginContainer, WarningParagraph } from './index.style';
 
 function LoginMain() {
-    // const [email, setEmail] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
     const [warningActive, setWarningActive] =useState(false);
     const dispatch = useDispatch();   
+    const history = useHistory();
+    let tokenValid = useSelector(state=>state.token.tokenValid);
     let token = useSelector(state=> state.auth.token);
+    console.log(token);
     let message = useSelector(state=>state.auth.message);
     //이메일 주소 유효성 검사
     const checkEmail =
@@ -47,6 +49,12 @@ function LoginMain() {
             dispatch(authenticateAction.tokenValid());
         }
     },[message, dispatch, token]);
+
+    useEffect(() => {
+        if(tokenValid.isValid === true && token !== ''){
+            history.push('/home');
+        }
+    },[tokenValid, history, token])
 
     return (
         <LoginContainer>
