@@ -70,6 +70,7 @@
 -   로그인
 -   회원가입
 -   프로필 설정
+-   토큰 검증
 -   홈 피드리스트
 -   판매 상품 등록, 수정, 삭제
 
@@ -361,7 +362,6 @@ function post(fileList, postText) {
                 imageUrls = fileJson
                 .map((fileData) => url + '/' + fileData.filename)
                 .join(',');
-
             }
             //게시물 포스트 요청
             const postReq = '/post';

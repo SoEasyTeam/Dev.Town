@@ -10,13 +10,11 @@ function UserProduct(productaccountname) {
     const dispatch = useDispatch();
     const productListItem = useSelector(state=>state.product.item);
     const [product_id, setProduct_id] = useState('');
-    console.log(productaccountname.accountname);
+    // console.log(productaccountname.accountname);
+    console.log(productListItem);
 
     useEffect(() => {
-        setTimeout(() => {
-            console.log('useEffect');
-            dispatch(productAction.productList(productaccountname.accountname));
-        }, 300);
+        dispatch(productAction.productList(productaccountname.accountname));
     }, [dispatch, productaccountname])
 
     function alertOnModal(product_id) {

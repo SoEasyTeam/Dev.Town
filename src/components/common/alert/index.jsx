@@ -18,6 +18,9 @@ function AlertProductModal({ alertOffModal, product_id }) {
         console.log('삭제해라')
         dispatch(productAction.productDelete(product_id));
         alertOffModal();
+        setTimeout(() => {
+            dispatch(productAction.productList());
+        },300)
     }
 
     return (
@@ -94,6 +97,9 @@ function AlertLogoutModal({ alertOffModal }) {
         sessionStorage.clear();
         history.push('/');
         dispatch(authenticateAction.login(email, password));
+        setTimeout(() => {
+            dispatch(authenticateAction.tokenValid());
+        }, 300);
     }
     return (
         <>

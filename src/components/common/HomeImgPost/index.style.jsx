@@ -18,6 +18,7 @@ export const HomePostProfileNickName = styled(NickNameP)`
 `;
 
 export const HomePostProfileLogoImg = styled(ProfileLogoImg)`
+    object-fit: contain;
     width: 42px;
     height: 42px;
 `;
@@ -38,6 +39,7 @@ export const HomePostSmallLink = styled(Link)`
     margin-left: 54px;
     display: block;
     .post-img {
+        object-fit: contain;
         margin-bottom: 12px;
         width: 304px;
         border: 0.5px solid #dbdbdb;

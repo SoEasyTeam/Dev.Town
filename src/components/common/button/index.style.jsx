@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import defaultProfile from '../../../assets/basic-profile-img-2x.png';
 import IconFillImg from '../../../assets/upload-file.png';
+import { css } from 'styled-components';
 
 
 const LBtn = styled.button`
@@ -52,8 +53,9 @@ const MsBtn = styled.button`
     background-color: var(--main-color);
     border-radius: 32px;
     color: var(--subtitle-text);
-`; //저장, 업로드 버튼
+`;
 
+//저장, 업로드 버튼
 const SaveBtn = styled(MsBtn)`
     ${({ disabled }) => {
         return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
@@ -101,5 +103,42 @@ export const ImgUpload = styled.label`
 export const ImgGray = styled.img`
     width: 100%;
 `;
+
+export const FollowBtn = styled(MBtn)`
+font-family: 'Spoqa Han Sans Neo';
+font-weight: 500;
+font-size: 14px;
+line-height: 18px;
+&::after {
+        ${(props) => props.isFollowed
+        ? css`
+        content: '언팔로우';
+        `
+        : css`
+        content: '팔로우';
+        `
+    };
+    }
+`;
+
+export const FollowsBtn = styled(SBtn)`
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    position: absolute;
+    right: 0px;
+    top: 11px;
+    &::after {
+        ${(props) => props.isFollowed
+        ? css`
+        content: '취소';
+        `
+        : css`
+        content: '팔로우';
+        `
+    };
+    }
+`
 
 export { LBtn, MlBtn, MBtn, MsBtn, SBtn, SaveBtn };

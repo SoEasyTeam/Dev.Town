@@ -37,6 +37,7 @@ export const Profilelabel = styled.label`
     position: relative;
     cursor: pointer;
     .joinprofile-img {
+        object-fit: cover;
         width: 110px;
         height: 110px;
         border-radius: 50%;

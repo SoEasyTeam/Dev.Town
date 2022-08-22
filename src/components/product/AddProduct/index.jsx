@@ -29,6 +29,9 @@ function AddProduct() {
         event.preventDefault();
         console.log('onSubmitHandler');
         dispatch(productAction.addProduct(itemName, price, link, itemImage));
+        setTimeout(() => {
+            dispatch(productAction.productList());
+        }, 300);
         history.push('/myprofile');
     }
 
