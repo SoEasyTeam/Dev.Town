@@ -90,6 +90,7 @@ export const ProfileAreaCol = styled.article`
 `
 
 export const ProfileImg = styled.img`
+    object-fit: cover;
     width: 110px;
     height: 110px;
     border-radius: 50%;
@@ -145,6 +146,7 @@ export const AddProfileLabel = styled.label`
     position: relative;
     cursor: pointer;
     .addprofile-img {
+        object-fit: cover;
         width: 110px;
         height: 110px;
         border-radius: 50%;
