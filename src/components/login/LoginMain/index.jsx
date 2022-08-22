@@ -15,7 +15,6 @@ function LoginMain() {
     const history = useHistory();
     let tokenValid = useSelector(state=>state.token.tokenValid);
     let token = useSelector(state=> state.auth.token);
-    console.log(token);
     let message = useSelector(state=>state.auth.message);
     //이메일 주소 유효성 검사
     const checkEmail =
