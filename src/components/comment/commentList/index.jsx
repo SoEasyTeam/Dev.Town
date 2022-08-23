@@ -4,13 +4,7 @@ import { commentListAction } from '../../../redux/actions/commentListAction';
 import { postAction } from '../../../redux/actions/postAction'
 import { useParams } from 'react-router-dom';
 import CommentItem from "../commentItem";
-const parseDate = (dateString) => {
-    const postDate = new Date(dateString)
-    const year = postDate.getFullYear();
-    const month = postDate.getMonth() + 1;
-    const day = postDate.getDate();
-    return [year, month, day]
-}
+import parseDate from '../../../utils/parseDate';
 
 export default function CommentList() {
     const dispatch = useDispatch()

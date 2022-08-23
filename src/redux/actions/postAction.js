@@ -80,4 +80,50 @@ function getPost(id) {
         }
     };
 }
-export const postAction = { post, getPost };
+function getMyPost(account){
+    return async (dispatch, getState) =>{
+        const token = getState().auth.token
+        try {
+            const getMyPostRes = await axios(API_URL+`/post/${account}/userpost`,{
+                method:'GET',
+                headers:{
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            })
+            console.log(getMyPostRes);
+            dispatch({
+                type:'GET_MY_POST',
+                payload:{
+                    post:getMyPostRes.data.post,
+                }
+            })
+        } catch {
+            if (!account) {
+                alert('해당 계정이 존재하지 않습니다.')
+            }
+        }
+    }
+}
+function deletePost(id){
+    return async (dispatch, getState)=>{
+        const token = getState().auth.token
+        try {
+            const deletePostRes = await axios(API_URL + `/post/${id}`, {
+                headers:{
+                    "Authorization" : `Bearer ${token}`,
+	                "Content-type" : "application/json",
+                },
+            })
+            dispatch({
+                type:'DELETE_POST',
+                payload:{
+                    post: deletePostRes.data.post
+                }
+            })
+        } catch {
+            alert('존재하지 않는 게시물입니다.')
+        }
+    }
+}
+export const postAction = { post, getPost, getMyPost, deletePost };

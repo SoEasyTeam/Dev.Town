@@ -63,6 +63,7 @@ function UserPost(props) {
         console.log('게시물 : ', json)
         setUserPostData(json)
     }
+    
     useEffect(() => {
         if (props.accountname) {
             getData(props.accountname)
@@ -104,6 +105,8 @@ function UserPost(props) {
 }
 
 export default UserPost;
+
+
 
 
 
