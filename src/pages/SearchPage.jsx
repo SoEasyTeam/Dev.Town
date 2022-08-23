@@ -2,49 +2,62 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import TabMenu from '../components/common/tabMenu';
 import { TopSearchNav } from '../components/common/nav';
-import { searchAction } from '../redux/actions/searchAction';
+import { FollowPageLink, UserFollowBox } from '../components/list/followList/index.style';
+import { IdP, NameIdBox, NickNameP, ProfileLogoImg } from '../components/common/search/index.style';
+import styled from 'styled-components';
+
+const SearchBox = styled.div`
+    margin: 0 16px;
+`
 
 export default function SearchPage() {
-    const token = useSelector((state) => state.auth.token);
-    const accountname = useSelector((state) => state.auth.accountname);
+    const token = useSelector(state => state.auth.token);
     const [searchResult, setSearchResult] = useState([]);
     const [keyword, setKeyword] = useState('');
-    let dispatch = useDispatch();
-    let searchUserList = useSelector((state) => state.search.userList);
 
     useEffect(() => {
-        // dispatch(searchAction.search(token, keyword));
-        console.log(keyword.length);
-        console.log(token);
-        const tempToken =
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2FkNjA3ODJmZGNjNzEyZjQzN2QyZCIsImV4cCI6MTY2MjcxMDYxOCwiaWF0IjoxNjU3NTI2NjE4fQ.w47m557FRqRQhF8PGM_VUxF10mFtDexYJIxqUasFQ7I';
         if (keyword.length > 1) {
-            const searchData = async () => {
-                const res = await fetch(
-                    'https://mandarin.api.weniv.co.kr/user/searchuser/?keyword=' +
-                    keyword,
-                    {
-                        method: 'GET',
-                        headers: {
-                            Authorization: `Bearer ${tempToken}`,
-                            'Content-type': 'application/json',
-                        },
-                    }
-                );
-                const json = await res.json();
-                console.log(json);
-                setSearchResult(json);
-            };
-            searchData();
+            setTimeout(() => {
+                const searchData = async () => {
+                    const res = await fetch(
+                        'https://mandarin.api.weniv.co.kr/user/searchuser/?keyword=' +
+                        keyword,
+                        {
+                            method: 'GET',
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                                'Content-type': 'application/json',
+                            },
+                        }
+                    );
+                    const json = await res.json();
+                    setSearchResult(json);
+                };
+                searchData();
+            }, 700);
         }
-    }, [keyword]);
+    }, [keyword, token]);
+
+    console.log(searchResult)
 
     return (
         <>
             <TopSearchNav onChange={(e) => setKeyword(e.target.value)} />
             {searchResult ?
-                searchResult.map((user) => {
-                    return <p key={user.id}>{user.username}</p>;
+                searchResult.map((user, index) => {
+                    return (
+                        <SearchBox key={index}>
+                            <UserFollowBox>
+                                <FollowPageLink to={{ pathname: '/yourpage', search: `?id=${user.accountname}` }} >
+                                    <ProfileLogoImg src={user.image} alt='프로필로고' />
+                                    <NameIdBox>
+                                        <NickNameP>{user.username}</NickNameP>
+                                        <IdP>@ {user.accountname}</IdP>
+                                    </NameIdBox>
+                                </FollowPageLink>
+                            </UserFollowBox>
+                        </SearchBox>
+                    )
                 }) :
                 <p>검색결과가 없습니다.</p>}
             <TabMenu />
