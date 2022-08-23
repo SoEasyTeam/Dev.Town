@@ -41,6 +41,7 @@ function YourProfilePage(props) {
         })
         const json = await res.json()
         setUserData(json)
+        console.log('데이터', userData)
     }
 
     useEffect(() => {
