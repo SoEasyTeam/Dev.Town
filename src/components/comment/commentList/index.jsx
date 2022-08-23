@@ -4,7 +4,7 @@ import { commentListAction } from '../../../redux/actions/commentListAction';
 import { postAction } from '../../../redux/actions/postAction'
 import { useParams } from 'react-router-dom';
 import CommentItem from "../commentItem";
-import parseDate from '../../../utils/parseData'
+import parseDate from '../../../utils/parseDate';
 
 export default function CommentList({commentList}) {
     console.log(commentList)

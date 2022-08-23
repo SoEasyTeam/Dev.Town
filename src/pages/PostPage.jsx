@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { TopBasicNav } from '../components/common/nav';
 import PostInDetail from '../components/common/PostInDetail';
 import CommentInputBox from '../components/comment/commentInput';
@@ -29,7 +29,6 @@ function PostPage() {
     }
 
     const [year, month, day] = parseDate(postItem.createdAt);
-
     // alert 모달창
     const [alertOn, setAlertOn] = useState(false);
 

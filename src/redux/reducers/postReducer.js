@@ -1,21 +1,4 @@
 let initialState = {
-    // "id": '',
-    // "content": '',
-    // "image": '',
-    // "createdAt": '',
-    // "updatedAt": '',
-    // "hearted": false,
-    // "heartCount": '',
-    // "commentCount": '',
-    // "author": {
-    //     "_id": '',
-    //     "username": '',
-    //     "accountname": '',
-    //     "following": [],
-    //     "follower": [],
-    //     "followerCount": '',
-    //     "followingCount": ''
-    // }
     post: '',
 };
 
@@ -47,4 +30,26 @@ function getPostReducer(state=initialPostState, action){
         default: return {...state}
     }
 }
-export {postReducer,getPostReducer};
+function getMyPostReducer(state=initialPostState, action) {
+    let {type, payload}=action
+    switch(type){
+        case 'GET_MY_POST':
+            return {
+                ...state,
+                post: payload.post,
+            }
+        default: return {...state}
+    }
+}
+function deletePostReducer(state=initialPostState, action){
+    let {type, payload}=action
+    switch(type){
+        case 'DELETE_POST':
+            return {
+                ...state,
+                post: payload.post,
+            }
+        default: return {...state}
+    }
+}
+export {postReducer,getPostReducer, deletePostReducer, getMyPostReducer};
