@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -32,11 +32,6 @@ function LoginMain() {
         dispatch(authenticateAction.login(email, password));
     }
 
-    const onChangeEmailHandler = useCallback((event) => {
-        setEmail(event.target.value);
-        return;
-    }, [])
-
     useEffect(() => {
         if(message === '이메일 또는 비밀번호가 일치하지 않습니다.'){
             setWarningActive(true);
@@ -61,7 +56,7 @@ function LoginMain() {
             <h2 className='loginTitle'>로그인</h2>
             <form className='loginForm' onSubmit={onSubmitHandler}>
                 <TextLabel>이메일</TextLabel>
-                <EmailInput value={email} onChange = {onChangeEmailHandler} onKeyUp={loginActive} />
+                <EmailInput value={email} onChange = {(event) => setEmail(event.target.value)} onKeyUp={loginActive} />
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput value={password} onChange = {(event) => setPassword(event.target.value)} onKeyUp={loginActive}/>
                 <WarningParagraph visible={warningActive}>*{message}</WarningParagraph>
