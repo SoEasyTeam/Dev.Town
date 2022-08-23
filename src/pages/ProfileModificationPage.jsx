@@ -30,7 +30,7 @@ function ProfileModificationPage() {
         console.log('수정 submitHandler');
         dispatch(profileAction.profileModification(name, image, accountname, intro));
         setTimeout(() => {
-            dispatch(productAction.productList());
+            dispatch(profileAction.profile());
         }, 300);
         history.push('/myprofile')
     }

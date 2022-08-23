@@ -49,10 +49,6 @@ function JoinMembership() {
         }
     }, [password])
 
-    // useEffect(() => {
-    //     message === '사용 가능한 이메일 입니다.' ? setEmailPop(false) : setEmailPop(true);
-    // }, [message])
-
     return (
         <LoginMain>
             <h1 className='ir'>데브타운 회원가입 화면</h1>

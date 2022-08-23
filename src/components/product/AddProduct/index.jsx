@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { productAction } from '../../../redux/actions/productAcition.js';
 import { SaveBtn } from '../../common/button/index.style';
@@ -43,13 +43,16 @@ function AddProduct() {
     }
 
     const onChangeProductImg = (event) => {
-        setPreviewImage(URL.createObjectURL(event.target.files[0]));
-
-        let reader = new FileReader();
-        reader.readAsDataURL(event.target.files[0]);
-        reader.onload = (event) => {
-            let readerUrl = event.target.result;
-            setItemImage(readerUrl);
+        if(parseInt(event.target.files[0].size) > 100000){
+            alert('이미지 파일 100KB 이하로 해주세요.');
+        }else {
+            setPreviewImage(URL.createObjectURL(event.target.files[0]));
+            let reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]);
+            reader.onload = (event) => {
+                let readerUrl = event.target.result;
+                setItemImage(readerUrl);
+            }
         }
     };
     return (

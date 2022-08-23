@@ -26,7 +26,6 @@ const Nav = () => {
     const history = useHistory();
 
     useEffect(() => {
-        console.log(tokenValid);
         if(tokenValid.isValid === true) {
             history.push('/home');
         }

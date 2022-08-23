@@ -33,6 +33,7 @@ function addProduct(itemName, price, link, itemImage) {
                         link: res.data.product.link,
                         itemImage: res.data.product.itemImage,
                         author: res.data.product.author,
+                        message: res.data.message,
                     },
                 });
             }
