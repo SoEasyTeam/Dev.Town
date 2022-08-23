@@ -6,18 +6,8 @@ import { useParams } from 'react-router-dom';
 import CommentItem from "../commentItem";
 import parseDate from '../../../utils/parseDate';
 
-export default function CommentList() {
-    const dispatch = useDispatch()
-    const { id } = useParams();
-    const postId = id
-    // console.log(postId, '포스트아뒤');
-    const token = useSelector(state => state.auth.token)
-    const commentList = useSelector(state => state.commentList.comments)
-    
-    useEffect(() => { 
-        // dispatch(postAction.getPost(postId))
-        dispatch(commentListAction.commentList(postId, token))
-    }, [dispatch, commentList])
+export default function CommentList({commentList}) {
+    console.log(commentList)
     return (
         <ul>
             {commentList && commentList.map((comment, index) => {

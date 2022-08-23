@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { API_URL } from '../../constants/defaultUrl';
 
-function commentList(id, token) {
+function commentList(id) {
     return async (dispatch, getState) => {
+        const token = getState().auth.token;
         try {
             const res = await axios.get(API_URL + `/post/${id}/comments`, {
                 headers: {
