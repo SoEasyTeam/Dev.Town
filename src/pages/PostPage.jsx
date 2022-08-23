@@ -72,7 +72,7 @@ function PostPage() {
                     <></>
                 }
             </PostSection>
-            <CommentInputBox />
+            <CommentInputBox postId = {id}/>
             {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
         </>
     )

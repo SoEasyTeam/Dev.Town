@@ -1,17 +1,14 @@
 import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { commentListAction } from '../../../redux/actions/commentListAction'
-import { useParams } from 'react-router-dom';
 import { CommentBox, ProfileImgBox, MyProfileOnComment, CommentInput, CommentSubmitBtn } from './index.style';
 
-export default function CommentInputBox() {
-    const dispatch = useDispatch()
+export default function CommentInputBox({postId}) {
+    const dispatch = useDispatch();
     const token = useSelector(state => state.auth.token);
-    const { id } = useParams();
-    const postViewId = useSelector(state => state.homefeed.item).map((i) => i.id);
-    const postId = postViewId.filter(i => i === id);
     const [comment, setComment] = useState('')
     const profileImg = useSelector(state => state.auth)
+    console.log(postId);
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
