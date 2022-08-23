@@ -21,11 +21,15 @@ function ProfileSetting() {
 
 
     const onChangeProfileImg = (event) => {
-        let reader = new FileReader();
-        reader.readAsDataURL(event.target.files[0]);
-        reader.onload = (event) => {
-            let readerUrl = event.target.result;
-            setItemImage(readerUrl);
+        if(parseInt(event.target.files[0].size) > 100000){
+            alert('이미지 파일 100KB 이하로 해주세요.');
+        }else {
+            let reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]);
+            reader.onload = (event) => {
+                let readerUrl = event.target.result;
+                setItemImage(readerUrl);
+            }
         }
     };
 
