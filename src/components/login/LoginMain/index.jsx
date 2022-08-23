@@ -38,7 +38,6 @@ function LoginMain() {
         }else {
             setWarningActive(false);
         }
-        console.log(token);
         if(token !== null && typeof(token) !== 'undefined' && token !== 'null'){
             dispatch(authenticateAction.tokenValid());
         }

@@ -35,6 +35,9 @@ function ProductModification() {
         event.preventDefault();
         console.log('onSubmitHandler');
         dispatch(productAction.productModification(itemName, price, link, itemImage, product_id));
+        setTimeout(() => {
+            dispatch(productAction.productList());
+        }, 300);
         history.push('/myprofile');
     }
 
