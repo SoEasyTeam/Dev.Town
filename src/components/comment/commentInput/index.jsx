@@ -16,7 +16,9 @@ export default function CommentInputBox() {
     const handleOnSubmit = (e) => {
         e.preventDefault()
         dispatch(commentListAction.writeComment(postId, token, comment))
-        dispatch(commentListAction.commentList(postId, token))
+        setTimeout(() => {
+            dispatch(commentListAction.commentList(postId, token))
+        }, 500);
         console.log('~~~~~~~~~댓글받아와!!');
         setComment('')
     }
