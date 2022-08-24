@@ -74,7 +74,6 @@ function PostPage() {
                     postparagraph={item.content}
                     postsrc={item.image}
                     heartCount={item.heartCount}
-                    hearted={item.hearted}
                     commentCount={item.commentCount}
                     year={year}
                     month={month}
