@@ -9,6 +9,7 @@ import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBo
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, hearted, commentCount, year, month, day, alertOnModal, postId }) {
 
     const post = useSelector(state => state.getPost)
+    console.log('좋아요포스트', hearted)
     // 모달창
     const [modalOn, setModalOn] = useState(false);
 
@@ -48,7 +49,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                             />
                     }
                 </HomePostSmallLink>
-                <LikePostRowBox heartCount={heartCount} commentCount={commentCount} postId={postId} hearted={hearted} post={post} />
+                <LikePostRowBox heartCount={heartCount} commentCount={commentCount} postId={postId} hearted={hearted} />
                 <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
             </HomePostBox>
             {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} id={id} /> : ''}
