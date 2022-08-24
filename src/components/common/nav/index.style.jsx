@@ -11,6 +11,7 @@ border-bottom: 0.5px solid #dbdbdb;
 display: flex;
 justify-content: space-between;
 padding: 8px 16px;
+margin-bottom: 20px;
 .navTitle {
     font-family: 'Spoqa Han Sans Neo';
     font-style: normal;

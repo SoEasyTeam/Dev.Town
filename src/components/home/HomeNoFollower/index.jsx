@@ -9,7 +9,7 @@ const HomeNoFollower = () => {
             <NoFollowerMainBox>
                 <NoFollowerImg src={BasicProfileImg}/>
                 <SearchUserParagraph>유저를 검색해 팔로우 해보세요!</SearchUserParagraph>
-                <MlBtn to='#'>검색하기</MlBtn>
+                <MlBtn to='/search'>검색하기</MlBtn>
             </NoFollowerMainBox>
         </>
     )

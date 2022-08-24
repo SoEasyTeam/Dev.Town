@@ -100,6 +100,10 @@ function joinfinal(email, password, username, accountname, intro, itemImage) {
 
             if (res.data.message === '이미 사용중인 계정 ID입니다.') {
                 alert('이미 사용중인 계정 ID입니다.');
+            } else if (res.data.message === 'request entity too large') {
+                alert(
+                    '사진 용량 크기 제한 100KB 이상의 이미지는 업로드 할 수 없습니다.'
+                );
             } else if (res.data.message === '회원가입 성공') {
                 dispatch({
                     type: 'JOIN_EMAIL_PASSWORD_SUCCESS',

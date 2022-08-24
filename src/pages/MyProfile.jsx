@@ -7,8 +7,8 @@ import TabMenu from '../components/common/tabMenu';
 import { AlertLogoutModal } from '../components/common/alert'
 import { ProfileSection } from '../components/profile/userProfile/index.style'
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 //data 받아오기
-
 
 function MyProfilePage(props) {
     const [alertOn, setAlertOn] = useState(false);
@@ -25,18 +25,23 @@ function MyProfilePage(props) {
     const [userData, setUserData] = useState();
     const Myaccountname = sessionStorage.getItem('accountname');
     const token = sessionStorage.getItem('token');
+    const history = useHistory();
 
     const getData = async (account) => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
+        console.log(account)
+        if(account !== 'null' && account !== null){
+            const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-type": "application/json"
-            }
-        })
-        const json = await res.json()
-        setUserData(json)
-        console.log('데이터', userData)
+                }
+            })
+            const json = await res.json()
+            setUserData(json)
+        }else {
+            history.push('*')
+        }
     }
 
     useEffect(() => {
@@ -51,7 +56,6 @@ function MyProfilePage(props) {
     if (!userData) {
         return <></>
     }
-
 
     return (
         <>

@@ -52,7 +52,6 @@ function UserPost(props) {
     const [isActive, setIsActive] = useState(true);
     const location = useLocation();
 
-
     // console.log('버튼', isActive)
     const getData = async (account) => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${account}/userpost`, {
@@ -66,6 +65,7 @@ function UserPost(props) {
         console.log('게시물 : ', json)
         setUserPostData(json)
     }
+    
     useEffect(() => {
         if (props.accountname) {
             getData(props.accountname)
@@ -107,6 +107,8 @@ function UserPost(props) {
 }
 
 export default UserPost;
+
+
 
 
 

@@ -1,10 +1,12 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector, } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import { authenticateAction } from '../../../redux/actions/authenticateAction';
 import { productAction } from '../../../redux/actions/productAcition';
+import {postAction} from '../../../redux/actions/postAction'
 import { AlertBox, AlertOutside, AlertContainer, AlertUl, DeleteAlertBox, AlertP, ButtonBox, CancelBtn, DeleteBtn } from './index.style'
+import { useState } from 'react';
 
 // 상품 삭제
 function AlertProductModal({ alertOffModal, product_id }) {
@@ -16,6 +18,9 @@ function AlertProductModal({ alertOffModal, product_id }) {
         console.log('삭제해라')
         dispatch(productAction.productDelete(product_id));
         alertOffModal();
+        setTimeout(() => {
+            dispatch(productAction.productList());
+        },300)
     }
 
     return (
@@ -37,6 +42,13 @@ function AlertProductModal({ alertOffModal, product_id }) {
 // 게시글 삭제
 function AlertPostModal({ alertOffModal }) {
     document.body.style.overflow = "hidden";
+    const dispatch = useDispatch()
+
+    const handleDelete = () =>{
+        // dispatch(postAction.deletePost(postId))
+        console.log('삭제디스패치!')
+    }
+
     return (
         <>
             <AlertBox>
@@ -45,7 +57,7 @@ function AlertPostModal({ alertOffModal }) {
                     <strong className='alertMsg'>게시글을 삭제할까요?</strong>
                     <AlertUl>
                         <li onClick={alertOffModal}>취소</li>
-                        <li className='selectColor'>삭제</li>
+                        <li className='selectColor' onClick={handleDelete}>삭제</li>
                     </AlertUl>
                 </AlertContainer>
             </AlertBox>
@@ -77,10 +89,17 @@ function AlertDeclareModal({ alertOffModal }) {
 // 왜 로그아웃 alert만 화면 왼쪽으로 붙는지 모르겠습니다..
 function AlertLogoutModal({ alertOffModal }) {
     document.body.style.overflow = "hidden";
+    const email = '';
+    const password = '';
     const history = useHistory();
+    const dispatch = useDispatch();
     const onClickLogoutHandler = () => {
         sessionStorage.clear();
         history.push('/');
+        dispatch(authenticateAction.login(email, password));
+        setTimeout(() => {
+            dispatch(authenticateAction.tokenValid());
+        }, 300);
     }
     return (
         <>

@@ -19,6 +19,7 @@ function productReducer(state = initialState, action) {
                 link: payload.link,
                 itemImage: payload.itemImage,
                 author: payload.author,
+                message: payload.message,
             };
         case 'PRODUCT_LIST_SUCCESS':
             return {
