@@ -8,7 +8,7 @@ import CommentList from '../components/comment/commentList';
 import { AlertLogoutModal } from '../components/common/alert';
 import { commentListAction } from '../redux/actions/commentListAction';
 import { postAction } from '../redux/actions/postAction';
-import { PostSection } from '../components/post/index.style';
+import { PostSection, CommentUl } from '../components/post/index.style';
 
 function PostPage() {
     const dispatch = useDispatch()
@@ -68,11 +68,13 @@ function PostPage() {
                         day={day}
                         postId={postItem.id}
                     />
-                    {commentList !== '' ?
-                        <CommentList commentList={commentList} /> :
-                        <></>
-                    }
                 </PostSection>
+                {commentList !== '' ?
+                    <CommentUl>
+                        <CommentList commentList={commentList} />
+                    </CommentUl> :
+                    <></>
+                }
                 <CommentInputBox postId={id} />
                 {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
             </>

@@ -4,7 +4,6 @@ import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../search/index.style
 import LikePostRowBox from '../HomeImgPost/LkePostRowBox'
 import { MyPostModal } from '../modal';
 
-
 function PostInDetail({
     profileimg,
     nickname,

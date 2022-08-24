@@ -5,7 +5,6 @@ import LikePostRowBox from './LkePostRowBox'
 import { NameIdBox, IdP } from '../search/index.style';
 import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBox, HomePostProfileBox, HomePostSmallLink, HomePostParagraph, DateParagraph, HomePostProfileLink } from './index.style'
 
-
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, hearted, commentCount, year, month, day, alertOnModal, postId }) {
 
     const post = useSelector(state => state.getPost)

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const PostSection = styled.section`
-padding: 20px;
-margin-bottom: 50px;
+padding: 0 16px 20px 16px;
 `
 
 export const UploadForm = styled.form`
@@ -55,3 +54,8 @@ export const UploadImgInput = styled.input`
     overflow: hidden;
     padding: 0;
 `;
+
+export const CommentUl = styled.ul`
+    border-top: 1px solid #DBDBDB;
+    padding-bottom: 79px;
+`
