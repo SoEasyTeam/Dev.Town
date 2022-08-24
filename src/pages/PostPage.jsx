@@ -18,7 +18,7 @@ function PostPage() {
 
     useEffect(() => {
         dispatch(postAction.getPost(id));
-    },[id, dispatch])
+    }, [id, dispatch])
 
     function parseDate(dateString) {
         const postDate = new Date(dateString)
@@ -50,31 +50,32 @@ function PostPage() {
 
     console.log(commentList);
     return (
-        postItem==='' ? <></>:
-        <>
-            <TopBasicNav alertOnModal={alertOnModal} />
-            <PostSection>
-                <PostInDetail
-                    profileimg={postItem.author.image}
-                    nickname={postItem.author.username}
-                    id={postItem.author.accountname}
-                    postparagraph={postItem.content}
-                    postsrc={postItem.image}
-                    heartCount={postItem.heartCount}
-                    commentCount={postItem.commentCount}
-                    year={year}
-                    month={month}
-                    day={day}
-                    postId={postItem.id}
-                />
-                {commentList !== '' ?
-                    <CommentList commentList={commentList}/> :
-                    <></>
-                }
-            </PostSection>
-            <CommentInputBox postId = {id}/>
-            {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
-        </>
+        postItem === '' ? <></> :
+            <>
+                <TopBasicNav alertOnModal={alertOnModal} />
+                <PostSection>
+                    <PostInDetail
+                        profileimg={postItem.author.image}
+                        nickname={postItem.author.username}
+                        id={postItem.author.accountname}
+                        postparagraph={postItem.content}
+                        postsrc={postItem.image}
+                        heartCount={postItem.heartCount}
+                        hearted={postItem.hearted}
+                        commentCount={postItem.commentCount}
+                        year={year}
+                        month={month}
+                        day={day}
+                        postId={postItem.id}
+                    />
+                    {commentList !== '' ?
+                        <CommentList commentList={commentList} /> :
+                        <></>
+                    }
+                </PostSection>
+                <CommentInputBox postId={id} />
+                {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
+            </>
     )
 }
 
