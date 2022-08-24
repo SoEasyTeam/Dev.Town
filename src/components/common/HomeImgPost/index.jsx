@@ -6,7 +6,7 @@ import { NameIdBox, IdP } from '../search/index.style';
 import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBox, HomePostProfileBox, HomePostSmallLink, HomePostParagraph, DateParagraph, HomePostProfileLink } from './index.style'
 
 
-function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, commentCount, year, month, day, alertOnModal, postId }) {
+function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, hearted, commentCount, year, month, day, alertOnModal, postId }) {
 
     const post = useSelector(state => state.getPost)
     // 모달창
@@ -48,7 +48,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                             />
                     }
                 </HomePostSmallLink>
-                <LikePostRowBox heartCount={heartCount} commentCount={commentCount} postId={postId} />
+                <LikePostRowBox heartCount={heartCount} commentCount={commentCount} postId={postId} hearted={hearted} post={post} />
                 <DateParagraph>{year}년 {month}월 {day}일</DateParagraph>
             </HomePostBox>
             {modalOn === true ? <MyPostModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} id={id} /> : ''}
