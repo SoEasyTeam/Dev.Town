@@ -28,7 +28,6 @@ function MyProfilePage(props) {
     const history = useHistory();
 
     const getData = async (account) => {
-        console.log(account)
         if(account !== 'null' && account !== null){
             const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
             method: "GET",

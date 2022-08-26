@@ -15,7 +15,6 @@ function UserFollow({ src, name, accountname, isfollow }) {
                     "Content-type": "application/json"
                 }
             }).then((res) => {
-                console.log('언팔로우하기', res);
                 setIsFollowed(false);
             });
         } else {
@@ -26,7 +25,6 @@ function UserFollow({ src, name, accountname, isfollow }) {
                     "Content-type": "application/json"
                 }
             }).then((res) => {
-                console.log('팔로우하기', res);
                 setIsFollowed(true);
             });
         }

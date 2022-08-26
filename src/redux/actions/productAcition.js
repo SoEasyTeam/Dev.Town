@@ -2,7 +2,6 @@ import axios from 'axios';
 import { API_URL } from '../../constants/defaultUrl';
 
 function addProduct(itemName, price, link, itemImage) {
-    console.log('addProduct success action');
     return async (dispatch, getState) => {
         const token = getState().auth.token;
         const addProductData = {
@@ -106,7 +105,6 @@ function productModification(itemName, price, link, itemImage, product_id) {
 function productDelete(product_id) {
     return async (dispatch, getState) => {
         const token = getState().auth.token;
-        console.log(token);
         try {
             const productDeleteRes = await axios.delete(
                 API_URL + `/product/${product_id}`,
@@ -117,8 +115,6 @@ function productDelete(product_id) {
                     },
                 }
             );
-
-            console.log(productDeleteRes.data);
         } catch (error) {}
     };
 }
@@ -127,8 +123,6 @@ function productList(productaccountname) {
     return async (dispatch, getState) => {
         const token = getState().auth.token;
         const accountname = getState().auth.accountname;
-        console.log(accountname);
-        console.log(productaccountname);
         if (productaccountname !== undefined) {
             try {
                 const productListRes = await axios.get(

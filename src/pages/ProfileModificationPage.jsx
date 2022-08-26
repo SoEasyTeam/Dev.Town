@@ -27,7 +27,6 @@ function ProfileModificationPage() {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log('수정 submitHandler');
         dispatch(profileAction.profileModification(name, image, accountname, intro));
         setTimeout(() => {
             dispatch(profileAction.profile());
