@@ -18,14 +18,11 @@ function commentList(id) {
                     comments: res.data.comments,
                 },
             });
-        } catch (error) {
-            console.log('something wrong!!!');
-        }
+        } catch (error) {}
     };
 }
 
 function writeComment(postId, token, comment) {
-    console.log(postId, token, comment);
     return async (dispatch) => {
         const commentData = {
             comment: {

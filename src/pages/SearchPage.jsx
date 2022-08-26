@@ -38,8 +38,6 @@ export default function SearchPage() {
         }
     }, [keyword, token]);
 
-    console.log(searchResult)
-
     return (
         <>
             <TopSearchNav onChange={(e) => setKeyword(e.target.value)} />

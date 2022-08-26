@@ -33,7 +33,6 @@ function ProductModification() {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log('onSubmitHandler');
         dispatch(productAction.productModification(itemName, price, link, itemImage, product_id));
         setTimeout(() => {
             dispatch(productAction.productList());
