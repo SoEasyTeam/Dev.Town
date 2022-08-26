@@ -13,11 +13,8 @@ function search(keyword, token) {
                     },
                 }
             );
-            console.log(res.data);
             dispatch({ type: 'SEARCH_USER' });
-        } catch (error) {
-            console.log('error 발생!');
-        }
+        } catch (error) {}
     };
 }
 export const searchAction = { search };

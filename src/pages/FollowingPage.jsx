@@ -47,7 +47,7 @@ function FollowingPage(props) {
             }
         })
         const json = await res.json()
-        console.log('팔로워 : ', json)
+        // console.log('팔로워 : ', json)
         setUserFollowingData(json)
     }
 

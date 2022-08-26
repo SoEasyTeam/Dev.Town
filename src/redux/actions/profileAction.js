@@ -3,7 +3,6 @@ import { API_URL } from '../../constants/defaultUrl';
 
 // dispatch로 보내준 token과 accountname을 파라미터로 불러온다. profile 함수 안에서 사용할 수 있게!!
 function profile() {
-    console.log('profile success action');
     // 잘불러져왔는지 콘솔로 찍어봄
     // console.log(accountname);
     return async (dispatch, getState) => {
@@ -22,7 +21,6 @@ function profile() {
             );
 
             // 잘 받와 왔나 res.data를 찍어본다.
-            console.log(res.data);
             // 리듀서(서랍)에게 PROFILE_SUCCESS(타입) 칸에서 payload의 옵션들을 요청한다.(아래 옵션을 읽어보기 profileReducer 리듀서로 이동)
             dispatch({
                 type: 'PROFILE_SUCCESS',
@@ -47,7 +45,6 @@ function profile() {
 }
 
 function profileModification(name, image, accountname, intro) {
-    console.log('profileModification success action');
     return async (dispatch, getState) => {
         const token = getState().auth.token;
         const profileModificationData = {
@@ -98,7 +95,6 @@ function profileModification(name, image, accountname, intro) {
 }
 
 function profileModificationModal(userData) {
-    console.log('productModificationModal success action');
     return async (dispatch, getState) => {
         dispatch({
             type: 'PROFILE_MODAL_SUCCESS',
