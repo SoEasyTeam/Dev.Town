@@ -18,6 +18,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
+                    console.log('post item', item)
                     return (
                         <li key={item.id}>
                             <HomeImgPost
@@ -27,11 +28,12 @@ function PostAreaList({ userPostData, alertOnModal }) {
                                 postparagraph={item.content}
                                 postsrc={item.image}
                                 heartCount={item.heartCount}
+                                hearted={item.hearted}
                                 commentCount={item.commentCount}
                                 year={year}
                                 month={month}
                                 day={day}
-                                postId = {item.id}
+                                postId={item.id}
                                 alertOnModal={alertOnModal}
                             />
                         </li>

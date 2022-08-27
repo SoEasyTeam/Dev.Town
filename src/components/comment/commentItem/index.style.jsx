@@ -4,7 +4,7 @@ import styled from "styled-components"
 export const CommentItemLi = styled.li`
     display: flex;
     padding: 0 50px;
-    margin: 20px 0;
+    margin-top: 20px;
     gap: 20px;
     .profile-img {
         width: 36px;
@@ -16,6 +16,7 @@ export const CommentorProfileImg = styled.img`
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    border: 0.5px solid #DBDBDB;
 `
 
 export const CommentInfo = styled.div`
