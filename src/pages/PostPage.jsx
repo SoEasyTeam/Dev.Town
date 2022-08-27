@@ -48,7 +48,6 @@ function PostPage() {
     // 댓글 가져오기
     const commentList = useSelector(state => state.commentList.comments)
 
-    console.log(commentList);
     return (
         postItem === '' ? <></> :
             <>

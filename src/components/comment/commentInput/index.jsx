@@ -8,7 +8,6 @@ export default function CommentInputBox({postId}) {
     const token = useSelector(state => state.auth.token);
     const [comment, setComment] = useState('')
     const profileImg = useSelector(state => state.auth)
-    console.log(postId);
 
     const handleOnSubmit = (e) => {
         e.preventDefault()

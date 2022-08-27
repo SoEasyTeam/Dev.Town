@@ -4,7 +4,7 @@
 
 ### [배포 URL]
 
--   URL: [주니어 개발자들의 커뮤니티 데브타운](https://devtownapp1.herokuapp.com/)
+-   URL: [https://devtownapp1.herokuapp.com/](https://devtownapp1.herokuapp.com/)
 -   계정
     -   `ID`: devtown@test.com
     -   `PassWord`: 123456

@@ -27,7 +27,6 @@ function AddProduct() {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log('onSubmitHandler');
         dispatch(productAction.addProduct(itemName, price, link, itemImage));
         setTimeout(() => {
             dispatch(productAction.productList());

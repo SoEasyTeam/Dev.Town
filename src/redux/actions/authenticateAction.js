@@ -3,15 +3,12 @@ import { API_URL } from '../../constants/defaultUrl';
 
 function login(email, password) {
     return async (dispatch, getState) => {
-        console.log('로그인 action');
         const loginData = {
             user: {
                 email: email,
                 password: password,
             },
         };
-
-        console.log(loginData.user.email);
         if (loginData.user.email === '') {
             dispatch({
                 type: 'LOGIN_SUCCESS',
@@ -60,7 +57,6 @@ function login(email, password) {
                         },
                     });
                 }
-                console.log(res.data);
             } catch (error) {}
         }
     };
@@ -69,7 +65,6 @@ function login(email, password) {
 function tokenValid() {
     return async (dispatch, getState) => {
         const token = getState().auth.token;
-        console.log(token);
         if (token) {
             try {
                 const res = await axios.get(API_URL + '/user/checktoken', {
@@ -85,9 +80,7 @@ function tokenValid() {
                         isValid: res.data,
                     },
                 });
-            } catch (err) {
-                console.log(err);
-            }
+            } catch (err) {}
         }
     };
 }

@@ -62,7 +62,7 @@ function UserPost(props) {
             }
         })
         const json = await res.json()
-        console.log('게시물 : ', json)
+        // console.log('게시물 : ', json)
         setUserPostData(json)
     }
     
@@ -86,7 +86,7 @@ function UserPost(props) {
         setAlertOn(false);
     }
     function changeActive() {
-        console.log('버튼바뀜', isActive)
+        // console.log('버튼바뀜', isActive)
         setIsActive(!isActive)
     }
     return (
