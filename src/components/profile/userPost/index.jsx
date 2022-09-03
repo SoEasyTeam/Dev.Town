@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, Link, useParams, useRouteMatch } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
-import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl } from './index.style';
+import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl, AlbumLi, AlbumBox } from './index.style';
 
 function parseDate(dateString) {
     const postDate = new Date(dateString)
@@ -13,12 +13,13 @@ function parseDate(dateString) {
 }
 
 function PostAreaList({ userPostData, alertOnModal }) {
+    console.log('리스트 게시글 됨')
     return (
         <>
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
-                    console.log('post item', item)
+                    console.log('리스트 post item', item)
                     return (
                         <li key={item.id}>
                             <HomeImgPost
@@ -39,6 +40,36 @@ function PostAreaList({ userPostData, alertOnModal }) {
                             />
                         </li>
                     )
+                })
+            }
+        </>
+    )
+}
+
+function PostAlbumAreaList({ userPostData }) {
+    console.log('앨범형 게시글 됨')
+    return (
+        <>
+            {userPostData &&
+                userPostData.post.map((item) => {
+                    console.log('앨범 post item image', item)
+                    if (!item.image || !item.image.includes('https')) {
+                        return (
+                            <></>
+                        )
+                    } else {
+                        return (
+                            <Link
+                                to={{
+                                    pathname: `/post/${item.id}`
+                                }}
+                            >
+                                <AlbumLi key={item.id} >
+                                    <img src={item.image} alt='게시글사진' />
+                                </AlbumLi>
+                            </Link>
+                        )
+                    }
                 })
             }
         </>
@@ -86,19 +117,36 @@ function UserPost(props) {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
-    function changeActive() {
-        // console.log('버튼바뀜', isActive)
-        setIsActive(!isActive)
+    function changeListActive() {
+        console.log('버튼바뀜', isActive)
+        setIsActive(true)
+        console.log('userPostData', userPostData)
+    }
+    function changeAlbumActive() {
+        console.log('버튼바뀜', isActive)
+        setIsActive(false)
+        console.log('userPostData', userPostData)
     }
     return (
         <>
             <PostArea>
                 <div className='postAreaTop'>
-                    <PostListBtns onClick={changeActive} isActive={isActive} />
-                    <PostAlbumBtns onClick={changeActive} isActive={isActive} />
+                    <PostListBtns onClick={changeListActive} isActive={isActive} />
+                    <PostAlbumBtns onClick={changeAlbumActive} isActive={isActive} />
                 </div>
                 <PostAreaListUl>
-                    <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
+                    {isActive ? (
+                        <>
+                            <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
+                        </>
+                    ) : (
+                        <>
+                            <AlbumBox>
+                                <PostAlbumAreaList userPostData={userPostData} />
+                            </AlbumBox>
+                        </>
+                    )}
+
                 </PostAreaListUl>
             </PostArea>
             {alertOn === true && location.pathname.split("/")[1] === "myprofile" ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
