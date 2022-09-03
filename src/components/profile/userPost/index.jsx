@@ -13,7 +13,6 @@ function parseDate(dateString) {
 }
 
 function PostAreaList({ userPostData, alertOnModal }) {
-    console.log('리스트 게시글 됨')
     return (
         <>
             {userPostData &&
@@ -47,7 +46,6 @@ function PostAreaList({ userPostData, alertOnModal }) {
 }
 
 function PostAlbumAreaList({ userPostData }) {
-    console.log('앨범형 게시글 됨')
     return (
         <>
             {userPostData &&
@@ -84,7 +82,6 @@ function UserPost(props) {
     const [isActive, setIsActive] = useState(true);
     const location = useLocation();
 
-    // console.log('버튼', isActive)
     const getData = async (account) => {
         const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${account}/userpost`, {
             method: "GET",
@@ -94,7 +91,6 @@ function UserPost(props) {
             }
         })
         const json = await res.json()
-        // console.log('게시물 : ', json)
         setUserPostData(json)
     }
 
