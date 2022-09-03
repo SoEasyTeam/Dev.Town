@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useLocation, useParams, useRouteMatch } from 'react-router-dom';
+import { useLocation, Link, useParams, useRouteMatch } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
 import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl, AlbumLi, AlbumBox } from './index.style';
@@ -59,9 +59,15 @@ function PostAlbumAreaList({ userPostData }) {
                         )
                     } else {
                         return (
-                            <AlbumLi key={item.id}>
-                                <img src={item.image} alt='게시글사진' />
-                            </AlbumLi>
+                            <Link
+                                to={{
+                                    pathname: `/post/${item.id}`
+                                }}
+                            >
+                                <AlbumLi key={item.id} >
+                                    <img src={item.image} alt='게시글사진' />
+                                </AlbumLi>
+                            </Link>
                         )
                     }
                 })
