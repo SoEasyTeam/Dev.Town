@@ -43,3 +43,20 @@ li {
     margin: 20px 0;
 }
 `
+
+export const AlbumBox = styled.div`
+margin: 0 auto;
+width: 390px;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 8px;
+`
+export const AlbumLi = styled.li`    
+    img {
+        display: block;
+        width: 114px;
+        height: 114px;
+        border: 0.5px solid #DBDBDB;
+        margin: 0 auto;
+    }
+`

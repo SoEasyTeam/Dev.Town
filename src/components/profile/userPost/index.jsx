@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { useLocation, useParams, useRouteMatch } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
-import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl } from './index.style';
+import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl, AlbumLi, AlbumBox } from './index.style';
 
 function parseDate(dateString) {
     const postDate = new Date(dateString)
@@ -59,9 +59,9 @@ function PostAlbumAreaList({ userPostData }) {
                         )
                     } else {
                         return (
-                            <li key={item.id}>
+                            <AlbumLi key={item.id}>
                                 <img src={item.image} alt='게시글사진' />
-                            </li>
+                            </AlbumLi>
                         )
                     }
                 })
@@ -135,7 +135,9 @@ function UserPost(props) {
                         </>
                     ) : (
                         <>
-                            <PostAlbumAreaList userPostData={userPostData} />
+                            <AlbumBox>
+                                <PostAlbumAreaList userPostData={userPostData} />
+                            </AlbumBox>
                         </>
                     )}
 
