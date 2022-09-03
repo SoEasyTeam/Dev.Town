@@ -13,12 +13,13 @@ function parseDate(dateString) {
 }
 
 function PostAreaList({ userPostData, alertOnModal }) {
+    console.log('리스트 게시글 됨')
     return (
         <>
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
-                    // console.log('post item', item)
+                    console.log('리스트 post item', item)
                     return (
                         <li key={item.id}>
                             <HomeImgPost
@@ -46,21 +47,23 @@ function PostAreaList({ userPostData, alertOnModal }) {
 }
 
 function PostAlbumAreaList({ userPostData }) {
+    console.log('앨범형 게시글 됨')
     return (
         <>
             {userPostData &&
                 userPostData.post.map((item) => {
-                    console.log('post item image', item.image)
-                    if (item.image.includes('https')) {
-                        return (
-                            <li key={item.id}>
-                                <img src={item.image} alt='게시글상품사진' />
-                            </li>
-                        )
-                    } else
+                    console.log('앨범 post item image', item)
+                    if (!item.image || !item.image.includes('https')) {
                         return (
                             <></>
                         )
+                    } else {
+                        return (
+                            <li key={item.id}>
+                                <img src={item.image} alt='게시글사진' />
+                            </li>
+                        )
+                    }
                 })
             }
         </>
@@ -132,8 +135,7 @@ function UserPost(props) {
                         </>
                     ) : (
                         <>
-                            {/* {PostAlbumAreaList(userPostData)} */}
-                            바꾸기 성공!
+                            <PostAlbumAreaList userPostData={userPostData} />
                         </>
                     )}
 
