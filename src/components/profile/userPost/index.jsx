@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useRouteMatch } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
 import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl } from './index.style';
@@ -18,7 +18,7 @@ function PostAreaList({ userPostData, alertOnModal }) {
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
-                    console.log('post item', item)
+                    // console.log('post item', item)
                     return (
                         <li key={item.id}>
                             <HomeImgPost
@@ -39,6 +39,28 @@ function PostAreaList({ userPostData, alertOnModal }) {
                             />
                         </li>
                     )
+                })
+            }
+        </>
+    )
+}
+
+function PostAlbumAreaList({ userPostData }) {
+    return (
+        <>
+            {userPostData &&
+                userPostData.post.map((item) => {
+                    console.log('post item image', item.image)
+                    if (item.image.includes('https')) {
+                        return (
+                            <li key={item.id}>
+                                <img src={item.image} alt='게시글상품사진' />
+                            </li>
+                        )
+                    } else
+                        return (
+                            <></>
+                        )
                 })
             }
         </>
@@ -86,19 +108,35 @@ function UserPost(props) {
         document.body.style.overflow = "unset";
         setAlertOn(false);
     }
-    function changeActive() {
-        // console.log('버튼바뀜', isActive)
-        setIsActive(!isActive)
+    function changeListActive() {
+        console.log('버튼바뀜', isActive)
+        setIsActive(true)
+        console.log('userPostData', userPostData)
+    }
+    function changeAlbumActive() {
+        console.log('버튼바뀜', isActive)
+        setIsActive(false)
+        console.log('userPostData', userPostData)
     }
     return (
         <>
             <PostArea>
                 <div className='postAreaTop'>
-                    <PostListBtns onClick={changeActive} isActive={isActive} />
-                    <PostAlbumBtns onClick={changeActive} isActive={isActive} />
+                    <PostListBtns onClick={changeListActive} isActive={isActive} />
+                    <PostAlbumBtns onClick={changeAlbumActive} isActive={isActive} />
                 </div>
                 <PostAreaListUl>
-                    <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
+                    {isActive ? (
+                        <>
+                            <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
+                        </>
+                    ) : (
+                        <>
+                            {/* {PostAlbumAreaList(userPostData)} */}
+                            바꾸기 성공!
+                        </>
+                    )}
+
                 </PostAreaListUl>
             </PostArea>
             {alertOn === true && location.pathname.split("/")[1] === "myprofile" ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
