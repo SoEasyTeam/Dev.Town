@@ -39,9 +39,10 @@ background: #FFFFFF;
 `
 export const PostAreaListUl = styled.ul`
 list-style: none;
-li {
-    margin: 20px 0;
-}
+padding: 16px 0px;
+/* li {
+    margin: 16px 0;
+} */
 `
 
 export const AlbumBox = styled.div`
@@ -51,7 +52,7 @@ display: grid;
 grid-template-columns: repeat(3, 1fr);
 gap: 8px;
 `
-export const AlbumLi = styled.li`    
+export const AlbumLi = styled.li`
     img {
         display: block;
         width: 114px;
