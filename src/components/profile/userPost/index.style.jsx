@@ -40,9 +40,6 @@ background: #FFFFFF;
 export const PostAreaListUl = styled.ul`
 list-style: none;
 padding: 16px 0px;
-/* li {
-    margin: 16px 0;
-} */
 `
 
 export const AlbumBox = styled.div`
