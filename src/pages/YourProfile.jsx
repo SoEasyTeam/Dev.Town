@@ -32,7 +32,7 @@ function YourProfilePage(props) {
     const token = sessionStorage.getItem('token');
 
     const getData = async (account) => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
+        const res = await fetch(`https://api.mandarin.weniv.co.kr/profile/${account}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

@@ -20,7 +20,7 @@ export default function SearchPage() {
             setTimeout(() => {
                 const searchData = async () => {
                     const res = await fetch(
-                        'https://mandarin.api.weniv.co.kr/user/searchuser/?keyword=' +
+                        'https://api.mandarin.weniv.co.kr/user/searchuser/?keyword=' +
                         keyword,
                         {
                             method: 'GET',

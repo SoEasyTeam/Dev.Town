@@ -39,7 +39,7 @@ function FollowerPage(props) {
     const accountname = checkAccountName();
 
     const getData = async (account) => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}/follower`, {
+        const res = await fetch(`https://api.mandarin.weniv.co.kr/profile/${account}/follower`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
