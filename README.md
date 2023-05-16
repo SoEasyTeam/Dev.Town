@@ -4,7 +4,7 @@
 
 ### [배포 URL]
 
--   URL: [https://devtownapp1.herokuapp.com/](https://devtownapp1.herokuapp.com/)
+-   URL: [https://dev-town.vercel.app/](https://dev-town.vercel.app/)
 -   계정
     -   `ID`: devtown@test.com
     -   `PassWord`: 123456
