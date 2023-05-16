@@ -1,1 +1,1 @@
-export const API_URL = 'https://mandarin.api.weniv.co.kr';
+export const API_URL = 'https://api.mandarin.weniv.co.kr';

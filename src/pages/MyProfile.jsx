@@ -29,7 +29,7 @@ function MyProfilePage(props) {
 
     const getData = async (account) => {
         if(account !== 'null' && account !== null){
-            const res = await fetch(`https://mandarin.api.weniv.co.kr/profile/${account}`, {
+            const res = await fetch(`https://api.mandarin.weniv.co.kr/profile/${account}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

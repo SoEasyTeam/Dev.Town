@@ -83,7 +83,7 @@ function UserPost(props) {
     const location = useLocation();
 
     const getData = async (account) => {
-        const res = await fetch(`https://mandarin.api.weniv.co.kr/post/${account}/userpost`, {
+        const res = await fetch(`https://api.mandarin.weniv.co.kr/post/${account}/userpost`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

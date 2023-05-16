@@ -8,7 +8,7 @@ function UserFollow({ src, name, accountname, isfollow }) {
     const [isFollowed, setIsFollowed] = useState(isfollow);
     const changeFollow = async () => {
         if (isFollowed) {
-            await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}/unfollow`, {
+            await fetch(`https://api.mandarin.weniv.co.kr/profile/${accountname}/unfollow`, {
                 method: "delete",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -18,7 +18,7 @@ function UserFollow({ src, name, accountname, isfollow }) {
                 setIsFollowed(false);
             });
         } else {
-            await fetch(`https://mandarin.api.weniv.co.kr/profile/${accountname}/follow`, {
+            await fetch(`https://api.mandarin.weniv.co.kr/profile/${accountname}/follow`, {
                 method: "post",
                 headers: {
                     "Authorization": `Bearer ${token}`,
