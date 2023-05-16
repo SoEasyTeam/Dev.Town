@@ -8,7 +8,7 @@ import CommentList from '../components/comment/commentList';
 import { AlertLogoutModal } from '../components/common/alert';
 import { commentListAction } from '../redux/actions/commentListAction';
 import { postAction } from '../redux/actions/postAction';
-import { PostSection } from '../components/post/index.style';
+import { PostSection, CommentUl } from '../components/post/index.style';
 
 function PostPage() {
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ function PostPage() {
 
     useEffect(() => {
         dispatch(postAction.getPost(id));
-    },[id, dispatch])
+    }, [id, dispatch])
 
     function parseDate(dateString) {
         const postDate = new Date(dateString)
@@ -49,31 +49,34 @@ function PostPage() {
     const commentList = useSelector(state => state.commentList.comments)
 
     return (
-        postItem==='' ? <></>:
-        <>
-            <TopBasicNav alertOnModal={alertOnModal} />
-            <PostSection>
-                <PostInDetail
-                    profileimg={postItem.author.image}
-                    nickname={postItem.author.username}
-                    id={postItem.author.accountname}
-                    postparagraph={postItem.content}
-                    postsrc={postItem.image}
-                    heartCount={postItem.heartCount}
-                    commentCount={postItem.commentCount}
-                    year={year}
-                    month={month}
-                    day={day}
-                    postId={postItem.id}
-                />
+        postItem === '' ? <></> :
+            <>
+                <TopBasicNav alertOnModal={alertOnModal} />
+                <PostSection>
+                    <PostInDetail
+                        profileimg={postItem.author.image}
+                        nickname={postItem.author.username}
+                        id={postItem.author.accountname}
+                        postparagraph={postItem.content}
+                        postsrc={postItem.image}
+                        heartCount={postItem.heartCount}
+                        hearted={postItem.hearted}
+                        commentCount={postItem.commentCount}
+                        year={year}
+                        month={month}
+                        day={day}
+                        postId={postItem.id}
+                    />
+                </PostSection>
                 {commentList !== '' ?
-                    <CommentList commentList={commentList}/> :
+                    <CommentUl>
+                        <CommentList commentList={commentList} />
+                    </CommentUl> :
                     <></>
                 }
-            </PostSection>
-            <CommentInputBox postId = {id}/>
-            {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
-        </>
+                <CommentInputBox postId={id} />
+                {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
+            </>
     )
 }
 

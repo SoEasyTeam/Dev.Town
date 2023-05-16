@@ -4,7 +4,7 @@
 
 ### [배포 URL]
 
--   URL: [주니어 개발자들의 커뮤니티 데브타운](https://devtownapp1.herokuapp.com/)
+-   URL: [https://devtownapp1.herokuapp.com/](https://devtownapp1.herokuapp.com/)
 -   계정
     -   `ID`: devtown@test.com
     -   `PassWord`: 123456
@@ -37,7 +37,7 @@
 |                                                               **조다희**                                                               |                                                               **임다현**                                                                |                                                               **추경훈**                                                               |
 | :------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://user-images.githubusercontent.com/74031552/180374703-22c36d16-5a0f-4cb8-8f94-e35b9aee6167.png" height=180 width=180> | <img src="https://user-images.githubusercontent.com/82689971/181879561-ea00bf01-07ec-4cdc-8bcd-b6dd2b4cba6f.jpeg" height=180 width=180> | <img src="https://user-images.githubusercontent.com/74031552/180374844-9ca5abad-6ad9-4ea0-9420-405519e9e14c.png" height=180 width=180> |
-|               **blog**: [daheejo](https://daheejo.tistory.com/) </br> **github**: [daheejo](https://github.com/daheejo)                |                   **blog**: [Dayhun](https://velog.io/@dayhun) </br> **github**: [Dayhun](https://github.com/Dayhun)                    |             **blog**: [chuhoon](https://blog.naver.com/khchu1220) </br> **github**: [chuhoon](https://github.com/chuhoon)              |
+|               **blog**: [daheejo](https://daheejo.tistory.com/) </br> **github**: [daheejo](https://github.com/daheejo)                |                   **blog**: [Dayhun](https://velog.io/@dayhun) </br> **github**: [Dayhun](https://github.com/Dayhun)                    |             **blog**: [chuhoon](https://github.com/chuhoon) </br> **github**: [chuhoon](https://github.com/chuhoon)              |
 |                                       ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb)                                        |                                        ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb)                                        |                                       ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb)                                        |
 
 </div>
@@ -187,7 +187,7 @@
 
 |                                                           4. 홈화면                                                            |                                                          5. 계정 검색                                                          |
 | :----------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://user-images.githubusercontent.com/82689971/182031235-be2c998c-fb33-4b47-98fa-d7d725db09be.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/182031388-8f0bca25-dbf9-4ebf-9a85-979cbd0e22c0.gif" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/82689971/182031235-be2c998c-fb33-4b47-98fa-d7d725db09be.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/82689971/186165520-28cc73b3-1f36-4299-a250-e919749c47dc.gif" width="300"/> |
 
 |                                                            6. 채팅                                                             |                                                          7. 내 프로필                                                          |
 | :----------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
@@ -396,13 +396,10 @@ function post(fileList, postText) {
 
 ```
 1. 아직 구현하지 못한 기능
-    - 좋아요 기능
     - 채팅 기능
-    - 계정 검색 후 해당 계정으로 이동 기능
     - 신고하기 기능
     - 게시물 수정 및 삭제
     - 상품/게시물 수정시 리렌더링
-    - 로그아웃
     - Redux-Persist
 
 2. 컴포넌트의 아토믹화

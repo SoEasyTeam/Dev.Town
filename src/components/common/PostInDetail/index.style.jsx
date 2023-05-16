@@ -25,9 +25,6 @@ height: 42px;
 
 export const HomePostBox = styled.div`
 display: block;
-margin: 0 auto;
-padding-bottom: 4px;
-padding-top: 30px;
 `;
 
 export const HomePostProfileBox = styled(UserFollowBox)`
@@ -64,6 +61,7 @@ letter-spacing: 0em;
 text-align: left;
 margin-top: 16px;
 margin-left: 54px;
+padding-bottom: 4px;
 color: #767676;
 `;
 

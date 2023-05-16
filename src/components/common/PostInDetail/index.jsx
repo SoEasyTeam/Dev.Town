@@ -4,7 +4,6 @@ import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../search/index.style
 import LikePostRowBox from '../HomeImgPost/LkePostRowBox'
 import { MyPostModal } from '../modal';
 
-
 function PostInDetail({
     profileimg,
     nickname,
@@ -12,6 +11,7 @@ function PostInDetail({
     postparagraph,
     postsrc,
     heartCount,
+    hearted,
     commentCount,
     year,
     month,
@@ -63,6 +63,7 @@ function PostInDetail({
                     heartCount={heartCount}
                     commentCount={commentCount}
                     postId={postId}
+                    hearted={hearted}
                 />
                 <DateParagraph>
                     {year}년 {month}월 {day}일
