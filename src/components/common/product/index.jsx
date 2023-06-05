@@ -10,12 +10,8 @@ const Product = ({ name, price, src, itemLink, writerId, alertOnModal, product_i
     const priceShow = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     const dispatch = useDispatch();
     function openModal() {
-        console.log('상품등록유저', writerId);
-        console.log('유저:', userId);
-        console.log('링크', itemLink);
         if (userId !== writerId) {
             setModalOn(false);
-            console.log('상품링크로 이동')
             window.open(itemLink, '_blank')
         } else {
             setModalOn(true);

@@ -11,11 +11,9 @@ import { useState } from 'react';
 // 상품 삭제
 function AlertProductModal({ alertOffModal, product_id }) {
     document.body.style.overflow = "hidden";
-    console.log('alertmodal 나옴')
     const dispatch = useDispatch();
 
     const onClickDeleteBtn = () => {
-        console.log('삭제해라')
         dispatch(productAction.productDelete(product_id));
         alertOffModal();
         setTimeout(() => {
@@ -46,7 +44,6 @@ function AlertPostModal({ alertOffModal }) {
 
     const handleDelete = () =>{
         // dispatch(postAction.deletePost(postId))
-        console.log('삭제디스패치!')
     }
 
     return (

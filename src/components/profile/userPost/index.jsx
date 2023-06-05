@@ -18,7 +18,6 @@ function PostAreaList({ userPostData, alertOnModal }) {
             {userPostData &&
                 userPostData.post.map((item) => {
                     const [year, month, day] = parseDate(item.createdAt);
-                    console.log('리스트 post item', item)
                     return (
                         <li key={item.id}>
                             <HomeImgPost
@@ -50,7 +49,6 @@ function PostAlbumAreaList({ userPostData }) {
         <>
             {userPostData &&
                 userPostData.post.map((item) => {
-                    console.log('앨범 post item image', item)
                     if (!item.image || !item.image.includes('https')) {
                         return (
                             <></>
@@ -114,14 +112,10 @@ function UserPost(props) {
         setAlertOn(false);
     }
     function changeListActive() {
-        console.log('버튼바뀜', isActive)
         setIsActive(true)
-        console.log('userPostData', userPostData)
     }
     function changeAlbumActive() {
-        console.log('버튼바뀜', isActive)
         setIsActive(false)
-        console.log('userPostData', userPostData)
     }
     return (
         <>

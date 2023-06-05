@@ -24,9 +24,7 @@ import { useEffect } from 'react'
 const Nav = () => {
     let tokenValid = useSelector(state=>state.token.tokenValid);
     const history = useHistory();
-    console.log(tokenValid)
     useEffect(() => {
-        console.log(tokenValid);
         if(tokenValid.isValid === true) {
             history.push('/home');
         }

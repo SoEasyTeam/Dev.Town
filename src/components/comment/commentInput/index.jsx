@@ -15,7 +15,6 @@ export default function CommentInputBox({postId}) {
         setTimeout(() => {
             dispatch(commentListAction.commentList(postId, token))
         }, 500);
-        console.log('~~~~~~~~~댓글받아와!!');
         setComment('')
     }
 
