@@ -47,7 +47,6 @@ function FollowerPage(props) {
             }
         })
         const json = await res.json()
-        // console.log('팔로워 : ', json)
         setUserFollowerData(json)
     }
 

@@ -3,8 +3,6 @@ import { API_URL } from '../../constants/defaultUrl';
 
 // dispatch로 보내준 token과 accountname을 파라미터로 불러온다. profile 함수 안에서 사용할 수 있게!!
 function profile() {
-    // 잘불러져왔는지 콘솔로 찍어봄
-    // console.log(accountname);
     return async (dispatch, getState) => {
         const authaccountname = sessionStorage.getItem('accountname');
         const token = getState().auth.token;

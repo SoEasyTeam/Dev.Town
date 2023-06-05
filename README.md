@@ -330,7 +330,6 @@ function UploadPage() {
 //             reader.readAsDataURL(file);
 //             const formData = new FormData()
 //             formData.append('image',file)
-//             console.log(formData);
 //         }
 //     }, [uploadedImg]);
 
@@ -351,7 +350,6 @@ function post(fileList, postText) {
         let url = 'https://mandarin.api.weniv.co.kr';
         const reqPath = '/image/uploadfiles';
         const token = getState().auth.token;
-        console.log(token);
         try {
             let imageUrls = ''
             if (fileList.length >0){

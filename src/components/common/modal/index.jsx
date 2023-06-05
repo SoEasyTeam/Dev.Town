@@ -33,8 +33,6 @@ function MyProductModal({ itemName, price, link, itemImage, product_id, closeMod
 function MyPostModal({ closeModal, alertOnModal, id }) {
     document.body.style.overflow = "hidden";
     const accountname = useSelector(state => state.auth.accountname);
-    console.log('게시물 계정이름', id);
-    console.log('로그인 유저 계정이름', accountname)
     return (
         <>
             {id === accountname ?

@@ -1,5 +1,4 @@
 // function postComment(post_id, token, content){
-//     console.log('comment action success');
 //     return async (dispatch, getState)=>{
 //         let url = 'https://mandarin.api.weniv.co.kr';
 //         const reqPath = `/post/${post_id}/comments`
