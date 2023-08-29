@@ -3,6 +3,7 @@ import { useLocation, Link, useParams, useRouteMatch } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
 import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl, AlbumLi, AlbumBox } from './index.style';
+import { API_URL } from '../../../constants/defaultUrl';
 
 function parseDate(dateString) {
     const postDate = new Date(dateString)
@@ -81,7 +82,7 @@ function UserPost(props) {
     const location = useLocation();
 
     const getData = async (account) => {
-        const res = await fetch(`https://api.mandarin.weniv.co.kr/post/${account}/userpost`, {
+        const res = await fetch(`${API_URL}/post/${account}/userpost`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

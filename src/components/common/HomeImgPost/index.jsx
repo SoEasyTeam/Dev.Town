@@ -4,10 +4,17 @@ import { MyPostModal } from '../modal';
 import LikePostRowBox from './LkePostRowBox'
 import { NameIdBox, IdP } from '../search/index.style';
 import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBox, HomePostProfileBox, HomePostSmallLink, HomePostParagraph, DateParagraph, HomePostProfileLink } from './index.style'
+import DefaultProfileImg from '../../../assets/icon/icon-user.svg';
+import DefaultPostImg from '../../../assets/404.svg';
+
+const defaultImgTypeObject = {
+    "profile" : DefaultProfileImg,
+    "post": DefaultPostImg
+}
 
 function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCount, hearted, commentCount, year, month, day, alertOnModal, postId, userPostData }) {
 
-    const post = useSelector(state => state.getPost)
+    const post = useSelector(state => state.getPost);
 
     // 모달창
     const [modalOn, setModalOn] = useState(false);
@@ -15,9 +22,14 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
     function openModal() {
         setModalOn(true);
     }
+
     function closeModal() {
         document.body.style.overflow = "unset";
         setModalOn(false);
+    }
+
+    const onErrorImg = (defaultImgType) => (e) => {
+        e.target.src = defaultImgTypeObject[defaultImgType]
     }
 
     return (
@@ -25,7 +37,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
             <HomePostBox>
                 <HomePostProfileBox >
                     <HomePostProfileLink to={{ pathname: '/yourpage', search: `?id=${id}` }}>
-                        <HomePostProfileLogoImg src={profileimg} alt='프로필로고' />
+                        <HomePostProfileLogoImg src={profileimg} alt='프로필로고' onError={onErrorImg('profile')} />
                         <NameIdBox>
                             <HomePostProfileNickName>
                                 {nickname}
@@ -44,6 +56,7 @@ function HomeImgPost({ profileimg, nickname, id, postparagraph, postsrc, heartCo
                             <img
                                 className='post-img'
                                 src={postsrc}
+                                onError={onErrorImg('post')}
                                 alt='포스트이미지'
                             />
                     }

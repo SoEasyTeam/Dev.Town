@@ -11,7 +11,7 @@ function post(fileList, postText) {
         }
     }
     return async (dispatch, getState) => {
-        let url = 'https://api.mandarin.weniv.co.kr/';
+        let url = API_URL;
         const reqPath = '/image/uploadfiles';
         const token = getState().auth.token;
         try {
