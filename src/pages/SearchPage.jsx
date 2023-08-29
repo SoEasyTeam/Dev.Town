@@ -5,6 +5,7 @@ import { TopSearchNav } from '../components/common/nav';
 import { FollowPageLink, UserFollowBox } from '../components/list/followList/index.style';
 import { IdP, NameIdBox, NickNameP, ProfileLogoImg } from '../components/common/search/index.style';
 import styled from 'styled-components';
+import { API_URL } from '../constants/defaultUrl';
 
 const SearchBox = styled.div`
     margin: 0 16px;
@@ -20,7 +21,7 @@ export default function SearchPage() {
             setTimeout(() => {
                 const searchData = async () => {
                     const res = await fetch(
-                        'https://api.mandarin.weniv.co.kr/user/searchuser/?keyword=' +
+                        `${API_URL}/user/searchuser/?keyword=` +
                         keyword,
                         {
                             method: 'GET',

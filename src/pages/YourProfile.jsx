@@ -7,6 +7,7 @@ import { TopBasicNav } from '../components/common/nav';
 import TabMenu from '../components/common/tabMenu';
 import { AlertLogoutModal } from '../components/common/alert'
 import { ProfileSection } from '../components/profile/userProfile/index.style';
+import { API_URL } from '../constants/defaultUrl';
 
 function YourProfilePage(props) {
     const [alertOn, setAlertOn] = useState(false);
@@ -32,7 +33,7 @@ function YourProfilePage(props) {
     const token = sessionStorage.getItem('token');
 
     const getData = async (account) => {
-        const res = await fetch(`https://api.mandarin.weniv.co.kr/profile/${account}`, {
+        const res = await fetch(`${API_URL}/profile/${account}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

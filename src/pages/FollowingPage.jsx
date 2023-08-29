@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { TopFollowingNav } from '../components/common/nav'
 import UserFollow from '../components/list/followList';
 import { FollowBoxUl } from '../components/list/followList/index.style';
+import { API_URL } from '../constants/defaultUrl';
 
 const FollowingList = ({ userFollowingData }) => {
     return (
@@ -39,7 +40,7 @@ function FollowingPage(props) {
     const accountname = checkAccountName();
 
     const getData = async (account) => {
-        const res = await fetch(`https://api.mandarin.weniv.co.kr/profile/${account}/following`, {
+        const res = await fetch(`${API_URL}/profile/${account}/following`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
