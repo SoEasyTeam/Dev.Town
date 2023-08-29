@@ -6,6 +6,7 @@ import IconMesssageImg from '../../../assets/icon/icon-message-circle.png';
 import IconShareImg from '../../../assets/icon/icon-share.png';
 import { ProfileName, ProfileAccount, ProfileIntro, FollowLink, MyProfileBtn, ProfileAreaCol, ProfileImg, CircleBtns } from './index.style';
 import { FollowMBtn } from '../../common/button/index'
+import { API_URL } from '../../../constants/defaultUrl';
 
 function UserProfile({ userData }) {
     const Myaccountname = sessionStorage.getItem('accountname');
@@ -17,7 +18,7 @@ function UserProfile({ userData }) {
 
     const changeFollow = async () => {
         if (isFollowed) {
-            const res = await fetch(`https://api.mandarin.weniv.co.kr/profile/${userData.profile.accountname}/unfollow`, {
+            const res = await fetch(`${API_URL}/profile/${userData.profile.accountname}/unfollow`, {
                 method: "delete",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -28,7 +29,7 @@ function UserProfile({ userData }) {
             setNewUserData(json)
             setIsFollowed(false);
         } else {
-            const res = await fetch(`https://api.mandarin.weniv.co.kr/profile/${userData.profile.accountname}/follow`, {
+            const res = await fetch(`${API_URL}/profile/${userData.profile.accountname}/follow`, {
                 method: "post",
                 headers: {
                     "Authorization": `Bearer ${token}`,

@@ -8,6 +8,7 @@ import { AlertLogoutModal } from '../components/common/alert'
 import { ProfileSection } from '../components/profile/userProfile/index.style'
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { API_URL } from '../constants/defaultUrl';
 //data 받아오기
 
 function MyProfilePage(props) {
@@ -29,7 +30,7 @@ function MyProfilePage(props) {
 
     const getData = async (account) => {
         if(account !== 'null' && account !== null){
-            const res = await fetch(`https://api.mandarin.weniv.co.kr/profile/${account}`, {
+            const res = await fetch(`${API_URL}/profile/${account}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

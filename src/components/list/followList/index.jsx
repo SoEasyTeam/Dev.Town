@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { NameIdBox, NickNameP, IdP, ProfileLogoImg } from '../../common/search/index.style';
 import { UserFollowBox, FollowPageLink } from './index.style'
 import { FollowSBtn } from '../../common/button/index'
+import { API_URL } from '../../../constants/defaultUrl';
 
 function UserFollow({ src, name, accountname, isfollow }) {
     const token = sessionStorage.getItem('token');
     const [isFollowed, setIsFollowed] = useState(isfollow);
     const changeFollow = async () => {
         if (isFollowed) {
-            await fetch(`https://api.mandarin.weniv.co.kr/profile/${accountname}/unfollow`, {
+            await fetch(`${API_URL}/profile/${accountname}/unfollow`, {
                 method: "delete",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -18,7 +19,7 @@ function UserFollow({ src, name, accountname, isfollow }) {
                 setIsFollowed(false);
             });
         } else {
-            await fetch(`https://api.mandarin.weniv.co.kr/profile/${accountname}/follow`, {
+            await fetch(`${API_URL}/profile/${accountname}/follow`, {
                 method: "post",
                 headers: {
                     "Authorization": `Bearer ${token}`,
