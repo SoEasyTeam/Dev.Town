@@ -1,13 +1,13 @@
 import { React, useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
-import UserProfile from '../components/profile/userProfile'
-import UserProduct from '../components/profile/userProduct';
-import UserPost from '../components/profile/userPost';
-import { TopBasicNav } from '../components/common/nav';
-import TabMenu from '../components/common/tabMenu';
-import { AlertLogoutModal } from '../components/common/alert'
-import { ProfileSection } from '../components/profile/userProfile/index.style';
-import { API_URL } from '../constants/defaultUrl';
+import { useLocation } from 'react-router-dom';
+import UserProfile from '@components/profile/userProfile';
+import UserProduct from '@components/profile/userProduct';
+import UserPost from '@components/profile/userPost';
+import { TopBasicNav } from '@components/common/nav';
+import TabMenu from '@components/common/tabMenu';
+import { AlertLogoutModal } from '@components/common/alert';
+import { ProfileSection } from '@components/profile/userProfile/index.style';
+import { API_URL } from '@constants/defaultUrl';
 
 function YourProfilePage(props) {
     const [alertOn, setAlertOn] = useState(false);
@@ -15,13 +15,13 @@ function YourProfilePage(props) {
         setAlertOn(true);
     }
     function alertOffModal() {
-        document.body.style.overflow = "unset";
+        document.body.style.overflow = 'unset';
         setAlertOn(false);
     }
     const location = useLocation();
     const checkAccountName = () => {
-        if (location.pathname.split("/")[1] === "yourpage") {
-            const accountname = location.search.split("id=")[1];
+        if (location.pathname.split('/')[1] === 'yourpage') {
+            const accountname = location.search.split('id=')[1];
             return accountname;
         }
     };
@@ -34,27 +34,26 @@ function YourProfilePage(props) {
 
     const getData = async (account) => {
         const res = await fetch(`${API_URL}/profile/${account}`, {
-            method: "GET",
+            method: 'GET',
             headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-type": "application/json"
-            }
-        })
-        const json = await res.json()
-        setUserData(json)
-    }
+                Authorization: `Bearer ${token}`,
+                'Content-type': 'application/json',
+            },
+        });
+        const json = await res.json();
+        setUserData(json);
+    };
 
     useEffect(() => {
         if (props.accountname) {
-            getData(props.accountname)
+            getData(props.accountname);
+        } else {
+            getData(accountname);
         }
-        else {
-            getData(accountname)
-        }
-    }, [])
+    }, []);
 
     if (!userData) {
-        return <></>
+        return <></>;
     }
 
     return (
@@ -66,9 +65,13 @@ function YourProfilePage(props) {
                 <UserPost accountname={accountname} />
             </ProfileSection>
             <TabMenu />
-            {alertOn === true ? <AlertLogoutModal alertOffModal={alertOffModal} /> : ''}
+            {alertOn === true ? (
+                <AlertLogoutModal alertOffModal={alertOffModal} />
+            ) : (
+                ''
+            )}
         </>
-    )
+    );
 }
 
 export default YourProfilePage;

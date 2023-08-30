@@ -1,8 +1,13 @@
-import uploadImageGray from '../../../assets/img-button.png';
-import { BasicProfileImg, ImgUpload, ImgGray, FollowBtn, FollowsBtn } from './index.style';
+import uploadImageGray from '@public/assets/images/img-button.png';
+import {
+    BasicProfileImg,
+    ImgUpload,
+    ImgGray,
+    FollowBtn,
+    FollowsBtn,
+} from '@components/common/button/index.style';
 
 function DefaultProfileImg({ image }) {
-
     return <BasicProfileImg src={image} />;
 }
 

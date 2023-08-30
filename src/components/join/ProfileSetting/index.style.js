@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import UploadfileImg from '../../../assets/upload-file.png';
-import { LBtn } from '../../common/button/index.style';
+import UploadfileImg from '@public/assets/images/upload-file.png';
+import { LBtn } from '@components/common/button/index.style';
 
 export const ProfileSettingForm = styled.form`
     width: 100vw;

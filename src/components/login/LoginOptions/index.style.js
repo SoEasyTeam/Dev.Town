@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import iconKakao from '../../../assets/kakao.png';
-import iconGoogle from '../../../assets/google.png';
-import iconFacebook from '../../../assets/facebook.png';
+import iconKakao from '@public/assets/images/kakao.png';
+import iconGoogle from '@public/assets/images/google.png';
+import iconFacebook from '@public/assets/images/facebook.png';
 
 export const LogInColBox = styled.div`
     position: relative;

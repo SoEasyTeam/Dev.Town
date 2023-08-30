@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ProfileImg } from '../../profile/userProfile/index.style';
+import { ProfileImg } from '@components/profile/userProfile/index.style';
 
 export const CommentBox = styled.form`
     width: 100%;
@@ -16,7 +16,7 @@ export const ProfileImgBox = styled.div`
 export const MyProfileOnComment = styled(ProfileImg)`
     width: 36px;
     height: 36px;
-`
+`;
 
 export const CommentInput = styled.input`
     flex-grow: 1;

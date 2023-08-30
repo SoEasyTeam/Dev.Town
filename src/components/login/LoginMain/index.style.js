@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { LBtn } from '../../common/button/index.style';
+import { LBtn } from '@components/common/button/index.style';
 
 export const LoginContainer = styled.section`
     width: 100vw;

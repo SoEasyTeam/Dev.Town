@@ -1,5 +1,9 @@
 import React from 'react';
-import { TextInputBox, TextLabel, TextInput, PassWordInput, EmailInput, ProfileNameInput, ProfileId, ProfileIntroduce, ProductName, ProductPrice, ProductLink } from './index.style'
+import {
+    TextInputBox,
+    TextLabel,
+    EmailInput,
+} from '@components/common/textActiveInput/index.style';
 
 function TextAciveInput() {
     return (
