@@ -17,6 +17,9 @@ export default defineConfig({
             { find: '@public', replacement: '../public' },
         ],
     },
+    build: {
+        outDir: 'build',
+    },
     server: {
         port: 3000,
     },
