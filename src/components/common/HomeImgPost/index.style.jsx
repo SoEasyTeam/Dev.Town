@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import SettingImg from '../../../assets/icon/s-icon-more-vertical.png';
-import { ProfileLogoImg, NickNameP } from '../search/index.style';
-import { UserFollowBox } from '../../list/followList/index.style';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import SettingImg from '@public/assets/icon/s-icon-more-vertical.png';
+import {
+    ProfileLogoImg,
+    NickNameP,
+} from '@components/common/search/index.style';
+import { UserFollowBox } from '@components/list/followList/index.style';
 
 export const SettingBtn = styled.button`
     background-image: url(${SettingImg});
@@ -69,5 +72,5 @@ export const DateParagraph = styled.p`
 `;
 
 export const HomePostProfileLink = styled(Link)`
-    display: inherit;   
-`
+    display: inherit;
+`;

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { joinAction } from '../../../redux/actions/joinAction';
-import JoinProfileImg from '../../../assets/basic-profile-img.png';
+import { joinAction } from '@redux/actions/joinAction';
+import JoinProfileImg from '@public/assets/images/basic-profile-img.png';
 import {
     ProfileImgInput,
     Profilelabel,
     ProfileSettingForm,
     SignUpBtn,
-} from './index.style';
+} from '@components/join/ProfileSetting/index.style';
 import {
     ProfileId,
     ProfileIntroduce,
     ProfileNameInput,
     TextLabel,
-} from '../../common/textActiveInput/index.style';
-import { WarningParagraph } from '../../login/LoginMain/index.style';
+} from '@components/common/textActiveInput/index.style';
+import { WarningParagraph } from '@components/login/LoginMain/index.style';
 
 function ProfileSetting() {
     const [username, setUsername] = useState('');

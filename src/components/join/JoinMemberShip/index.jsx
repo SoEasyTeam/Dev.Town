@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { WarningParagraph } from '../../login/LoginMain/index.style';
-import { joinAction } from '../../../redux/actions/joinAction';
-import { TextLabel } from '../../common/textActiveInput/index.style';
+import { WarningParagraph } from '@components/login/LoginMain/index.style';
+import { joinAction } from '@redux/actions/joinAction';
+import { TextLabel } from '@components/common/textActiveInput/index.style';
 import {
     JoinEmailInput,
     JoinPassWordInput,
     LoginMain,
     NextBtn,
-} from './index.style';
+} from '@components/join/JoinMemberShip/index.style';
 
 function JoinMembership() {
     const [email, setEmail] = useState('');

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const AlertBox = styled.div`
     display: flex;
     justify-content: center;
-`
+`;
 export const AlertOutside = styled.div`
     position: fixed;
     z-index: 200;
@@ -12,7 +12,7 @@ export const AlertOutside = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-`
+`;
 export const AlertContainer = styled.section`
     position: fixed;
     z-index: 200;
@@ -21,7 +21,7 @@ export const AlertContainer = styled.section`
     top: 50%;
     background-color: #fff;
     border-radius: 10px;
-    .alertMsg{
+    .alertMsg {
         display: block;
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 500;
@@ -30,12 +30,12 @@ export const AlertContainer = styled.section`
         padding: 22px 0;
         text-align: center;
     }
-`
+`;
 
 export const AlertUl = styled.ul`
     display: flex;
-    border-top: 0.5px solid #DBDBDB;
-    li{
+    border-top: 0.5px solid #dbdbdb;
+    li {
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 400;
         font-size: 14px;
@@ -45,11 +45,11 @@ export const AlertUl = styled.ul`
         padding: 14px 0;
         cursor: pointer;
     }
-    .selectColor{
+    .selectColor {
         color: var(--main-color);
-        border-left: 0.5px solid #DBDBDB;
+        border-left: 0.5px solid #dbdbdb;
     }
-`
+`;
 
 export const DeleteAlertBox = styled.div`
     justify-content: center;

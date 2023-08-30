@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { authenticateAction } from '../../../redux/actions/authenticateAction';
-import { productAction } from '../../../redux/actions/productAcition';
+import { authenticateAction } from '@redux/actions/authenticateAction';
+import { productAction } from '@redux/actions/productAcition';
 import {
     AlertBox,
     AlertOutside,
@@ -13,7 +13,7 @@ import {
     ButtonBox,
     CancelBtn,
     DeleteBtn,
-} from './index.style';
+} from '@components/common/alert/index.style';
 
 // 상품 삭제
 function AlertProductModal({ alertOffModal, product_id }) {

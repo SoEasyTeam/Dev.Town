@@ -1,12 +1,12 @@
 import React from 'react';
-import TabMenu from '../components/common/tabMenu';
-import { TopMainNav } from '../components/common/nav';
-import HomeNoFollower from '../components/home/HomeNoFollower';
+import TabMenu from '@components/common/tabMenu';
+import { TopMainNav } from '@components/common/nav';
+import HomeNoFollower from '@components/home/HomeNoFollower';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { homeFeedAction } from '../redux/actions/homeFeedAction';
-import HomeFeedBox from '../components/home/HomeFeed';
-import { authenticateAction } from '../redux/actions/authenticateAction';
+import { homeFeedAction } from '@redux/actions/homeFeedAction';
+import HomeFeedBox from '@components/home/HomeFeed';
+// import { authenticateAction } from '@redux/actions/authenticateAction';
 import { useNavigate } from 'react-router-dom';
 
 function HomePage() {

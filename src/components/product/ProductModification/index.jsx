@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { productAction } from '../../../redux/actions/productAcition';
-import { SaveBtn } from '../../common/button/index.style.jsx';
-import { ArrowLeftLink } from '../../common/nav';
-import { TopNavRowBox } from '../../common/nav/index.style.jsx';
+import { productAction } from '@redux/actions/productAcition';
+import { SaveBtn } from '@components/common/button/index.style.jsx';
+import { ArrowLeftLink } from '@components/common/nav';
+import { TopNavRowBox } from '@components/common/nav/index.style.jsx';
 import {
     AddProductImgInput,
     AddProductLabel,

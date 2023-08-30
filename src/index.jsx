@@ -4,12 +4,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import App from './App';
-// import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store, persistor } from './redux/store';
+import { store, persistor } from '@redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 // import { persistStore } from 'redux-persist';
-import ScrollToTop from './components/scroll';
+import ScrollToTop from '@components/scroll';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}

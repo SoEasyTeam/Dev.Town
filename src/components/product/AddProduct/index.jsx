@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { productAction } from '../../../redux/actions/productAcition.js';
-import { SaveBtn } from '../../common/button/index.style';
+import { productAction } from '@redux/actions/productAcition.js';
+import { SaveBtn } from '@components/common/button/index.style';
 import {
     ProductLink,
     ProductName,
     ProductPrice,
     TextLabel,
-} from '../../common/textActiveInput/index.style';
-import { ArrowLeftLink } from '../../common/nav';
-import { TopNavRowBox } from '../../common/nav/index.style.jsx';
+} from '@components/common/textActiveInput/index.style';
+import { ArrowLeftLink } from '@components/common/nav';
+import { TopNavRowBox } from '@components/common/nav/index.style.jsx';
 import {
     AddProductImgInput,
     AddProductLabel,
@@ -18,7 +18,7 @@ import {
     ProductBox,
     ProductForm,
     ProductNameLabel,
-} from './index.style.js';
+} from '@components/product/AddProduct/index.style';
 
 function AddProduct() {
     const [itemName, setItemName] = useState('');

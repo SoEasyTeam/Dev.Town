@@ -1,9 +1,9 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { profileAction } from '../../../redux/actions/profileAction';
-import IconMesssageImg from '../../../assets/icon/icon-message-circle.png';
-import IconShareImg from '../../../assets/icon/icon-share.png';
+import { profileAction } from '@redux/actions/profileAction';
+import IconMesssageImg from '@public/assets/icon/icon-message-circle.png';
+import IconShareImg from '@public/assets/icon/icon-share.png';
 import {
     ProfileName,
     ProfileAccount,
@@ -13,9 +13,9 @@ import {
     ProfileAreaCol,
     ProfileImg,
     CircleBtns,
-} from './index.style';
-import { FollowMBtn } from '../../common/button/index';
-import { API_URL } from '../../../constants/defaultUrl';
+} from '@components/profile/userProfile/index.style';
+import { FollowMBtn } from '@components/common/button/index';
+import { API_URL } from '@constants/defaultUrl';
 
 function UserProfile({ userData }) {
     const Myaccountname = sessionStorage.getItem('accountname');

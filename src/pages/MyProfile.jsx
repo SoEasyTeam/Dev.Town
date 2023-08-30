@@ -1,14 +1,14 @@
 import { React, useState, useEffect } from 'react';
-import UserProfile from '../components/profile/userProfile';
-import UserProduct from '../components/profile/userProduct';
-import UserPost from '../components/profile/userPost';
-import { TopBasicNav } from '../components/common/nav';
-import TabMenu from '../components/common/tabMenu';
-import { AlertLogoutModal } from '../components/common/alert';
-import { ProfileSection } from '../components/profile/userProfile/index.style';
+import UserProfile from '@components/profile/userProfile';
+import UserProduct from '@components/profile/userProduct';
+import UserPost from '@components/profile/userPost';
+import { TopBasicNav } from '@components/common/nav';
+import TabMenu from '@components/common/tabMenu';
+import { AlertLogoutModal } from '@components/common/alert';
+import { ProfileSection } from '@components/profile/userProfile/index.style';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from '../constants/defaultUrl';
+import { API_URL } from '@constants/defaultUrl';
 //data 받아오기
 
 function MyProfilePage(props) {

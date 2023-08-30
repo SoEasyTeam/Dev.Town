@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import LinkHomeImg from '../../../assets/icon/icon-home.svg';
-import LinkHomeClickImg from '../../../assets/icon-home-fill.png'
-import LinkChatClickImg from '../../../assets/icon-message-circle-fill.png'
-import LinkProfileClickImg from '../../../assets/icon-user-fill.png'
-import LinkChatImg from '../../../assets/icon/icon-message-circle.svg';
-import LinkIconProfileImg from '../../../assets/icon/icon-user.svg';
-import LinkIconEditImg from '../../../assets/icon/icon-edit.svg';
-import LinkIconEditClickImg from '../../../assets/icon-fill-post.png';
+import LinkHomeImg from '@public/assets/icon/icon-home.svg';
+import LinkHomeClickImg from '@public/assets/images/icon-home-fill.png';
+import LinkChatClickImg from '@public/assets/images/icon-message-circle-fill.png';
+import LinkProfileClickImg from '@public/assets/images/icon-user-fill.png';
+import LinkChatImg from '@public/assets/icon/icon-message-circle.svg';
+import LinkIconProfileImg from '@public/assets/icon/icon-user.svg';
+import LinkIconEditImg from '@public/assets/icon/icon-edit.svg';
+import LinkIconEditClickImg from '@public/assets/images/icon-fill-post.png';
 
 export const BlankBox = styled.div`
     width: 100vw;
     height: 60px;
-`
+`;
 
 export const TabMenuRowList = styled.ul`
     width: 100vw;
@@ -26,8 +26,7 @@ export const TabMenuRowList = styled.ul`
     border-top: 0.5px solid #dbdbdb;
 `;
 
-export const TabMenuItem = styled.li`
-`;
+export const TabMenuItem = styled.li``;
 
 export const TabMenuLink = styled(NavLink)`
     display: block;
@@ -48,13 +47,13 @@ export const TabMenuLink = styled(NavLink)`
         margin: 0 auto;
         margin-bottom: 4px;
     }
-    &.home-link::before{
+    &.home-link::before {
         background-image: url(${LinkHomeImg});
     }
-    &.chat-link::before{
+    &.chat-link::before {
         background-image: url(${LinkChatImg});
     }
-    &.post-link::before{
+    &.post-link::before {
         background-image: url(${LinkIconEditImg});
     }
     &.myprofile-link::before {
@@ -62,21 +61,21 @@ export const TabMenuLink = styled(NavLink)`
     }
 
     &.active {
-        &.home-link::before{
-            background-image: url(${LinkHomeClickImg})
+        &.home-link::before {
+            background-image: url(${LinkHomeClickImg});
         }
-        &.chat-link::before{
-            background-image: url(${LinkChatClickImg})
+        &.chat-link::before {
+            background-image: url(${LinkChatClickImg});
         }
-        &.post-link::before{
-            background-image: url(${LinkIconEditClickImg})
+        &.post-link::before {
+            background-image: url(${LinkIconEditClickImg});
         }
-        &.myprofile-link::before{
-            background-image: url(${LinkProfileClickImg})
+        &.myprofile-link::before {
+            background-image: url(${LinkProfileClickImg});
         }
     }
 
     span {
         text-align: center;
     }
-`
+`;

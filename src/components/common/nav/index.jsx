@@ -1,10 +1,10 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ArrowImg from '../../../assets/icon/icon-arrow-left.png';
-import MoreImg from '../../../assets/icon/icon-more-vertical.png';
-import SearchImg from '../../../assets/icon/icon-search.png';
-import { MsBtn } from '../button/index.style';
-import { ProfileModal } from '../modal';
+import ArrowImg from '@public/assets/icon/icon-arrow-left.png';
+import MoreImg from '@public/assets/icon/icon-more-vertical.png';
+import SearchImg from '@public/assets/icon/icon-search.png';
+import { MsBtn } from '@components/common/button/index.style';
+import { ProfileModal } from '@components/common/modal';
 import {
     TopNavRowBox,
     TopNavRowBoxLeft,
@@ -12,7 +12,7 @@ import {
     TopNavLink,
     TopSearchLink,
     SearchInput,
-} from './index.style';
+} from '@components/common/nav/index.style';
 
 function ArrowLeftLink() {
     const navigate = useNavigate();

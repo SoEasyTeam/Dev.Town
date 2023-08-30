@@ -9,7 +9,7 @@ export const ProductItemBox = styled.div`
         width: 100%;
         height: 90px;
         border-radius: 8px;
-        border: 0.5px solid #DBDBDB;
+        border: 0.5px solid #dbdbdb;
         margin-bottom: 6px;
     }
     .txt-productName {

@@ -1,23 +1,23 @@
 import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { profileAction } from '../redux/actions/profileAction';
+import { profileAction } from '@redux/actions/profileAction';
 import { useNavigate } from 'react-router-dom';
-import { TopNavRowBox } from '../components/common/nav/index.style';
-import { ArrowLeftLink } from '../components/common/nav';
-import { SaveBtn } from '../components/common/button/index.style';
+import { TopNavRowBox } from '@components/common/nav/index.style';
+import { ArrowLeftLink } from '@components/common/nav';
+import { SaveBtn } from '@components/common/button/index.style';
 import {
     ProfileId,
     ProfileIntroduce,
     ProfileNameInput,
     TextLabel,
-} from '../components/common/textActiveInput/index.style';
+} from '@components/common/textActiveInput/index.style';
 import {
     ProfileModificationForm,
     ProfileSettingBox,
     ProfileImgInput,
     AddProfileLabel,
-} from '../components/profile/userProfile/index.style';
-import { productAction } from '../redux/actions/productAcition';
+} from '@components/profile/userProfile/index.style';
+// import { productAction } from '@redux/actions/productAcition';
 
 function ProfileModificationPage() {
     const userData = useSelector((state) => state.profile.userData);

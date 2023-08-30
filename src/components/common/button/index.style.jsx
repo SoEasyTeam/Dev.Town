@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import defaultProfile from '../../../assets/basic-profile-img-2x.png';
-import IconFillImg from '../../../assets/upload-file.png';
+import defaultProfile from '@public/assets/images/basic-profile-img-2x.png';
+import IconFillImg from '@public/assets/images/upload-file.png';
 import { css } from 'styled-components';
-
 
 const LBtn = styled.button`
     width: 322px;
@@ -28,7 +27,7 @@ const MlBtn = styled(Link)`
     line-height: 18px;
     text-align: center;
     padding: 13px;
-`//검색하기, 이전페이지(404)
+`; //검색하기, 이전페이지(404)
 
 const MBtn = styled.button`
     width: 120px;
@@ -58,9 +57,11 @@ const MsBtn = styled.button`
 //저장, 업로드 버튼
 const SaveBtn = styled(MsBtn)`
     ${({ disabled }) => {
-        return disabled === false ? `background-color: var(--main-color);` : `background-color: var(--main-disabled-color);`
+        return disabled === false
+            ? `background-color: var(--main-color);`
+            : `background-color: var(--main-disabled-color);`;
     }}
-`
+`;
 
 const SBtn = styled.button`
     width: 56px;
@@ -84,8 +85,8 @@ export const BasicProfileImg = styled.img.attrs({
     src: `${defaultProfile}`,
 })`
     width: 50px;
-    height:50px;
-`
+    height: 50px;
+`;
 
 export const ImgUpload = styled.label`
     position: fixed;
@@ -96,8 +97,8 @@ export const ImgUpload = styled.label`
     background-size: cover;
     cursor: pointer;
     z-index: 100;
-    bottom:50px;
-    right:20%;
+    bottom: 50px;
+    right: 20%;
 `;
 
 export const ImgGray = styled.img`
@@ -105,19 +106,19 @@ export const ImgGray = styled.img`
 `;
 
 export const FollowBtn = styled(MBtn)`
-font-family: 'Spoqa Han Sans Neo';
-font-weight: 500;
-font-size: 14px;
-line-height: 18px;
-&::after {
-        ${(props) => props.isFollowed
-        ? css`
-        content: '언팔로우';
-        `
-        : css`
-        content: '팔로우';
-        `
-    };
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    &::after {
+        ${(props) =>
+            props.isFollowed
+                ? css`
+                      content: '언팔로우';
+                  `
+                : css`
+                      content: '팔로우';
+                  `};
     }
 `;
 
@@ -130,15 +131,15 @@ export const FollowsBtn = styled(SBtn)`
     right: 0px;
     top: 11px;
     &::after {
-        ${(props) => props.isFollowed
-        ? css`
-        content: '취소';
-        `
-        : css`
-        content: '팔로우';
-        `
-    };
+        ${(props) =>
+            props.isFollowed
+                ? css`
+                      content: '취소';
+                  `
+                : css`
+                      content: '팔로우';
+                  `};
     }
-`
+`;
 
 export { LBtn, MlBtn, MBtn, MsBtn, SBtn, SaveBtn };

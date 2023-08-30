@@ -2,8 +2,8 @@ import {
     ErrorIcon,
     ErrorPageBox,
     ErrorMessage,
-} from '../components/error/index.style';
-import { MlBtn } from '../components/common/button/index.style';
+} from '@components/error/index.style';
+import { MlBtn } from '@components/common/button/index.style';
 
 function Error404Page() {
     return (

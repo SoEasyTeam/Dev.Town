@@ -1,16 +1,16 @@
 import { React, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { postAction } from '../redux/actions/postAction';
+import { postAction } from '@redux/actions/postAction';
 import { useNavigate } from 'react-router-dom';
-import { TopUploadNav } from '../components/common/nav';
-import { DefaultProfileImg, ImgUploadBtn } from '../components/common/button';
+import { TopUploadNav } from '@components/common/nav';
+import { ImgUploadBtn } from '@components/common/button';
 import {
     UploadForm,
     UploadSection,
     UploadInputSection,
     UploadImgInput,
-} from '../components/post/index.style';
-import { MyProfileOnComment } from '../components/comment/commentInput/index.style';
+} from '@components/post/index.style';
+import { MyProfileOnComment } from '@components/comment/commentInput/index.style';
 
 function UploadPage() {
     const navigate = useNavigate();

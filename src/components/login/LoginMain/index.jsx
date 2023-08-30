@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { authenticateAction } from '../../../redux/actions/authenticateAction';
+import { authenticateAction } from '@redux/actions/authenticateAction';
 import {
     EmailInput,
     PassWordInput,
     TextLabel,
-} from '../../common/textActiveInput/index.style';
+} from '@components/common/textActiveInput/index.style';
 import {
     JoinEmailLink,
     LoginBtn,
     LoginContainer,
     WarningParagraph,
-} from './index.style';
+} from '@components/login/LoginMain/index.style';
 
 function LoginMain() {
     const [email, setEmail] = useState('');

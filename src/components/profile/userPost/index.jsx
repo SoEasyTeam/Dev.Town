@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import HomeImgPost from '../../common/HomeImgPost';
-import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
+import HomeImgPost from '@components/common/HomeImgPost';
+import { AlertPostModal, AlertDeclareModal } from '@components/common/alert';
 import {
     PostListBtns,
     PostAlbumBtns,
@@ -9,8 +9,8 @@ import {
     PostAreaListUl,
     AlbumLi,
     AlbumBox,
-} from './index.style';
-import { API_URL } from '../../../constants/defaultUrl';
+} from '@components/profile/userPost/index.style';
+import { API_URL } from '@constants/defaultUrl';
 
 function parseDate(dateString) {
     const postDate = new Date(dateString);
