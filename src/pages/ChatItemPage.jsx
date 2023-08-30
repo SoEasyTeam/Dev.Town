@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TopChatNav } from '@components/common/nav';
-import ProfileImg from '@public/assets/images/basic-profile-img.png';
 import {
     CommentBox,
     CommentInput,
