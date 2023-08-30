@@ -1,16 +1,23 @@
 import { React, useState, useEffect } from 'react';
-import { useLocation, Link, useParams, useRouteMatch } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import HomeImgPost from '../../common/HomeImgPost';
 import { AlertPostModal, AlertDeclareModal } from '../../common/alert';
-import { PostListBtns, PostAlbumBtns, PostArea, PostAreaListUl, AlbumLi, AlbumBox } from './index.style';
+import {
+    PostListBtns,
+    PostAlbumBtns,
+    PostArea,
+    PostAreaListUl,
+    AlbumLi,
+    AlbumBox,
+} from './index.style';
 import { API_URL } from '../../../constants/defaultUrl';
 
 function parseDate(dateString) {
-    const postDate = new Date(dateString)
+    const postDate = new Date(dateString);
     const year = postDate.getFullYear();
     const month = postDate.getMonth() + 1;
     const day = postDate.getDate();
-    return [year, month, day]
+    return [year, month, day];
 }
 
 function PostAreaList({ userPostData, alertOnModal }) {
@@ -38,11 +45,10 @@ function PostAreaList({ userPostData, alertOnModal }) {
                                 userPostData={userPostData}
                             />
                         </li>
-                    )
-                })
-            }
+                    );
+                })}
         </>
-    )
+    );
 }
 
 function PostAlbumAreaList({ userPostData }) {
@@ -51,104 +57,115 @@ function PostAlbumAreaList({ userPostData }) {
             {userPostData &&
                 userPostData.post.map((item) => {
                     if (!item.image || !item.image.includes('https')) {
-                        return (
-                            <></>
-                        )
+                        return <></>;
                     } else {
                         return (
                             <Link
                                 to={{
-                                    pathname: `/post/${item.id}`
+                                    pathname: `/post/${item.id}`,
                                 }}
                             >
-                                <AlbumLi key={item.id} >
+                                <AlbumLi key={item.id}>
                                     <img src={item.image} alt='게시글사진' />
                                 </AlbumLi>
                             </Link>
-                        )
+                        );
                     }
-                })
-            }
+                })}
         </>
-    )
+    );
 }
 
 function UserPost(props) {
     const token = sessionStorage.getItem('token');
     const accountname = sessionStorage.getItem('accountname');
-    const [userPostData, setUserPostData] = useState('')
+    const [userPostData, setUserPostData] = useState('');
     const [alertOn, setAlertOn] = useState(false);
     const [isActive, setIsActive] = useState(true);
     const location = useLocation();
 
     const getData = async (account) => {
         const res = await fetch(`${API_URL}/post/${account}/userpost`, {
-            method: "GET",
+            method: 'GET',
             headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-type": "application/json"
-            }
-        })
-        const json = await res.json()
-        setUserPostData(json)
-    }
+                Authorization: `Bearer ${token}`,
+                'Content-type': 'application/json',
+            },
+        });
+        const json = await res.json();
+        setUserPostData(json);
+    };
 
     useEffect(() => {
         if (props.accountname) {
-            getData(props.accountname)
+            getData(props.accountname);
+        } else {
+            getData(accountname);
         }
-        else {
-            getData(accountname)
-        }
-    }, [])
+    }, []);
 
     if (Array.isArray(userPostData.post) && userPostData.post.length === 0) {
-        return <></>
+        return <></>;
     }
     function alertOnModal() {
         setAlertOn(true);
     }
     function alertOffModal() {
-        document.body.style.overflow = "unset";
+        document.body.style.overflow = 'unset';
         setAlertOn(false);
     }
     function changeListActive() {
-        setIsActive(true)
+        setIsActive(true);
     }
     function changeAlbumActive() {
-        setIsActive(false)
+        setIsActive(false);
     }
     return (
         <>
             <PostArea>
                 <div className='postAreaTop'>
-                    <PostListBtns onClick={changeListActive} isActive={isActive} />
-                    <PostAlbumBtns onClick={changeAlbumActive} isActive={isActive} />
+                    <PostListBtns
+                        onClick={changeListActive}
+                        isActive={isActive}
+                    />
+                    <PostAlbumBtns
+                        onClick={changeAlbumActive}
+                        isActive={isActive}
+                    />
                 </div>
                 <PostAreaListUl>
                     {isActive ? (
                         <>
-                            <PostAreaList userPostData={userPostData} alertOnModal={alertOnModal} />
+                            <PostAreaList
+                                userPostData={userPostData}
+                                alertOnModal={alertOnModal}
+                            />
                         </>
                     ) : (
                         <>
                             <AlbumBox>
-                                <PostAlbumAreaList userPostData={userPostData} />
+                                <PostAlbumAreaList
+                                    userPostData={userPostData}
+                                />
                             </AlbumBox>
                         </>
                     )}
-
                 </PostAreaListUl>
             </PostArea>
-            {alertOn === true && location.pathname.split("/")[1] === "myprofile" ? <AlertPostModal alertOffModal={alertOffModal} /> : ''}
-            {alertOn === true && location.pathname.split("/")[1] === "yourpage" ? <AlertDeclareModal alertOffModal={alertOffModal} /> : ''}
+            {alertOn === true &&
+            location.pathname.split('/')[1] === 'myprofile' ? (
+                <AlertPostModal alertOffModal={alertOffModal} />
+            ) : (
+                ''
+            )}
+            {alertOn === true &&
+            location.pathname.split('/')[1] === 'yourpage' ? (
+                <AlertDeclareModal alertOffModal={alertOffModal} />
+            ) : (
+                ''
+            )}
         </>
-    )
+    );
 }
 
 export default UserPost;
-
-
-
-
-

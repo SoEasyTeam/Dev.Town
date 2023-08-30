@@ -23,7 +23,7 @@ function UploadPage() {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        if (uploadedImg === [] && postText === '') {
+        if (uploadedImg == [] && postText === '') {
             alert('게시물을 작성해주세요');
         } else {
             navigate('/myprofile');

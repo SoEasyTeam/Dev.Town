@@ -25,11 +25,9 @@ const Nav = () => {
     let tokenValid = useSelector((state) => state.token.tokenValid);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (tokenValid.isValid === true) {
-            navigate('/home');
-        }
-    }, [tokenValid, navigate]);
+    // useEffect(() => {
+    //     if (tokenValid.isValid !== true) navigate('/');
+    // }, [tokenValid, navigate]);
 
     return (
         <Routes>
