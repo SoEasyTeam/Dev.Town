@@ -1,18 +1,29 @@
 import { React, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ArrowImg from '../../../assets/icon/icon-arrow-left.png';
 import MoreImg from '../../../assets/icon/icon-more-vertical.png';
 import SearchImg from '../../../assets/icon/icon-search.png';
 import { MsBtn } from '../button/index.style';
 import { ProfileModal } from '../modal';
-import { TopNavRowBox, TopNavRowBoxLeft, TopNavLinkS, TopNavLink, TopSearchLink, SearchInput } from './index.style';
+import {
+    TopNavRowBox,
+    TopNavRowBoxLeft,
+    TopNavLinkS,
+    TopNavLink,
+    TopSearchLink,
+    SearchInput,
+} from './index.style';
 
 function ArrowLeftLink() {
-    let history = useHistory();
-    document.body.style.overflow = "unset";
+    const navigate = useNavigate();
+    document.body.style.overflow = 'unset';
     return (
         <>
-            <TopNavLinkS onClick={() => { history.goBack(); }}>
+            <TopNavLinkS
+                onClick={() => {
+                    navigate(-1);
+                }}
+            >
                 <img src={ArrowImg} alt='뒤로가기링크' />
             </TopNavLinkS>
         </>
@@ -27,7 +38,7 @@ function TopFollowerNav() {
                 <p className='chatTitle followLeft'>Followers</p>
             </TopNavRowBoxLeft>
         </>
-    )
+    );
 }
 
 function TopFollowingNav() {
@@ -38,7 +49,7 @@ function TopFollowingNav() {
                 <p className='chatTitle followLeft'>Followings</p>
             </TopNavRowBoxLeft>
         </>
-    )
+    );
 }
 
 function TopBasicNav({ alertOnModal }) {
@@ -48,7 +59,7 @@ function TopBasicNav({ alertOnModal }) {
         setModalOn(true);
     }
     function closeModal() {
-        document.body.style.overflow = "unset";
+        document.body.style.overflow = 'unset';
         setModalOn(false);
     }
     return (
@@ -59,7 +70,15 @@ function TopBasicNav({ alertOnModal }) {
                     <img src={MoreImg} alt='더보기링크' />
                 </TopNavLink>
             </TopNavRowBox>
-            {modalOn === true ? <ProfileModal openModal={openModal} closeModal={closeModal} alertOnModal={alertOnModal} /> : ''}
+            {modalOn === true ? (
+                <ProfileModal
+                    openModal={openModal}
+                    closeModal={closeModal}
+                    alertOnModal={alertOnModal}
+                />
+            ) : (
+                ''
+            )}
         </>
     );
 }
@@ -81,7 +100,11 @@ function TopMainNav() {
             <TopNavRowBox>
                 <p className='navTitle'>데브타운 피드</p>
                 <TopSearchLink to='/search'>
-                    <img src={SearchImg} alt='찾기링크' style={{ cursor: 'pointer' }} />
+                    <img
+                        src={SearchImg}
+                        alt='찾기링크'
+                        style={{ cursor: 'pointer' }}
+                    />
                 </TopSearchLink>
             </TopNavRowBox>
         </>
@@ -113,5 +136,13 @@ function TopChatNav() {
     );
 }
 
-export { TopFollowerNav, TopFollowingNav, TopBasicNav, TopSearchNav, TopMainNav, TopUploadNav, TopChatNav, ArrowLeftLink };
-
+export {
+    TopFollowerNav,
+    TopFollowingNav,
+    TopBasicNav,
+    TopSearchNav,
+    TopMainNav,
+    TopUploadNav,
+    TopChatNav,
+    ArrowLeftLink,
+};
