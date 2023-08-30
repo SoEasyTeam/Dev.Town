@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '../../constants/defaultUrl';
+import { API_URL } from '@constants/defaultUrl';
 
 function search(keyword, token) {
     return async (dispatch, getState) => {

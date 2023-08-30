@@ -1,8 +1,19 @@
-import { useState } from 'react'
-import { SettingBtn, HomePostProfileNickName, HomePostProfileLogoImg, HomePostBox, HomePostProfileBox, HomePostSmallBox, HomePostParagraph, DateParagraph, LikePostBox, HomePostProfileLink } from './index.style'
-import { ProfileLogoImg, NameIdBox, NickNameP, IdP } from '../search/index.style'
-import LikePostRowBox from '../HomeImgPost/LkePostRowBox'
-import { MyPostModal } from '../modal';
+import { useState } from 'react';
+import {
+    SettingBtn,
+    HomePostProfileNickName,
+    HomePostProfileLogoImg,
+    HomePostBox,
+    HomePostProfileBox,
+    HomePostSmallBox,
+    HomePostParagraph,
+    DateParagraph,
+    // LikePostBox,
+    HomePostProfileLink,
+} from '@components/common/PostInDetail/index.style';
+import { NameIdBox, IdP } from '@components/common/search/index.style';
+import LikePostRowBox from '@components/common/HomeImgPost/LkePostRowBox';
+import { MyPostModal } from '@components/common/modal';
 
 function PostInDetail({
     profileimg,
@@ -34,7 +45,9 @@ function PostInDetail({
         <>
             <HomePostBox>
                 <HomePostProfileBox>
-                    <HomePostProfileLink to={{ pathname: '/yourpage', search: `?id=${id}` }}>
+                    <HomePostProfileLink
+                        to={{ pathname: '/yourpage', search: `?id=${id}` }}
+                    >
                         <HomePostProfileLogoImg
                             src={profileimg}
                             alt='프로필로고'
@@ -50,8 +63,7 @@ function PostInDetail({
                 </HomePostProfileBox>
                 <HomePostSmallBox>
                     <HomePostParagraph>{postparagraph}</HomePostParagraph>
-                    {postsrc === '' ||
-                        typeof postsrc === 'undefined' ? null : (
+                    {postsrc === '' || typeof postsrc === 'undefined' ? null : (
                         <img
                             className='post-img'
                             src={postsrc}

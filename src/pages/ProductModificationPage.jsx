@@ -1,11 +1,8 @@
-import React from 'react'
-import ProductModification from '../components/product/ProductModification';
+import React from 'react';
+import ProductModification from '@components/product/ProductModification';
 
 function ProductModificationPage() {
-
-    return (
-        <ProductModification />
-    )
+    return <ProductModification />;
 }
 
 export default ProductModificationPage;

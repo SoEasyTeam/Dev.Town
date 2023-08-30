@@ -1,9 +1,7 @@
-import Nav from './redux/Nav';
+import Nav from './nav/Nav';
 
 function App() {
-    return (
-        <Nav/>
-    );
+    return <Nav />;
 }
 
 export default App;

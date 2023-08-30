@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '../../constants/defaultUrl';
+import { API_URL } from '@constants/defaultUrl';
 
 function post(fileList, postText) {
     const formData = new FormData();

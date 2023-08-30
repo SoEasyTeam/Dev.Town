@@ -1,27 +1,32 @@
 import { React, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { postAction } from '../redux/actions/postAction';
-import { useHistory } from 'react-router-dom';
-import { TopUploadNav } from '../components/common/nav';
-import { DefaultProfileImg, ImgUploadBtn } from '../components/common/button';
-import { UploadForm, UploadSection, UploadInputSection, UploadImgInput } from '../components/post/index.style'
-import {MyProfileOnComment} from '../components/comment/commentInput/index.style'
+import { postAction } from '@redux/actions/postAction';
+import { useNavigate } from 'react-router-dom';
+import { TopUploadNav } from '@components/common/nav';
+import { ImgUploadBtn } from '@components/common/button';
+import {
+    UploadForm,
+    UploadSection,
+    UploadInputSection,
+    UploadImgInput,
+} from '@components/post/index.style';
+import { MyProfileOnComment } from '@components/comment/commentInput/index.style';
 
 function UploadPage() {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [postText, setPostText] = useState('');
     const [uploadedImg, setUploadedImg] = useState([]);
     const [imgPreview, setImgPreview] = useState([]);
     const fileInputRef = useRef();
     const dispatch = useDispatch();
-    const profileImg = useSelector(state=>state.auth)
+    const profileImg = useSelector((state) => state.auth);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        if (uploadedImg === [] && postText === '') {
+        if (uploadedImg == [] && postText === '') {
             alert('게시물을 작성해주세요');
         } else {
-            history.push('/myprofile');
+            navigate('/myprofile');
             dispatch(postAction.post(uploadedImg, postText));
         }
     };
@@ -67,7 +72,7 @@ function UploadPage() {
                 <UploadSection>
                     <div className='profileImg'>
                         {/* <DefaultProfileImg /> */}
-                        <MyProfileOnComment src={profileImg.image}/>
+                        <MyProfileOnComment src={profileImg.image} />
                     </div>
                     <UploadInputSection>
                         <textarea

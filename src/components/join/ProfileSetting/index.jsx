@@ -1,63 +1,85 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { joinAction } from '../../../redux/actions/joinAction';
-import JoinProfileImg from '../../../assets/basic-profile-img.png';
-import { ProfileImgInput, Profilelabel, ProfileSettingForm, SignUpBtn } from './index.style';
-import { ProfileId, ProfileIntroduce, ProfileNameInput, TextLabel } from '../../common/textActiveInput/index.style';
-import { WarningParagraph } from '../../login/LoginMain/index.style';
+import { useNavigate } from 'react-router-dom';
+import { joinAction } from '@redux/actions/joinAction';
+import JoinProfileImg from '@public/assets/images/basic-profile-img.png';
+import {
+    ProfileImgInput,
+    Profilelabel,
+    ProfileSettingForm,
+    SignUpBtn,
+} from '@components/join/ProfileSetting/index.style';
+import {
+    ProfileId,
+    ProfileIntroduce,
+    ProfileNameInput,
+    TextLabel,
+} from '@components/common/textActiveInput/index.style';
+import { WarningParagraph } from '@components/login/LoginMain/index.style';
 
 function ProfileSetting() {
     const [username, setUsername] = useState('');
     const [accountname, setAccountname] = useState('');
     const [intro, setIntro] = useState('');
     const [isActive, setIsActive] = useState('');
-    const history = useHistory();
-    const email = useSelector(state => state.join.email);
-    const password = useSelector(state => state.join.password);
-    const message = useSelector(state => state.joinfinal.message);
+    const navigate = useNavigate();
+    const email = useSelector((state) => state.join.email);
+    const password = useSelector((state) => state.join.password);
+    const message = useSelector((state) => state.joinfinal.message);
     const dispatch = useDispatch();
     const [itemImage, setItemImage] = useState(JoinProfileImg);
 
-
     const onChangeProfileImg = (event) => {
-        if(parseInt(event.target.files[0].size) > 100000){
+        if (parseInt(event.target.files[0].size) > 100000) {
             alert('이미지 파일 100KB 이하로 해주세요.');
-        }else {
+        } else {
             let reader = new FileReader();
             reader.readAsDataURL(event.target.files[0]);
             reader.onload = (event) => {
                 let readerUrl = event.target.result;
                 setItemImage(readerUrl);
-            }
+            };
         }
     };
 
     const signUpActive = () => {
-        return (username.length > 1 && username.length < 11 && accountname.length>0 && intro.length > 0 && message === '사용 가능한 계정ID 입니다.')
-        ? setIsActive(false)
-        : setIsActive(true);
+        return username.length > 1 &&
+            username.length < 11 &&
+            accountname.length > 0 &&
+            intro.length > 0 &&
+            message === '사용 가능한 계정ID 입니다.'
+            ? setIsActive(false)
+            : setIsActive(true);
     };
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        dispatch(joinAction.joinfinal(email, password, username, accountname, intro, itemImage));
-        if(message === '회원가입 성공'){
-            history.push('/login');
+        dispatch(
+            joinAction.joinfinal(
+                email,
+                password,
+                username,
+                accountname,
+                intro,
+                itemImage
+            )
+        );
+        if (message === '회원가입 성공') {
+            navigate('/login');
         }
-    }
+    };
 
     useEffect(() => {
-        if(accountname.length>0){
+        if (accountname.length > 0) {
             dispatch(joinAction.accountValid(accountname));
         }
-    },[accountname])
+    }, [accountname]);
 
     useEffect(() => {
-        if(message==='회원가입 성공'){
-            history.push('/login');
+        if (message === '회원가입 성공') {
+            navigate('/login');
         }
-    }, [message])
+    }, [message]);
 
     return (
         <ProfileSettingForm onSubmit={onSubmitHandler}>
@@ -70,19 +92,38 @@ function ProfileSetting() {
                     alt='프로필이미지'
                 />
             </Profilelabel>
-            <ProfileImgInput onChange={onChangeProfileImg} id='profileImg' type='file' accept='image/*' />
+            <ProfileImgInput
+                onChange={onChangeProfileImg}
+                id='profileImg'
+                type='file'
+                accept='image/*'
+            />
             <div className='input-cont'>
                 <TextLabel>사용자 이름</TextLabel>
-                <ProfileNameInput value={username} onChange={(event) => setUsername(event.target.value)} onKeyUp = {signUpActive}/>
+                <ProfileNameInput
+                    value={username}
+                    onChange={(event) => setUsername(event.target.value)}
+                    onKeyUp={signUpActive}
+                />
             </div>
             <div className='input-cont'>
                 <TextLabel>계정 ID</TextLabel>
-                <ProfileId value={accountname} onChange={(event) => setAccountname(event.target.value)} onKeyUp = {signUpActive} />
+                <ProfileId
+                    value={accountname}
+                    onChange={(event) => setAccountname(event.target.value)}
+                    onKeyUp={signUpActive}
+                />
             </div>
             <div className='input-cont'>
                 <TextLabel>소개</TextLabel>
-                <ProfileIntroduce value={intro} onChange={(event) => setIntro(event.target.value)} onKeyUp = {signUpActive}/>
-                <WarningParagraph visible={isActive}>{message}</WarningParagraph>
+                <ProfileIntroduce
+                    value={intro}
+                    onChange={(event) => setIntro(event.target.value)}
+                    onKeyUp={signUpActive}
+                />
+                <WarningParagraph visible={isActive}>
+                    {message}
+                </WarningParagraph>
             </div>
             <SignUpBtn disabled={isActive}>데브타운 시작하기</SignUpBtn>
         </ProfileSettingForm>

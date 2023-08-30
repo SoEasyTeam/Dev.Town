@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import logoImgWhite from '../../../assets/logo-white.png';
-import { LogInColBox } from './index.style';
+import logoImgWhite from '@public/assets/images/logo-white.png';
+import { LogInColBox } from '@components/login/LoginOptions/index.style';
 
 function LoginOptions({ isActive }) {
     return (
@@ -21,12 +21,16 @@ function LoginOptions({ isActive }) {
                     페이스북 계정으로 로그인
                 </button>
                 <div className='signup-box-row'>
-                    <Link to='/login' className='email-link'>이메일로 로그인</Link>
-                    <Link to='/join' className='join-link'>회원가입</Link>
+                    <Link to='/login' className='email-link'>
+                        이메일로 로그인
+                    </Link>
+                    <Link to='/join' className='join-link'>
+                        회원가입
+                    </Link>
                 </div>
             </div>
         </LogInColBox>
-    )
+    );
 }
 
-export default LoginOptions
+export default LoginOptions;

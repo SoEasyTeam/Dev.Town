@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import { useLocation } from "react-router-dom";
-import { TopFollowerNav } from '../components/common/nav'
-import UserFollow from '../components/list/followList';
-import { FollowBoxUl } from '../components/list/followList/index.style';
-import { API_URL } from '../constants/defaultUrl';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { TopFollowerNav } from '@components/common/nav';
+import UserFollow from '@components/list/followList';
+import { FollowBoxUl } from '@components/list/followList/index.style';
+import { API_URL } from '@constants/defaultUrl';
 
 const FollowList = ({ userFollowerData }) => {
     return (
@@ -11,7 +11,7 @@ const FollowList = ({ userFollowerData }) => {
             {userFollowerData &&
                 userFollowerData.map((follower) => {
                     return (
-                        <div key={follower._id} >
+                        <div key={follower._id}>
                             <UserFollow
                                 name={follower.username}
                                 accountname={follower.accountname}
@@ -19,21 +19,20 @@ const FollowList = ({ userFollowerData }) => {
                                 isfollow={follower.isfollow}
                             />
                         </div>
-                    )
-                })
-            }
+                    );
+                })}
         </>
-    )
-}
+    );
+};
 
 function FollowerPage(props) {
     const token = sessionStorage.getItem('token');
-    const [userFollowerData, setUserFollowerData] = useState('')
+    const [userFollowerData, setUserFollowerData] = useState('');
 
     const location = useLocation();
     const checkAccountName = () => {
-        if (location.pathname.split("/")[1] === "follower") {
-            const accountname = location.search.split("id=")[1];
+        if (location.pathname.split('/')[1] === 'follower') {
+            const accountname = location.search.split('id=')[1];
             return accountname;
         }
     };
@@ -41,24 +40,23 @@ function FollowerPage(props) {
 
     const getData = async (account) => {
         const res = await fetch(`${API_URL}/profile/${account}/follower`, {
-            method: "GET",
+            method: 'GET',
             headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-type": "application/json"
-            }
-        })
-        const json = await res.json()
-        setUserFollowerData(json)
-    }
+                Authorization: `Bearer ${token}`,
+                'Content-type': 'application/json',
+            },
+        });
+        const json = await res.json();
+        setUserFollowerData(json);
+    };
 
     useEffect(() => {
         if (props.accountname) {
-            getData(props.accountname)
+            getData(props.accountname);
+        } else {
+            getData(accountname);
         }
-        else {
-            getData(accountname)
-        }
-    }, [])
+    }, []);
 
     return (
         <>
@@ -67,8 +65,7 @@ function FollowerPage(props) {
                 <FollowList userFollowerData={userFollowerData} />
             </FollowBoxUl>
         </>
-
-    )
+    );
 }
 
-export default FollowerPage
+export default FollowerPage;

@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux';
 import { authenticateReducer, tokenValidReducer } from './authenticateReducer';
-import { postReducer, getPostReducer, getMyPostReducer,deletePostReducer } from './postReducer';
+import {
+    postReducer,
+    getPostReducer,
+    getMyPostReducer,
+    deletePostReducer,
+} from './postReducer';
 import homeFeedReducer from './homeFeedReducer';
 import { joinReducer } from './joinReducer';
 import { joinFinalReducer } from './joinReducer';
@@ -32,7 +37,7 @@ const rootReducer = combineReducers({
     post: postReducer,
     getPost: getPostReducer,
     getMyPost: getMyPostReducer,
-    deletePost:deletePostReducer,
+    deletePost: deletePostReducer,
     product: productReducer,
     homefeed: homeFeedReducer,
     writeComment: writeCommentReducer,

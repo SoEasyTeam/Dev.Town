@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { TextLabel } from '../../common/textActiveInput/index.style';
-import ImgBtn from '../../../assets/img-button.png';
+import { TextLabel } from '@components/common/textActiveInput/index.style';
+import ImgBtn from '@public/assets/images/img-button.png';
 
 export const ProductForm = styled.form``;
 

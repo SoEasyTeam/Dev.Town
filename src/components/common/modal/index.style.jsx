@@ -12,7 +12,7 @@ export const ModalOutside = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-`
+`;
 export const ModalContainer = styled.section`
     display: flex;
     flex-direction: column;
@@ -22,12 +22,12 @@ export const ModalContainer = styled.section`
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #FFF;
+    background: #fff;
     border-radius: 10px 10px 0 0;
     padding: 16px 16px 28px 16px;
     .deleteModalBtn {
         justify-content: center;
-        content: " ";
+        content: ' ';
         margin: 0 auto;
         width: 50px;
         height: 4px;
@@ -41,20 +41,20 @@ export const ModalContainer = styled.section`
         font-weight: 400;
         font-size: 14px;
         line-height: 18px;
-        &:hover{
+        &:hover {
             font-weight: bold;
         }
     }
-`
+`;
 
 export const ButtonLink = styled(Link)`
-        display: flex;
-        padding-left: 26px;
-        font-family: 'Spoqa Han Sans Neo';
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 18px;
-        &:hover{
-            font-weight: bold;
-        }
-`
+    display: flex;
+    padding-left: 26px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    &:hover {
+        font-weight: bold;
+    }
+`;

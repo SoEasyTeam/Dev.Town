@@ -1,10 +1,10 @@
-import { ChatItemLink, ChatListBox } from './index.style'
-import ProfileImg from '../../../assets/basic-profile-img.png'
+import { ChatItemLink, ChatListBox } from './index.style';
+import ProfileImg from '@public/assets/images/basic-profile-img.png';
 
 function ChatList() {
     return (
         <ChatListBox>
-            <ChatItemLink to = '/chatroom'>
+            <ChatItemLink to='/chatroom'>
                 <label>
                     <div className='login-box'></div>
                     <img
@@ -21,7 +21,7 @@ function ChatList() {
                 </div>
                 <p className='chatDate-p'>2020.10.25</p>
             </ChatItemLink>
-            <ChatItemLink to = '/chatroom'>
+            <ChatItemLink to='/chatroom'>
                 <label>
                     <div className='login-box'></div>
                     <img
@@ -42,4 +42,4 @@ function ChatList() {
     );
 }
 
-export default ChatList
+export default ChatList;

@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { SBtn } from '../../common/button/index.style';
-import { UserSearchBox } from '../../common/search/index.style';
+import { UserSearchBox } from '@components/common/search/index.style';
 
 export const FollowBoxUl = styled.ul`
-padding: 24px 16px;
-`
+    padding: 24px 16px;
+`;
 
 export const UserFollowBox = styled(UserSearchBox)`
     position: relative;
@@ -14,7 +13,7 @@ export const UserFollowBox = styled(UserSearchBox)`
 
 export const FollowPageLink = styled(Link)`
     display: inherit;
-`
+`;
 
 // export const FollowSBtn = styled(SBtn)`
 //     font-family: 'Spoqa Han Sans Neo';
