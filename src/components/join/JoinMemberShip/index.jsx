@@ -85,4 +85,4 @@ function JoinMembership() {
     );
 }
 
-export default React.memo(JoinMembership);
+export default JoinMembership;

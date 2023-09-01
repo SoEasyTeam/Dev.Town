@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import AddProductPage from '../pages/AddProductPage';
 import ChatItemPage from '../pages/ChatItemPage';
@@ -21,12 +21,12 @@ import PostUploadPage from '@pages/PostUploadPage';
 import { useSelector } from 'react-redux';
 
 const Nav = () => {
-    let tokenValid = useSelector((state) => state.token.tokenValid);
-    const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (tokenValid.isValid !== true) navigate('/');
-    // }, [tokenValid, navigate]);
+    let { tokenValid } = useSelector((state) => state.token);
+    let { token } = useSelector((state) => state.auth);
+    // const navigate = useNavigate();
+    useEffect(() => {
+        if (token) console.log('토큰 변경');
+    }, [token]);
 
     return (
         <Routes>
