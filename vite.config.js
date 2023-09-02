@@ -15,13 +15,13 @@ export default defineConfig({
             { find: '@pages', replacement: '/src/pages' },
             { find: '@redux', replacement: '/src/redux' },
             { find: '@utils', replacement: '/src/utils' },
-            { find: '@public', replacement: '../public' },
+            { find: '@public', replacement: '/public' },
         ],
-    },
-    server: {
-        port: 3000,
     },
     build: {
         outDir: 'build',
+    },
+    server: {
+        port: 3000,
     },
 });
