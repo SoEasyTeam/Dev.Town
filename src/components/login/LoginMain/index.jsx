@@ -56,7 +56,6 @@ function LoginMain() {
                 <EmailInput
                     name='email'
                     {...register('email', {
-                        required: '이메일을 입력해주세요.',
                         pattern: {
                             value: checkEmail,
                         },
@@ -68,7 +67,6 @@ function LoginMain() {
                     name='password'
                     type={'password'}
                     {...register('password', {
-                        required: '패스워드를 입력해주세요.',
                         minLength: {
                             value: 6,
                         },
