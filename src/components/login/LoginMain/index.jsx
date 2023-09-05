@@ -14,7 +14,8 @@ import {
     WarningParagraph,
 } from '@components/login/LoginMain/index.style';
 import { useForm } from 'react-hook-form';
-import { checkEmail } from '@/utils/checkLogin';
+import { authSchema } from '@/utils/checkAuth';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 function LoginMain() {
     const dispatch = useDispatch();
@@ -27,8 +28,12 @@ function LoginMain() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
-    } = useForm({ mode: 'onChange' });
+        formState: { errors, isValid },
+    } = useForm({
+        resolver: yupResolver(authSchema),
+    });
+
+    console.log(isValid);
 
     const onSubmit = (formData) => {
         const { email, password } = formData;
@@ -55,33 +60,23 @@ function LoginMain() {
                 <TextLabel>이메일</TextLabel>
                 <EmailInput
                     name='email'
-                    {...register('email', {
-                        pattern: {
-                            value: checkEmail,
-                        },
-                    })}
+                    {...register('email')}
                     placeholder={'example@example.com'}
                 />
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput
                     name='password'
                     type={'password'}
-                    {...register('password', {
-                        minLength: {
-                            value: 6,
-                        },
-                    })}
-                    label={'비밀번호'}
+                    {...register('password')}
                     placeholder={'********'}
                 />
-                <WarningParagraph visible={!!message}>
-                    * {message}
+                <WarningParagraph visible={!!errors || message}>
+                    {errors.email?.message ||
+                        errors.password?.message ||
+                        message}
                 </WarningParagraph>
                 <div className='loginBtnWrap'>
-                    <LoginBtn
-                        disabled={!!Object.keys(errors).length}
-                        type='submit'
-                    >
+                    <LoginBtn disabled={false} type='submit'>
                         로그인
                     </LoginBtn>
                     <JoinEmailLink to='/join'>이메일로 회원가입</JoinEmailLink>

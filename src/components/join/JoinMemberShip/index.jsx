@@ -14,26 +14,12 @@ import {
 } from '@components/join/JoinMemberShip/index.style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { checkEmail } from '@/utils/checkLogin';
+import { authSchema, checkEmail } from '@/utils/checkAuth';
 
 function JoinMembership() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { message } = useSelector((state) => state.join);
-
-    const schema = yup
-        .object({
-            email: yup
-                .string()
-                .matches(checkEmail, '이메일 양식에 맞게 입력해주세요.')
-                .required('이메일을 입력해주세요.'),
-            password: yup
-                .string()
-                .min(6, '비밀번호 최소 6자리 이상으로 입력해주세요.')
-                .required('패스워드를 입력해주세요.'),
-        })
-        .required();
 
     const {
         register,
@@ -41,7 +27,7 @@ function JoinMembership() {
         watch,
         formState: { errors },
     } = useForm({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(authSchema),
     });
 
     const onSubmit = (formData) => {
@@ -58,6 +44,10 @@ function JoinMembership() {
         if (!checkEmail.test(emailValue)) return;
         dispatch(joinAction.join(emailValue, ''));
     }, [emailValue]);
+
+    useEffect(() => {
+        dispatch(joinAction.join('', '', 'initial'));
+    }, []);
 
     return (
         <LoginMain>
