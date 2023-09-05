@@ -1,15 +1,16 @@
 import axios from 'axios';
 import { API_URL } from '@constants/defaultUrl';
 
-function join(email, password) {
-    return async (dispatch, getState) => {
+function join(email, password, type) {
+    return async (dispatch) => {
         const joinData = {
             user: {
                 email: email,
             },
         };
+
         try {
-            const res = await axios.post(
+            const { data } = await axios.post(
                 API_URL + '/user/emailvalid',
                 joinData,
                 {
@@ -19,24 +20,27 @@ function join(email, password) {
                 }
             );
 
-            if (res.data.message === '사용 가능한 이메일 입니다.') {
-                dispatch({
-                    type: 'JOIN_EMAILVALID_SUCCESS',
-                    payload: {
-                        message: res.data.message,
-                        email: email,
-                        password: password,
-                    },
-                });
-            } else {
+            if (data.message === '이미 가입된 이메일 주소 입니다.') {
                 dispatch({
                     type: 'JOIN_EMAILVALID_FAIL',
                     payload: {
-                        message: res.data.message,
+                        message: data.message,
                     },
                 });
+                return;
             }
-        } catch (error) {}
+
+            dispatch({
+                type: 'JOIN_EMAILVALID_SUCCESS',
+                payload: {
+                    message: data.message,
+                    email: email,
+                    password: password,
+                },
+            });
+        } catch (error) {
+            console.log('email check error : ', error);
+        }
     };
 }
 
