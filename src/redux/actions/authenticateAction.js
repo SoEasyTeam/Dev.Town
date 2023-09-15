@@ -2,62 +2,47 @@ import axios from 'axios';
 import { API_URL } from '@constants/defaultUrl';
 
 function login(email, password) {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         const loginData = {
             user: {
                 email: email,
                 password: password,
             },
         };
-        if (loginData.user.email === '') {
+
+        try {
+            const { data } = await axios.post(
+                API_URL + '/user/login',
+                loginData
+            );
+
+            // 상태가 422일 때 로그인 실패 처리
+            if (data.status === 422) {
+                dispatch({
+                    type: 'LOGIN_FAIL',
+                    payload: {
+                        message: data.message,
+                        token: '',
+                    },
+                });
+                return;
+            }
+
+            // 로그인 성공 처리
             dispatch({
                 type: 'LOGIN_SUCCESS',
                 payload: {
-                    id: '',
-                    username: '',
-                    email: '',
-                    accountname: '',
-                    image: '',
-                    token: '',
-                    message: '',
+                    id: data.user._id,
+                    username: data.user.username,
+                    email: data.user.email,
+                    accountname: data.user.accountname,
+                    image: data.user.image,
+                    token: data.user.token,
+                    message: data.message,
                 },
             });
-        } else {
-            try {
-                const res = await axios.post(
-                    API_URL + '/user/login',
-                    loginData,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                );
-                if (
-                    res.data.message ===
-                    '이메일 또는 비밀번호가 일치하지 않습니다.'
-                ) {
-                    dispatch({
-                        type: 'LOGIN_FAIL',
-                        payload: {
-                            message: res.data.message,
-                        },
-                    });
-                } else {
-                    dispatch({
-                        type: 'LOGIN_SUCCESS',
-                        payload: {
-                            id: res.data.user._id,
-                            username: res.data.user.username,
-                            email: res.data.user.email,
-                            accountname: res.data.user.accountname,
-                            image: res.data.user.image,
-                            token: res.data.user.token,
-                            message: res.data.message,
-                        },
-                    });
-                }
-            } catch (error) {}
+        } catch (error) {
+            console.log('Login Network error : ', error);
         }
     };
 }

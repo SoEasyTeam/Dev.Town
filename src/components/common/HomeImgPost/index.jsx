@@ -77,7 +77,7 @@ function HomeImgPost({
                     </HomePostProfileLink>
                     <SettingBtn onClick={openModal} />
                 </HomePostProfileBox>
-                <HomePostSmallLink to={`./post/${postId}`}>
+                <HomePostSmallLink to={`/post/${postId}`}>
                     <HomePostParagraph>{postparagraph}</HomePostParagraph>
                     {postsrc === '' || typeof postsrc === 'undefined' ? null : (
                         <img

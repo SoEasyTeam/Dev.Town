@@ -1,15 +1,21 @@
 import axios from 'axios';
 import { API_URL } from '@constants/defaultUrl';
 
-function join(email, password) {
-    return async (dispatch, getState) => {
+function join(email, password, type) {
+    return async (dispatch) => {
         const joinData = {
             user: {
                 email: email,
             },
         };
+
+        if (type === 'initial') {
+            dispatch({ type: 'INITIAL' });
+            return;
+        }
+
         try {
-            const res = await axios.post(
+            const { data } = await axios.post(
                 API_URL + '/user/emailvalid',
                 joinData,
                 {
@@ -19,24 +25,27 @@ function join(email, password) {
                 }
             );
 
-            if (res.data.message === '사용 가능한 이메일 입니다.') {
-                dispatch({
-                    type: 'JOIN_EMAILVALID_SUCCESS',
-                    payload: {
-                        message: res.data.message,
-                        email: email,
-                        password: password,
-                    },
-                });
-            } else {
+            if (data.message === '이미 가입된 이메일 주소 입니다.') {
                 dispatch({
                     type: 'JOIN_EMAILVALID_FAIL',
                     payload: {
-                        message: res.data.message,
+                        message: data.message,
                     },
                 });
+                return;
             }
-        } catch (error) {}
+
+            dispatch({
+                type: 'JOIN_EMAILVALID_SUCCESS',
+                payload: {
+                    message: data.message,
+                    email: email,
+                    password: password,
+                },
+            });
+        } catch (error) {
+            console.log('email check error : ', error);
+        }
     };
 }
 
@@ -49,7 +58,7 @@ function accountValid(accountname) {
         };
 
         try {
-            const res = await axios.post(
+            const { data } = await axios.post(
                 API_URL + '/user/accountnamevalid',
                 accounValidData,
                 {
@@ -59,27 +68,25 @@ function accountValid(accountname) {
                 }
             );
 
-            if (res.data.message === '사용 가능한 계정ID 입니다.') {
-                dispatch({
-                    type: 'JOIN_ACCOUNTVALID_SUCCESS',
-                    payload: {
-                        message: res.data.message,
-                    },
-                });
-            } else if (res.data.message === '이미 가입된 계정ID 입니다.') {
-                dispatch({
-                    type: 'JOIN_ACCOUNTVALID_FAIL',
-                    payload: {
-                        message: res.data.message,
-                    },
-                });
-            }
-        } catch (error) {}
+            dispatch({
+                type: 'JOIN_ACCOUNTVALID_MESSAGE',
+                payload: {
+                    message: data.message,
+                },
+            });
+        } catch (error) {
+            console.log('유저 아이디 검증 에러 : ', error);
+        }
     };
 }
 
 function joinfinal(email, password, username, accountname, intro, itemImage) {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
+        if (email === 'initial') {
+            dispatch({ type: 'INITIAL' });
+            return;
+        }
+
         const joinfinalData = {
             user: {
                 username: username,
@@ -92,19 +99,23 @@ function joinfinal(email, password, username, accountname, intro, itemImage) {
         };
 
         try {
-            const res = await axios.post(API_URL + '/user', joinfinalData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+            const { data } = await axios.post(
+                API_URL + '/user',
+                joinfinalData,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
 
-            if (res.data.message === '이미 사용중인 계정 ID입니다.') {
+            if (data.message === '이미 사용중인 계정 ID입니다.') {
                 alert('이미 사용중인 계정 ID입니다.');
-            } else if (res.data.message === 'request entity too large') {
+            } else if (data.message === 'request entity too large') {
                 alert(
                     '사진 용량 크기 제한 100KB 이상의 이미지는 업로드 할 수 없습니다.'
                 );
-            } else if (res.data.message === '회원가입 성공') {
+            } else if (data.message === '회원가입 성공') {
                 dispatch({
                     type: 'JOIN_EMAIL_PASSWORD_SUCCESS',
                     payload: {
@@ -113,12 +124,14 @@ function joinfinal(email, password, username, accountname, intro, itemImage) {
                         username,
                         accountname,
                         intro,
-                        image: res.data.image,
-                        message: res.data.message,
+                        image: data.image,
+                        message: data.message,
                     },
                 });
             }
-        } catch (error) {}
+        } catch (error) {
+            console.log('회원가입 프로필 설정 네트워크 에러 : error');
+        }
     };
 }
 
