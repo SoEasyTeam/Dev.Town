@@ -25,7 +25,7 @@ function JoinMembership() {
         register,
         handleSubmit,
         watch,
-        formState: { errors },
+        formState: { errors, isValid },
     } = useForm({
         resolver: yupResolver(authSchema),
     });
@@ -74,7 +74,7 @@ function JoinMembership() {
                         message}
                 </WarningParagraph>
                 <div className='nextBtnWrap'>
-                    <NextBtn disabled={false}>다음</NextBtn>
+                    <NextBtn disabled={!isValid}>다음</NextBtn>
                 </div>
             </form>
         </LoginMain>
