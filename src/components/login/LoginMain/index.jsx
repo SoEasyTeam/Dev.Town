@@ -33,8 +33,6 @@ function LoginMain() {
         resolver: yupResolver(authSchema),
     });
 
-    console.log(isValid);
-
     const onSubmit = (formData) => {
         const { email, password } = formData;
         dispatch(authenticateAction.login(email, password));
@@ -70,13 +68,13 @@ function LoginMain() {
                     {...register('password')}
                     placeholder={'********'}
                 />
-                <WarningParagraph visible={!!errors || message}>
+                <WarningParagraph visible={(!!errors || message) && isLogin}>
                     {errors.email?.message ||
                         errors.password?.message ||
                         message}
                 </WarningParagraph>
                 <div className='loginBtnWrap'>
-                    <LoginBtn disabled={false} type='submit'>
+                    <LoginBtn disabled={!isValid} type='submit'>
                         로그인
                     </LoginBtn>
                     <JoinEmailLink to='/join'>이메일로 회원가입</JoinEmailLink>

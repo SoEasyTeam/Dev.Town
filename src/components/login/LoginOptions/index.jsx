@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
 import logoImgWhite from '@public/assets/images/logo-white.png';
 import { LogInColBox } from '@components/login/LoginOptions/index.style';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function LoginOptions({ isActive }) {
+    let { token } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if (!token) return;
+        sessionStorage.clear();
+    }, []);
+
     return (
         <LogInColBox isActive={isActive}>
             <img
