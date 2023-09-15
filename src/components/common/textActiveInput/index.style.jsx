@@ -40,7 +40,6 @@ export const TextInput = styled.input.attrs({
     }
 `;
 
-
 // 패스워드 Input
 export const PassWordInput = styled(TextInput).attrs({
     type: 'password',
@@ -58,17 +57,14 @@ export const EmailInput = styled(TextInput).attrs({
 `;
 
 export const ProfileNameInput = styled(TextInput).attrs({
-    id: 'profileName',
     placeholder: '2~10자 이내여야 합니다.',
 })``;
 
 export const ProfileId = styled(TextInput).attrs({
-    id: 'profileId',
     placeholder: '영문, 숫자, 특수문자(.),(_)만 사용 가능합니다.',
 })``;
 
 export const ProfileIntroduce = styled(TextInput).attrs({
-    id: 'profileIntroduce',
     placeholder: '자신과 판매할 상품에 대해 소개해 주세요!',
 })``;
 

@@ -16,73 +16,85 @@ import {
     TextLabel,
 } from '@components/common/textActiveInput/index.style';
 import { WarningParagraph } from '@components/login/LoginMain/index.style';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { checkUserId } from '@/utils/checkAuth';
+
+const schema = yup
+    .object({
+        username: yup
+            .string()
+            .min(2, '사용자 이름이 2~10자 이내여야 합니다.')
+            .max(10, '사용자 이름이 2~10자 이내여야 합니다.'),
+        userId: yup
+            .string()
+            .matches(
+                checkUserId,
+                '영문, 숫자, 특수문자(.),(_)만 사용 가능합니다.'
+            ),
+    })
+    .required();
 
 function ProfileSetting() {
-    const [username, setUsername] = useState('');
-    const [accountname, setAccountname] = useState('');
-    const [intro, setIntro] = useState('');
-    const [isActive, setIsActive] = useState('');
     const navigate = useNavigate();
-    const email = useSelector((state) => state.join.email);
-    const password = useSelector((state) => state.join.password);
-    const message = useSelector((state) => state.joinfinal.message);
     const dispatch = useDispatch();
+    const { email, password } = useSelector((state) => state.join);
+    const { message } = useSelector((state) => state.joinfinal);
     const [itemImage, setItemImage] = useState(JoinProfileImg);
 
     const onChangeProfileImg = (event) => {
         if (parseInt(event.target.files[0].size) > 100000) {
             alert('이미지 파일 100KB 이하로 해주세요.');
-        } else {
-            let reader = new FileReader();
-            reader.readAsDataURL(event.target.files[0]);
-            reader.onload = (event) => {
-                let readerUrl = event.target.result;
-                setItemImage(readerUrl);
-            };
+            return;
         }
+
+        let reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = (event) => {
+            let readerUrl = event.target.result;
+            setItemImage(readerUrl);
+        };
     };
 
-    const signUpActive = () => {
-        return username.length > 1 &&
-            username.length < 11 &&
-            accountname.length > 0 &&
-            intro.length > 0 &&
-            message === '사용 가능한 계정ID 입니다.'
-            ? setIsActive(false)
-            : setIsActive(true);
-    };
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
+    });
 
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
+    const userIdValue = watch('userId');
+    useEffect(() => {
+        if (!userIdValue) return;
+        dispatch(joinAction.accountValid(userIdValue));
+    }, [userIdValue]);
+
+    const onSubmit = (formData) => {
+        const { username, userId, introduce } = formData;
         dispatch(
             joinAction.joinfinal(
                 email,
                 password,
                 username,
-                accountname,
-                intro,
+                userId,
+                introduce,
                 itemImage
             )
         );
-        if (message === '회원가입 성공') {
-            navigate('/login');
-        }
     };
 
     useEffect(() => {
-        if (accountname.length > 0) {
-            dispatch(joinAction.accountValid(accountname));
-        }
-    }, [accountname]);
-
-    useEffect(() => {
-        if (message === '회원가입 성공') {
-            navigate('/login');
-        }
+        if (message !== '회원가입 성공') return;
+        dispatch(joinAction.joinfinal('initial'));
+        navigate('/login');
     }, [message]);
 
     return (
-        <ProfileSettingForm onSubmit={onSubmitHandler}>
+        <ProfileSettingForm onSubmit={handleSubmit(onSubmit)}>
+            <h1 className='ir'>데브타운 프로필 설정 화면</h1>
             <h2 className='profile-title'>프로필 설정</h2>
             <p className='subtitle-p'>나중에 언제든지 변경할 수 있습니다.</p>
             <Profilelabel htmlFor='profileImg'>
@@ -100,34 +112,28 @@ function ProfileSetting() {
             />
             <div className='input-cont'>
                 <TextLabel>사용자 이름</TextLabel>
-                <ProfileNameInput
-                    value={username}
-                    onChange={(event) => setUsername(event.target.value)}
-                    onKeyUp={signUpActive}
-                />
+                <ProfileNameInput name='username' {...register('username')} />
             </div>
             <div className='input-cont'>
                 <TextLabel>계정 ID</TextLabel>
-                <ProfileId
-                    value={accountname}
-                    onChange={(event) => setAccountname(event.target.value)}
-                    onKeyUp={signUpActive}
-                />
+                <ProfileId name='userId' {...register('userId')} />
             </div>
             <div className='input-cont'>
                 <TextLabel>소개</TextLabel>
-                <ProfileIntroduce
-                    value={intro}
-                    onChange={(event) => setIntro(event.target.value)}
-                    onKeyUp={signUpActive}
-                />
-                <WarningParagraph visible={isActive}>
-                    {message}
+                <ProfileIntroduce name='introduce' {...register('introduce')} />
+                <WarningParagraph
+                    visible={!!errors.username || !!message || !!errors.userId}
+                >
+                    {errors.username?.message ||
+                        errors.userId?.message ||
+                        message}
                 </WarningParagraph>
             </div>
-            <SignUpBtn disabled={isActive}>데브타운 시작하기</SignUpBtn>
+            <SignUpBtn disabled={message !== '사용 가능한 계정ID 입니다.'}>
+                데브타운 시작하기
+            </SignUpBtn>
         </ProfileSettingForm>
     );
 }
 
-export default React.memo(ProfileSetting);
+export default ProfileSetting;

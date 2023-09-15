@@ -13,76 +13,70 @@ import {
     LoginContainer,
     WarningParagraph,
 } from '@components/login/LoginMain/index.style';
+import { useForm } from 'react-hook-form';
+import { authSchema } from '@/utils/checkAuth';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 function LoginMain() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [isActive, setIsActive] = useState(true);
-    const [warningActive, setWarningActive] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    let tokenValid = useSelector((state) => state.token.tokenValid);
-    let token = useSelector((state) => state.auth.token);
-    let message = useSelector((state) => state.auth.message);
-    //이메일 주소 유효성 검사
-    const checkEmail =
-        /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    const [isLogin, setIsLogin] = useState(false);
 
-    //로그인버튼 활성화 검사
-    const loginActive = () => {
-        return checkEmail.test(email) && password.length > 5
-            ? setIsActive(false)
-            : setIsActive(true);
-    };
+    let { token } = useSelector((state) => state.auth);
+    let { message } = useSelector((state) => state.auth);
 
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isValid },
+    } = useForm({
+        resolver: yupResolver(authSchema),
+    });
+
+    const onSubmit = (formData) => {
+        const { email, password } = formData;
         dispatch(authenticateAction.login(email, password));
+        setIsLogin(true);
     };
 
     useEffect(() => {
-        if (message === '이메일 또는 비밀번호가 일치하지 않습니다.') {
-            setWarningActive(true);
-        } else {
-            setWarningActive(false);
+        if (!token) return;
+        if (token && !isLogin) {
+            sessionStorage.clear();
+            return;
         }
-        if (
-            token !== null &&
-            typeof token !== 'undefined' &&
-            token !== 'null'
-        ) {
-            dispatch(authenticateAction.tokenValid());
-        }
-    }, [message, dispatch, token]);
 
-    useEffect(() => {
-        if (tokenValid.isValid === true && token !== '') {
-            navigate('/home');
-        }
-    }, [tokenValid, navigate, token]);
+        setIsLogin(true);
+        navigate('/home');
+    }, [token]);
 
     return (
         <LoginContainer>
             <h1 className='ir'>데브타운 로그인 화면</h1>
             <h2 className='loginTitle'>로그인</h2>
-            <form className='loginForm' onSubmit={onSubmitHandler}>
+            <form className='loginForm' onSubmit={handleSubmit(onSubmit)}>
                 <TextLabel>이메일</TextLabel>
                 <EmailInput
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    onKeyUp={loginActive}
+                    name='email'
+                    {...register('email')}
+                    placeholder={'example@example.com'}
                 />
                 <TextLabel>비밀번호</TextLabel>
                 <PassWordInput
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    onKeyUp={loginActive}
+                    name='password'
+                    type={'password'}
+                    {...register('password')}
+                    placeholder={'********'}
                 />
-                <WarningParagraph visible={warningActive}>
-                    *{message}
+                <WarningParagraph visible={(!!errors || message) && isLogin}>
+                    {errors.email?.message ||
+                        errors.password?.message ||
+                        message}
                 </WarningParagraph>
                 <div className='loginBtnWrap'>
-                    <LoginBtn disabled={isActive}>로그인</LoginBtn>
+                    <LoginBtn disabled={!isValid} type='submit'>
+                        로그인
+                    </LoginBtn>
                     <JoinEmailLink to='/join'>이메일로 회원가입</JoinEmailLink>
                 </div>
             </form>

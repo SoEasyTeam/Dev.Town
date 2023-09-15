@@ -30,7 +30,10 @@ function joinReducer(state = joinValid_initialState, action) {
                 message: payload.message,
             };
         default:
-            return { ...state };
+            return {
+                ...state,
+                message: '',
+            };
     }
 }
 
@@ -48,16 +51,21 @@ function joinFinalReducer(state = initialState, action) {
                 message: payload.message,
                 image: payload.image,
             };
-        case 'JOIN_ACCOUNTVALID_SUCCESS':
-            return {
-                message: payload.message,
-            };
-        case 'JOIN_ACCOUNTVALID_FAIL':
+        case 'JOIN_ACCOUNTVALID_MESSAGE':
             return {
                 message: payload.message,
             };
         default:
-            return { ...state };
+            return {
+                ...state,
+                email: '',
+                password: '',
+                username: '',
+                accountname: '',
+                intro: '',
+                message: '',
+                image: '',
+            };
     }
 }
 
