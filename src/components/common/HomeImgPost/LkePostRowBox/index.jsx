@@ -52,7 +52,7 @@ const LikePostRowBox = ({ heartCount, commentCount, postId, hearted }) => {
                 />
                 <span className='likecount-span'>{newHeartCount}</span>
             </button>
-            <Link className='comment-btn' to={`./post/${postId}`}>
+            <Link className='comment-btn' to={`/post/${postId}`}>
                 <img
                     className='comment-img'
                     src={IconCommentImg}
