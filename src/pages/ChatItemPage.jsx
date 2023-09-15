@@ -8,6 +8,7 @@ import {
     MyProfileOnComment,
     ProfileImgBox,
 } from '@components/comment/commentInput/index.style';
+import ProfileImg from '@public/assets/images/basic-profile-img.png';
 import { useSelector } from 'react-redux';
 
 const ChatMainItem = styled.div`
