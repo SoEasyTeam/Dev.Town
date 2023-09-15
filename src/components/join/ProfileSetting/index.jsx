@@ -68,6 +68,7 @@ function ProfileSetting() {
 
     const userIdValue = watch('userId');
     useEffect(() => {
+        if (!userIdValue) return;
         dispatch(joinAction.accountValid(userIdValue));
     }, [userIdValue]);
 
