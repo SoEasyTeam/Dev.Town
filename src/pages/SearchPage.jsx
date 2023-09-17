@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import TabMenu from '@components/common/tabMenu';
 import { TopSearchNav } from '@components/common/nav';
@@ -15,6 +14,8 @@ import {
 import styled from 'styled-components';
 import { checkHangul } from '@/utils/checkHangul';
 import { customAxios } from '@/api';
+import { DefaultProfileImg } from '@components/common/button';
+import useDebounce from '@/hooks/useDebounce';
 
 const SearchBox = styled.div`
     margin: 0 16px;
@@ -23,10 +24,11 @@ const SearchBox = styled.div`
 export default function SearchPage() {
     const [searchResult, setSearchResult] = useState([]);
     const [keyword, setKeyword] = useState('');
+    const debounceWord = useDebounce(keyword, 500);
 
     const searchData = async () => {
         try {
-            let url = `/user/searchuser/?keyword=` + keyword;
+            const url = `/user/searchuser/?keyword=` + debounceWord;
             const data = await customAxios('GET', null, url);
             setSearchResult(data);
         } catch (error) {
@@ -35,11 +37,9 @@ export default function SearchPage() {
     };
 
     useEffect(() => {
-        // 디바운싱
-        if (keyword.length > 1) {
-            searchData();
-        }
-    }, [keyword]);
+        if (keyword.length <= 1) return;
+        searchData();
+    }, [debounceWord]);
 
     const handleChange = (e) => {
         const inputValue = e.target.value;
