@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import TabMenu from '@components/common/tabMenu';
 import { TopSearchNav } from '@components/common/nav';
@@ -13,42 +12,44 @@ import {
     ProfileLogoImg,
 } from '@components/common/search/index.style';
 import styled from 'styled-components';
-import { API_URL } from '@constants/defaultUrl';
+import { checkHangul } from '@/utils/checkHangul';
+import { customAxios } from '@/api';
+import DefaultProfileImg from '@public/assets/icon/icon-user.svg';
+import useDebounce from '@/hooks/useDebounce';
 
 const SearchBox = styled.div`
     margin: 0 16px;
 `;
 
 export default function SearchPage() {
-    const token = useSelector((state) => state.auth.token);
     const [searchResult, setSearchResult] = useState([]);
     const [keyword, setKeyword] = useState('');
+    const debounceWord = useDebounce(keyword, 500);
+
+    const searchData = async () => {
+        try {
+            const url = `/user/searchuser/?keyword=` + debounceWord;
+            const data = await customAxios('GET', null, url);
+            setSearchResult(data);
+        } catch (error) {
+            console.log('search error : ', error);
+        }
+    };
 
     useEffect(() => {
-        if (keyword.length > 1) {
-            setTimeout(() => {
-                const searchData = async () => {
-                    const res = await fetch(
-                        `${API_URL}/user/searchuser/?keyword=` + keyword,
-                        {
-                            method: 'GET',
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                                'Content-type': 'application/json',
-                            },
-                        }
-                    );
-                    const json = await res.json();
-                    setSearchResult(json);
-                };
-                searchData();
-            }, 700);
-        }
-    }, [keyword, token]);
+        if (keyword.length <= 1) return;
+        searchData();
+    }, [debounceWord]);
+
+    const handleChange = (e) => {
+        const inputValue = e.target.value;
+        const completedInput = checkHangul(inputValue);
+        setKeyword(completedInput);
+    };
 
     return (
         <>
-            <TopSearchNav onChange={(e) => setKeyword(e.target.value)} />
+            <TopSearchNav onChange={handleChange} />
             {searchResult ? (
                 searchResult.map((user, index) => {
                     return (
@@ -63,6 +64,9 @@ export default function SearchPage() {
                                     <ProfileLogoImg
                                         src={user.image}
                                         alt='프로필로고'
+                                        onError={(e) =>
+                                            (e.target.src = DefaultProfileImg)
+                                        }
                                     />
                                     <NameIdBox>
                                         <NickNameP>{user.username}</NickNameP>
