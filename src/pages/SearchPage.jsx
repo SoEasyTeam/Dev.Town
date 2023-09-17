@@ -13,42 +13,43 @@ import {
     ProfileLogoImg,
 } from '@components/common/search/index.style';
 import styled from 'styled-components';
-import { API_URL } from '@constants/defaultUrl';
+import { checkHangul } from '@/utils/checkHangul';
+import { customAxios } from '@/api';
 
 const SearchBox = styled.div`
     margin: 0 16px;
 `;
 
 export default function SearchPage() {
-    const token = useSelector((state) => state.auth.token);
     const [searchResult, setSearchResult] = useState([]);
     const [keyword, setKeyword] = useState('');
 
-    useEffect(() => {
-        if (keyword.length > 1) {
-            setTimeout(() => {
-                const searchData = async () => {
-                    const res = await fetch(
-                        `${API_URL}/user/searchuser/?keyword=` + keyword,
-                        {
-                            method: 'GET',
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                                'Content-type': 'application/json',
-                            },
-                        }
-                    );
-                    const json = await res.json();
-                    setSearchResult(json);
-                };
-                searchData();
-            }, 700);
+    const searchData = async () => {
+        try {
+            let url = `/user/searchuser/?keyword=` + keyword;
+            const data = await customAxios('GET', null, url);
+            setSearchResult(data);
+        } catch (error) {
+            console.log('search error : ', error);
         }
-    }, [keyword, token]);
+    };
+
+    useEffect(() => {
+        // 디바운싱
+        if (keyword.length > 1) {
+            searchData();
+        }
+    }, [keyword]);
+
+    const handleChange = (e) => {
+        const inputValue = e.target.value;
+        const completedInput = checkHangul(inputValue);
+        setKeyword(completedInput);
+    };
 
     return (
         <>
-            <TopSearchNav onChange={(e) => setKeyword(e.target.value)} />
+            <TopSearchNav onChange={handleChange} />
             {searchResult ? (
                 searchResult.map((user, index) => {
                     return (
