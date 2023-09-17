@@ -14,7 +14,7 @@ import {
 import styled from 'styled-components';
 import { checkHangul } from '@/utils/checkHangul';
 import { customAxios } from '@/api';
-import { DefaultProfileImg } from '@components/common/button';
+import DefaultProfileImg from '@public/assets/icon/icon-user.svg';
 import useDebounce from '@/hooks/useDebounce';
 
 const SearchBox = styled.div`
@@ -64,6 +64,9 @@ export default function SearchPage() {
                                     <ProfileLogoImg
                                         src={user.image}
                                         alt='프로필로고'
+                                        onError={(e) =>
+                                            (e.target.src = DefaultProfileImg)
+                                        }
                                     />
                                     <NameIdBox>
                                         <NickNameP>{user.username}</NickNameP>
