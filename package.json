@@ -54,7 +54,7 @@
         "eslint-plugin-react": "^7.33.2",
         "nth-check": "^2.1.1",
         "prettier": "2.7.1",
-        "vite": "^4.4.9",
+        "vite": "^4.5.2",
         "vite-plugin-env-compatible": "^1.1.1",
         "vite-plugin-eslint": "^1.8.1",
         "vite-plugin-svgr": "^3.2.0",
